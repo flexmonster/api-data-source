@@ -66,7 +66,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ## 2.2. Members request
 
 #### Request
-```json
+```typescript
 {
     "type": "members"
     "index": string,
@@ -80,7 +80,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `page`     | `number`<br> Page number. It can be used to load members by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`. |
 
 #### Response
-```json
+```typescript
 {
     "members": {
         "caption": string | number | timestamp
@@ -99,17 +99,17 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `pageTotal`       | `number` *optional*<br> Total number of pages. It can be used to load members by parts.                                                                           |
 
 ### 2.2.1. Example response for `string` field
-```json
+```typescript
 TBD
 ```
 
 ### 2.2.2. Example response for `number` field
-```json
+```typescript
 TBD
 ```
 
 ### 2.2.3. Example response for `date` field
-```json
+```typescript
 TBD
 ```
 
