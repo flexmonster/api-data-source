@@ -5,7 +5,7 @@
 ## 1.1. Flexmonster report configuration
 
 In order to connect to your custom data source API, you need to configre Flexmonster's `report.dataSource` as follows:
-```json
+```typescript
 "report": {
     "dataSource": {
         "dataSourceType": "api",
@@ -33,7 +33,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ## 2.1. Fields request
 
 #### Request
-```json
+```typescript
 {
     "type": "fields"
     "index": string
@@ -41,7 +41,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 #### Response
-```json
+```typescript
 {
     "fields": {
         "field": string,
