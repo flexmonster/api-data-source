@@ -242,16 +242,13 @@ TBD
     "type": "select",
     "query": {
         "aggs": {
-            "values": [
-                {
-                    "func": "sum", 
-                    "field": "price"
-                },
-                {
-                    "func": "sum", 
-                    "field": "quantity"
-                }
-            ]
+            "values": [{
+                "func": "sum", 
+                "field": "price"
+            }, {
+                "func": "sum", 
+                "field": "quantity"
+            }]
         }
     },
     "page": 0
@@ -281,5 +278,136 @@ TBD
 ```
 
 ## 2.4. Select request for flat table
+
+#### Request
+```typescript
+{
+    "type": "select"
+    "index": string,
+    "query": {
+        "fields"[]: {
+            "field": string
+        },
+        "filter"[]: {
+            "field": string,
+            "fieldType": "string" | "number" | "date",
+            "include": string[],
+            "exclude": string[],
+            "query": {
+                (condition): string | number
+            },
+            "value": {
+                "field": string,
+                "func": string
+            }
+        },
+        "aggs": {
+            "values"[]: {
+                "field": string,
+                "func": string
+            }
+        }
+    },
+    "page": number
+}
+```
+| Parameters                | Description                                                       |
+| ------------------------- | ----------------------------------------------------------------- |
+| `query`                   | `Object`<br>                                                      |
+| `query.fields`            | `Array`<br> Array of fields (columns) to include in the response. |
+| `query.fields.field`      | `string`<br> Field's name.                                        |
+| `query.filter`            | `Array` *optional*<br> See **Section 2.3** `query.filter`.        |
+| `query.aggs`              | `Array` *optional*<br> Column totals.                             |
+| `query.aggs.values`       | `Array`<br>                                                       |
+| `query.aggs.values.field` | `string`<br> Field's name.                                        |
+| `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: *TBD*  |
+| `page`                    | `number`<br> Page number. See **Section 2.3**.                    |
+
+#### Response
+```typescript
+{
+    "fields"[]: {
+        "fields": string
+    },
+    "hits"[]: [
+        (index): string | number
+    ],
+    "aggs"[]: {
+        "values": {
+            (field): {
+                (func): number
+            }
+        }
+    },
+
+    "page": number,
+    "pageTotal": number
+}
+```
+| Parameters                   | Description                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| `fields`                     | `Array`<br> Array of fields (columns) included in the response.                      |
+| `fields.field`               | `string`<br> Field's name.                                                           |
+| `hits`                       | `Array`<br> Two-dimensional array that contains data.                                |
+| `hits[]`                     | `[(index): string | number]`<br> ***(index)*** - field (column) index <br> Data row. |
+| `aggs`                       | `Array` *optional*<br> Column totals.                                                |
+| `aggs.values`                | `Object`<br>                                                                         |
+| `aggs.values.(field)`        | `Object`<br> ***(field)*** - field's name                                            |
+| `aggs.values.(field).(func)` | `number`<br> ***(func)*** - aggregation function <br> Result of the calculation.     |
+| `page`                       | `number` *optional*<br> Current page number. See **Section 2.3**.                    |
+| `pageTotal`                  | `number` *optional*<br> Total number of pages. See **Section 2.3**.                  |
+
+### 2.4.1. Example
+
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "fields": [
+            { "field": "country" },
+            { "field": "city" },
+            { "field": "price" },
+            { "field": "quantity" }
+        ],
+        "aggs": {
+            "values": [{
+                "func": "sum", 
+                "field": "price"
+            }, {
+                "func": "sum", 
+                "field": "quantity"
+            }]
+        }
+    },
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "fields": [
+        { "field": "country" },
+        { "field": "city" },
+        { "field": "price" },
+        { "field": "quantity" }
+    ],
+    "hits": [
+        ["Canada", "Toronto", 53, 2],
+        ...
+    ],
+    "aggs": [{
+        "values": {
+            "price": {
+                "sum": 123
+            },
+            "quantity": {
+                "sum": 5
+            }
+        }
+    }]
+}
+```
 
 ## 2.5. Select request for drill-through view
