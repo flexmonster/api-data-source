@@ -342,7 +342,7 @@ TBD
 | `fields`                     | `Array`<br> Array of fields (columns) included in the response.                      |
 | `fields.field`               | `string`<br> Field's name.                                                           |
 | `hits`                       | `Array`<br> Two-dimensional array that contains data.                                |
-| `hits[]`                     | `[(index): string | number]`<br> ***(index)*** - field (column) index <br> Data row. |
+| `hits[]`                     | `[(index): string \| number]`<br> ***(index)*** - field (column) index <br> Data row. |
 | `aggs`                       | `Array` *optional*<br> Column totals.                                                |
 | `aggs.values`                | `Object`<br>                                                                         |
 | `aggs.values.(field)`        | `Object`<br> ***(field)*** - field's name                                            |
@@ -388,7 +388,7 @@ TBD
     ],
     "hits": [
         ["Canada", "Toronto", 53, 2],
-        ...
+        ["...", "...", 1, 1]
     ],
     "aggs": [{
         "values": {
@@ -459,7 +459,7 @@ TBD
 | `fields`       | `Array`<br> Array of fields (columns) included in the response.                      |
 | `fields.field` | `string`<br> Field's name.                                                           |
 | `hits`         | `Array`<br> Two-dimensional array that contains data.                                |
-| `hits[]`       | `[(index): string | number]`<br> ***(index)*** - field (column) index <br> Data row. |
+| `hits[]`       | `[(index): string \| number]`<br> ***(index)*** - field (column) index <br> Data row. |
 | `page`         | `number` *optional*<br> Current page number. See **Section 2.3**.                    |
 | `pageTotal`    | `number` *optional*<br> Total number of pages. See **Section 2.3**.                  |
 
@@ -497,7 +497,7 @@ TBD
     ],
     "hits": [
         ["Canada", "Toronto", 53, 2],
-        ...
+        ["Canada", "...", 1, 1]
     ]
 }
 ```
