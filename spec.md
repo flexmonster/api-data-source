@@ -207,12 +207,10 @@ TBD
     "type": "select",
     "query": {
         "aggs": {
-            "values": [
-                {
-                    "func": "sum", 
-                    "field": "price"
-                }
-            ]
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }]
         }
     },
     "page": 0
@@ -221,15 +219,13 @@ TBD
 #### Response
 ```json
 {
-    "aggs": [
-        {
-            "values": {
-                "price": {
-                    "sum": 123
-                }
+    "aggs": [{
+        "values": {
+            "price": {
+                "sum": 123
             }
         }
-    ]
+    }]
 }
 ```
 
@@ -257,18 +253,16 @@ TBD
 #### Response
 ```json
 {
-    "aggs": [
-        {
-            "values": {
-                "price": {
-                    "sum": 123
-                },
-                "quantity": {
-                    "sum": 5
-                }
+    "aggs": [{
+        "values": {
+            "price": {
+                "sum": 123
+            },
+            "quantity": {
+                "sum": 5
             }
         }
-    ]
+    }]
 }
 ```
 
@@ -339,7 +333,6 @@ TBD
             }
         }
     },
-
     "page": number,
     "pageTotal": number
 }
@@ -411,3 +404,100 @@ TBD
 ```
 
 ## 2.5. Select request for drill-through view
+
+#### Request
+```typescript
+{
+    "type": "select"
+    "index": string,
+    "query": {
+        "fields"[]: {
+            "field": string
+        },
+        "filter"[]: {
+            "field": string,
+            "fieldType": "string" | "number" | "date",
+            "include": string[],
+            "exclude": string[],
+            "query": {
+                (condition): string | number
+            },
+            "value": {
+                "field": string,
+                "func": string
+            }
+        },
+        "limit": number
+    },
+    "page": number
+}
+```
+| Parameters           | Description                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `query`              | `Object`<br>                                                                                                                       |
+| `query.fields`       | `Array`<br> Array of fields (columns) to include in the response.                                                                  |
+| `query.fields.field` | `string`<br> Field's name.                                                                                                         |
+| `query.filter`       | `Array`<br> See **Section 2.3** `query.filter`.                                                                                    |
+| `query.limit`        | `number`<br> The maximum number of records that should be included in the response. Сonfigurable on the client. Default is `1000`. |
+| `page`               | `number`<br> Page number. See **Section 2.3**.                                                                                     |
+
+#### Response
+```typescript
+{
+    "fields"[]: {
+        "fields": string
+    },
+    "hits"[]: [
+        (index): string | number
+    ],
+    "page": number,
+    "pageTotal": number
+}
+```
+| Parameters     | Description                                                                          |
+| -------------- | ------------------------------------------------------------------------------------ |
+| `fields`       | `Array`<br> Array of fields (columns) included in the response.                      |
+| `fields.field` | `string`<br> Field's name.                                                           |
+| `hits`         | `Array`<br> Two-dimensional array that contains data.                                |
+| `hits[]`       | `[(index): string | number]`<br> ***(index)*** - field (column) index <br> Data row. |
+| `page`         | `number` *optional*<br> Current page number. See **Section 2.3**.                    |
+| `pageTotal`    | `number` *optional*<br> Total number of pages. See **Section 2.3**.                  |
+
+### 2.5.1. Example
+
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "fields": [
+            { "field": "country" },
+            { "field": "city" },
+            { "field": "price" },
+            { "field": "quantity" }
+        ],
+        "filter": {
+            "field": "country", 
+            "include": ["Canada"]
+        },
+        "limit": 1000
+    },
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "fields": [
+        { "field": "country" },
+        { "field": "city" },
+        { "field": "price" },
+        { "field": "quantity" }
+    ],
+    "hits": [
+        ["Canada", "Toronto", 53, 2],
+        ...
+    ]
+}
+```
