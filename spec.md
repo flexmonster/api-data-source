@@ -266,9 +266,344 @@ TBD
 }
 ```
 
-### 2.3.3. *TBD: more examples*
-```typescript
-TBD
+### 2.3.3. Example with field in rows
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "aggs": {
+            "values": [{
+                "func": "sum", 
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"]
+            }
+        }
+    },
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "aggs": [{
+        "values": {
+            "price": {
+                "sum": 123
+            }
+        }
+    }, {
+        "keys": {
+            "city": "Toronto"
+        },
+        "values": {
+            "price": {
+                "sum": 100
+            }
+        }
+    }, {
+        "keys": {
+            "city": "New York"
+        },
+        "values": {
+            "price": {
+                "sum": 23
+            }
+        }
+    }]
+}
+```
+
+### 2.3.4. Example with fields in rows and columns
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "aggs": {
+            "values": [{
+                "func": "sum", 
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"],
+                "cols": ["color"]
+            }
+        }
+    },
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "aggs": [{
+        "values": {
+            "price": {
+                "sum": 48
+            }
+        }
+    }, {
+        "keys": {
+            "city": "New York"
+        },
+        "values": {
+            "price": {
+                "sum": 20
+            }
+        }
+    }, {
+        "keys": {
+            "city": "Toronto"
+        },
+        "values": {
+            "price": {
+                "sum": 28
+            }
+        }
+    }, {
+        "keys": {
+            "color": "blue"
+        },
+        "values": {
+            "price": {
+                "sum": 38
+            }
+        }
+    }, {
+        "keys": {
+            "color": "red"
+        },
+        "values": {
+            "price": {
+                "sum": 10
+            }
+        }
+    }, {
+        "keys": {
+            "city": "New York",
+            "color": "blue"
+        },
+        "values": {
+            "price": {
+                "sum": 20
+            }
+        }
+    }, {
+        "keys": {
+            "city": "Toronto",
+            "color": "blue"
+        },
+        "values": {
+            "price": {
+                "sum": 18
+            }
+        }
+    }, {
+        "keys": {
+            "city": "Toronto",
+            "color": "red"
+        },
+        "values": {
+            "price": {
+                "sum": 10
+            }
+        }
+    }]
+}
+```
+
+### 2.3.5. Example with exclude fiter by members
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+            "field": "city",
+            "exclude": ["New York", "Montreal"]
+        }],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
+```
+
+### 2.3.6. Example with inlcude/exclude fiter by members by several fields
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+                "field": "color",
+                "include": ["blue"]
+            },
+            {
+                "field": "city",
+                "exclude": ["New York", "Montreal"]
+            }
+        ],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
+```
+
+### 2.3.7. Example with query fiter by labels
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+            "field": "city",
+            "fieldType": "string",
+            "query": {
+                "begin": "toro"
+            }
+        }],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
+```
+
+### 2.3.8. Example with query fiter by values
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+            "field": "city",
+            "fieldType": "string",
+            "query": {
+                "top": 3
+            },
+            "value": {
+                "func": "sum",
+                "field": "price"
+            }
+        }],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["city"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
+```
+
+### 2.3.9. Example with query fiter by labels for numeric field
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+            "field": "quantity",
+            "fieldType": "number",
+            "query": {
+                "greater": 2
+            }
+        }],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["quantity"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
+```
+
+### 2.3.10. Example with query fiter by dates for date field
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "select",
+    "query": {
+        "filter": [{
+            "field": "order_date",
+            "fieldType": "date",
+            "query": {
+                "equal": 1564617600000
+            }
+        }],
+        "aggs": {
+            "values": [{
+                "func": "sum",
+                "field": "price"
+            }],
+            "by": {
+                "rows": ["order_date"]
+            }
+        }
+    }
+}
+```
+#### Response
+```
+Format is the same as above
 ```
 
 ## 2.4. Select request for flat table
@@ -337,18 +672,18 @@ TBD
     "pageTotal": number
 }
 ```
-| Parameters                   | Description                                                                          |
-| ---------------------------- | ------------------------------------------------------------------------------------ |
-| `fields`                     | `Array`<br> Array of fields (columns) included in the response.                      |
-| `fields.field`               | `string`<br> Field's name.                                                           |
-| `hits`                       | `Array`<br> Two-dimensional array that contains data.                                |
+| Parameters                   | Description                                                                           |
+| ---------------------------- | ------------------------------------------------------------------------------------- |
+| `fields`                     | `Array`<br> Array of fields (columns) included in the response.                       |
+| `fields.field`               | `string`<br> Field's name.                                                            |
+| `hits`                       | `Array`<br> Two-dimensional array that contains data.                                 |
 | `hits[]`                     | `[(index): string \| number]`<br> ***(index)*** - field (column) index <br> Data row. |
-| `aggs`                       | `Array` *optional*<br> Column totals.                                                |
-| `aggs.values`                | `Object`<br>                                                                         |
-| `aggs.values.(field)`        | `Object`<br> ***(field)*** - field's name                                            |
-| `aggs.values.(field).(func)` | `number`<br> ***(func)*** - aggregation function <br> Result of the calculation.     |
-| `page`                       | `number` *optional*<br> Current page number. See **Section 2.3**.                    |
-| `pageTotal`                  | `number` *optional*<br> Total number of pages. See **Section 2.3**.                  |
+| `aggs`                       | `Array` *optional*<br> Column totals.                                                 |
+| `aggs.values`                | `Object`<br>                                                                          |
+| `aggs.values.(field)`        | `Object`<br> ***(field)*** - field's name                                             |
+| `aggs.values.(field).(func)` | `number`<br> ***(func)*** - aggregation function <br> Result of the calculation.      |
+| `page`                       | `number` *optional*<br> Current page number. See **Section 2.3**.                     |
+| `pageTotal`                  | `number` *optional*<br> Total number of pages. See **Section 2.3**.                   |
 
 ### 2.4.1. Example
 
@@ -454,14 +789,14 @@ TBD
     "pageTotal": number
 }
 ```
-| Parameters     | Description                                                                          |
-| -------------- | ------------------------------------------------------------------------------------ |
-| `fields`       | `Array`<br> Array of fields (columns) included in the response.                      |
-| `fields.field` | `string`<br> Field's name.                                                           |
-| `hits`         | `Array`<br> Two-dimensional array that contains data.                                |
+| Parameters     | Description                                                                           |
+| -------------- | ------------------------------------------------------------------------------------- |
+| `fields`       | `Array`<br> Array of fields (columns) included in the response.                       |
+| `fields.field` | `string`<br> Field's name.                                                            |
+| `hits`         | `Array`<br> Two-dimensional array that contains data.                                 |
 | `hits[]`       | `[(index): string \| number]`<br> ***(index)*** - field (column) index <br> Data row. |
-| `page`         | `number` *optional*<br> Current page number. See **Section 2.3**.                    |
-| `pageTotal`    | `number` *optional*<br> Total number of pages. See **Section 2.3**.                  |
+| `page`         | `number` *optional*<br> Current page number. See **Section 2.3**.                     |
+| `pageTotal`    | `number` *optional*<br> Total number of pages. See **Section 2.3**.                   |
 
 ### 2.5.1. Example
 
