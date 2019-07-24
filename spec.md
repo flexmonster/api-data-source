@@ -60,7 +60,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `fields.type`         | `string`<br> Field's type. Supported values: `"string"`, `"number"`, `"date"`.                                                                            |
 | `fields.caption`      | `string` *optional*<br> Field's caption that appears on the UI.                                                                                           |
 | `fields.folder`       | `string` *optional*<br> Field's folder that is used to organize groups of fields in the Field List. Supports nesting via `/` (e.g. `"Folder/Subfolder"`). |
-| `fields.aggregations` | `string[]` *optional*<br> Array of supported aggregations in case the field is used as measure. *TDB: add supported values*                               |
+| `fields.aggregations` | `string[]` *optional*<br> Array of supported aggregations in case the field is used as measure. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`.|
 | `sorted`              | `boolean` *optional*<br> If `true`, the fields will be displayed in the same order in the Field List.                                                     |
 
 ## 2.2. Members request
@@ -154,7 +154,7 @@ TBD
 | `query.aggs`                     | `Object`<br> *TBD*                                                                                                                                                                              |
 | `query.aggs.values`              | `Array`<br> *TBD*                                                                                                                                                                               |
 | `query.aggs.values.field`        | `string`<br> Field's name.                                                                                                                                                                      |
-| `query.aggs.values.func`         | `string`<br> Value aggregation function. Supported values: *TBD*                                                                                                                                |
+| `query.aggs.values.func`         | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request.|
 | `query.aggs.by`                  | `Object`<br> *TBD*                                                                                                                                                                              |
 | `query.aggs.by.rows`             | `string[]`<br> Field names in rows.                                                                                                                                                             |
 | `query.aggs.by.cols`             | `string[]`<br> Field names in columns.                                                                                                                                                          |
@@ -649,7 +649,7 @@ Format is the same as above
 | `query.aggs`              | `Array` *optional*<br> Column totals.                             |
 | `query.aggs.values`       | `Array`<br>                                                       |
 | `query.aggs.values.field` | `string`<br> Field's name.                                        |
-| `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: *TBD*  |
+| `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request.|
 | `page`                    | `number`<br> Page number. See **Section 2.3**.                    |
 
 #### Response
