@@ -1,6 +1,28 @@
 # Custom data source API specification
 
-- [2.2. Members request](#22-members-request)
+- [1. Front-end spec](#1-front-end-spec)
+   - [1.1. Flexmonster report configuration](#11-flexmonster-report-configuration)
+- [2. Back-end spec](#2-back-end-spec)
+  - [2.1. Fields request](#21-fields-request)
+  - [2.2. Members request](#22-members-request)
+    - [2.2.1. Example for `string` field](#221-example-for-string-field)
+    - [2.2.2. Example for `number` field](#222-example-for-number-field)
+    - [2.2.3. Example for `date` field](#223-example-for-date-field)
+  - [2.3. Select request for pivot table](#23-select-request-for-pivot-table)
+    - [2.3.1. Example for one value](#231-example-for-one-value)
+    - [2.3.2. Example for two values](#232-example-for-two-values)
+   2.3.3. [Example with field in rows](#233-example-with-field-in-rows)
+   2.3.4. [Example with fields in rows and columns](#234-example-with-fields-in-rows-and-columns)
+   2.3.5. [Example with exclude fiter by members](#235-example-with-exclude-fiter-by-members)
+   2.3.6. [Example with inlcude/exclude fiter by members by several fields](#236-example-with-inlcudeexclude-fiter-by-members-by-several-fields)
+   2.3.7. [Example with query fiter by labels](#237-example-with-query-fiter-by-labels)
+   2.3.8. [Example with query fiter by values](#238-example-with-query-fiter-by-values)
+   2.3.9. [Example with query fiter by labels for numeric field](#239-example-with-query-fiter-by-labels-for-numeric-field)
+   2.3.10. [Example with query fiter by dates for date field](#2310-example-with-query-fiter-by-dates-for-date-field)
+   2.4. [Select request for flat table](#24-select-request-for-flat-table)
+   2.4.1. [Example](#241-example)
+   2.5. [Select request for drill-through view](#25-select-request-for-drill-through-view)
+   2.5.1. [Example](#251-example)
 
 # 1. Front-end spec
 
