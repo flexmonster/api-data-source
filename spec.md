@@ -1,28 +1,69 @@
-#Custom data source API specification
+# Custom data source API specification
 
+- [Custom data source API specification](#custom-data-source-api-specification)
 - [1. Front-end spec](#1-front-end-spec)
   - [1.1. Flexmonster report configuration](#11-flexmonster-report-configuration)
 - [2. Back-end spec](#2-back-end-spec)
   - [2.1. Fields request](#21-fields-request)
+      - [Request](#request)
+      - [Response](#response)
   - [2.2. Members request](#22-members-request)
+      - [Request](#request-1)
+      - [Response](#response-1)
     - [2.2.1. Example for `string` field](#221-example-for-string-field)
+      - [Request](#request-2)
+      - [Response](#response-2)
     - [2.2.2. Example for `number` field](#222-example-for-number-field)
+      - [Request](#request-3)
+      - [Response](#response-3)
     - [2.2.3. Example for `date` field](#223-example-for-date-field)
+      - [Request](#request-4)
+      - [Response](#response-4)
   - [2.3. Select request for pivot table](#23-select-request-for-pivot-table)
+      - [Request](#request-5)
+      - [Response](#response-5)
     - [2.3.1. Example for one value](#231-example-for-one-value)
+      - [Request](#request-6)
+      - [Response](#response-6)
     - [2.3.2. Example for two values](#232-example-for-two-values)
+      - [Request](#request-7)
+      - [Response](#response-7)
     - [2.3.3. Example with field in rows](#233-example-with-field-in-rows)
+      - [Request](#request-8)
+      - [Response](#response-8)
     - [2.3.4. Example with fields in rows and columns](#234-example-with-fields-in-rows-and-columns)
+      - [Request](#request-9)
+      - [Response](#response-9)
     - [2.3.5. Example with exclude fiter by members](#235-example-with-exclude-fiter-by-members)
+      - [Request](#request-10)
+      - [Response](#response-10)
     - [2.3.6. Example with inlcude/exclude fiter by members by several fields](#236-example-with-inlcudeexclude-fiter-by-members-by-several-fields)
+      - [Request](#request-11)
+      - [Response](#response-11)
     - [2.3.7. Example with query fiter by labels](#237-example-with-query-fiter-by-labels)
+      - [Request](#request-12)
+      - [Response](#response-12)
     - [2.3.8. Example with query fiter by values](#238-example-with-query-fiter-by-values)
+      - [Request](#request-13)
+      - [Response](#response-13)
     - [2.3.9. Example with query fiter by labels for numeric field](#239-example-with-query-fiter-by-labels-for-numeric-field)
+      - [Request](#request-14)
+      - [Response](#response-14)
     - [2.3.10. Example with query fiter by dates for date field](#2310-example-with-query-fiter-by-dates-for-date-field)
+      - [Request](#request-15)
+      - [Response](#response-15)
   - [2.4. Select request for flat table](#24-select-request-for-flat-table)
+      - [Request](#request-16)
+      - [Response](#response-16)
     - [2.4.1. Example](#241-example)
+      - [Request](#request-17)
+      - [Response](#response-17)
   - [2.5. Select request for drill-through view](#25-select-request-for-drill-through-view)
+      - [Request](#request-18)
+      - [Response](#response-18)
     - [2.5.1. Example](#251-example)
+      - [Request](#request-19)
+      - [Response](#response-19)
 
 # 1. Front-end spec
 
@@ -56,7 +97,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 
 ## 2.1. Fields request
 
-####Request
+#### Request
 ```typescript
 {
     "type": "fields"
@@ -64,7 +105,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 }
 ```
 
-####Response
+#### Response
 ```typescript
 {
     "fields"[]: {
@@ -89,7 +130,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 
 ## 2.2. Members request
 
-####Request
+#### Request
 ```typescript
 {
     "type": "members"
@@ -103,7 +144,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `field`    | `string`<br> Field's unique name.                                                                                                                                                                  |
 | `page`     | `number`<br> Page number. It can be used to load members by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`. |
 
-####Response
+#### Response
 ```typescript
 {
     "members"[]: {
@@ -125,7 +166,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `pageTotal`     | `number` *optional*<br> Total number of pages. It can be used to load members by parts.                                                                           |
 
 ### 2.2.1. Example for `string` field
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -134,7 +175,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "members": [
@@ -146,7 +187,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 ### 2.2.2. Example for `number` field
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -155,7 +196,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "members": [
@@ -167,7 +208,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 ### 2.2.3. Example for `date` field
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -176,7 +217,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "members": [
@@ -189,7 +230,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 
 ## 2.3. Select request for pivot table
 
-####Request
+#### Request
 ```typescript
 {
     "type": "select"
@@ -244,7 +285,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `query.filter.value.func`        | `string`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
 | `page`                           | `number`<br> Page number. It can be used to load data by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`.                                                                                                                                                                |
 
-####Response
+#### Response
 ```typescript
 {
     "aggs"[]: {
@@ -274,7 +315,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 
 ### 2.3.1. Example for one value
 
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -290,7 +331,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "aggs": [{
@@ -305,7 +346,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 
 ### 2.3.2. Example for two values
 
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -324,7 +365,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "aggs": [{
@@ -341,7 +382,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 ### 2.3.3. Example with field in rows
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -360,7 +401,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "aggs": [{
@@ -392,7 +433,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 ### 2.3.4. Example with fields in rows and columns
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -412,7 +453,7 @@ All requests have `index` and `type` properties in the request body. There are 3
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "aggs": [{
@@ -492,7 +533,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```
 
 ### 2.3.5. Example with exclude fiter by members
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -514,13 +555,13 @@ All requests have `index` and `type` properties in the request body. There are 3
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ### 2.3.6. Example with inlcude/exclude fiter by members by several fields
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -547,13 +588,13 @@ Format is the same as above
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ### 2.3.7. Example with query fiter by labels
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -578,13 +619,13 @@ Format is the same as above
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ### 2.3.8. Example with query fiter by values
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -613,13 +654,13 @@ Format is the same as above
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ### 2.3.9. Example with query fiter by labels for numeric field
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -644,13 +685,13 @@ Format is the same as above
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ### 2.3.10. Example with query fiter by dates for date field
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -675,14 +716,14 @@ Format is the same as above
     }
 }
 ```
-####Response
+#### Response
 ```
 Format is the same as above
 ```
 
 ## 2.4. Select request for flat table
 
-####Request
+#### Request
 ```typescript
 {
     "type": "select"
@@ -726,7 +767,7 @@ Format is the same as above
 | `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request. |
 | `page`                    | `number`<br> Page number. See **Section 2.3**.                                                                                                                                                                                                                                                                                                                 |
 
-####Response
+#### Response
 ```typescript
 {
     "fields"[]: {
@@ -761,7 +802,7 @@ Format is the same as above
 
 ### 2.4.1. Example
 
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -786,7 +827,7 @@ Format is the same as above
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "fields": [
@@ -814,7 +855,7 @@ Format is the same as above
 
 ## 2.5. Select request for drill-through view
 
-####Request
+#### Request
 ```typescript
 {
     "type": "select"
@@ -850,7 +891,7 @@ Format is the same as above
 | `query.limit`        | `number`<br> The maximum number of records that should be included in the response. Сonfigurable on the client. Default is `1000`. |
 | `page`               | `number`<br> Page number. See **Section 2.3**.                                                                                     |
 
-####Response
+#### Response
 ```typescript
 {
     "fields"[]: {
@@ -874,7 +915,7 @@ Format is the same as above
 
 ### 2.5.1. Example
 
-####Request
+#### Request
 ```json
 {
     "index": "data-set-123",
@@ -895,7 +936,7 @@ Format is the same as above
     "page": 0
 }
 ```
-####Response
+#### Response
 ```json
 {
     "fields": [
