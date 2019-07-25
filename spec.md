@@ -1,5 +1,7 @@
 # Custom data source API specification
 
+- [2.2. Members request](#22-members-request)
+
 # 1. Front-end spec
 
 ## 1.1. Flexmonster report configuration
