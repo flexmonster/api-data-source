@@ -1,5 +1,7 @@
 # Custom data source API specification
 
+- [2.2. Members request](#22-members-request)
+
 # 1. Front-end spec
 
 ## 1.1. Flexmonster report configuration
@@ -53,15 +55,15 @@ All requests have `index` and `type` properties in the request body. There are 3
     "sorted": boolean
 }
 ```
-| Parameters            | Description                                                                                                                                               |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fields`              | `Array`<br> Array of field objects.                                                                                                                       |
-| `fields.field`        | `string`<br> Field's unique name that is used in the requests.                                                                                            |
-| `fields.type`         | `string`<br> Field's type. Supported values: `"string"`, `"number"`, `"date"`.                                                                            |
-| `fields.caption`      | `string` *optional*<br> Field's caption that appears on the UI.                                                                                           |
-| `fields.folder`       | `string` *optional*<br> Field's folder that is used to organize groups of fields in the Field List. Supports nesting via `/` (e.g. `"Folder/Subfolder"`). |
-| `fields.aggregations` | `string[]` *optional*<br> Array of supported aggregations in case the field is used as measure. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`.|
-| `sorted`              | `boolean` *optional*<br> If `true`, the fields will be displayed in the same order in the Field List.                                                     |
+| Parameters            | Description                                                                                                                                                                                                                                                                                                       |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fields`              | `Array`<br> Array of field objects.                                                                                                                                                                                                                                                                               |
+| `fields.field`        | `string`<br> Field's unique name that is used in the requests.                                                                                                                                                                                                                                                    |
+| `fields.type`         | `string`<br> Field's type. Supported values: `"string"`, `"number"`, `"date"`.                                                                                                                                                                                                                                    |
+| `fields.caption`      | `string` *optional*<br> Field's caption that appears on the UI.                                                                                                                                                                                                                                                   |
+| `fields.folder`       | `string` *optional*<br> Field's folder that is used to organize groups of fields in the Field List. Supports nesting via `/` (e.g. `"Folder/Subfolder"`).                                                                                                                                                         |
+| `fields.aggregations` | `string[]` *optional*<br> Array of supported aggregations in case the field is used as measure. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. |
+| `sorted`              | `boolean` *optional*<br> If `true`, the fields will be displayed in the same order in the Field List.                                                                                                                                                                                                             |
 
 ## 2.2. Members request
 
@@ -83,34 +85,84 @@ All requests have `index` and `type` properties in the request body. There are 3
 ```typescript
 {
     "members"[]: {
-        "caption": string | number | timestamp
+        "value": string | number,
+        "id": string
     },
     "sorted": boolean,
     "page": number,
     "pageTotal": number
 }
 ```
-| Parameters        | Description                                                                                                                                                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `members`         | `Array`<br> Array of members.                                                                                                                                       |
-| `members.caption` | `string \| number \| timestamp`<br> Member's caption. In case of `number` field it should be of type `number`. In case of `date` filed it should be Unix timestamp. |
-| `sorted`          | `boolean` *optional*<br> If `true`, the fields will be displayed in the same order in the Field List.                                                               |
-| `page`            | `number` *optional*<br> Current page number. Starts from `0`.                                                                                                       |
-| `pageTotal`       | `number` *optional*<br> Total number of pages. It can be used to load members by parts.                                                                             |
+| Parameters      | Description                                                                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `members`       | `Array`<br> Array of members.                                                                                                                                     |
+| `members.value` | `string \| number`<br> Member's value. In case of `number` field it should be of type `number`. In case of `date` filed it should be Unix timestamp. |
+| `members.id`    | `string` *optional*<br> Member's id. Supported only for `string` fields. If defined, it is used in queries and in responses to identify member.                   |
+| `sorted`        | `boolean` *optional*<br> If `true`, the fields will be displayed in the same order in the Field List.                                                             |
+| `page`          | `number` *optional*<br> Current page number. Starts from `0`.                                                                                                     |
+| `pageTotal`     | `number` *optional*<br> Total number of pages. It can be used to load members by parts.                                                                           |
 
-### 2.2.1. Example response for `string` field
-```typescript
-TBD
+### 2.2.1. Example for `string` field
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "members",
+    "field": "city",
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "members": [
+        { "value": "Toronto" }, 
+        { "value": "Montreal" }, 
+        { "value": "New York" }
+    ]
+}
 ```
 
-### 2.2.2. Example response for `number` field
-```typescript
-TBD
+### 2.2.2. Example for `number` field
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "members",
+    "field": "price",
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "members": [
+        { "value": 10 }, 
+        { "value": 28 }, 
+        { "value": 30 }
+    ]
+}
 ```
 
-### 2.2.3. Example response for `date` field
-```typescript
-TBD
+### 2.2.3. Example for `date` field
+#### Request
+```json
+{
+    "index": "data-set-123",
+    "type": "members",
+    "field": "order_date",
+    "page": 0
+}
+```
+#### Response
+```json
+{
+    "members": [
+        { "value": 1562889600000 }, 
+        { "value": 1564617600000 }, 
+        { "value": 1564963200000 }
+    ]
+}
 ```
 
 ## 2.3. Select request for pivot table
@@ -148,27 +200,27 @@ TBD
     "page": number
 }
 ```
-| Parameters                       | Description                                                                                                                                                                                     |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `query`                          | `Object`<br> *TBD*                                                                                                                                                                              |
-| `query.aggs`                     | `Object`<br> *TBD*                                                                                                                                                                              |
-| `query.aggs.values`              | `Array`<br> *TBD*                                                                                                                                                                               |
-| `query.aggs.values.field`        | `string`<br> Field's name.                                                                                                                                                                      |
-| `query.aggs.values.func`         | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request.|
-| `query.aggs.by`                  | `Object`<br> *TBD*                                                                                                                                                                              |
-| `query.aggs.by.rows`             | `string[]`<br> Field names in rows.                                                                                                                                                             |
-| `query.aggs.by.cols`             | `string[]`<br> Field names in columns.                                                                                                                                                          |
-| `query.filter`                   | `Array`<br> *TBD*                                                                                                                                                                               |
-| `query.filter.field`             | `string`<br> Field's name.                                                                                                                                                                      |
-| `query.filter.fieldType`         | `string \| number \| timestamp`<br> Field's type.                                                                                                                                               |
-| `query.filter.include`           | `string[]`<br> *TBD*                                                                                                                                                                            |
-| `query.filter.exclude`           | `string[]`<br> *TBD*                                                                                                                                                                            |
-| `query.filter.query`             | `Object`<br> *TBD*                                                                                                                                                                              |
-| `query.filter.query.(condition)` | `string | number`<br> ***(condition)*** - condition to apply (e.g. `greater`, `less`). <br> Value for the condition.                                                                            |
-| `query.filter.value`             | `Object`<br> *TBD*                                                                                                                                                                              |
-| `query.filter.value.field`       | `string`<br> *TBD*                                                                                                                                                                              |
-| `query.filter.value.func`        | `string`<br> *TBD*                                                                                                                                                                              |
-| `page`                           | `number`<br> Page number. It can be used to load data by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`. |
+| Parameters                       | Description                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `query`                          | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.aggs`                     | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.aggs.values`              | `Array`<br> *TBD*                                                                                                                                                                                                                                                                                                                                              |
+| `query.aggs.values.field`        | `string`<br> Field's name.                                                                                                                                                                                                                                                                                                                                     |
+| `query.aggs.values.func`         | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request. |
+| `query.aggs.by`                  | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.aggs.by.rows`             | `string[]`<br> Field names in rows.                                                                                                                                                                                                                                                                                                                            |
+| `query.aggs.by.cols`             | `string[]`<br> Field names in columns.                                                                                                                                                                                                                                                                                                                         |
+| `query.filter`                   | `Array`<br> *TBD*                                                                                                                                                                                                                                                                                                                                              |
+| `query.filter.field`             | `string`<br> Field's name.                                                                                                                                                                                                                                                                                                                                     |
+| `query.filter.fieldType`         | `string`<br> Field's type.                                                                                                                                                                                                                                                                                                              |
+| `query.filter.include`           | `string[]`<br> *TBD*                                                                                                                                                                                                                                                                                                                                           |
+| `query.filter.exclude`           | `string[]`<br> *TBD*                                                                                                                                                                                                                                                                                                                                           |
+| `query.filter.query`             | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.filter.query.(condition)` | `string | number`<br> ***(condition)*** - condition to apply (e.g. `greater`, `less`). <br> Value for the condition.                                                                                                                                                                                                                                           |
+| `query.filter.value`             | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.filter.value.field`       | `string`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `query.filter.value.func`        | `string`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
+| `page`                           | `number`<br> Page number. It can be used to load data by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`.                                                                                                                                                                |
 
 #### Response
 ```typescript
@@ -640,17 +692,17 @@ Format is the same as above
     "page": number
 }
 ```
-| Parameters                | Description                                                       |
-| ------------------------- | ----------------------------------------------------------------- |
-| `query`                   | `Object`<br>                                                      |
-| `query.fields`            | `Array`<br> Array of fields (columns) to include in the response. |
-| `query.fields.field`      | `string`<br> Field's name.                                        |
-| `query.filter`            | `Array` *optional*<br> See **Section 2.3** `query.filter`.        |
-| `query.aggs`              | `Array` *optional*<br> Column totals.                             |
-| `query.aggs.values`       | `Array`<br>                                                       |
-| `query.aggs.values.field` | `string`<br> Field's name.                                        |
-| `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request.|
-| `page`                    | `number`<br> Page number. See **Section 2.3**.                    |
+| Parameters                | Description                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `query`                   | `Object`<br>                                                                                                                                                                                                                                                                                                                                                   |
+| `query.fields`            | `Array`<br> Array of fields (columns) to include in the response.                                                                                                                                                                                                                                                                                              |
+| `query.fields.field`      | `string`<br> Field's name.                                                                                                                                                                                                                                                                                                                                     |
+| `query.filter`            | `Array` *optional*<br> See **Section 2.3** `query.filter`.                                                                                                                                                                                                                                                                                                     |
+| `query.aggs`              | `Array` *optional*<br> Column totals.                                                                                                                                                                                                                                                                                                                          |
+| `query.aggs.values`       | `Array`<br>                                                                                                                                                                                                                                                                                                                                                    |
+| `query.aggs.values.field` | `string`<br> Field's name.                                                                                                                                                                                                                                                                                                                                     |
+| `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request. |
+| `page`                    | `number`<br> Page number. See **Section 2.3**.                                                                                                                                                                                                                                                                                                                 |
 
 #### Response
 ```typescript
