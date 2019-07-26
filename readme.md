@@ -15,6 +15,8 @@ npm install
 npm start
 ```
 
+Then, navigate to `http://localhost:3400` in the browser.
+
 On the client-side, the configuration looks as follows:
 ```javascript
 new Flexmonster({
