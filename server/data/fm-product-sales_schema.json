@@ -1,0 +1,44 @@
+{
+    "fields": [
+        {
+            "field": "Category",
+            "type": "string"
+        },
+        {
+            "field": "Size",
+            "type": "string"
+        },
+        {
+            "field": "Color",
+            "type": "string"
+        },
+        {
+            "field": "Destination",
+            "type": "string"
+        },
+        {
+            "field": "Business Type",
+            "type": "string"
+        },
+        {
+            "field": "Country",
+            "type": "string",
+            "aggregations": ["count", "distinctcount"]
+        },
+        {
+            "field": "Price",
+            "type": "number",
+            "aggregations": ["sum", "average", "count", "distinctcount", "min", "max"]
+        },
+        {
+            "field": "Quantity",
+            "type": "number",
+            "aggregations": ["sum", "average"]
+        },
+        {
+            "field": "Discount",
+            "type": "number",
+            "aggregations": ["average"]
+        }
+    ]
+}
