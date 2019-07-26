@@ -1,7 +1,7 @@
 # Flexmonster custom data source API server (beta version)
 
 - [Documentation](/spec.md)
-- [Sample Node.js server]()
+- [Sample Node.js server](#sample-nodejs-server)
 
 ## Sample Node.js server
 
