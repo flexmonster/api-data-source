@@ -239,11 +239,11 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `query.filter.include`           | `string[]`<br> *TBD*                                                                                                                                                                                                                                                                                                                                           |
 | `query.filter.exclude`           | `string[]`<br> *TBD*                                                                                                                                                                                                                                                                                                                                           |
 | `query.filter.query`             | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
-| `query.filter.query.(condition)` | `string | number`<br> ***(condition)*** - condition to apply (e.g. `greater`, `less`). <br> Value for the condition.                                                                                                                                                                                                                                           |
+| `query.filter.query.(condition)` | `string \| number`<br> ***(condition)*** - condition to apply (e.g. `greater`, `less`). <br> Value for the condition.                                                                                                                                                                                                                                          |
 | `query.filter.value`             | `Object`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
 | `query.filter.value.field`       | `string`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
 | `query.filter.value.func`        | `string`<br> *TBD*                                                                                                                                                                                                                                                                                                                                             |
-| `page`                           | `number`<br> Page number. It can be used to load data by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`.                                                                                                                                                                |
+| `page`                           | <a id="p-page"></a>`number`<br> Page number. It can be used to load data by parts. If response contains `pageTotal` parameter, additional requests will be performed to load the remaining pages. Starts from `0`.                                                                                                                                             |
 
 **Response**
 ```typescript
@@ -270,8 +270,8 @@ All requests have `index` and `type` properties in the request body. There are 3
 | `aggs.values.(field).(func)` | `number`<br> ***(func)*** - aggregation function. <br> Result of the calculation.                                            |
 | `aggs.keys`                  | `Object` *optional*<br> Field's keys that describes specific tuple. In case it is not defined, values are treated as totals. |
 | `aggs.keys.(field)`          | `string`<br> ***(field)*** - field's name. <br> Field's member name.                                                         |
-| `page`                       | `number` *optional*<br> Current page number. Starts from `0`.                                                                |
-| `pageTotal`                  | `number` *optional*<br> Total number of pages. It can be used to load members by parts.                                      |
+| `page`                       | <a id="p-page-res"></a>`number` *optional*<br> Current page number. Starts from `0`.                                         |
+| `pageTotal`                  | <a id="p-page-total-res"></a>`number` *optional*<br> Total number of pages. It can be used to load members by parts.         |
 
 ### 2.3.1. Example for one value
 
@@ -725,7 +725,7 @@ Format is the same as above
 | `query.aggs.values`       | `Array`<br>                                                                                                                                                                                                                                                                                                                                                    |
 | `query.aggs.values.field` | `string`<br> Field's name.                                                                                                                                                                                                                                                                                                                                     |
 | `query.aggs.values.func`  | `string`<br> Value aggregation function. Supported values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`. For each field the list of supported aggregations is defined in the response to the fields request. |
-| `page`                    | `number`<br> Page number. See **Section 2.3**.                                                                                                                                                                                                                                                                                                                 |
+| `page`                    | `number`<br> Page number. See [`page`](#p-page).                                                                                                                                                                                                                                                                                                               |
 
 **Response**
 ```typescript
@@ -757,8 +757,8 @@ Format is the same as above
 | `aggs.values`                | `Object`<br>                                                                          |
 | `aggs.values.(field)`        | `Object`<br> ***(field)*** - field's name                                             |
 | `aggs.values.(field).(func)` | `number`<br> ***(func)*** - aggregation function <br> Result of the calculation.      |
-| `page`                       | `number` *optional*<br> Current page number. See **Section 2.3**.                     |
-| `pageTotal`                  | `number` *optional*<br> Total number of pages. See **Section 2.3**.                   |
+| `page`                       | `number` *optional*<br> Current page number. See [`page`](#p-page-res).               |
+| `pageTotal`                  | `number` *optional*<br> Total number of pages. See [`pageTotal`](#p-page-total-res).  |
 
 ### 2.4.1. Example
 
@@ -847,9 +847,9 @@ Format is the same as above
 | `query`              | `Object`<br>                                                                                                                       |
 | `query.fields`       | `Array`<br> Array of fields (columns) to include in the response.                                                                  |
 | `query.fields.field` | `string`<br> Field's name.                                                                                                         |
-| `query.filter`       | `Array`<br> See [`query.filter`](#query-filter).                                                                                    |
+| `query.filter`       | `Array`<br> See [`query.filter`](#query-filter).                                                                                   |
 | `query.limit`        | `number`<br> The maximum number of records that should be included in the response. Сonfigurable on the client. Default is `1000`. |
-| `page`               | `number`<br> Page number. See **Section 2.3**.                                                                                     |
+| `page`               | `number`<br> Page number. See [`page`](#p-page).                                                                                   |
 
 **Response**
 ```typescript
@@ -870,8 +870,8 @@ Format is the same as above
 | `fields.field` | `string`<br> Field's name.                                                            |
 | `hits`         | `Array`<br> Two-dimensional array that contains data.                                 |
 | `hits[]`       | `[(index): string \| number]`<br> ***(index)*** - field (column) index <br> Data row. |
-| `page`         | `number` *optional*<br> Current page number. See **Section 2.3**.                     |
-| `pageTotal`    | `number` *optional*<br> Total number of pages. See **Section 2.3**.                   |
+| `page`         | `number` *optional*<br> Current page number. See [`page`](#p-page-res).               |
+| `pageTotal`    | `number` *optional*<br> Total number of pages. See [`pageTotal`](#p-page-res).        |
 
 ### 2.5.1. Example
 
