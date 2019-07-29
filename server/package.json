@@ -4,7 +4,7 @@
   "description": "Sample server that implement Flexmonster custom data source API. ",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "flexmonster"
