@@ -1,0 +1,21 @@
+{
+  "name": "flexmonster-api-server",
+  "version": "2.8.0",
+  "description": "Sample server that implement Flexmonster custom data source API. ",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "flexmonster"
+  ],
+  "author": "Flexmonster",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0"
+  }
+}
