@@ -417,10 +417,10 @@ function calcValue(data, field, func) {
         return _.sumBy(data, field) / data.length;
     }
     if (func == "min") {
-        return _.minBy(data, field);
+        return _.minBy(data, field)[field];
     }
     if (func == "max") {
-        return _.maxBy(data, field);
+        return _.maxBy(data, field)[field];
     }
     return NaN;
 }
