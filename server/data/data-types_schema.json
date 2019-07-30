@@ -1,0 +1,55 @@
+{
+    "fields": [{
+            "field": "country",
+            "type": "string",
+            "caption": "Country",
+            "folder": "Geography",
+            "aggregations": ["count"]
+        },
+        {
+            "field": "city",
+            "type": "string",
+            "caption": "City",
+            "folder": "Geography/Subfolder",
+            "aggregations": ["count"]
+        },
+        {
+            "field": "date_year",
+            "type": "string",
+            "caption": "Year",
+            "folder": "Date"
+        },
+        {
+            "field": "date_month",
+            "type": "string",
+            "caption": "Month",
+            "folder": "Date"
+        },
+        {
+            "field": "date",
+            "type": "date",
+            "caption": "Date",
+            "folder": "Date",
+            "aggregations": ["min", "count"]
+        },
+        {
+            "field": "color",
+            "type": "string",
+            "caption": "Color",
+            "aggregations": ["count"]
+        },
+        {
+            "field": "quantity",
+            "type": "number",
+            "caption": "Quantity",
+            "aggregations": ["none"]
+        },
+        {
+            "field": "price",
+            "type": "number",
+            "caption": "Price",
+            "aggregations": ["sum", "average", "count", "distinctcount", "min", "max"]
+        }
+    ],
+    "sorted": true
+}

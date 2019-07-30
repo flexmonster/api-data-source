@@ -73,7 +73,10 @@ async function getMembers(index, fieldName, page) {
         members: []
     };
     const members = _.uniq(_.map(data, fieldName));
-
+    if (fieldName == "date_month") { // custom sort for months
+        members.sort(monthComapre);
+        output.sorted = true;
+    }
     page = isNaN(page) ? 0 : page;
     const pageTotal = Math.ceil(members.length / MEMBERS_PAGE_SIZE);
     if (pageTotal > 1) {
@@ -92,6 +95,12 @@ function createMember(value, fieldType) {
     return {
         value: value
     };
+}
+
+const monthOrder = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function monthComapre(a, b) {
+    return monthOrder.indexOf(a) - monthOrder.indexOf(b);
 }
 
 /**
@@ -404,7 +413,7 @@ function calcValues(data, values) {
  * @param {string} func aggregation name
  */
 function calcValue(data, field, func) {
-    if (func == "sum") {
+    if (func == "sum" || func == "none") {
         return _.sumBy(data, field);
     }
     if (func == "count") {
