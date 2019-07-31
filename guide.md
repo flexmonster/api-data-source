@@ -22,7 +22,7 @@ It is a good idea to check our [sample Node.js server](readme.md#sample-nodejs-s
 
 ## Step 2. Configure Flexmonster report
 
-When the endpoint is ready to receive POST requests from Flexmonster, configure Flexmonster's `report.dataSource` to connect to your custom data source API as follows::
+When the endpoint is ready to receive POST requests from Flexmonster, configure Flexmonster's `report.dataSource` to connect to your custom data source API as follows:
 ```typescript
 "report": {
     "dataSource": {
