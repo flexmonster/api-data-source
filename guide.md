@@ -37,9 +37,9 @@ where `url` is your API endpoint and `index` is the identifier of your data set.
 ## Step 3. Handle the first request for the data structure
 
 All requests have `index` and `type` properties in the request body. There are 3 types of requests that can be distinguished by `type` value: 
-- `fields` - return all fields with their types (i.e., meta object or schema)
-- `members` - return all members of the field
-- `select` - return data
+- `fields` - request for all fields with their types (i.e., meta object or schema),
+- `members` - request for all members of the field,
+- `select` - request for data.
 
 The first request that is sent to the endpoint by Flexmonster after configuring the connection is the fields request. Read more details about [fields request](spec.md#21-fields-request) in the documentation and implement response to it for your data set.
 
