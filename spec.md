@@ -1,9 +1,9 @@
-# Custom data source API specification
+# Custom data source API documentation
 
-- [Custom data source API specification](#custom-data-source-api-specification)
-- [1. Front-end spec](#1-front-end-spec)
+- [Custom data source API documentation](#custom-data-source-api-documentation)
+- [1. Front-end specification](#1-front-end-specification)
   - [1.1. Flexmonster report configuration](#11-flexmonster-report-configuration)
-- [2. Back-end spec](#2-back-end-spec)
+- [2. Back-end specification](#2-back-end-specification)
   - [2.1. Fields request](#21-fields-request)
   - [2.2. Members request](#22-members-request)
     - [2.2.1. Example for `string` field](#221-example-for-string-field)
@@ -25,7 +25,7 @@
   - [2.5. Select request for drill-through view](#25-select-request-for-drill-through-view)
     - [2.5.1. Example](#251-example)
 
-# 1. Front-end spec
+# 1. Front-end specification
 
 ## 1.1. Flexmonster report configuration
 
@@ -46,12 +46,12 @@ In order to connect to your custom data source API, you need to configre Flexmon
 | `index`          | `string`<br> Data set identificator                                   |
 | `requestHeaders` | `Object` *optional*<br> Additional custom headers in key-value format |
 
-# 2. Back-end spec
+# 2. Back-end specification
 
 Flexmonster sends a sequence of POST requests to the API endpoint in JSON format.
 
 All requests have `index` and `type` properties in the request body. There are 3 types of requests that can be distinguished by `type` value: 
-- `fields` - return all fields with their types - meta object
+- `fields` - return all fields with their types (i.e., meta object or schema)
 - `members` - return all members of the field
 - `select` - return data
 
