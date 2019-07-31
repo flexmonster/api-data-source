@@ -4682,7 +4682,7 @@
   cursor: pointer;
 }
 #fm-pivot-view #fm-calculated-view .fm-popup-content #fm-func-btn-group .fm-calc-action:hover {
-  opacity: 0.85;
+  opacity: .85;
 }
 #fm-pivot-view #fm-calculated-view .fm-popup-content #fm-func-btn-group .fm-calc-action:first-child {
   border-top-left-radius: 4px;

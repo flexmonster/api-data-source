@@ -1,5 +1,5 @@
 /** 
- * Flexmonster Pivot Table & Charts v${PIVOT_VERSION_NUMBER} [https://www.flexmonster.com/]
+ * Flexmonster Pivot Table & Charts v2.8.0-beta [https://www.flexmonster.com/]
  * Copyright (c) 2019 Flexmonster. All rights reserved.
  *
  * Flexmonster Pivot Table & Charts commercial licenses may be obtained at
@@ -1120,6 +1120,7 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     var self = this;
     var Labels = this.Labels;
     var currentFormatVO = null;
+    var currentMeasureName = null;
 
     function updateDropdowns() {
         textAlignDropDown.disabled = thousandsSepDropDown.disabled = decimalSepDropDown.disabled = decimalPlacesDropDown.disabled = currencySymbInput.disabled = positiveCurrencyFormat.disabled = negativeCurrencyFormat.disabled = nullValueInput.disabled = isPercentDropdown.disabled = (valuesDropDown.value == "empty");
@@ -1169,10 +1170,10 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
         if (currentFormatVO["currencySymbol"] != currencySymbInput.value) {
             formatVO["currencySymbol"] = currencySymbInput.value;
         }
-        if (currentFormatVO["positiveCurrencyFormat"] != positiveCurrencyFormat.value) {
+        if (currentFormatVO["positiveCurrencyFormat"] != positiveCurrencyFormat.value && positiveCurrencyFormat.value != "") {
             formatVO["positiveCurrencyFormat"] = positiveCurrencyFormat.value;
         }
-        if (currentFormatVO["negativeCurrencyFormat"] != negativeCurrencyFormat.value) {
+        if (currentFormatVO["negativeCurrencyFormat"] != negativeCurrencyFormat.value && negativeCurrencyFormat.value != "") {
             formatVO["negativeCurrencyFormat"] = negativeCurrencyFormat.value;
         }
         if (currentFormatVO["nullValue"] != nullValueInput.value) {
@@ -1184,9 +1185,106 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
         return formatVO;
     }
 
+    function ConfirmationPopUp() {
+        var dialog = null;
+    }
+
+    ConfirmationPopUp.prototype.createPopUp = function () {
+        if (this.dialog == null) {
+            this.dialog = self.popupManager.createPopup(this);
+            this.dialog.content.style.zIndex = 152;
+        }
+    }
+
+    ConfirmationPopUp.prototype.addPopUp = function () {
+        var popup = this.dialog.content;
+        this.modalOverlay = this.createModalOverlay();
+        self.toolbarWrapper.appendChild(popup);
+        self.toolbarWrapper.appendChild(this.modalOverlay);
+        self.popupManager.addLayoutClasses(popup);
+        self.popupManager.centerPopup(popup);
+        var _this = this;
+        popup.resizeHandler = function () {
+            if (!popup) return;
+            _this.addLayoutClasses(popup);
+            _this.centerPopup(popup);
+        };
+        window.addEventListener("resize", popup.resizeHandler);
+    }
+
+    ConfirmationPopUp.prototype.initializePopUp = function () {
+        this.dialog.setTitle(Labels.confirm_title);
+        confirmPopUp.dialog.setToolbar([{
+            id: "fm-btn-apply",
+            label: Labels.ok,
+            handler: switchToMeasure,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel,
+            handler: restoreEditedMeasure
+        }
+        ], false, this.removePopUp);
+        var content = document.createElement("div");
+        var contentLabel = document.createElement("label");
+        contentLabel.innerHTML = Labels.confirm_message;
+        contentLabel.style.fontSize = "14px";
+        content.appendChild(contentLabel);
+        this.dialog.setContent(content);
+    }
+
+    ConfirmationPopUp.prototype.removePopUp = function (popup) {
+        var popupWindow = (popup || confirmPopUp.dialog.content);
+        if (confirmPopUp.modalOverlay != null) {
+            self.toolbarWrapper.removeChild(confirmPopUp.modalOverlay);
+            confirmPopUp.modalOverlay = null;
+        }
+        if (popupWindow != null) {
+            self.toolbarWrapper.removeChild(popupWindow);
+            confirmPopUp.dialog = null;
+            window.removeEventListener("resize", popupWindow.resizeHandler);
+        }
+    }
+
+    ConfirmationPopUp.prototype.createModalOverlay = function () {
+        var modalOverlay = document.createElement("div");
+        modalOverlay.style.zIndex = 151;
+        modalOverlay.className = "fm-modal-overlay";
+        modalOverlay.id = "fm-popUp-confirm-modal-overlay";
+        var _this = this;
+        modalOverlay.addEventListener('click', function (e) {
+            _this.removePopUp(_this.dialog.content);
+            restoreEditedMeasure();
+        });
+        return modalOverlay;
+    }
+
+
     var valuesDropDownChangeHandler = function () {
+        var formatObject = {};
+        formatObject = filterFormatting(formatObject);
+        console.log(formatObject);
+        if ((formatObject.hasOwnProperty("textAlign") || formatObject.hasOwnProperty("thousandsSeparator") || formatObject.hasOwnProperty("decimalSeparator")
+            || formatObject.hasOwnProperty("decimalPlaces") || formatObject.hasOwnProperty("currencySymbol") || formatObject.hasOwnProperty("positiveCurrencyFormat")
+            || formatObject.hasOwnProperty("negativeCurrencyFormat") || formatObject.hasOwnProperty("nullValue") || formatObject.hasOwnProperty("isPercent")) 
+            && (currentMeasureName != "empty" || currentMeasureName != null)) {
+                confirmPopUp.createPopUp();
+                confirmPopUp.initializePopUp();
+                confirmPopUp.addPopUp();
+        } else {
+            switchToMeasure();
+        }
+    }
+
+    var restoreEditedMeasure = function () {
+        valuesDropDown.value = currentMeasureName;
+    }
+
+    var switchToMeasure = function () {
         updateDropdowns();
         var formatVO = self.pivot.getFormat(valuesDropDown.value);
+        currentMeasureName = valuesDropDown.value;
         currentFormatVO = formatVO;
         textAlignDropDown.value = (formatVO.textAlign == "left" || formatVO.textAlign == "right") ? formatVO.textAlign : "right";
         thousandsSepDropDown.value = formatVO.thousandsSeparator;
@@ -1260,6 +1358,8 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     }
 
     var dialog = this.popupManager.createPopup();
+    var confirmPopUp = new ConfirmationPopUp();
+    
     dialog.content.id = "fm-popup-format-cells";
     dialog.setTitle(this.osUtils.isMobile ? Labels.format : Labels.format_cells);
     dialog.setToolbar([{
@@ -1406,7 +1506,7 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     }
     if (measureName) valuesDropDown.value = measureName;
 
-    valuesDropDownChangeHandler();
+    switchToMeasure();
 }
 // Conditional formatting
 FlexmonsterToolbar.prototype.showConditionalFormattingDialog = function (measureName) {
@@ -2730,7 +2830,7 @@ FlexmonsterToolbar.PopupManager.PopupWindow = function (popupManager) {
         contentPanel.insertBefore(content, titleBar.nextSibling);
     }
     var _this = this;
-    this.setToolbar = function (buttons, toHeader) {
+    this.setToolbar = function (buttons, toHeader, removePopupHandler) {
         toolbar.innerHTML = "";
         for (var i = buttons.length - 1; i >= 0; i--) {
             var button = document.createElement("a");
@@ -2744,9 +2844,13 @@ FlexmonsterToolbar.PopupManager.PopupWindow = function (popupManager) {
                         if (handler != null) {
                             handler.call();
                         }
-                        _this.popupManager.removePopup();
+                        if (removePopupHandler != undefined) {
+                            removePopupHandler.call();
+                        } else {
+                            _this.popupManager.removePopup();
+                        }
                     }
-                }(buttons[i].handler);
+                }(buttons[i].handler, removePopupHandler);
             if (buttons[i].disabled === true) {
                 FlexmonsterToolbar.prototype.addClass(button, "fm-ui-disabled");
             } else {

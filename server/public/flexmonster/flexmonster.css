@@ -292,7 +292,7 @@
 /*-----------STANDARD RESET END-----------------*/
 @font-face {
   font-family: "flexmonster-icons";
-  src: url("./theme/assets/flexmonster-icons.woff?v2.7.0") format("woff"), url("./theme/assets/flexmonster-icons.ttf?v2.7.0") format("truetype"), url("./theme/assets/flexmonster-icons.svg#flexmonster-icons?v2.7.0") format("svg");
+  src: url("theme/assets/flexmonster-icons.woff?v2.7.0") format("woff"), url("theme/assets/flexmonster-icons.ttf?v2.7.0") format("truetype"), url("theme/assets/flexmonster-icons.svg#flexmonster-icons?v2.7.0") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4682,7 +4682,7 @@
   cursor: pointer;
 }
 #fm-pivot-view #fm-calculated-view .fm-popup-content #fm-func-btn-group .fm-calc-action:hover {
-  opacity: 0.85;
+  opacity: .85;
 }
 #fm-pivot-view #fm-calculated-view .fm-popup-content #fm-func-btn-group .fm-calc-action:first-child {
   border-top-left-radius: 4px;
