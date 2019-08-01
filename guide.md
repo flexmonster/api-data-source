@@ -1,6 +1,6 @@
 # Quick guide to custom data source API implementation
 
-This is a step by step guide to implement your own custom data source API server.
+This is a step by step guide to help you implement your own custom data source API server.
 
 - [Quick guide to custom data source API implementation](#quick-guide-to-custom-data-source-api-implementation)
   - [Step 1. Create an endpoint to handle POST requests](#step-1-create-an-endpoint-to-handle-post-requests)
@@ -18,7 +18,7 @@ Flexmonster sends a sequence of POST requests to the API endpoint in JSON format
 
 Note: If Flexmonster Pivot Table is running on a different server, enable CORS.
 
-It is a good idea to check our [sample Node.js server](readme.md#sample-nodejs-server) that implements Flexmonster's custom data source API for a reference. 
+It is a good idea to check our [sample Node.js server](readme.md#sample-nodejs-server) that implements Flexmonster's custom data source API for an example implementation.
 
 ## Step 2. Configure Flexmonster report
 
@@ -41,7 +41,7 @@ All requests have `index` and `type` properties in the request body. There are 3
 - `members` - request for all members of the field,
 - `select` - request for data.
 
-The first request that is sent to the endpoint by Flexmonster after configuring the connection is the fields request. Read more details about [fields request](spec.md#21-fields-request) in the documentation and implement response to it for your data set.
+The first request that is sent to the endpoint by Flexmonster after configuring the connection is the fields request. Read more details about the [fields request](spec.md#21-fields-request) in the documentation and implement response to it for your data set.
 
 Custom data source API supports 3 field types: `"string"`, `"number"`, `"date"`. 
 Note, that at least one field in the response should have `aggregations` defined. For example, `"sum"`:
@@ -58,17 +58,17 @@ When the response to the fields request is successfully received by Flexmonster 
 
 ## Step 4. Handle requests for members
 
-The next request to handle is the request for members for the field.
+The next request to handle is the request for the field's members.
 
-Read more details about [members request](spec.md#22-members-request) in the documentation and implement response for your data set.
+Read more details about the [members request](spec.md#22-members-request) in the documentation and implement response for your data set.
 
-Now in the Field List, you will be able to select a string field for rows or for columns and retrieve their members.
+Now in the Field List, you will be able to select a string field for rows or for columns and retrieve its members.
 
 ## Step 5. Handle requests for aggregated data
 
-When in the Field List a field is selected for rows and/or columns and a numeric field is selected for measures, the [select request](spec.md#23-select-request-for-pivot-table) is sent to the endpoint.
+When a field is selected for rows and/or columns and a numeric field is selected for measures in the Field List, the [select request](spec.md#23-select-request-for-pivot-table) is sent to the endpoint.
 
-In this step `query.aggs` part of the request should be implemented (select request also has `query.filter` and `query.fields`, but they can be skipped for now):
+In this step handling of the `query.aggs` part of the request should be implemented (a select request can also have `query.filter` and `query.fields`, but they can be skipped for now):
 ```typescript
 {
     "type": "select"
@@ -94,16 +94,16 @@ When the responce to this kind of select request is successfully received by Fle
 
 Filtering is a part of [select requests](spec.md#23-select-request-for-pivot-table).
 
-In this step `query.filter` part of the request should be implemented.
+In this step handling of the `query.filter` part of a select request should be implemented.
 
 ## Step 7. (more advanced) Return data for the drill-through view
 
-[Select request for the drill-through view](spec.md#25-select-request-for-drill-through-view) is also a kind of select requests.
+Select requests are also responsible for retrieving data for [the drill-through view](spec.md#25-select-request-for-drill-through-view).
 
-In this step `query.fields` part of the request should be implemented.
+In this step handling of the `query.fields` part of a select request should be implemented.
 
 ## Step 8. (more advanced) Support more aggregation functions
 
-Array of supported aggregations for each field in schema `fields.aggregations` can have the following values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`.
+Array of supported aggregations `fields.aggregations` for each field in schema can have the following values: `"sum"`, `"count"`, `"distinctcount"`, `"average"`, `"median"`, `"product"`, `"min"`, `"max"`, `"percent"`, `"percentofcolumn"`, `"percentofrow"`, `"index"`, `"stdevp"`, `"stdevs"`, `"none"`.
 
-The backend can implement only a subset of them or all of them. You can start with one, for example, `"sum"`, and extend the list of supported aggregations later. Also, you can define different available aggregation for different fields.
+The backend can implement either a subset of them or all of them. You can start with one, for example, `"sum"`, and extend the list of supported aggregations later. Also, you can define different aggregations available for separate fields.
