@@ -4,8 +4,8 @@ Flexmonster custom data source API is designed for summarized data retrieval fro
 
 This API will work for projects with their own data access layer, where filtering and aggregation are delegated to a server and Flexmonster receives ready-to-show data.
 
-- [Documentation](API-documentation)
-- [Quick start guide to custom data source API implementation](Quick-start-guide)
+- [Documentation](https://github.com/flexmonster/api-data-source/wiki/API-documentation)
+- [Quick start guide to custom data source API implementation](https://github.com/flexmonster/api-data-source/wiki/Quick-start-guide)
 - [Sample Node.js server](#sample-nodejs-server)
 
 ## Sample Node.js server
