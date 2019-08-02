@@ -1,5 +1,6 @@
 {
-    "fields": [{
+    "fields": [
+        {
             "field": "country",
             "type": "string",
             "caption": "Country",
