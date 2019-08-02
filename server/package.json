@@ -1,7 +1,7 @@
 {
   "name": "flexmonster-api-server",
   "version": "2.8.0",
-  "description": "Sample server that implement Flexmonster custom data source API. ",
+  "description": "Sample server that implement Flexmonster custom data source API.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
