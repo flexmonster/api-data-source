@@ -1,5 +1,5 @@
 /** 
- * Flexmonster Pivot Table & Charts v2.8.0-beta [https://www.flexmonster.com/]
+ * Flexmonster Pivot Table & Charts v2.8.0-beta2 [https://www.flexmonster.com/]
  * Copyright (c) 2019 Flexmonster. All rights reserved.
  *
  * Flexmonster Pivot Table & Charts commercial licenses may be obtained at
@@ -23,45 +23,45 @@ FlexmonsterToolbar.prototype.getTabs = function () {
         icon: this.icons.connect,
         kibana: false,
         menu: [{
-            title: Labels.connect_local_csv,
-            id: "fm-tab-connect-local-csv",
-            handler: this.connectLocalCSVHandler,
-            mobile: false,
-            icon: this.icons.connect_csv
-        },
-        {
-            title: Labels.connect_local_json,
-            id: "fm-tab-connect-local-json",
-            handler: this.connectLocalJSONHandler,
-            mobile: false,
-            icon: this.icons.connect_json
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.connect_remote_csv_mobile : Labels.connect_remote_csv,
-            id: "fm-tab-connect-remote-csv",
-            handler: this.connectRemoteCSV,
-            icon: this.icons.connect_csv_remote
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.connect_remote_json_mobile : Labels.connect_remote_json,
-            id: "fm-tab-connect-remote-json",
-            handler: this.connectRemoteJSON,
-            icon: this.icons.connect_json_remote
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.connect_olap_mobile : Labels.connect_olap,
-            id: "fm-tab-connect-olap",
-            handler: this.connectOLAP,
-            flat: false,
-            icon: this.icons.connect_olap
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.connect_elastic_mobile : Labels.connect_elastic,
-            id: "fm-tab-connect-elastic",
-            handler: this.connectElastic,
-            flat: false,
-            icon: this.icons.connect_elastic
-        }
+                title: Labels.connect_local_csv,
+                id: "fm-tab-connect-local-csv",
+                handler: this.connectLocalCSVHandler,
+                mobile: false,
+                icon: this.icons.connect_csv
+            },
+            {
+                title: Labels.connect_local_json,
+                id: "fm-tab-connect-local-json",
+                handler: this.connectLocalJSONHandler,
+                mobile: false,
+                icon: this.icons.connect_json
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.connect_remote_csv_mobile : Labels.connect_remote_csv,
+                id: "fm-tab-connect-remote-csv",
+                handler: this.connectRemoteCSV,
+                icon: this.icons.connect_csv_remote
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.connect_remote_json_mobile : Labels.connect_remote_json,
+                id: "fm-tab-connect-remote-json",
+                handler: this.connectRemoteJSON,
+                icon: this.icons.connect_json_remote
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.connect_olap_mobile : Labels.connect_olap,
+                id: "fm-tab-connect-olap",
+                handler: this.connectOLAP,
+                flat: false,
+                icon: this.icons.connect_olap
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.connect_elastic_mobile : Labels.connect_elastic,
+                id: "fm-tab-connect-elastic",
+                handler: this.connectElastic,
+                flat: false,
+                icon: this.icons.connect_elastic
+            }
         ]
     });
 
@@ -72,18 +72,18 @@ FlexmonsterToolbar.prototype.getTabs = function () {
         icon: this.icons.open,
         kibana: false,
         menu: [{
-            title: Labels.local_report,
-            id: "fm-tab-open-local-report",
-            handler: this.openLocalReport,
-            mobile: false,
-            icon: this.icons.open_local
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.remote_report_mobile : Labels.remote_report,
-            id: "fm-tab-open-remote-report",
-            handler: this.openRemoteReport,
-            icon: this.icons.open_remote
-        }
+                title: Labels.local_report,
+                id: "fm-tab-open-local-report",
+                handler: this.openLocalReport,
+                mobile: false,
+                icon: this.icons.open_local
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.remote_report_mobile : Labels.remote_report,
+                id: "fm-tab-open-remote-report",
+                handler: this.openRemoteReport,
+                icon: this.icons.open_remote
+            }
         ]
     });
 
@@ -104,46 +104,46 @@ FlexmonsterToolbar.prototype.getTabs = function () {
         mobile: false,
         icon: this.icons.export,
         menu: [{
-            title: Labels.export_print,
-            id: "fm-tab-export-print",
-            handler: this.printHandler,
-            icon: this.icons.export_print
-        },
-        {
-            title: Labels.export_html,
-            id: "fm-tab-export-html",
-            handler: this.exportHandler,
-            args: "html",
-            icon: this.icons.export_html
-        },
-        {
-            title: Labels.export_csv,
-            id: "fm-tab-export-csv",
-            handler: this.exportHandler,
-            args: "csv",
-            icon: this.icons.export_csv
-        },
-        {
-            title: Labels.export_excel,
-            id: "fm-tab-export-excel",
-            handler: this.exportHandler,
-            args: "excel",
-            icon: this.icons.export_excel
-        },
-        {
-            title: Labels.export_image,
-            id: "fm-tab-export-image",
-            handler: this.exportHandler,
-            args: "image",
-            icon: this.icons.export_image
-        },
-        {
-            title: Labels.export_pdf,
-            id: "fm-tab-export-pdf",
-            handler: this.exportHandler,
-            args: "pdf",
-            icon: this.icons.export_pdf
-        },
+                title: Labels.export_print,
+                id: "fm-tab-export-print",
+                handler: this.printHandler,
+                icon: this.icons.export_print
+            },
+            {
+                title: Labels.export_html,
+                id: "fm-tab-export-html",
+                handler: this.exportHandler,
+                args: "html",
+                icon: this.icons.export_html
+            },
+            {
+                title: Labels.export_csv,
+                id: "fm-tab-export-csv",
+                handler: this.exportHandler,
+                args: "csv",
+                icon: this.icons.export_csv
+            },
+            {
+                title: Labels.export_excel,
+                id: "fm-tab-export-excel",
+                handler: this.exportHandler,
+                args: "excel",
+                icon: this.icons.export_excel
+            },
+            {
+                title: Labels.export_image,
+                id: "fm-tab-export-image",
+                handler: this.exportHandler,
+                args: "image",
+                icon: this.icons.export_image
+            },
+            {
+                title: Labels.export_pdf,
+                id: "fm-tab-export-pdf",
+                handler: this.exportHandler,
+                args: "pdf",
+                icon: this.icons.export_pdf
+            },
         ]
     });
     tabs.push({
@@ -165,67 +165,67 @@ FlexmonsterToolbar.prototype.getTabs = function () {
         onShowHandler: this.checkChartMultipleMeasures,
         icon: this.icons.charts,
         menu: [{
-            title: Labels.charts_column,
-            id: "fm-tab-charts-column",
-            handler: this.chartsHandler,
-            args: "column",
-            icon: this.icons.charts
-        },
-        {
-            title: Labels.charts_bar_horizontal,
-            id: "fm-tab-charts-bar-horizontal",
-            handler: this.chartsHandler,
-            args: "bar_h",
-            icon: this.icons.charts_bar
-        },
-        {
-            title: Labels.charts_line,
-            id: "fm-tab-charts-line",
-            handler: this.chartsHandler,
-            args: "line",
-            icon: this.icons.charts_line
-        },
-        {
-            title: Labels.charts_scatter,
-            id: "fm-tab-charts-scatter",
-            handler: this.chartsHandler,
-            args: "scatter",
-            icon: this.icons.charts_scatter
-        },
-        {
-            title: Labels.charts_pie,
-            id: "fm-tab-charts-pie",
-            handler: this.chartsHandler,
-            args: "pie",
-            icon: this.icons.charts_pie
-        },
-        {
-            title: Labels.charts_stacked_column,
-            id: "fm-tab-charts-stacked-column",
-            handler: this.chartsHandler,
-            args: "stacked_column",
-            flat: false,
-            icon: this.icons.charts_stacked_column
-        },
-        {
-            title: Labels.charts_column_line,
-            id: "fm-tab-charts-column-line",
-            handler: this.chartsHandler,
-            args: "column_line",
-            icon: this.icons.charts_column_line
-        },
-        {
-            divider: true,
-            flat: false,
-            mobile: false
-        },
-        {
-            title: Labels.charts_multiple,
-            id: "fm-tab-charts-multiple",
-            handler: this.chartsMultipleHandler,
-            flat: false,
-            mobile: false
-        }
+                title: Labels.charts_column,
+                id: "fm-tab-charts-column",
+                handler: this.chartsHandler,
+                args: "column",
+                icon: this.icons.charts
+            },
+            {
+                title: Labels.charts_bar_horizontal,
+                id: "fm-tab-charts-bar-horizontal",
+                handler: this.chartsHandler,
+                args: "bar_h",
+                icon: this.icons.charts_bar
+            },
+            {
+                title: Labels.charts_line,
+                id: "fm-tab-charts-line",
+                handler: this.chartsHandler,
+                args: "line",
+                icon: this.icons.charts_line
+            },
+            {
+                title: Labels.charts_scatter,
+                id: "fm-tab-charts-scatter",
+                handler: this.chartsHandler,
+                args: "scatter",
+                icon: this.icons.charts_scatter
+            },
+            {
+                title: Labels.charts_pie,
+                id: "fm-tab-charts-pie",
+                handler: this.chartsHandler,
+                args: "pie",
+                icon: this.icons.charts_pie
+            },
+            {
+                title: Labels.charts_stacked_column,
+                id: "fm-tab-charts-stacked-column",
+                handler: this.chartsHandler,
+                args: "stacked_column",
+                flat: false,
+                icon: this.icons.charts_stacked_column
+            },
+            {
+                title: Labels.charts_column_line,
+                id: "fm-tab-charts-column-line",
+                handler: this.chartsHandler,
+                args: "column_line",
+                icon: this.icons.charts_column_line
+            },
+            {
+                divider: true,
+                flat: false,
+                mobile: false
+            },
+            {
+                title: Labels.charts_multiple,
+                id: "fm-tab-charts-multiple",
+                handler: this.chartsMultipleHandler,
+                flat: false,
+                mobile: false
+            }
         ]
     });
     tabs.push({
@@ -239,17 +239,17 @@ FlexmonsterToolbar.prototype.getTabs = function () {
         icon: this.icons.format,
         rightGroup: true,
         menu: [{
-            title: this.osUtils.isMobile ? Labels.format_cells_mobile : Labels.format_cells,
-            id: "fm-tab-format-cells",
-            handler: this.formatCellsHandler,
-            icon: this.icons.format_number
-        },
-        {
-            title: this.osUtils.isMobile ? Labels.conditional_formatting_mobile : Labels.conditional_formatting,
-            id: "fm-tab-format-conditional",
-            handler: this.conditionalFormattingHandler,
-            icon: this.icons.format_conditional
-        }
+                title: this.osUtils.isMobile ? Labels.format_cells_mobile : Labels.format_cells,
+                id: "fm-tab-format-cells",
+                handler: this.formatCellsHandler,
+                icon: this.icons.format_number
+            },
+            {
+                title: this.osUtils.isMobile ? Labels.conditional_formatting_mobile : Labels.conditional_formatting,
+                id: "fm-tab-format-conditional",
+                handler: this.conditionalFormattingHandler,
+                icon: this.icons.format_conditional
+            }
         ]
     });
 
@@ -570,13 +570,13 @@ FlexmonsterToolbar.prototype.icons_v26 = {
 // Connect tab
 FlexmonsterToolbar.prototype.connectLocalCSVHandler = function () {
     this.pivot.connectTo({
-        dataSourceType: "csv",
+        type: "csv",
         browseForFile: true
     });
 }
 FlexmonsterToolbar.prototype.connectLocalJSONHandler = function () {
     this.pivot.connectTo({
-        dataSourceType: "json",
+        type: "json",
         browseForFile: true
     });
 }
@@ -693,7 +693,7 @@ FlexmonsterToolbar.prototype.printHandler = function () {
     this.pivot.print();
 }
 FlexmonsterToolbar.prototype.exportHandler = function (type) {
-    (type == "pdf") ? this.showExportPdfDialog() : this.pivot.exportTo(type);
+    (type == "pdf") ? this.showExportPdfDialog(): this.pivot.exportTo(type);
 }
 // Fullscreen tab
 FlexmonsterToolbar.prototype.fullscreenHandler = function () {
@@ -710,7 +710,7 @@ FlexmonsterToolbar.prototype.showConnectToRemoteCSVDialog = function () {
         if (textInput.value.length > 0) {
             self.pivot.connectTo({
                 filename: textInput.value,
-                dataSourceType: "csv"
+                type: "csv"
             });
         }
     }
@@ -718,15 +718,15 @@ FlexmonsterToolbar.prototype.showConnectToRemoteCSVDialog = function () {
     dialog.content.classList.add("fm-popup-w500");
     dialog.setTitle(Labels.open_remote_csv);
     dialog.setToolbar([{
-        id: "fm-btn-open",
-        label: Labels.open,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-open",
+            label: Labels.open,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
 
     var content = document.createElement("div");
@@ -747,7 +747,7 @@ FlexmonsterToolbar.prototype.showConnectToRemoteJsonDialog = function () {
         if (textInput.value.length > 0) {
             self.pivot.connectTo({
                 filename: textInput.value,
-                dataSourceType: "json"
+                type: "json"
             });
         }
     }
@@ -755,15 +755,15 @@ FlexmonsterToolbar.prototype.showConnectToRemoteJsonDialog = function () {
     dialog.content.classList.add("fm-popup-w500");
     dialog.setTitle(Labels.open_remote_json);
     dialog.setToolbar([{
-        id: "fm-btn-open",
-        label: Labels.open,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-open",
+            label: Labels.open,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
 
     var content = document.createElement("div");
@@ -799,7 +799,7 @@ FlexmonsterToolbar.prototype.showConnectToElasticDialog = function () {
     };
     var okHandler = function () {
         self.pivot.connectTo({
-            dataSourceType: "elasticsearch",
+            type: "elasticsearch",
             host: hostUrlInput.value,
             index: indicesList.value
         });
@@ -828,16 +828,16 @@ FlexmonsterToolbar.prototype.showConnectToElasticDialog = function () {
     dialog.content.classList.add("fm-popup-w570");
     dialog.setTitle(Labels.connect_elastic_title);
     dialog.setToolbar([{
-        id: "fm-btn-open",
-        label: Labels.ok,
-        handler: okHandler,
-        disabled: true,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-open",
+            label: Labels.ok,
+            handler: okHandler,
+            disabled: true,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
 
     var content = document.createElement("div");
@@ -942,7 +942,7 @@ FlexmonsterToolbar.prototype.showConnectToOLAPDialog = function () {
         var provider = self.pivot.getXMLAProviderName(proxyUrlInput.value, '');
         var credentialsCeckBox = self.getElementById("fm-credentials-checkbox");
         self.pivot.connectTo({
-            dataSourceType: provider,
+            type: provider,
             proxyUrl: proxyUrlInput.value,
             dataSourceInfo: olapDataSourcesList.value,
             catalog: olapCatalogsList.value,
@@ -982,16 +982,16 @@ FlexmonsterToolbar.prototype.showConnectToOLAPDialog = function () {
     dialog.content.classList.add("fm-popup-w570");
     dialog.setTitle(this.osUtils.isMobile ? Labels.connect_olap_mobile : Labels.olap_connection_tool);
     dialog.setToolbar([{
-        id: "fm-btn-open",
-        label: Labels.ok,
-        handler: okHandler,
-        disabled: true,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-open",
+            label: Labels.ok,
+            handler: okHandler,
+            disabled: true,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
 
     var content = document.createElement("div");
@@ -1094,15 +1094,15 @@ FlexmonsterToolbar.prototype.showOpenRemoteReportDialog = function () {
     dialog.content.classList.add("fm-popup-w500");
     dialog.setTitle(Labels.open_remote_report);
     dialog.setToolbar([{
-        id: "fm-btn-open",
-        label: Labels.open,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-open",
+            label: Labels.open,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
     var content = document.createElement("div");
     var textInput = document.createElement("input");
@@ -1215,16 +1215,16 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     ConfirmationPopUp.prototype.initializePopUp = function () {
         this.dialog.setTitle(Labels.confirm_title);
         confirmPopUp.dialog.setToolbar([{
-            id: "fm-btn-apply",
-            label: Labels.ok,
-            handler: switchToMeasure,
-            isPositive: true
-        },
-        {
-            id: "fm-btn-cancel",
-            label: Labels.cancel,
-            handler: restoreEditedMeasure
-        }
+                id: "fm-btn-apply",
+                label: Labels.ok,
+                handler: switchToMeasure,
+                isPositive: true
+            },
+            {
+                id: "fm-btn-cancel",
+                label: Labels.cancel,
+                handler: restoreEditedMeasure
+            }
         ], false, this.removePopUp);
         var content = document.createElement("div");
         var contentLabel = document.createElement("label");
@@ -1264,14 +1264,13 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     var valuesDropDownChangeHandler = function () {
         var formatObject = {};
         formatObject = filterFormatting(formatObject);
-        console.log(formatObject);
-        if ((formatObject.hasOwnProperty("textAlign") || formatObject.hasOwnProperty("thousandsSeparator") || formatObject.hasOwnProperty("decimalSeparator")
-            || formatObject.hasOwnProperty("decimalPlaces") || formatObject.hasOwnProperty("currencySymbol") || formatObject.hasOwnProperty("positiveCurrencyFormat")
-            || formatObject.hasOwnProperty("negativeCurrencyFormat") || formatObject.hasOwnProperty("nullValue") || formatObject.hasOwnProperty("isPercent")) 
-            && (currentMeasureName != "empty" || currentMeasureName != null)) {
-                confirmPopUp.createPopUp();
-                confirmPopUp.initializePopUp();
-                confirmPopUp.addPopUp();
+        if ((formatObject.hasOwnProperty("textAlign") || formatObject.hasOwnProperty("thousandsSeparator") || formatObject.hasOwnProperty("decimalSeparator") ||
+                formatObject.hasOwnProperty("decimalPlaces") || formatObject.hasOwnProperty("currencySymbol") || formatObject.hasOwnProperty("positiveCurrencyFormat") ||
+                formatObject.hasOwnProperty("negativeCurrencyFormat") || formatObject.hasOwnProperty("nullValue") || formatObject.hasOwnProperty("isPercent")) &&
+            (currentMeasureName != "empty" || currentMeasureName != null)) {
+            confirmPopUp.createPopUp();
+            confirmPopUp.initializePopUp();
+            confirmPopUp.addPopUp();
         } else {
             switchToMeasure();
         }
@@ -1281,11 +1280,53 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
         valuesDropDown.value = currentMeasureName;
     }
 
+    function isStringDataMode() {
+        var options = self.pivot.getOptions({
+            withDefaults: true
+        });
+        if (options.grid.type == "flat" && currentMeasureName != "empty") {
+            var measures = self.pivot.getMeasures();
+            var currentMeasure = null;
+            for (var i = 0; i < measures.length; i++) {
+                if (measures[i].uniqueName == currentMeasureName) {
+                    currentMeasure = measures[i];
+                }
+            }
+            return currentMeasure != null && currentMeasure.type != "number";
+        }
+        return false;
+    }
+
+    function applyStringDataMode(isStringDataMode) {
+        if (isStringDataMode) {
+            thousandSeparatorRow.classList.add("fm-hide");
+            decimalSeparatorRow.classList.add("fm-hide");
+            decimalPlacesRow.classList.add("fm-hide");
+            currencySymbolRow.classList.add("fm-hide");
+            positiveCurrencyRow.classList.add("fm-hide");
+            negativeCurrencyRow.classList.add("fm-hide");
+            nullValueRow.classList.add("fm-hide");
+            isPercentRow.classList.add("fm-hide");
+        } else {
+            thousandSeparatorRow.classList.remove("fm-hide");
+            decimalSeparatorRow.classList.remove("fm-hide");
+            decimalPlacesRow.classList.remove("fm-hide");
+            currencySymbolRow.classList.remove("fm-hide");
+            positiveCurrencyRow.classList.remove("fm-hide");
+            negativeCurrencyRow.classList.remove("fm-hide");
+            nullValueRow.classList.remove("fm-hide");
+            isPercentRow.classList.remove("fm-hide");
+        }
+    }
+
     var switchToMeasure = function () {
         updateDropdowns();
         var formatVO = self.pivot.getFormat(valuesDropDown.value);
         currentMeasureName = valuesDropDown.value;
         currentFormatVO = formatVO;
+
+        applyStringDataMode(isStringDataMode());
+
         textAlignDropDown.value = (formatVO.textAlign == "left" || formatVO.textAlign == "right") ? formatVO.textAlign : "right";
         thousandsSepDropDown.value = formatVO.thousandsSeparator;
         decimalSepDropDown.value = formatVO.decimalSeparator;
@@ -1301,9 +1342,9 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
         } else {
             positiveCurrencyRow.classList.remove("fm-hide");
             negativeCurrencyRow.classList.remove("fm-hide");
-            initializeSelect(positiveCurrencyFormat, 
+            initializeSelect(positiveCurrencyFormat,
                 prefilterCurrencyFormatConfig(positiveCurrencyFormatConfigTemplate, positiveCurrencyFormatConfig, formatVO.currencySymbol));
-            initializeSelect(negativeCurrencyFormat, 
+            initializeSelect(negativeCurrencyFormat,
                 prefilterCurrencyFormatConfig(negativeCurrencyFormatConfigTemplate, negativeCurrencyFormatConfig, formatVO.currencySymbol));
         }
     }
@@ -1323,6 +1364,9 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
         }
         if (valuesDropDown.value == "") {
             formatVO.name = "";
+        }
+        if (formatVO.name && formatVO.name != "") {
+            delete formatVO["name"];
         }
         filterFormatting(formatVO);
         currentFormatVO = null;
@@ -1359,19 +1403,19 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
 
     var dialog = this.popupManager.createPopup();
     var confirmPopUp = new ConfirmationPopUp();
-    
+
     dialog.content.id = "fm-popup-format-cells";
     dialog.setTitle(this.osUtils.isMobile ? Labels.format : Labels.format_cells);
     dialog.setToolbar([{
-        id: "fm-btn-apply",
-        label: Labels.apply,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-apply",
+            label: Labels.apply,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ], true);
 
     var content = document.createElement("div");
@@ -1409,38 +1453,38 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     row.appendChild(select);
 
     // thousand_separator
-    var row = createFormattingItem(Labels.thousand_separator);
+    var thousandSeparatorRow = createFormattingItem(Labels.thousand_separator);
     var select = self.createSelect();
     var thousandsSepDropDown = select.select;
     thousandsSepDropDown.options[0] = new Option(Labels.none, "");
     thousandsSepDropDown.options[1] = new Option(Labels.space, " ");
     thousandsSepDropDown.options[2] = new Option(",", ",");
     thousandsSepDropDown.options[3] = new Option(".", ".");
-    row.appendChild(select);
+    thousandSeparatorRow.appendChild(select);
 
     // decimal_separator
-    var row = createFormattingItem(Labels.decimal_separator);
+    var decimalSeparatorRow = createFormattingItem(Labels.decimal_separator);
     var select = self.createSelect();
     var decimalSepDropDown = select.select;
     decimalSepDropDown.options[0] = new Option(".", ".");
     decimalSepDropDown.options[1] = new Option(",", ",");
-    row.appendChild(select);
+    decimalSeparatorRow.appendChild(select);
 
     // decimal_places
-    var row = createFormattingItem(Labels.decimal_places);
+    var decimalPlacesRow = createFormattingItem(Labels.decimal_places);
     var select = self.createSelect();
     var decimalPlacesDropDown = select.select;
     for (var i = 0; i < 11; i++) {
         decimalPlacesDropDown.options[i] = new Option(i === 0 ? Labels.none : (i - 1), i - 1);
     }
-    row.appendChild(select);
+    decimalPlacesRow.appendChild(select);
 
     // currency_symbol
-    var row = createFormattingItem(Labels.currency_symbol);
+    var currencySymbolRow = createFormattingItem(Labels.currency_symbol);
     var currencySymbInput = document.createElement("input");
     currencySymbInput.classList.add("fm-inp");
     currencySymbInput.type = "text";
-    row.appendChild(currencySymbInput);
+    currencySymbolRow.appendChild(currencySymbInput);
 
     // positive currency_format
     var positiveCurrencyRow = createFormattingItem(Labels.positive_currency_format);
@@ -1458,15 +1502,15 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     initializeSelect(negativeCurrencyFormat, negativeCurrencyFormatConfig);
     negativeCurrencyRow.appendChild(select);
 
-    currencySymbInput.addEventListener('input', function(event) {
+    currencySymbInput.addEventListener('input', function (event) {
         var value = currencySymbInput.value;
 
         if (value.trim()) {
             positiveCurrencyRow.classList.remove("fm-hide");
             negativeCurrencyRow.classList.remove("fm-hide");
-            initializeSelect(positiveCurrencyFormat, 
+            initializeSelect(positiveCurrencyFormat,
                 prefilterCurrencyFormatConfig(positiveCurrencyFormatConfigTemplate, positiveCurrencyFormatConfig, value));
-            initializeSelect(negativeCurrencyFormat, 
+            initializeSelect(negativeCurrencyFormat,
                 prefilterCurrencyFormatConfig(negativeCurrencyFormatConfigTemplate, negativeCurrencyFormatConfig, value));
         } else {
             positiveCurrencyRow.classList.add("fm-hide");
@@ -1475,19 +1519,19 @@ FlexmonsterToolbar.prototype.showFormatCellsDialog = function (measureName) {
     });
 
     // null_value
-    var row = createFormattingItem(Labels.null_value);
+    var nullValueRow = createFormattingItem(Labels.null_value);
     var nullValueInput = document.createElement("input");
     nullValueInput.classList.add("fm-inp");
     nullValueInput.type = "text";
-    row.appendChild(nullValueInput);
+    nullValueRow.appendChild(nullValueInput);
 
     // is_percent
-    var row = createFormattingItem(Labels.is_percent);
+    var isPercentRow = createFormattingItem(Labels.is_percent);
     var select = self.createSelect();
     var isPercentDropdown = select.select;
     isPercentDropdown.options[0] = new Option(Labels.true_value, true);
     isPercentDropdown.options[1] = new Option(Labels.false_value, false);
-    row.appendChild(select);
+    isPercentRow.appendChild(select);
 
     dialog.setContent(content);
     this.popupManager.addPopup(dialog.content);
@@ -1613,15 +1657,15 @@ FlexmonsterToolbar.prototype.showConditionalFormattingDialog = function (measure
     dialog.content.id = "fm-popup-conditional";
     dialog.setTitle(this.osUtils.isMobile ? Labels.conditional : Labels.conditional_formatting);
     dialog.setToolbar([{
-        id: "fm-btn-apply",
-        label: Labels.apply,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-apply",
+            label: Labels.apply,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ], true);
 
     var addConditionBtn = document.createElement("a");
@@ -1688,37 +1732,37 @@ FlexmonsterToolbar.prototype.showConditionalFormattingDialog = function (measure
 FlexmonsterToolbar.prototype.defaults.fontSizes = ["8px", "9px", "10px", "11px", "12px", "13px", "14px"],
     FlexmonsterToolbar.prototype.defaults.fonts = ['Arial', 'Lucida Sans Unicode', 'Verdana', 'Courier New', 'Palatino Linotype', 'Tahoma', 'Impact', 'Trebuchet MS', 'Georgia', 'Times New Roman'],
     FlexmonsterToolbar.prototype.defaults.conditions = [{
-        label: "less_than",
-        sign: '<'
-    },
-    {
-        label: "less_than_or_equal",
-        sign: '<='
-    },
-    {
-        label: "greater_than",
-        sign: '>'
-    },
-    {
-        label: "greater_than_or_equal",
-        sign: '>='
-    },
-    {
-        label: "equal_to",
-        sign: '='
-    },
-    {
-        label: "not_equal_to",
-        sign: '!='
-    },
-    {
-        label: "between",
-        sign: '><'
-    },
-    {
-        label: "is_empty",
-        sign: 'isNaN'
-    }
+            label: "less_than",
+            sign: '<'
+        },
+        {
+            label: "less_than_or_equal",
+            sign: '<='
+        },
+        {
+            label: "greater_than",
+            sign: '>'
+        },
+        {
+            label: "greater_than_or_equal",
+            sign: '>='
+        },
+        {
+            label: "equal_to",
+            sign: '='
+        },
+        {
+            label: "not_equal_to",
+            sign: '!='
+        },
+        {
+            label: "between",
+            sign: '><'
+        },
+        {
+            label: "is_empty",
+            sign: 'isNaN'
+        }
     ];
 FlexmonsterToolbar.prototype.createConditionalFormattingItem = function (data, allConditions) {
     var self = this;
@@ -2018,15 +2062,15 @@ FlexmonsterToolbar.prototype.showOptionsDialog = function () {
     dialog.content.id = "fm-popup-options";
     dialog.setTitle(this.osUtils.isMobile ? Labels.options : Labels.layout_options);
     dialog.setToolbar([{
-        id: "fm-btn-apply",
-        label: Labels.apply,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-apply",
+            label: Labels.apply,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ], true);
 
     var content = document.createElement("div");
@@ -2170,9 +2214,9 @@ FlexmonsterToolbar.prototype.showOptionsDialog = function () {
     });
 
     if (options != null && options.hasOwnProperty("dataSource") &&
-        !(options["dataSource"]["dataSourceType"] == "microsoft analysis services" ||
-            options["dataSource"]["dataSourceType"] == "mondrian" ||
-            options["dataSource"]["dataSourceType"] == "elasticsearch")) {
+        !(options["dataSource"]["type"] == "microsoft analysis services" ||
+            options["dataSource"]["type"] == "mondrian" ||
+            options["dataSource"]["type"] == "elasticsearch")) {
 
         // layout - flat
         var item = document.createElement("li");
@@ -2325,15 +2369,15 @@ FlexmonsterToolbar.prototype.showExportPdfDialog = function () {
     var dialog = this.popupManager.createPopup();
     dialog.setTitle(Labels.choose_page_orientation);
     dialog.setToolbar([{
-        id: "fm-btn-apply",
-        label: Labels.apply,
-        handler: applyHandler,
-        isPositive: true
-    },
-    {
-        id: "fm-btn-cancel",
-        label: Labels.cancel
-    }
+            id: "fm-btn-apply",
+            label: Labels.apply,
+            handler: applyHandler,
+            isPositive: true
+        },
+        {
+            id: "fm-btn-cancel",
+            label: Labels.cancel
+        }
     ]);
 
     var content = document.createElement("div");

@@ -27,18 +27,27 @@
         },
         {
             "field": "Price",
-            "type": "number",
-            "aggregations": ["sum", "average", "count", "distinctcount", "min", "max"]
+            "type": "number"
         },
         {
             "field": "Quantity",
-            "type": "number",
-            "aggregations": ["sum", "average"]
+            "type": "number"
         },
         {
             "field": "Discount",
             "type": "number",
             "aggregations": ["average"]
         }
-    ]
+    ],
+    "aggregations": {
+        "any": ["count"],
+        "number": ["sum", "average", "count", "distinctcount", "min", "max"]
+    },
+    "filters": {
+        "any": {
+            "members": true,
+            "query": true,
+            "valueQuery": false
+        }
+    }
 }

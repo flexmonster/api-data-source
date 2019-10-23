@@ -4986,6 +4986,7 @@
 }
 #fm-pivot-view .fm-grid-layout div.fm-scroll-pane div.fm-scroll-placeholder {
   position: relative;
+  height: 100%;
 }
 #fm-pivot-view .fm-grid-layout div.fm-cell {
   background-color: #fff;
@@ -5094,6 +5095,7 @@
 }
 #fm-pivot-view .fm-grid-layout #fm-cols-filter {
   border-right: 1px solid #e9e9e9;
+  z-index: 1;
 }
 #fm-pivot-view .fm-grid-layout .fm-filters .fm-header,
 #fm-pivot-view .fm-grid-layout.fm-flat-view .fm-header {
@@ -5152,6 +5154,9 @@
 #fm-pivot-view .fm-grid-layout .fm-filter-header.fm-filtered i.fm-filtered-icon:before {
   content: "\e905";
   color: #999;
+}
+#fm-pivot-view .fm-draggable {
+  touch-action: none;
 }
 #fm-pivot-view .fm-grid-layout .fm-filter-header.fm-dragging-move {
   opacity: 0.5;
@@ -6857,8 +6862,7 @@
 #fm-toolbar-wrapper #fm-popup-format-cells.fm-layout-mobile-small .fm-ir-horizontal .fm-inp {
   width: 100%;
 }
-#fm-popup-format-cells-positive-currency.fm-hide,
-#fm-popup-format-cells-negative-currency.fm-hide {
+#fm-toolbar-wrapper .fm-hide {
   display: none;
 }
 /* Options */

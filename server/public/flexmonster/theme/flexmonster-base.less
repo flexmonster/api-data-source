@@ -4622,6 +4622,7 @@
 
     div.fm-scroll-placeholder {
         position: relative;
+        height: 100%;
     }
 }
 
@@ -4760,6 +4761,7 @@
 
 #fm-pivot-view .fm-grid-layout #fm-cols-filter {
     border-right: 1px solid @grid-filter-color;
+    z-index: 1;
 }
     
     #fm-pivot-view .fm-grid-layout .fm-filters .fm-header,
@@ -4832,6 +4834,10 @@
         color: @grid-filter-icon-color;
     }
 
+    #fm-pivot-view .fm-draggable {
+        touch-action: none;
+    }
+    
 #fm-pivot-view .fm-grid-layout {
     .fm-filter-header.fm-dragging-move {
         opacity: 0.5;
@@ -6875,8 +6881,7 @@
     }
 }
 
-#fm-popup-format-cells-positive-currency.fm-hide,
-#fm-popup-format-cells-negative-currency.fm-hide {
+#fm-toolbar-wrapper .fm-hide {
     display: none;
 }
 
