@@ -50,7 +50,7 @@ cube.post("*", async (req, res) => {
  */
 
 /**
- * Gets index schema. Reads the `_schema.json` file from the `./data` folder.
+ * Composes the index schema based on the data file from the `./data` folder.
  * @param {string} index index name
  */
 async function getFields(index) {
