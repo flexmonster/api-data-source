@@ -2,11 +2,11 @@
 <html>
 
 <head>
-    <title>Pivot</title>
+    <title>Flexmonster Pivot Table & Charts</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/flexmonster/flexmonster.min.css" rel="stylesheet">
-    <script src="/flexmonster/flexmonster.full.js"></script>
+    <link href="flexmonster/flexmonster.min.css" rel="stylesheet">
+    <script src="flexmonster/flexmonster.full.js"></script>
 </head>
 
 <body>
@@ -18,8 +18,8 @@
             toolbar: true,
             report: {
                 "dataSource": {
-                    "dataSourceType": "api",
-                    "url": "/api/cube",
+                    "type": "api",
+                    "url": "http://localhost:3400/api/cube",
                     "index": "fm-product-sales"
                 },
                 "slice": {

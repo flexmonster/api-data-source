@@ -1,5 +1,5 @@
 /** 
- * Flexmonster Pivot Table & Charts v2.8.0-beta2 [https://www.flexmonster.com/]
+ * Flexmonster Pivot Table & Charts v2.8.0-beta3 [https://www.flexmonster.com/]
  * Copyright (c) 2019 Flexmonster. All rights reserved.
  *
  * Flexmonster Pivot Table & Charts commercial licenses may be obtained at

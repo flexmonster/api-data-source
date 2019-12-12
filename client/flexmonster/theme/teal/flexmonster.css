@@ -4448,6 +4448,7 @@
   -moz-osx-font-smoothing: grayscale;
   content: '\e902';
   right: 25px;
+  left: auto;
   top: 6px;
   color: #009688;
   font-size: 22px;
@@ -4916,7 +4917,7 @@
 #fm-pivot-view #fm-alert-view .fm-triangle-wrap .fm-ui-icon {
   color: #fff;
   font-size: 38px;
-  top: -30px;
+  top: -4px;
   left: -1px;
 }
 #fm-pivot-view #fm-alert-view .fm-triangle-wrap .fm-triangle {
