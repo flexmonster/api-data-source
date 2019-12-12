@@ -3,24 +3,44 @@ const fs = require('fs').promises;
 const _ = require('lodash');
 
 /**
- * API endpoint
+ * API endpoints
  */
-cube.post("/", async (req, res) => {
+
+cube.post("/handshake", async (req, res) => {
+    // do nothing
+    res.status(200).send();
+});
+
+cube.post("/fields", async (req, res) => {
     try {
-        let result = null;
-        if (req.body.type == "fields") {
-            result = await getSchema(req.body.index);
-        } else if (req.body.type == "members") {
-            result = await getMembers(req.body.index, req.body.field, req.body.page);
-        } else if (req.body.type == "select") {
-            result = await getSelectResult(req.body.index, req.body.query, req.body.page);
-        } else {
-            throw `Request type '${req.body.type}' is not implemented.`;
-        }
+        const result = await getSchema(req.body.index);
         res.json(result);
     } catch (err) {
         handleError(err, res);
     }
+});
+
+cube.post("/members", async (req, res) => {
+    try {
+        const result = await getMembers(req.body.index, req.body.field, req.body.page);
+        res.json(result);
+    } catch (err) {
+        handleError(err, res);
+    }
+});
+
+cube.post("/select", async (req, res) => {
+    try {
+        const result = await getSelectResult(req.body.index, req.body.query, req.body.page);
+        res.json(result);
+    } catch (err) {
+        handleError(err, res);
+    }
+});
+
+// throw an error on other endpoints
+cube.post("*", async (req, res) => {
+    handleError(`Request type '${req.body.type}' is not implemented.`, res);
 });
 
 /**
@@ -43,16 +63,6 @@ async function getSchema(index) {
 const fieldsCache = {};
 
 /**
- * Gets field info from the schema.
- * @param {string} index index name
- * @param {string} field field's name
- */
-async function getField(index, field) {
-    const schema = await getSchema(index);
-    return _.find(schema.fields, f => f.field == field);
-}
-
-/**
  * ===============
  * MEMBERS REQUEST
  * ===============
@@ -66,9 +76,10 @@ const MEMBERS_PAGE_SIZE = 5000;
  * @param {string} fieldName field's name
  * @param {number} page page number to load
  */
-async function getMembers(index, fieldName, page) {
+async function getMembers(index, field, page) {
     const data = await getData(index);
-    const field = await getField(index, fieldName);
+    const fieldName = field.field;
+    const fieldType = field.type;
     const output = {
         members: []
     };
@@ -86,7 +97,7 @@ async function getMembers(index, fieldName, page) {
     const from = page * MEMBERS_PAGE_SIZE;
     const size = Math.min(members.length, from + MEMBERS_PAGE_SIZE);
     for (let i = from; i < size; i++) {
-        output.members.push(createMember(members[i], field.type));
+        output.members.push(createMember(members[i], fieldType));
     }
     return output;
 }
@@ -144,7 +155,11 @@ async function getSelectResult(index, query, page) {
         }
     }
     if (query.fields) {
-        output.fields = query.fields;
+        output.fields = query.fields.map(function (f) {
+            return {
+                "field": f.field
+            };
+        });
         output.hits = [];
         const limit = isNaN(query.limit) ? data.length : Math.min(query.limit, data.length);
         for (let i = 0; i < limit; i++) {
@@ -191,8 +206,8 @@ function filterData(data, filters) {
  */
 function checkFilter(item, filter) {
     let check = true;
-    const field = filter["field"];
-    const value = item[field];
+    const fieldName = filter["field"].field;
+    const value = item[fieldName];
     if (filter["include"]) {
         check = filter["include"].indexOf(value) >= 0;
     } else if (filter["exclude"]) {
@@ -361,27 +376,27 @@ function calcByFields(data, fields, cols, values, output, keys) {
     if (fields.length < 1) {
         return;
     }
-    const field = fields[0];
+    const fieldName = fields[0].field;
     const subfields = fields.slice(1);
-    const groups = _.groupBy(data, field);
+    const groups = _.groupBy(data, fieldName);
     for (const key in groups) {
         const subdata = groups[key];
         const item = calcValues(subdata, values);
         item.keys = keys ? _.clone(keys) : {};
-        item.keys[field] = key;
+        item.keys[fieldName] = key;
         output.push(item);
         calcByFields(subdata, subfields, cols, values, output, item.keys);
     }
     // column totals
     if (cols && cols.length > 0 && fields.length > cols.length) {
-        const colField = cols[0];
+        const colFieldName = cols[0].field;
         const subCols = cols.slice(1);
-        const colGroups = _.groupBy(data, colField);
+        const colGroups = _.groupBy(data, colFieldName);
         for (const key in colGroups) {
             const subdata = colGroups[key];
             const item = calcValues(subdata, values);
             item.keys = keys ? _.clone(keys) : {};
-            item.keys[colField] = key;
+            item.keys[colFieldName] = key;
             output.push(item);
             calcByFields(subdata, subCols, null, values, output, item.keys);
         }
@@ -398,10 +413,11 @@ function calcValues(data, values) {
         values: {}
     };
     for (const value of values) {
-        if (!output.values[value.field]) {
-            output.values[value.field] = {};
+        const fieldName = value.field.field;
+        if (!output.values[fieldName]) {
+            output.values[fieldName] = {};
         }
-        output.values[value.field][value.func] = calcValue(data, value.field, value.func);
+        output.values[fieldName][value.func] = calcValue(data, fieldName, value.func);
     }
     return output;
 }
@@ -412,24 +428,24 @@ function calcValues(data, values) {
  * @param {string} field field's name
  * @param {string} func aggregation name
  */
-function calcValue(data, field, func) {
+function calcValue(data, fieldName, func) {
     if (func == "sum" || func == "none") {
-        return _.sumBy(data, field);
+        return _.sumBy(data, fieldName);
     }
     if (func == "count") {
         return data.length;
     }
     if (func == "distinctcount") {
-        return _.uniqBy(data, field).length;
+        return _.uniqBy(data, fieldName).length;
     }
     if (func == "average") {
-        return _.sumBy(data, field) / data.length;
+        return _.sumBy(data, fieldName) / data.length;
     }
     if (func == "min") {
-        return _.minBy(data, field)[field];
+        return _.minBy(data, fieldName)[fieldName];
     }
     if (func == "max") {
-        return _.maxBy(data, field)[field];
+        return _.maxBy(data, fieldName)[fieldName];
     }
     return NaN;
 }
