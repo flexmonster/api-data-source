@@ -13,7 +13,7 @@ cube.post("/handshake", async (req, res) => {
 
 cube.post("/fields", async (req, res) => {
     try {
-        const result = await getSchema(req.body.index);
+        const result = await getFields(req.body.index);
         res.json(result);
     } catch (err) {
         handleError(err, res);
@@ -53,14 +53,51 @@ cube.post("*", async (req, res) => {
  * Gets index schema. Reads the `_schema.json` file from the `./data` folder.
  * @param {string} index index name
  */
-async function getSchema(index) {
+async function getFields(index) {
     if (!fieldsCache[index]) {
-        const fields = await fs.readFile(`./data/${index}_schema.json`);
-        fieldsCache[index] = JSON.parse(fields);
+        const output = {
+            "fields": [],
+            "aggregations": {
+                "any": ["count", "distinctcount"],
+                "number": ["sum", "count", "distinctcount", "average", "min", "max"],
+                "date": ["count", "distinctcount", "min", "max"],
+            },
+            "filters": {
+                "any": {
+                    "members": true,
+                    "query": true
+                }
+            }
+        };
+        const fileContent = await fs.readFile(`./data/${index}.json`);
+        const data = JSON.parse(fileContent);
+        const dataRow = data[0];
+        if (dataRow) {
+            for (const fieldName in dataRow) {
+                const value = dataRow[fieldName];
+                const type = resolveDataType(value);
+                output.fields.push({
+                    "field": fieldName,
+                    "caption": fieldName,
+                    "type": type,
+                })
+            }
+        }
+        fieldsCache[index] = output;
     }
     return fieldsCache[index];
 }
 const fieldsCache = {};
+
+function resolveDataType(value) {
+    if (typeof value == "number") {
+        return "number";
+    }
+    if (typeof value == "string" && value.length >= 10 /* minimal ISO date */ && !isNaN(Date.parse(value))) {
+        return "date";
+    }
+    return "string";
+}
 
 /**
  * ===============
@@ -207,6 +244,7 @@ function filterData(data, filters) {
 function checkFilter(item, filter) {
     let check = true;
     const fieldName = filter["field"].field;
+    const fieldType = filter["field"].type;
     const value = item[fieldName];
     if (filter["include"]) {
         check = filter["include"].indexOf(value) >= 0;
@@ -214,9 +252,9 @@ function checkFilter(item, filter) {
         check = filter["exclude"].indexOf(value) < 0;
     } else if (filter["query"]) {
         const query = filter["query"];
-        if (filter["fieldType"] == "date") {
+        if (fieldType == "date") {
             check = checkDateFilterQuery(value, query);
-        } else if (filter["fieldType"] == "number") {
+        } else if (fieldType == "number") {
             check = checkNumberFilterQuery(value, query);
         } else {
             check = checkStringFilterQuery(value, query);
@@ -458,11 +496,31 @@ async function getData(index) {
     if (!dataCache[index]) {
         const dataRaw = await fs.readFile(`./data/${index}.json`);
         const data = JSON.parse(dataRaw);
+        parseDates(data);
         dataCache[index] = data;
     }
     return dataCache[index];
 }
 const dataCache = {};
+
+function parseDates(data) {
+    const dateFields = [];
+    const dataRow = data[0];
+    if (dataRow) {
+        for (const fieldName in dataRow) {
+            if (resolveDataType(dataRow[fieldName]) == "date") {
+                dateFields.push(fieldName);
+            }
+        }
+    }
+    if (dateFields.length > 0) {
+        for (let i = 0; i < data.length; i++) {
+            for (const fieldName of dateFields) {
+                data[i][fieldName] = Date.parse(data[i][fieldName]);
+            }
+        }
+    }
+}
 
 function handleError(err, res, status) {
     if (!res) {

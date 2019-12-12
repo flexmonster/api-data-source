@@ -5,7 +5,7 @@
         "city": "Toronto",
         "price": 10,
         "quantity": 2,
-        "date": 1564444800000,
+        "date": "2019-07-30T00:00:00.000Z",
         "date_year": "2019",
         "date_month": "July"
     },
@@ -15,7 +15,7 @@
         "city": "Toronto",
         "price": 10,
         "quantity": 2,
-        "date": 1564617600000,
+        "date": "2019-08-01T00:00:00.000Z",
         "date_year": "2019",
         "date_month": "August"
     },
@@ -25,7 +25,7 @@
         "city": "Toronto",
         "price": 18,
         "quantity": 3,
-        "date": 1564963200000,
+        "date": "2019-08-05T00:00:00.000Z",
         "date_year": "2019",
         "date_month": "August"
     },
@@ -35,7 +35,7 @@
         "city": "Kyiv",
         "price": 20,
         "quantity": 4,
-        "date": 1554422400000,
+        "date": "2019-04-05T00:00:00.000Z",
         "date_year": "2019",
         "date_month": "April"
     }
