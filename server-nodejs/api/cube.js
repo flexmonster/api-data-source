@@ -110,7 +110,7 @@ const MEMBERS_PAGE_SIZE = 5000;
 /**
  * Gets field members.
  * @param {string} index index name
- * @param {string} fieldName field's name
+ * @param {string} field field object
  * @param {number} page page number to load
  */
 async function getMembers(index, field, page) {
@@ -463,7 +463,7 @@ function calcValues(data, values) {
 /**
  * Calculates aggregated value for specific field.
  * @param {object} data input data
- * @param {string} field field's name
+ * @param {string} fieldName field's name
  * @param {string} func aggregation name
  */
 function calcValue(data, fieldName, func) {
