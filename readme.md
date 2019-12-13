@@ -10,26 +10,39 @@ This API will work for projects with their own data access layer, where filterin
 
 ## Sample Node.js server
 
-Inside the `/server` folder you can find the sample Node.js server that implements Flexmonster's custom data source API. All requests from Flexmonster Pivot Table are handled by `http://localhost:3400/api/cube` endpoint. Raw data is stored in JSON format in the `/server/data` folder as well as it's schema. File name matches the `index` property of the `dataSource` configuration object.
+Inside the `/server-nodejs` folder you can find the sample Node.js server that implements Flexmonster's custom data source API. All requests from Flexmonster Pivot Table are handled by `http://localhost:3400/api/cube` endpoints. Raw data is stored in JSON format in the `/server-nodejs/data` folder. The file name matches the `index` property of the `dataSource` configuration object.
 
 To start the server:
 
 ```
-cd server
+cd server-nodejs
 npm install
 npm start
 ```
 
-On the client-side, the configuration looks as follows:
+On the client-side, the configuration looks as follows (check `/client/index.html`):
 ```javascript
 new Flexmonster({
     container: "#pivot",
     report: {
         "dataSource": {
-            "dataSourceType": "api",
+            "type": "api",
             "url": "http://localhost:3400/api/cube",
             "index": "fm-product-sales"
         }
     }
 });
 ```
+
+## Sample .NET Core server
+
+Inside the `/server-dotnetcore` folder you can find another Flexmonster's custom data source API implementation - sample .NET Core server. All requests from Flexmonster Pivot Table are handled by `http://localhost:3400/api/cube` endpoints. Raw data is stored in JSON format in the `/data` folder. The file name matches the `index` property of the `dataSource` configuration object.
+
+To start the server:
+
+```
+cd server-dotnetcore
+dotnet run
+```
+
+On the client-side, the configuration looks like in [Sample Node.js server](#sample-nodejs-server)

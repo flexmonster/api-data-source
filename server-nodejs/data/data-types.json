@@ -1,0 +1,42 @@
+[
+    {
+        "color": "red",
+        "country": "Canada",
+        "city": "Toronto",
+        "price": 10,
+        "quantity": 2,
+        "date": "2019-07-30T00:00:00.000Z",
+        "date_year": "2019",
+        "date_month": "July"
+    },
+    {
+        "color": "red",
+        "country": "Canada",
+        "city": "Toronto",
+        "price": 10,
+        "quantity": 2,
+        "date": "2019-08-01T00:00:00.000Z",
+        "date_year": "2019",
+        "date_month": "August"
+    },
+    {
+        "color": "blue",
+        "country": "Canada",
+        "city": "Toronto",
+        "price": 18,
+        "quantity": 3,
+        "date": "2019-08-05T00:00:00.000Z",
+        "date_year": "2019",
+        "date_month": "August"
+    },
+    {
+        "color": "blue",
+        "country": "Ukraine",
+        "city": "Kyiv",
+        "price": 20,
+        "quantity": 4,
+        "date": "2019-04-05T00:00:00.000Z",
+        "date_year": "2019",
+        "date_month": "April"
+    }
+]

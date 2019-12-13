@@ -1,0 +1,20 @@
+using System.Collections.Generic;
+
+namespace DataAPI.Models.Fields
+{
+    public class SchemaAggregation
+    {
+        public List<string> Any { get; set; }
+
+        public List<string> Date { get; set; }
+
+        public List<string> Number { get; set; }
+
+        public List<string> String { get; set; }
+
+        public SchemaAggregation()
+        {
+
+        }
+    }
+}
