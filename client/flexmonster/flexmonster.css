@@ -5852,6 +5852,10 @@
 }
 #fm-toolbar-wrapper #fm-tab-charts-multiple.fm-multdisabled a {
   opacity: 0.5;
+  position: relative;
+  /* for IE */
+  cursor: pointer;
+  pointer-events: none;
 }
 /* Tabs */
 #fm-toolbar-wrapper #fm-toolbar li {
