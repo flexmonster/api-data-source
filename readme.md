@@ -7,6 +7,7 @@ This API will work for projects with their own data access layer, where filterin
 - [Documentation](https://github.com/flexmonster/api-data-source/wiki/API-documentation)
 - [Quick start guide to custom data source API implementation](https://github.com/flexmonster/api-data-source/wiki/Quick-start-guide)
 - [Sample Node.js server](#sample-nodejs-server)
+- [Sample .NET Core server](#sample-net-core-server)
 
 ## Sample Node.js server
 
