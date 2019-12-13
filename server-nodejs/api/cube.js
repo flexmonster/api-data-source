@@ -298,12 +298,12 @@ function checkDateFilterQuery(value, query) {
     if (query["between"] !== undefined) {
         var d1 = query["between"][0];
         var d2 = query["between"][1];
-        return value >= d1 && value < d2 + MS_DAY;
+        return value >= d1 && value <= d2;
     }
     if (query["not_between"] !== undefined) {
         var d1 = query["not_between"][0];
         var d2 = query["not_between"][1];
-        return value < d1 || value >= d2 + MS_DAY;
+        return value < d1 || value > d2;
     }
     return false;
 }
