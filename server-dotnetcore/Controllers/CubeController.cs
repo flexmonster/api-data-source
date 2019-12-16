@@ -1,10 +1,11 @@
-using DataAPI.JsonConverters;
-using DataAPI.Models;
-using DataAPI.Models.Fields;
-using DataAPI.Models.Handshake;
-using DataAPI.Models.Members;
-using DataAPI.Models.Select;
+using NetCoreServer.JsonConverters;
+using NetCoreServer.Models;
+using NetCoreServer.Models.Fields;
+using NetCoreServer.Models.Handshake;
+using NetCoreServer.Models.Members;
+using NetCoreServer.Models.Select;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreServer.Comparators;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace DataAPI.Controllers
+namespace NetCoreServer.Controllers
 {
 
     [ApiController]
@@ -155,7 +156,8 @@ namespace DataAPI.Controllers
 
                 Schema schema = new Schema();
                 schema.Sorted = false;
-                schema.Aggregations.Any = new List<string> { "count" };
+                schema.Aggregations.Any = new List<string> { "count", "distinctcount" };
+                schema.Aggregations.Date = new List<string> { "count", "distinctcount", "min", "max" };
                 schema.Aggregations.Number = new List<string> { "sum", "average", "count", "distinctcount", "min", "max" };
                 schema.Filters.Any.Members = true;
                 schema.Filters.Any.Query = true;
@@ -232,6 +234,11 @@ namespace DataAPI.Controllers
             Data data = await LoadData(index, await GetShema(index));
             MembersResponse response = new MembersResponse();
             var members = data.DataValuesByColumn[field.Field].Distinct().ToList();
+            if (field.Field == "date_month")
+            {
+                members.Sort(new MonthComparator());
+                response.Sorted = true;
+            }
 
             int pageTotal = (int)Math.Ceiling(members.Count / (double)MEMBERS_PAGE_SIZE);
             if (pageTotal > 1)

@@ -1,10 +1,10 @@
-using DataAPI.Models;
+using NetCoreServer.Models;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DataAPI.JsonConverters
+namespace NetCoreServer.JsonConverters
 {
     /// <summary>
     /// Convertor from Value object to JSON depending on it's type

@@ -1,10 +1,10 @@
-using DataAPI.Models.Fields;
-using DataAPI.Models.Select;
+using NetCoreServer.Models.Fields;
+using NetCoreServer.Models.Select;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DataAPI.Models
+namespace NetCoreServer.Models
 {
     public class DataSlice
     {
@@ -508,6 +508,17 @@ namespace DataAPI.Models
                 if (func == "max")
                 {
                     return validDataColumnIndexes.Max(index => Data.DataValuesByColumn[field.Field][index].NumberValue.Value);
+                }
+            }
+            if (field.Type == "date")
+            {
+                if (func == "min")
+                {
+                    return DataColumnIndexes.Min(index => Data.DataValuesByColumn[field.Field][index].DateValue.Value.ToUnixTimestamp());
+                }
+                if (func == "max")
+                {
+                    return DataColumnIndexes.Max(index => Data.DataValuesByColumn[field.Field][index].DateValue.Value.ToUnixTimestamp());
                 }
             }
             return 0;

@@ -1,6 +1,6 @@
-using DataAPI.Models.Fields;
+using NetCoreServer.Models.Fields;
 
-namespace DataAPI.Models.Select
+namespace NetCoreServer.Models.Select
 {
     public class SelectRequest
     {

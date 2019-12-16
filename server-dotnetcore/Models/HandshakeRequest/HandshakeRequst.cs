@@ -1,6 +1,6 @@
-﻿using DataAPI.Models.Fields;
+﻿using NetCoreServer.Models.Fields;
 
-namespace DataAPI.Models.Handshake
+namespace NetCoreServer.Models.Handshake
 {
     public class HandshakeRequst
     {

@@ -1,10 +1,10 @@
-using DataAPI.Models;
-using DataAPI.Models.Members;
+using NetCoreServer.Models;
+using NetCoreServer.Models.Members;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DataAPI.JsonConverters
+namespace NetCoreServer.JsonConverters
 {
     /// <summary>
     /// Convertor from MembersResponse object to JSON

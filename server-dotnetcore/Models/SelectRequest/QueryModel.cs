@@ -1,7 +1,7 @@
-using DataAPI.Models.Fields;
+using NetCoreServer.Models.Fields;
 using System.Collections.Generic;
 
-namespace DataAPI.Models.Select
+namespace NetCoreServer.Models.Select
 {
     public class Query
     {

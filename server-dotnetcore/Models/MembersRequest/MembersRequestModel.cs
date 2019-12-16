@@ -1,6 +1,6 @@
-using DataAPI.Models.Fields;
+using NetCoreServer.Models.Fields;
 
-namespace DataAPI.Models.Members
+namespace NetCoreServer.Models.Members
 {
     public class MembersRequest
     {

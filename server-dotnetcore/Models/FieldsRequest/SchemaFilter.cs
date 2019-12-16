@@ -1,4 +1,4 @@
-namespace DataAPI.Models.Fields
+namespace NetCoreServer.Models.Fields
 {
     public class SchemaFilter
     {
