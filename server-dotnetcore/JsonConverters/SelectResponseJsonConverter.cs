@@ -1,10 +1,10 @@
-using DataAPI.Models;
-using DataAPI.Models.Select;
+using NetCoreServer.Models;
+using NetCoreServer.Models.Select;
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DataAPI.JsonConverters
+namespace NetCoreServer.JsonConverters
 {
     /// <summary>
     /// Convertor from SelectResponse object to JSON
@@ -35,7 +35,7 @@ namespace DataAPI.JsonConverters
                 {
 
                     writer.WriteStartObject();
-                    writer.WriteString(new ReadOnlySpan<char>(new char[] { 'f', 'i', 'e', 'l', 'd', 's' }), field.Field);
+                    writer.WriteString(new ReadOnlySpan<char>(new char[] { 'f', 'i', 'e', 'l', 'd' }), field.Field);
                     writer.WriteEndObject();
                 }
                 writer.WriteEndArray();
@@ -84,13 +84,13 @@ namespace DataAPI.JsonConverters
                     writer.WriteStartObject();
                     foreach (var memberval in member.Values)
                     {
-                        writer.WritePropertyName(memberval.Key);
+                        writer.WritePropertyName(memberval.Key);                        
+                        writer.WriteStartObject();
                         foreach (var val in memberval.Value)
                         {
-                            writer.WriteStartObject();
                             writer.WriteNumber(val.Key, val.Value);
-                            writer.WriteEndObject();
                         }
+                        writer.WriteEndObject();
                     }
                     writer.WriteEndObject();
                     if (member.Keys != null)

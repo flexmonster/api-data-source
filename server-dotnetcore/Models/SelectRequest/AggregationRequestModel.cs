@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DataAPI.Models.Select
+namespace NetCoreServer.Models.Select
 {
     public class AggregationRequest
     {

@@ -1,7 +1,7 @@
-using DataAPI.Models;
+using NetCoreServer.Models;
 using System.Collections.Generic;
 
-namespace DataAPI.Models.Members
+namespace NetCoreServer.Models.Members
 {
     public class MembersResponse
     {

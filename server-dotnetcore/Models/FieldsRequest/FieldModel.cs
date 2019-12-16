@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DataAPI.Models.Fields
+namespace NetCoreServer.Models.Fields
 {
     public class FieldModel
     {

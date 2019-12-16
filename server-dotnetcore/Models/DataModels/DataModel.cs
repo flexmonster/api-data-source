@@ -1,9 +1,24 @@
-using DataAPI.Models.Fields;
+using NetCoreServer.Models.Fields;
 using System;
 using System.Collections.Generic;
 
-namespace DataAPI.Models
+namespace NetCoreServer.Models
 {
+    public enum Month
+    {
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December
+    }
     public class Data
     {
         /// <summary>
@@ -80,7 +95,7 @@ namespace DataAPI.Models
         public static double ToUnixTimestamp(this DateTime date)
         {
             DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            TimeSpan diff = date - origin;
+            TimeSpan diff = date.ToUniversalTime() - origin;
             return Math.Floor(diff.TotalMilliseconds);
         }
     }
