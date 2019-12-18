@@ -33,9 +33,9 @@ namespace NetCoreServer.Controllers
         }
 
         /// <summary>
-        /// Handshake requst
+        /// Handshake request
         /// </summary>
-        /// <param name="requst"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [Route("/api/cube/handshake")]
         [HttpPost]
@@ -44,15 +44,15 @@ namespace NetCoreServer.Controllers
             object response = null;
             if (request.Type == RequestType.Handshake)
             {
-                response = new { isSingleEndpointApi = false };
+                response = new { };
             }
             return new JsonResult(response);
         }
 
         /// <summary>
-        /// Fields requst
+        /// Fields request
         /// </summary>
-        /// <param name="request">requst</param>
+        /// <param name="request">request</param>
         /// <returns></returns>
         [Route("/api/cube/fields")]
         [HttpPost]
@@ -116,7 +116,7 @@ namespace NetCoreServer.Controllers
         /// <summary>
         /// Select request
         /// </summary>
-        /// <param name="request">requst</param>
+        /// <param name="request">request</param>
         /// <returns></returns>
         [Route("/api/cube/select")]
         [HttpPost]
