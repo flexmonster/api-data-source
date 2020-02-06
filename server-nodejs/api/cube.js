@@ -461,7 +461,7 @@ function calcValues(data, values) {
 }
 
 /**
- * Calculates aggregated value for specific field.
+ * Calculates aggregated value for the specific field.
  * @param {object} data input data
  * @param {string} fieldName field's name
  * @param {string} func aggregation name
@@ -477,7 +477,7 @@ function calcValue(data, fieldName, func) {
         return _.uniqBy(data, fieldName).length;
     }
     if (func == "average") {
-        return _.sumBy(data, fieldName) / data.length;
+        return calcAverage(data, fieldName);
     }
     if (func == "min") {
         return _.minBy(data, fieldName)[fieldName];
@@ -486,6 +486,25 @@ function calcValue(data, fieldName, func) {
         return _.maxBy(data, fieldName)[fieldName];
     }
     return NaN;
+}
+
+/**
+ * Calculates average value for the specific field.
+ * @param {object} data input data
+ * @param {string} fieldName field's name
+ */
+function calcAverage(data, fieldName) {
+    let count = 0;
+    let sum = 0;
+    for (let i = 0; i < data.length; i++) {
+        const value = data[i][fieldName];
+        if (isNaN(value) || typeof value != "number") {
+            continue;
+        }
+        sum += value;
+        count++;
+    }
+    return sum / count;
 }
 
 /**
