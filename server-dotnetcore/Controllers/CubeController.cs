@@ -4,8 +4,8 @@ using NetCoreServer.Models.Fields;
 using NetCoreServer.Models.Handshake;
 using NetCoreServer.Models.Members;
 using NetCoreServer.Models.Select;
-using Microsoft.AspNetCore.Mvc;
 using NetCoreServer.Comparators;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,6 +13,10 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using NetCoreServer.Models.DataModels;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
+using NetCoreServer.DataLoaders;
 
 namespace NetCoreServer.Controllers
 {
@@ -20,20 +24,22 @@ namespace NetCoreServer.Controllers
     [ApiController]
     public class CubeController : ControllerBase
     {
-        private static ConcurrentDictionary<string, Schema> schemaCache = new ConcurrentDictionary<string, Schema>();
+        private readonly IMemoryCache _cache;
 
-        private static ConcurrentDictionary<string, Data> dataCache = new ConcurrentDictionary<string, Data>();
+        private readonly IConfiguration _configuration;
 
-        const int MEMBERS_PAGE_SIZE = 20000;
+        const int MEMBERS_PAGE_SIZE = 50000;
 
-        const int SELECT_PAGE_SIZE = 100000;
+        const int SELECT_PAGE_SIZE = 50000;
 
-        public CubeController()
+        public CubeController(IConfiguration configuration, IMemoryCache cache)
         {
+            _cache = cache;
+            _configuration = configuration;
         }
 
         /// <summary>
-        /// Handshake request
+        /// Handshake requst
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -44,26 +50,26 @@ namespace NetCoreServer.Controllers
             object response = null;
             if (request.Type == RequestType.Handshake)
             {
-                response = new { };
+                response = new { isSingleEndpointApi = false };
             }
             return new JsonResult(response);
         }
 
         /// <summary>
-        /// Fields request
+        /// Fields requst
         /// </summary>
-        /// <param name="request">request</param>
+        /// <param name="request">requst</param>
         /// <returns></returns>
         [Route("/api/cube/fields")]
         [HttpPost]
-        public async Task<IActionResult> PostFields([FromBody]FieldsRequest request)
+        public IActionResult PostFields([FromBody]FieldsRequest request)
         {
             object response = null;
             if (request.Type == RequestType.Fields)
             {
                 try
                 {
-                    response = await GetShema(request.Index);
+                    response = GetShema(request.Index);
                 }
                 catch (Exception e)
                 {
@@ -87,7 +93,7 @@ namespace NetCoreServer.Controllers
         /// <returns></returns>
         [Route("/api/cube/members")]
         [HttpPost]
-        public async Task<IActionResult> PostMembers([FromBody]MembersRequest request)
+        public IActionResult PostMembers([FromBody]MembersRequest request)
         {
             MembersResponse response = null;
             JsonSerializerOptions options = new JsonSerializerOptions { Converters = { new MembersResponseJsonConverter() } };
@@ -95,7 +101,7 @@ namespace NetCoreServer.Controllers
             {
                 try
                 {
-                    response = await GetMembers(request.Index, request.Page, request.Field);
+                    response = GetMembers(request.Index, request.Page, request.Field);
                 }
                 catch (Exception e)
                 {
@@ -116,11 +122,11 @@ namespace NetCoreServer.Controllers
         /// <summary>
         /// Select request
         /// </summary>
-        /// <param name="request">request</param>
+        /// <param name="request">requst</param>
         /// <returns></returns>
         [Route("/api/cube/select")]
         [HttpPost]
-        public async Task<IActionResult> PostSelect([FromBody]SelectRequest request)
+        public IActionResult PostSelect([FromBody]SelectRequest request)
         {
             SelectResponse response = null;
 
@@ -128,7 +134,7 @@ namespace NetCoreServer.Controllers
             {
                 try
                 {
-                    response = await SelectData(request.Index, request.Query, request.Page);
+                    response = SelectData(request.Index, request.Query, request.Page);
                 }
                 catch (Exception e)
                 {
@@ -149,79 +155,64 @@ namespace NetCoreServer.Controllers
         /// </summary>
         /// <param name="index">index</param>
         /// <returns></returns>
-        private async Task<Schema> GetShema(string index)
+        private Schema GetShema(string index)
         {
-            if (!schemaCache.ContainsKey(index))
-            {
-
-                Schema schema = new Schema();
-                schema.Sorted = false;
-                schema.Aggregations.Any = new List<string> { "count", "distinctcount" };
-                schema.Aggregations.Date = new List<string> { "count", "distinctcount", "min", "max" };
-                schema.Aggregations.Number = new List<string> { "sum", "average", "count", "distinctcount", "min", "max" };
-                schema.Filters.Any.Members = true;
-                schema.Filters.Any.Query = true;
-                schema.Filters.Any.ValueQuery = true;
-                var data = await LoadData(index, null);
-                var firstElement = new Dictionary<string, Value>();
-                foreach (var column in data.DataValuesByColumn)
+            return _cache.GetOrCreate(index + "schema",
+                (cacheEntry) =>
                 {
-                    firstElement.Add(column.Key, column.Value[0]);
-                }
-                foreach (var member in firstElement)
-                {
-                    FieldModel field = new FieldModel();
-                    field.Field = member.Key;
-                    if (member.Value.StringValue != null)
+                    cacheEntry.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(240);
+                    Schema schema = new Schema();
+                    schema.Sorted = false;
+                    schema.Aggregations.Any = new List<string> { "count", "distinctcount" };
+                    schema.Aggregations.Date = new List<string> { "count", "distinctcount", "min", "max" };
+                    schema.Aggregations.Number = new List<string> { "sum", "average", "count", "distinctcount", "min", "max" };
+                    schema.Filters.Any.Members = true;
+                    schema.Filters.Any.Query = true;
+                    schema.Filters.Any.ValueQuery = true;
+                    var data = LoadData(index);
+                    var firstElement = data.GetRow(0);
+                    foreach (var member in firstElement)
                     {
-                        field.Type = "string";
+                        FieldModel field = new FieldModel();
+                        field.UniqueName = member.Key;
+                        if (member.Value.StringValue != null)
+                        {
+                            field.Type = "string";
+                        }
+                        else if (member.Value.DateValue != null)
+                        {
+                            field.Type = "date";
+                        }
+                        else
+                        {
+                            field.Type = "number";
+                        }
+                        schema.Fields.Add(field);
                     }
-                    else if (member.Value.DateValue != null)
-                    {
-                        field.Type = "date";
-                    }
-                    else
-                    {
-                        field.Type = "number";
-                    }
-                    schema.Fields.Add(field);
-                }
-                schemaCache.TryAdd(index, schema);
-            }
-            return schemaCache[index];
-        }  
+                    return schema;
+                });
+        }
 
         /// <summary>
         /// Load data from file {index}.json
         /// </summary>
         /// <param name="index">index</param>
         /// <returns></returns>
-        private async Task<Data> LoadData(string index, Schema schema)
+        private IDataStructure LoadData(string index)
         {
-            var serializerOptions = new JsonSerializerOptions
-            {
-                Converters = { new ValuesJsonConverter() }
-            };
-            if (!dataCache.ContainsKey(index))
-            {
-                string fullFilePath = $"./data/{index}.json";
-                using FileStream fileStream = new FileStream(fullFilePath, FileMode.Open);
-                List<Dictionary<string, Value>> dataRows = await JsonSerializer.DeserializeAsync<List<Dictionary<string, Value>>>(fileStream, serializerOptions);
-                Data data = new Data();
-                data.ToColumnView(dataRows, schema);
-                dataCache.TryAdd(index, data);
-            }
-            return dataCache[index];
+            return _cache.GetOrCreate(index,
+                (cacheEntry) =>
+                {
+                    cacheEntry.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(60);
+                    using (ParserFactory parserFactory = new ParserFactory(_configuration, index))
+                    {
+                        var dataSourceType = _configuration.GetValue<DataSourceType>("DataSource:DataSourceName");
+                        var parser = parserFactory.CreateParser(dataSourceType);
+                        DataLoader dataLoader = new DataLoader(parser);
+                        return dataLoader.Load();
+                    }
+                });
         }
-        private async Task<FieldModel> GetField(string field, string index)
-        {
-            if (!schemaCache.ContainsKey(index))
-            {
-                await GetShema(index);
-            }
-            return schemaCache[index].Fields.Single(elem => elem.Field == field);
-        }
-
         /// <summary>
         /// Gets field's members
         /// </summary>
@@ -229,17 +220,16 @@ namespace NetCoreServer.Controllers
         /// <param name="page">page number to load</param>
         /// <param name="field">field's name</param>
         /// <returns></returns>
-        private async Task<MembersResponse> GetMembers(string index, int page, FieldModel field)
+        private MembersResponse GetMembers(string index, int page, FieldModel field)
         {
-            Data data = await LoadData(index, await GetShema(index));
+            IDataStructure data = LoadData(index);
             MembersResponse response = new MembersResponse();
-            var members = data.DataValuesByColumn[field.Field].Distinct().ToList();
-            if (field.Field == "date_month")
+            var members = data.GetColumn(field.UniqueName).Distinct().ToList();
+            if (Enum.TryParse(members.First().StringValue, out Month _) || Enum.TryParse(members.First().StringValue, out ShortMonth _))
             {
                 members.Sort(new MonthComparator());
                 response.Sorted = true;
             }
-
             int pageTotal = (int)Math.Ceiling(members.Count / (double)MEMBERS_PAGE_SIZE);
             if (pageTotal > 1)
             {
@@ -248,6 +238,7 @@ namespace NetCoreServer.Controllers
             }
             int from = page * MEMBERS_PAGE_SIZE;
             int size = Math.Min(members.Count, from + MEMBERS_PAGE_SIZE);
+
             for (int i = from; i < size; i++)
             {
                 response.Members.Add(members[i]);
@@ -262,9 +253,9 @@ namespace NetCoreServer.Controllers
         /// <param name="query">query</param>
         /// <param name="page">page number to load</param>
         /// <returns></returns>
-        private async Task<SelectResponse> SelectData(string index, Query query, int page)
+        private SelectResponse SelectData(string index, Query query, int page)
         {
-            DataSlice data = new DataSlice(await LoadData(index, await GetShema(index)));
+            DataSlice data = new DataSlice(LoadData(index));
             SelectResponse response = new SelectResponse();
             if (query.Filter != null)
             {
@@ -314,14 +305,14 @@ namespace NetCoreServer.Controllers
             {
                 for (int i = 0; i < query.Fields.Count; i++)
                 {
-                    response.Fields.Add(GetField(query.Fields[i].Field, index).Result);
+                    response.Fields.Add(query.Fields[i]);
                 }
                 response.Hits = new List<List<Value>>();
                 var limit = query.Limit == 0 ? data.DataColumnIndexes.Count() : Math.Min(query.Limit, data.DataColumnIndexes.Count());
 
                 for (int i = 0; i < limit; i++)
                 {
-                    var row = query.Fields.Select(field => { return DataSlice.Data.DataValuesByColumn[field.Field][data.DataColumnIndexes[i]]; }).ToList();
+                    var row = query.Fields.Select(field => { return DataSlice.Data.GetValue(field.UniqueName, data.DataColumnIndexes[i]); }).ToList();
                     response.Hits.Add(row);
                 }
 

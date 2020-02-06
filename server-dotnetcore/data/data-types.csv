@@ -1,0 +1,5 @@
+color,country,city,price,quantity,date,date_year,date_month
+red,Canada,Toronto,10,2,2019-07-30T00:00:00.000Z,2019,July
+red,Canada,Toronto,10,2,2019-08-01T00:00:00.000Z,2019,August
+blue,Canada,Toronto,18,3,2019-08-05T00:00:00.000Z,2019,August
+blue,Ukraine,Kyiv,20,4,2019-04-05T00:00:00.000Z,2019,April

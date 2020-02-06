@@ -1,3 +1,4 @@
+using NetCoreServer.Extensions;
 using NetCoreServer.Models;
 using NetCoreServer.Models.Select;
 using System;
@@ -35,7 +36,7 @@ namespace NetCoreServer.JsonConverters
                 {
 
                     writer.WriteStartObject();
-                    writer.WriteString(new ReadOnlySpan<char>(new char[] { 'f', 'i', 'e', 'l', 'd' }), field.Field);
+                    writer.WriteString(new ReadOnlySpan<char>(new char[] { 'u', 'n', 'i', 'q', 'u', 'e', 'N', 'a', 'm', 'e' }), field.UniqueName);
                     writer.WriteEndObject();
                 }
                 writer.WriteEndArray();

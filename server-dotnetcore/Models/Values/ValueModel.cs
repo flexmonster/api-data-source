@@ -105,9 +105,9 @@ namespace NetCoreServer.Models
         }
         public void FromUnixTimestamp()
         {
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            this.DateValue = dtDateTime.AddMilliseconds(this.NumberValue.Value).ToLocalTime();
-            this.NumberValue = 0;
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            DateValue = dtDateTime.AddMilliseconds(this.NumberValue.Value).ToLocalTime();
+            NumberValue = null;
         }
 
 

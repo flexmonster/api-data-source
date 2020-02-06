@@ -1,20 +1,21 @@
 using NetCoreServer.Models.Fields;
 using NetCoreServer.Models.Select;
+using NetCoreServer.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NetCoreServer.Models
+namespace NetCoreServer.Models.DataModels
 {
     public class DataSlice
     {
         public int[] DataColumnIndexes { get; set; }
 
-        public static Data Data { get; set; }
-        public DataSlice(Data data)
+        public static IDataStructure Data { get; set; }
+        public DataSlice(IDataStructure data)
         {
             Data = data;
-            var dataVauesCount = Data.DataValuesByColumn.First().Value.Count();
+            var dataVauesCount = Data.Count();
             DataColumnIndexes = new int[dataVauesCount];
             for (int i = 0; i < dataVauesCount; i++)
             {
@@ -75,7 +76,7 @@ namespace NetCoreServer.Models
                     var indexes = new List<int>();
                     foreach (var index in DataColumnIndexes)
                     {
-                        if (CheckFilter(Data.DataValuesByColumn[filter.Field.Field][index], filter))
+                        if (CheckFilter(Data.GetValue(filter.Field.UniqueName, index), filter))
                         {
                             indexes.Add(index);
                         }
@@ -89,10 +90,10 @@ namespace NetCoreServer.Models
                     var calculatedTotals = new Dictionary<Value, double>();
                     foreach (var agg in calculatedTotalsAggregation)
                     {
-                        calculatedTotals.Add(agg.Keys[filter.Field.Field], agg.Values[filter.Value.Field.Field][filter.Value.Func]);
+                        calculatedTotals.Add(agg.Keys[filter.Field.UniqueName], agg.Values[filter.Value.Field.UniqueName][filter.Value.Func]);
                     }
                     CheckValueFilterQuery(ref calculatedTotals, filter);
-                    DataColumnIndexes = DataColumnIndexes.Where(elem => calculatedTotals.ContainsKey(Data.DataValuesByColumn[filter.Field.Field][elem])).ToArray();
+                    DataColumnIndexes = DataColumnIndexes.Where(elem => calculatedTotals.ContainsKey(Data.GetValue(filter.Field.UniqueName, elem))).ToArray();
                 }
             }
         }
@@ -386,7 +387,7 @@ namespace NetCoreServer.Models
             }
             var field = fields[0];
             var fieldsSkipped = fields.Skip(1).ToList();
-            var groupsByField = GroupBy(field.Field);
+            var groupsByField = GroupBy(field.UniqueName);
             foreach (var group in groupsByField)
             {
                 var subdata = new DataSlice(group.Value.ToArray());
@@ -394,7 +395,7 @@ namespace NetCoreServer.Models
                 if (item.Values.Count != 0)
                 {
                     item.Keys = keys != null ? new Dictionary<string, Value>(keys) : new Dictionary<string, Value>();
-                    item.Keys.Add(field.Field, group.Key);
+                    item.Keys.Add(field.UniqueName, group.Key);
                     response.Add(item);
                     subdata.CalcByFields(fieldsSkipped, fieldsInColumns, values, ref response, item.Keys);
                 }
@@ -404,7 +405,7 @@ namespace NetCoreServer.Models
             {
                 var colField = fieldsInColumns[0];
                 var colsSkipped = fieldsInColumns.Skip(1).ToList();
-                var colGroupsByField = GroupBy(colField.Field);
+                var colGroupsByField = GroupBy(colField.UniqueName);
                 foreach (var group in colGroupsByField)
                 {
                     var subdata = new DataSlice(group.Value.ToArray());
@@ -412,7 +413,7 @@ namespace NetCoreServer.Models
                     if (item.Values.Count != 0)
                     {
                         item.Keys = keys != null ? new Dictionary<string, Value>(keys) : new Dictionary<string, Value>();
-                        item.Keys.Add(colField.Field, group.Key);
+                        item.Keys.Add(colField.UniqueName, group.Key);
                         response.Add(item);
                         subdata.CalcByFields(colsSkipped, null, values, ref response, item.Keys);
                     }
@@ -430,11 +431,11 @@ namespace NetCoreServer.Models
             Dictionary<Value, List<int>> groups = new Dictionary<Value, List<int>>();
             foreach (var index in DataColumnIndexes)
             {
-                if (!groups.ContainsKey(Data.DataValuesByColumn[field][index]))
+                if (!groups.ContainsKey(Data.GetValue(field, index)))
                 {
-                    groups.Add(Data.DataValuesByColumn[field][index], new List<int>());
+                    groups.Add(Data.GetValue(field, index), new List<int>());
                 }
-                groups[Data.DataValuesByColumn[field][index]].Add(index);
+                groups[Data.GetValue(field, index)].Add(index);
             }
             return groups;
         }
@@ -457,18 +458,18 @@ namespace NetCoreServer.Models
                     var calcValue = CalcValue(valrequest.Field, valrequest.Func);
                     if (!double.IsNaN(calcValue))
                     {
-                        if (!response.Values.ContainsKey(valrequest.Field.Field))
+                        if (!response.Values.ContainsKey(valrequest.Field.UniqueName))
                         {
-                            response.Values.Add(valrequest.Field.Field, new Dictionary<string, double>());
+                            response.Values.Add(valrequest.Field.UniqueName, new Dictionary<string, double>());
                         }
-                        if (!response.Values[valrequest.Field.Field].ContainsKey(valrequest.Func))
+                        if (!response.Values[valrequest.Field.UniqueName].ContainsKey(valrequest.Func))
                         {
-                            response.Values[valrequest.Field.Field].Add(valrequest.Func, calcValue);
+                            response.Values[valrequest.Field.UniqueName].Add(valrequest.Func, calcValue);
                         }
                     }
                 });
             return response;
-        }      
+        }
 
         /// <summary>
         /// Calculates aggregated value for specific field
@@ -478,47 +479,48 @@ namespace NetCoreServer.Models
         /// <returns>Calculated aggregation</returns>
         private double CalcValue(FieldModel field, string func)
         {
+            var validDataColumnIndexes = DataColumnIndexes.Where(index => !(Data.GetValue(field.UniqueName, index).StringValue == "") && (Data.GetValue(field.UniqueName, index) != null)).DefaultIfEmpty(-1).ToArray();
+
             if (func == "count")
             {
-                return DataColumnIndexes.Count();
+                return validDataColumnIndexes.Count();
             }
             if (func == "distinctcount")
             {
-                return DataColumnIndexes.Select(index => Data.DataValuesByColumn[field.Field][index]).Distinct().ToList().Count;
+                return validDataColumnIndexes.Select(index => Data.GetValue(field.UniqueName, index)).Distinct().ToList().Count;
             }
             if (field.Type == "number")
             {
-                var validDataColumnIndexes = DataColumnIndexes.Where(index => (Data.DataValuesByColumn[field.Field][index].StringValue == null) && (Data.DataValuesByColumn[field.Field][index] != null)).DefaultIfEmpty(-1).ToArray();
                 if (validDataColumnIndexes[0] == -1)
                 {
                     return double.NaN;
                 }
                 if (func == "sum" || func == "none")
                 {
-                    return validDataColumnIndexes.Sum(index => Data.DataValuesByColumn[field.Field][index].NumberValue.Value);
+                    return validDataColumnIndexes.Sum(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
                 }
                 if (func == "average")
                 {
-                    return validDataColumnIndexes.Average(index => Data.DataValuesByColumn[field.Field][index].NumberValue.Value);
+                    return validDataColumnIndexes.Average(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
                 }
                 if (func == "min")
                 {
-                    return validDataColumnIndexes.Min(index => Data.DataValuesByColumn[field.Field][index].NumberValue.Value);
+                    return validDataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
                 }
                 if (func == "max")
                 {
-                    return validDataColumnIndexes.Max(index => Data.DataValuesByColumn[field.Field][index].NumberValue.Value);
+                    return validDataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
                 }
             }
             if (field.Type == "date")
             {
                 if (func == "min")
                 {
-                    return DataColumnIndexes.Min(index => Data.DataValuesByColumn[field.Field][index].DateValue.Value.ToUnixTimestamp());
+                    return DataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
                 }
                 if (func == "max")
                 {
-                    return DataColumnIndexes.Max(index => Data.DataValuesByColumn[field.Field][index].DateValue.Value.ToUnixTimestamp());
+                    return DataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
                 }
             }
             return 0;

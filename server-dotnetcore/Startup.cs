@@ -31,19 +31,18 @@ namespace NetCoreServer
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 });
             });
-            services.AddControllers();
+
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new ValuesJsonConverter());
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
+            services.AddMemoryCache();
 
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
