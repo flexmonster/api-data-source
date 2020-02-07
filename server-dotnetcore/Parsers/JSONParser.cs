@@ -1,6 +1,7 @@
 ﻿using NetCoreServer.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace NetCoreServer.Parsers
@@ -20,7 +21,6 @@ namespace NetCoreServer.Parsers
             List<Dictionary<string, Value>> dataRows = JsonSerializer.DeserializeAsync<List<Dictionary<string, Value>>>(fileStream, _serializerOptions).Result;
             yield return ToColumnView(dataRows);
         }
-
         /// <summary>
         /// Change list of rows to list of columns
         /// </summary>
@@ -28,30 +28,37 @@ namespace NetCoreServer.Parsers
         /// <returns></returns>
         private Dictionary<string, List<Value>> ToColumnView(List<Dictionary<string, Value>> dataValues)
         {
-            var columnView = new Dictionary<string, List<Value>>();
+            var columnView = new Dictionary<string, Value[]>();
             if (dataValues != null && dataValues.Count > 0)
             {
                 var firstElement = dataValues[0];
                 foreach (var field in firstElement)
                 {
-                    columnView.Add(field.Key, new List<Value>(dataValues.Count));
+                    columnView.Add(field.Key, new Value[dataValues.Count]);
                 }
+
                 int i = 0;
                 foreach (var dataElement in dataValues)
                 {
                     foreach (var field in dataElement)
                     {
-                        columnView.TryGetValue(field.Key, out List<Value> value);
-                        if (value != null) value.Add(field.Value);
+                        columnView.TryGetValue(field.Key, out Value[] value);
+                        if (value != null) value[i] = field.Value;
                     }
                     i++;
                 }
             }
             ReplaceNullsWithEmptyValues(ref columnView);
-            return columnView;
+
+            var columnViewList = new Dictionary<string, List<Value>>();
+            foreach (var column in columnView)
+            {
+                columnViewList.Add(column.Key, column.Value.ToList());
+            }
+            return columnViewList;
         }
 
-        private void ReplaceNullsWithEmptyValues(ref Dictionary<string, List<Value>> columnView)
+        private void ReplaceNullsWithEmptyValues(ref Dictionary<string, Value[]> columnView)
         {
             foreach (var column in columnView)
             {

@@ -479,14 +479,23 @@ namespace NetCoreServer.Models.DataModels
         /// <returns>Calculated aggregation</returns>
         private double CalcValue(FieldModel field, string func)
         {
-            var validDataColumnIndexes = DataColumnIndexes.Where(index => !(Data.GetValue(field.UniqueName, index).StringValue == "") && (Data.GetValue(field.UniqueName, index) != null)).DefaultIfEmpty(-1).ToArray();
+            var validDataColumnIndexes = DataColumnIndexes.Where(index => !(Data.GetValue(field.UniqueName, index).StringValue == "")
+            && (Data.GetValue(field.UniqueName, index) != null)).DefaultIfEmpty(-1).ToArray();
 
             if (func == "count")
             {
+                if (validDataColumnIndexes[0] == -1)
+                {
+                    return 0;
+                }
                 return validDataColumnIndexes.Count();
             }
             if (func == "distinctcount")
             {
+                if (validDataColumnIndexes[0] == -1)
+                {
+                    return 0;
+                }
                 return validDataColumnIndexes.Select(index => Data.GetValue(field.UniqueName, index)).Distinct().ToList().Count;
             }
             if (field.Type == "number")
@@ -516,11 +525,11 @@ namespace NetCoreServer.Models.DataModels
             {
                 if (func == "min")
                 {
-                    return DataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
+                    return validDataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
                 }
                 if (func == "max")
                 {
-                    return DataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
+                    return validDataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
                 }
             }
             return 0;
