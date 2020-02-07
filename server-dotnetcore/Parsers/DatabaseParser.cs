@@ -12,10 +12,9 @@ namespace NetCoreServer.Parsers
 
 
         private Dictionary<int, string> _columnNames;
-        private Dictionary<int, Func<object, Value>> _columnTypesConvertion;
+        private Dictionary<int, KeyValuePair<Type, Func<object, Value>>> _columnTypesConvertion;
 
         private Dictionary<string, List<Value>> _dataBlock;
-
         /// <summary>
         /// Parse database values
         /// </summary>
@@ -24,7 +23,7 @@ namespace NetCoreServer.Parsers
         {
             _dataReader = dataReader;
             _columnNames = new Dictionary<int, string>();
-            _columnTypesConvertion = new Dictionary<int, Func<object, Value>>();
+            _columnTypesConvertion = new Dictionary<int, KeyValuePair<Type, Func<object, Value>>>();
         }
         public IEnumerable<Dictionary<string, List<Value>>> Parse()
         {
@@ -35,7 +34,7 @@ namespace NetCoreServer.Parsers
             {
                 var columnName = _dataReader.GetName(i);
                 var columnType = _dataReader.GetFieldType(i);
-                _columnTypesConvertion.Add(i, DetectType(columnType));
+                _columnTypesConvertion.Add(i, new KeyValuePair<Type, Func<object, Value>>(columnType, DetectType(columnType)));
                 _columnNames.Add(i, columnName);
                 _dataBlock.Add(columnName, new List<Value>());
             }
@@ -50,8 +49,12 @@ namespace NetCoreServer.Parsers
                 {
                     ParseBlock(readingChunk);
                     readingChunk = new object[CHUNK_SIZE][];
+                    chunckPosition = 0;
                     yield return _dataBlock;
-                    _dataBlock = new Dictionary<string, List<Value>>();
+                    foreach (var columnName in _columnNames)
+                    {
+                        _dataBlock[columnName.Value] = new List<Value>();
+                    }
                 }
             }
             _dataReader.Close();
@@ -60,7 +63,6 @@ namespace NetCoreServer.Parsers
 
             yield return _dataBlock;
         }
-
         /// <summary>
         /// Detect type of column based of type returned from database
         /// </summary>
@@ -106,14 +108,12 @@ namespace NetCoreServer.Parsers
         private void ParseBlock(object[][] rows)
         {
             var enumerator = rows.GetEnumerator();
-            enumerator.MoveNext();
-            while (enumerator.Current != null)
+            while (enumerator.MoveNext())
             {
-                ParseRow(enumerator.Current as object[]);
-                enumerator.MoveNext();
+                if (enumerator.Current != null)
+                    ParseRow(enumerator.Current as object[]);
             }
         }
-
         /// <summary>
         /// Parse specific row
         /// </summary>
@@ -122,8 +122,9 @@ namespace NetCoreServer.Parsers
         {
             for (int i = 0; i < values.Length; i++)
             {
-                _dataBlock[_columnNames[i]].Add(_columnTypesConvertion[i].Invoke(values[i]));
+                _dataBlock[_columnNames[i]].Add(_columnTypesConvertion[i].Value.Invoke(values[i]));
             }
         }
     }
+  
 }
