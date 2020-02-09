@@ -28,6 +28,8 @@ namespace NetCoreServer.Controllers
 
         private readonly IConfiguration _configuration;
 
+        const string API_VERSION = "2.8.0";
+
         const int MEMBERS_PAGE_SIZE = 50000;
 
         const int SELECT_PAGE_SIZE = 50000;
@@ -50,7 +52,7 @@ namespace NetCoreServer.Controllers
             object response = null;
             if (request.Type == RequestType.Handshake)
             {
-                response = new { isSingleEndpointApi = false };
+                response = new { version = API_VERSION };
             }
             return new JsonResult(response);
         }

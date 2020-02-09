@@ -6,9 +6,14 @@ const _ = require('lodash');
  * API endpoints
  */
 
+const API_VERSION = "2.8.0";
+
 cube.post("/handshake", async (req, res) => {
-    // do nothing
-    res.status(200).send();
+    try {
+        res.json({ version: API_VERSION });
+    } catch (err) {
+        handleError(err, res);
+    }
 });
 
 cube.post("/fields", async (req, res) => {
