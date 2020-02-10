@@ -1,4 +1,4 @@
-# Flexmonster custom data source API server (beta version)
+# Flexmonster custom data source API server
 
 Flexmonster custom data source API is designed for summarized data retrieval from a server to Flexmonster Pivot.
 
