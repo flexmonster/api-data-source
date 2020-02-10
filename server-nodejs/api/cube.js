@@ -6,9 +6,14 @@ const _ = require('lodash');
  * API endpoints
  */
 
+const API_VERSION = "2.8.0";
+
 cube.post("/handshake", async (req, res) => {
-    // do nothing
-    res.status(200).send();
+    try {
+        res.json({ version: API_VERSION });
+    } catch (err) {
+        handleError(err, res);
+    }
 });
 
 cube.post("/fields", async (req, res) => {
@@ -77,7 +82,7 @@ async function getFields(index) {
                 const value = dataRow[fieldName];
                 const type = resolveDataType(value);
                 output.fields.push({
-                    "field": fieldName,
+                    "uniqueName": fieldName,
                     "caption": fieldName,
                     "type": type,
                 })
@@ -115,14 +120,14 @@ const MEMBERS_PAGE_SIZE = 5000;
  */
 async function getMembers(index, field, page) {
     const data = await getData(index);
-    const fieldName = field.field;
+    const fieldName = field.uniqueName;
     const fieldType = field.type;
     const output = {
         members: []
     };
     const members = _.uniq(_.map(data, fieldName));
-    if (fieldName == "date_month") { // custom sort for months
-        members.sort(monthComapre);
+    if (checkMonths(members)) { // custom sort for months
+        members.sort(monthCompare);
         output.sorted = true;
     }
     page = isNaN(page) ? 0 : page;
@@ -146,9 +151,24 @@ function createMember(value, fieldType) {
 }
 
 const monthOrder = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const shortMonthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-function monthComapre(a, b) {
-    return monthOrder.indexOf(a) - monthOrder.indexOf(b);
+/**
+ * Checks whether the members are months.
+ * @param {Array} members array of a field's members
+ */
+function checkMonths(members) {
+    if (typeof members === 'undefined' || members === null || typeof members.length === 'undefined' || members.length === null) return false;
+    if (monthOrder.indexOf(members[0]) != -1) return true;
+    if (shortMonthOrder.indexOf(members[0]) != -1) return true;
+    return false;
+}
+
+function monthCompare(a, b) {
+    if (monthOrder.indexOf(a) > -1 || monthOrder.indexOf(b) > -1) {
+        return monthOrder.indexOf(a) - monthOrder.indexOf(b);
+    }
+    return shortMonthOrder.indexOf(a) - shortMonthOrder.indexOf(b);
 }
 
 /**
@@ -194,13 +214,13 @@ async function getSelectResult(index, query, page) {
     if (query.fields) {
         output.fields = query.fields.map(function (f) {
             return {
-                "field": f.field
+                "uniqueName": f.uniqueName
             };
         });
         output.hits = [];
         const limit = isNaN(query.limit) ? data.length : Math.min(query.limit, data.length);
         for (let i = 0; i < limit; i++) {
-            const row = query.fields.map(f => data[i][f.field]);
+            const row = query.fields.map(f => data[i][f.uniqueName]);
             output.hits.push(row)
         }
         page = isNaN(page) ? 0 : page;
@@ -243,7 +263,7 @@ function filterData(data, filters) {
  */
 function checkFilter(item, filter) {
     let check = true;
-    const fieldName = filter["field"].field;
+    const fieldName = filter["field"].uniqueName;
     const fieldType = filter["field"].type;
     const value = item[fieldName];
     if (filter["include"]) {
@@ -414,7 +434,7 @@ function calcByFields(data, fields, cols, values, output, keys) {
     if (fields.length < 1) {
         return;
     }
-    const fieldName = fields[0].field;
+    const fieldName = fields[0].uniqueName;
     const subfields = fields.slice(1);
     const groups = _.groupBy(data, fieldName);
     for (const key in groups) {
@@ -427,7 +447,7 @@ function calcByFields(data, fields, cols, values, output, keys) {
     }
     // column totals
     if (cols && cols.length > 0 && fields.length > cols.length) {
-        const colFieldName = cols[0].field;
+        const colFieldName = cols[0].uniqueName;
         const subCols = cols.slice(1);
         const colGroups = _.groupBy(data, colFieldName);
         for (const key in colGroups) {
@@ -451,7 +471,7 @@ function calcValues(data, values) {
         values: {}
     };
     for (const value of values) {
-        const fieldName = value.field.field;
+        const fieldName = value.field.uniqueName;
         if (!output.values[fieldName]) {
             output.values[fieldName] = {};
         }

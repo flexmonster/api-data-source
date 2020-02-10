@@ -4,7 +4,7 @@ namespace NetCoreServer.Models.Fields
 {
     public class FieldModel
     {
-        public string Field { get; set; }
+        public string UniqueName { get; set; }
         public string Type { get; set; }
         public string Caption { get; set; }
         public string Folder { get; set; }
