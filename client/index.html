@@ -5,8 +5,7 @@
     <title>Flexmonster Pivot Table & Charts</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="flexmonster/flexmonster.min.css" rel="stylesheet">
-    <script src="flexmonster/flexmonster.full.js"></script>
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
 </head>
 
 <body>
@@ -14,6 +13,7 @@
     <script type="text/javascript">
         var pivot = new Flexmonster({
             container: "#pivot",
+            componentFolder: "https://cdn.flexmonster.com/",
             height: 600,
             toolbar: true,
             report: {
@@ -45,8 +45,7 @@
                     "name": "",
                     "maxDecimalPlaces": 2
                 }]
-            },
-            licenseKey: "Z78S-XB265Y-1A076J-3L3O3W"
+            }
         });
     </script>
 </body>
