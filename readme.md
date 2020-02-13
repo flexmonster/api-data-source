@@ -25,6 +25,8 @@ npm install
 npm start
 ```
 
+See [a quick overview of the sample Node.js server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-node-js-server/) to learn more.
+
 ### Sample .NET Core server
 
 To start the sample .NET Code server:
@@ -34,3 +36,5 @@ cd server-dotnetcore
 dotnet restore
 dotnet run
 ```
+
+See [a quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-net-core-server/) to learn more.
