@@ -7,6 +7,8 @@ This repository holds the source code for a Flexmonster custom data source API p
 Flexmonster custom data source API is designed for summarized data retrieval from a server to Flexmonster Pivot.
 This API will work for projects with their own data access layer, where filtering and aggregation are delegated to a server and Flexmonster receives ready-to-show data.
 
+For more information, refer to our documentation:
+
 - [API documentation](https://www.flexmonster.com/api/all-requests/)
 - [Quick start guide to the custom data source API implementation](https://www.flexmonster.com/doc/implementing-the-custom-data-source-api-server/)
 - [A quick overview of the sample Node.js server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-node-js-server/)
