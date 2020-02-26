@@ -1,7 +1,9 @@
-﻿using System;
+﻿using NetCoreServer.Extensions;
+using NetCoreServer.Models;
+using NetCoreServer.Models.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using NetCoreServer.Models;
 
 namespace NetCoreServer.Parsers
 {
@@ -10,33 +12,49 @@ namespace NetCoreServer.Parsers
         private const ushort CHUNK_SIZE = ushort.MaxValue;
         private readonly IDataReader _dataReader;
 
-
         private Dictionary<int, string> _columnNames;
-        private Dictionary<int, KeyValuePair<Type, Func<object, Value>>> _columnTypesConvertion;
+        private Dictionary<int, Action<object, dynamic>> _columnAddActionMap;
 
-        private Dictionary<string, List<Value>> _dataBlock;
-        /// <summary>
-        /// Parse database values
-        /// </summary>
-        /// <param name="dataReader">Datareader to access data in database</param>
+        private Dictionary<string, dynamic> _dataBlock;
+
         public DatabaseParser(IDataReader dataReader)
         {
             _dataReader = dataReader;
             _columnNames = new Dictionary<int, string>();
-            _columnTypesConvertion = new Dictionary<int, KeyValuePair<Type, Func<object, Value>>>();
+            _dataTypes = new Dictionary<string, ColumnType>();
+            _columnAddActionMap = new Dictionary<int, Action<object, dynamic>>();
         }
-        public IEnumerable<Dictionary<string, List<Value>>> Parse()
+
+        private Dictionary<string, ColumnType> _dataTypes;
+
+        public Dictionary<string, ColumnType> DataTypes
         {
-            _dataBlock = new Dictionary<string, List<Value>>();
+            get
+            {
+                return _dataTypes;
+            }
+        }
+
+        public IEnumerable<Dictionary<string, dynamic>> Parse()
+        {
+            _dataBlock = new Dictionary<string, dynamic>();
             object[][] readingChunk = new object[CHUNK_SIZE][];
             int chunckPosition = 0;
             for (int i = 0; i < _dataReader.FieldCount; i++)
             {
                 var columnName = _dataReader.GetName(i);
                 var columnType = _dataReader.GetFieldType(i);
-                _columnTypesConvertion.Add(i, new KeyValuePair<Type, Func<object, Value>>(columnType, DetectType(columnType)));
+                _columnAddActionMap.Add(i, DetectType(columnType, out ColumnType dataColumnType));
                 _columnNames.Add(i, columnName);
-                _dataBlock.Add(columnName, new List<Value>());
+                _dataTypes.Add(columnName, dataColumnType);
+                if (dataColumnType == ColumnType.stringType)
+                {
+                    _dataBlock.Add(columnName, new List<string>());
+                }
+                else
+                {
+                    _dataBlock.Add(columnName, new List<double?>());
+                }
             }
             while (_dataReader.Read())
             {
@@ -51,9 +69,16 @@ namespace NetCoreServer.Parsers
                     readingChunk = new object[CHUNK_SIZE][];
                     chunckPosition = 0;
                     yield return _dataBlock;
-                    foreach (var columnName in _columnNames)
+                    foreach (var columnType in _dataTypes)
                     {
-                        _dataBlock[columnName.Value] = new List<Value>();
+                        if (columnType.Value == ColumnType.stringType)
+                        {
+                            _dataBlock[columnType.Key] = new List<string>();
+                        }
+                        else
+                        {
+                            _dataBlock[columnType.Key] = new List<double?>();
+                        }
                     }
                 }
             }
@@ -63,22 +88,22 @@ namespace NetCoreServer.Parsers
 
             yield return _dataBlock;
         }
-        /// <summary>
-        /// Detect type of column based of type returned from database
-        /// </summary>
-        /// <param name="columnType">type of column</param>
-        /// <returns>Function to convert data to specific type</returns>
-        private Func<object, Value> DetectType(Type columnType)
+
+        private Action<object, dynamic> DetectType(Type columnType, out ColumnType dataColumnType)
         {
             switch (Type.GetTypeCode(columnType))
             {
                 case TypeCode.DateTime:
-                    return (value) =>
                     {
-                        if (!(value is DBNull))
-                            return new Value(Convert.ToDateTime(value));
-                        return new Value("");
-                    };
+                        dataColumnType = ColumnType.dateType;
+                        return (value, dataColumn) =>
+                        {
+                            if (value is DBNull)
+                                dataColumn.Add((double?)null);
+                            else
+                                dataColumn.Add(Convert.ToDateTime(value).ToUnixTimestamp());
+                        };
+                    }
                 case TypeCode.Byte:
                 case TypeCode.SByte:
                 case TypeCode.UInt16:
@@ -90,21 +115,27 @@ namespace NetCoreServer.Parsers
                 case TypeCode.Decimal:
                 case TypeCode.Double:
                 case TypeCode.Single:
-                    return (value) =>
                     {
-                        if (!(value is DBNull))
-                            return new Value(Convert.ToDouble(value));
-                        return new Value("");
-                    };
+                        dataColumnType = ColumnType.doubleType;
+                        return (value, dataColumn) =>
+                        {
+                            if (value is DBNull)
+                                dataColumn.Add((double?)null);
+                            else
+                                dataColumn.Add(Convert.ToDouble(value));
+                        };
+                    }
                 default:
-                    return (value) => { return new Value(Convert.ToString(value)); };
+                    {
+                        dataColumnType = ColumnType.stringType;
+                        return (value, dataColumn) =>
+                        {
+                            dataColumn.Add(Convert.ToString(value));
+                        };
+                    }
             }
         }
 
-        /// <summary>
-        /// Parse rows readed from database
-        /// </summary>
-        /// <param name="rows"></param>
         private void ParseBlock(object[][] rows)
         {
             var enumerator = rows.GetEnumerator();
@@ -114,17 +145,13 @@ namespace NetCoreServer.Parsers
                     ParseRow(enumerator.Current as object[]);
             }
         }
-        /// <summary>
-        /// Parse specific row
-        /// </summary>
-        /// <param name="values"></param>
+
         private void ParseRow(object[] values)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                _dataBlock[_columnNames[i]].Add(_columnTypesConvertion[i].Value.Invoke(values[i]));
+                _columnAddActionMap[i].Invoke(values[i], _dataBlock[_columnNames[i]]);
             }
         }
     }
-  
 }

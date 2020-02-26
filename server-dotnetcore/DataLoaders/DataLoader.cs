@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using NetCoreServer.Models;
+﻿using NetCoreServer.Models;
 using NetCoreServer.Models.DataModels;
 using NetCoreServer.Parsers;
-
 
 namespace NetCoreServer.DataLoaders
 {
     public class DataLoader : IDataLoader
     {
         private readonly IParser _parser;
+
         /// <summary>
         /// Parse data with given Parser
         /// </summary>
@@ -17,6 +16,7 @@ namespace NetCoreServer.DataLoaders
         {
             _parser = parser;
         }
+
         /// <summary>
         /// Load data from data source
         /// </summary>
@@ -28,7 +28,10 @@ namespace NetCoreServer.DataLoaders
             {
                 if (data.GetColumnNames().Count == 0)
                 {
-                    data.AddColumns(dataBlock.Keys.ToList());
+                    foreach (var column in dataBlock.Keys)
+                    {
+                        data.AddColumn(column, _parser.DataTypes[column]);
+                    }
                 }
                 data.AddBlock(dataBlock);
             }

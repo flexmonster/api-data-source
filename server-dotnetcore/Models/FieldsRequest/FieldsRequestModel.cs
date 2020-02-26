@@ -7,11 +7,11 @@ namespace NetCoreServer.Models.Fields
         Select,
         Handshake
     }
+
     public class FieldsRequest
     {
         public FieldsRequest()
         {
-
         }
 
         public FieldsRequest(string index, RequestType type)
@@ -19,6 +19,7 @@ namespace NetCoreServer.Models.Fields
             Index = index;
             type = Type;
         }
+
         public string Index { get; set; }
 
         public RequestType Type { get; set; }

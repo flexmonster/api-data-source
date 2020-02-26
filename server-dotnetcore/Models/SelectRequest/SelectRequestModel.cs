@@ -6,8 +6,8 @@ namespace NetCoreServer.Models.Select
     {
         public SelectRequest()
         {
-
         }
+
         public SelectRequest(string index, RequestType type, Query query, int page)
         {
             Index = index;
@@ -15,6 +15,7 @@ namespace NetCoreServer.Models.Select
             Query = query;
             Page = page;
         }
+
         public string Index { get; set; }
 
         public RequestType Type { get; set; }

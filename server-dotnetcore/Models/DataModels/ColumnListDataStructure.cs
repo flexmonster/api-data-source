@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using NetCoreServer.Models.DataModels;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace NetCoreServer.Models.DataModels
+namespace NetCoreServer.Models
 {
     public enum Month
     {
@@ -34,67 +36,77 @@ namespace NetCoreServer.Models.DataModels
         Nov,
         Dec
     }
+
     public class ColumnListDataStructure : IDataStructure
     {
-        public Dictionary<string, List<Value>> DataValuesByColumn { get; set; }
+        public Dictionary<string, dynamic> DataValuesByColumn { get; set; }
+
         public ColumnListDataStructure()
         {
-            DataValuesByColumn = new Dictionary<string, List<Value>>();
+            DataValuesByColumn = new Dictionary<string, dynamic>();
         }
 
-        public void Add(Dictionary<string, Value> row)
-        {
-            foreach (var columnName in row.Keys)
-            {
-                DataValuesByColumn[columnName].Add(row[columnName]);
-            }
-        }
-
-        public void AddBlock(Dictionary<string, List<Value>> dataBlock)
-        {
-            foreach (var columnName in dataBlock.Keys)
-            {
-                DataValuesByColumn[columnName].AddRange(dataBlock[columnName]);
-            }
-        }
-
-        public int Count()
-        {
-            if (DataValuesByColumn.Count == 0)
-                return 0;
-            return DataValuesByColumn.First().Value.Count;
-        }
-
-        public Value GetValue(string columnName, int index)
-        {
-            return DataValuesByColumn[columnName][index];
-        }
-
-        public List<Value> GetColumn(string columnName)
+        /// <summary>
+        /// Get column by name
+        /// </summary>
+        /// <typeparam name="T">Type of column</typeparam>
+        /// <param name="columnName">Column name</param>
+        /// <returns></returns>
+        public DataColumn<T> GetColumn<T>(string columnName)
         {
             return DataValuesByColumn[columnName];
         }
 
+        /// <summary>
+        /// Get all columns names
+        /// </summary>
+        /// <returns>List of names</returns>
         public List<string> GetColumnNames()
         {
             return DataValuesByColumn.Keys.ToList();
         }
 
-        public Dictionary<string, Value> GetRow(int position)
+        /// <summary>
+        /// Get all columns names and types
+        /// </summary>
+        /// <returns>Dictionary where key - name, value - type</returns>
+        public Dictionary<string, ColumnType> GetNameAndTypes()
         {
-            Dictionary<string, Value> row = new Dictionary<string, Value>();
+            Dictionary<string, ColumnType> row = new Dictionary<string, ColumnType>();
             foreach (var column in DataValuesByColumn)
             {
-                row.Add(column.Key, column.Value[position]);
+                row.Add(column.Key, column.Value.ColumnType);
             }
             return row;
         }
-
-        public void AddColumns(List<string> columnNames)
+        /// <summary>
+        /// Add column to DataStructure
+        /// </summary>
+        /// <param name="columnName">Column name</param>
+        /// <param name="type">Column type</param>
+        public void AddColumn(string columnName, ColumnType type)
         {
-            foreach (var columnName in columnNames)
+            if (ColumnType.stringType == type)
             {
-                DataValuesByColumn.Add(columnName, new List<Value>());
+                DataColumn<string> column = new DataColumn<string>(type);
+                DataValuesByColumn.Add(columnName, column);
+            }
+            else
+            {
+                DataColumn<double?> column = new DataColumn<double?>(type);
+                DataValuesByColumn.Add(columnName, column);
+            }
+        }
+
+        /// <summary>
+        /// Add block of values
+        /// </summary>
+        /// <param name="dataBlock"></param>
+        public void AddBlock(Dictionary<string, dynamic> dataBlock)
+        {
+            foreach (var column in dataBlock)
+            {
+                DataValuesByColumn[column.Key].AddBlock(column.Value);
             }
         }
     }

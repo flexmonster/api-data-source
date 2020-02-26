@@ -1,9 +1,10 @@
-using NetCoreServer.JsonConverters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetCoreServer.DataStorages;
+using NetCoreServer.JsonConverters;
 using System.Text.Json.Serialization;
 
 namespace NetCoreServer
@@ -15,9 +16,7 @@ namespace NetCoreServer
             Configuration = configuration;
         }
 
-
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
 
@@ -31,17 +30,23 @@ namespace NetCoreServer
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 });
             });
-
+            services.Configure<DatasourceOptions>(Configuration.GetSection("DataSource"));
+            services.Configure<DataStorageOptions>(Configuration.GetSection("DataStorageOptions"));
+            services.AddSingleton<IDataStorage, DataStorage>();
+            services.AddScoped<IPrepopulatingService, PrepopulatingCacheService>();
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new ValuesJsonConverter());
+                options.JsonSerializerOptions.Converters.Add(new ColumnTypeJsonConverter());
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
-            services.AddMemoryCache();
-
+            services.AddMemoryCache((options) =>
+            {
+                options.SizeLimit = 100;
+            });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IPrepopulatingService prepopulatingService)
         {
             if (env.IsDevelopment())
             {
@@ -50,14 +55,15 @@ namespace NetCoreServer
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseCors(MyAllowSpecificOrigins);
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            prepopulatingService.Prepopulate();
         }
     }
 }

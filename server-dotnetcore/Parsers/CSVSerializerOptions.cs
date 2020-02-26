@@ -3,6 +3,7 @@
     public class CSVSerializerOptions
     {
         private char _fieldEnclosureToken;
+
         public char FieldEnclosureToken
         {
             get
@@ -14,7 +15,9 @@
                 this._fieldEnclosureToken = value;
             }
         }
+
         private char _fieldSeparator;
+
         public char FieldSeparator
         {
             get

@@ -9,11 +9,11 @@ namespace NetCoreServer.Models.Select
 
         public string FieldType { get; set; }
 
-        public List<Value> Include { get; set; }
+        public List<ValueObject> Include { get; set; }
 
-        public List<Value> Exclude { get; set; }
+        public List<ValueObject> Exclude { get; set; }
 
-        public Dictionary<string, Value> Query { get; set; }
+        public Dictionary<string, ValueObject> Query { get; set; }
 
         public FieldFuncValue Value { get; set; }
 
