@@ -8,6 +8,7 @@ namespace NetCoreServer.Models.Select
         public Query()
         {
         }
+
         public List<FieldModel> Fields { get; set; }
 
         public AggregationRequest Aggs { get; set; }

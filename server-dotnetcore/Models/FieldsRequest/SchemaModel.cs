@@ -18,6 +18,5 @@ namespace NetCoreServer.Models.Fields
             Filters = new SchemaFilter();
             Fields = new List<FieldModel>();
         }
-
     }
 }

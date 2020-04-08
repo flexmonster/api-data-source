@@ -1,4 +1,4 @@
-﻿using NetCoreServer.Models;
+﻿using NetCoreServer.Models.DataModels;
 using System.Collections.Generic;
 
 namespace NetCoreServer.Parsers
@@ -8,6 +8,8 @@ namespace NetCoreServer.Parsers
         /// <summary>
         /// Parse block of data
         /// </summary>
-        IEnumerable<Dictionary<string, List<Value>>> Parse();
+        IEnumerable<Dictionary<string, dynamic>> Parse();
+
+        Dictionary<string, ColumnType> DataTypes { get; }
     }
 }

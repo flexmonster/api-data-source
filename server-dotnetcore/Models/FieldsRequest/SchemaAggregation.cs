@@ -14,7 +14,6 @@ namespace NetCoreServer.Models.Fields
 
         public SchemaAggregation()
         {
-
         }
     }
 }

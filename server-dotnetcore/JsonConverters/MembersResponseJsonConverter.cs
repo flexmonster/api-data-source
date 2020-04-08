@@ -9,19 +9,19 @@ namespace NetCoreServer.JsonConverters
     /// <summary>
     /// Convertor from MembersResponse object to JSON
     /// </summary>
-    public class MembersResponseJsonConverter : JsonConverter<MembersResponse>
+    public class MembersResponseJsonConverter<T> : JsonConverter<MembersResponse<T>>
     {
-        public override MembersResponse Read(ref Utf8JsonReader reader,
+        public override MembersResponse<T> Read(ref Utf8JsonReader reader,
                                  Type typeToConvert,
                                  JsonSerializerOptions options)
         {
-            var response = new MembersResponse();
-            response = JsonSerializer.Deserialize<MembersResponse>(ref reader, options);
+            var response = new MembersResponse<T>();
+            response = JsonSerializer.Deserialize<MembersResponse<T>>(ref reader, options);
             return response;
         }
 
         public override void Write(Utf8JsonWriter writer,
-                                   MembersResponse value,
+                                   MembersResponse<T> value,
                                    JsonSerializerOptions options)
         {
             writer.WriteStartObject();
@@ -29,30 +29,17 @@ namespace NetCoreServer.JsonConverters
             writer.WriteStartArray();
             foreach (var member in value.Members)
             {
-                
                 writer.WriteStartObject();
                 writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'v', 'a', 'l', 'u', 'e' }));
                 if (member != null)
                 {
-                    if (member.StringValue != null)
-                    {
-                        writer.WriteStringValue(member.StringValue);
-                    }
-                    else if (member.DateValue.HasValue)
-                    {
-                        writer.WriteNumberValue(member.DateValue.Value.ToUnixTimestamp());
-                    }
-                    else
-                    {
-                        writer.WriteNumberValue(member.NumberValue.Value);
-                    }
+                    JsonSerializer.Serialize(writer, member, options);
                 }
                 else
                 {
-                    writer.WriteNullValue();
+                    writer.WriteStringValue("");
                 }
                 writer.WriteEndObject();
-
             }
             writer.WriteEndArray();
             writer.WriteBoolean(new ReadOnlySpan<char>(new char[] { 's', 'o', 'r', 't', 'e', 'd' }), value.Sorted);
@@ -61,6 +48,5 @@ namespace NetCoreServer.JsonConverters
 
             writer.WriteEndObject();
         }
-
     }
 }

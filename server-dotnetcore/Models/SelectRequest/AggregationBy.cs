@@ -11,7 +11,6 @@ namespace NetCoreServer.Models.Select
             Cols = new List<FieldModel>();
         }
 
-
         public List<FieldModel> Rows { get; set; }
 
         public List<FieldModel> Cols { get; set; }

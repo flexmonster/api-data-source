@@ -11,6 +11,6 @@ namespace NetCoreServer.Models.Select
 
         public Dictionary<string, Dictionary<string, double>> Values { get; set; }
 
-        public Dictionary<string, Value> Keys { get; set; }
+        public Dictionary<string, dynamic> Keys { get; set; }
     }
 }

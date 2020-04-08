@@ -3,13 +3,14 @@ using System.Collections.Generic;
 
 namespace NetCoreServer.Models.Members
 {
-    public class MembersResponse
+    public class MembersResponse<T>
     {
         public MembersResponse()
         {
-            Members = new List<Value>();
+            Members = new List<T>();
         }
-        public List<Value> Members { get; set; }
+
+        public List<T> Members { get; set; }
 
         public bool Sorted { get; set; }
 

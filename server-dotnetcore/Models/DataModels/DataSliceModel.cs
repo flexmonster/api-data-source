@@ -1,35 +1,50 @@
+using NetCoreServer.Models.DataModels;
 using NetCoreServer.Models.Fields;
 using NetCoreServer.Models.Select;
-using NetCoreServer.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NetCoreServer.Models.DataModels
+namespace NetCoreServer.Models
 {
     public class DataSlice
     {
+        private int _indexesCount;
         public int[] DataColumnIndexes { get; set; }
 
         public static IDataStructure Data { get; set; }
+
         public DataSlice(IDataStructure data)
         {
             Data = data;
-            var dataVauesCount = Data.Count();
+            var columnNames = Data.GetNameAndTypes();
+            var firstNameAndType = columnNames.First();
+            int dataVauesCount = 0;
+            if (firstNameAndType.Value == ColumnType.stringType)
+            {
+                dataVauesCount = Data.GetColumn<string>(firstNameAndType.Key).Count();
+            }
+            else
+            {
+                dataVauesCount = Data.GetColumn<double?>(firstNameAndType.Key).Count();
+            }
             DataColumnIndexes = new int[dataVauesCount];
+            _indexesCount = 0;
             for (int i = 0; i < dataVauesCount; i++)
             {
                 DataColumnIndexes[i] = i;
+                _indexesCount++;
             }
         }
 
-        public DataSlice(int[] indexes)
+        public DataSlice(int[] indexes, int count)
         {
             DataColumnIndexes = indexes;
+            _indexesCount = count;
         }
 
         /// <summary>
-        /// Filters data 
+        /// Filters data
         /// </summary>
         /// <param name="filters">filters to apply</param>
         public void FilterData(List<Filter> filters)
@@ -40,60 +55,72 @@ namespace NetCoreServer.Models.DataModels
             }
             foreach (var filter in filters)
             {
-                if (filter.Field.Type == "date")
-                {
-                    if (filter.Include != null)
-                    {
-                        foreach (var includeValue in filter.Include)
-                        {
-                            if (includeValue.NumberValue != null)
-                            {
-                                includeValue.FromUnixTimestamp();
-                            }
-                        }
-                    }
-                    if (filter.Exclude != null)
-                    {
-                        foreach (var excludeValue in filter.Exclude)
-                        {
-                            if (excludeValue.NumberValue != null)
-                            {
-                                excludeValue.FromUnixTimestamp();
-                            }
-                        }
-                    }
-                    if (filter.Query != null)
-                    {
-                        if (filter.Query.Single().Value.ListNumberValue == null)
-                        {
-                            filter.Query.Single().Value.FromUnixTimestamp();
-                        }
-                    }
-                }
                 if (filter.Value == null)
                 {
-
-                    var indexes = new List<int>();
-                    foreach (var index in DataColumnIndexes)
+                    ParallelQuery<int> indexes = DataColumnIndexes.AsParallel();
+                    if (filter.Include != null)
                     {
-                        if (CheckFilter(Data.GetValue(filter.Field.UniqueName, index), filter))
+                        if (filter.Field.Type == ColumnType.stringType)
                         {
-                            indexes.Add(index);
+                            CheckIncludeFilter(Data.GetColumn<string>(filter.Field.UniqueName), filter.Include, ref indexes);
+                        }
+                        else
+                        {
+                            CheckIncludeFilter(Data.GetColumn<double?>(filter.Field.UniqueName), filter.Include, ref indexes);
+                        }
+                    }
+                    else if (filter.Exclude != null)
+                    {
+                        if (filter.Field.Type == ColumnType.stringType)
+                        {
+                            CheckExcludeFilter(Data.GetColumn<string>(filter.Field.UniqueName), filter.Exclude, ref indexes);
+                        }
+                        else
+                        {
+                            CheckExcludeFilter(Data.GetColumn<double?>(filter.Field.UniqueName), filter.Exclude, ref indexes);
+                        }
+                    }
+                    else if (filter.Query != null)
+                    {
+                        if (filter.Field.Type == ColumnType.doubleType)
+                        {
+                            var column = Data.GetColumn<double?>(filter.Field.UniqueName);
+                            indexes = indexes.Where(index => CheckNumberFilterQuery(column[index], filter.Query));
+                        }
+                        else if (filter.Field.Type == ColumnType.stringType)
+                        {
+                            var column = Data.GetColumn<string>(filter.Field.UniqueName);
+                            indexes = indexes.Where(index => CheckStringFilterQuery(column[index], filter.Query));
+                        }
+                        else if (filter.Field.Type == ColumnType.dateType)
+                        {
+                            var column = Data.GetColumn<double?>(filter.Field.UniqueName);
+                            indexes = indexes.Where(index => CheckDateFilterQuery(column[index], filter.Query));
                         }
                     }
                     DataColumnIndexes = indexes.ToArray();
                 }
+
                 if (filter.Value != null)
                 {
                     var calculatedTotalsAggregation = new List<Aggregation>();
                     CalcByFields(new List<FieldModel> { filter.Field }, null, new List<FieldFuncValue> { filter.Value }, ref calculatedTotalsAggregation);
-                    var calculatedTotals = new Dictionary<Value, double>();
+                    var calculatedTotals = new Dictionary<object, double>();
                     foreach (var agg in calculatedTotalsAggregation)
                     {
                         calculatedTotals.Add(agg.Keys[filter.Field.UniqueName], agg.Values[filter.Value.Field.UniqueName][filter.Value.Func]);
                     }
                     CheckValueFilterQuery(ref calculatedTotals, filter);
-                    DataColumnIndexes = DataColumnIndexes.Where(elem => calculatedTotals.ContainsKey(Data.GetValue(filter.Field.UniqueName, elem))).ToArray();
+                    if (filter.Field.Type == ColumnType.stringType)
+                    {
+                        var column = Data.GetColumn<string>(filter.Field.UniqueName);
+                        DataColumnIndexes = DataColumnIndexes.Where(index => calculatedTotals.ContainsKey(column[index])).ToArray();
+                    }
+                    else
+                    {
+                        var column = Data.GetColumn<double?>(filter.Field.UniqueName);
+                        DataColumnIndexes = DataColumnIndexes.Where(index => calculatedTotals.ContainsKey(column[index])).ToArray();
+                    }
                 }
             }
         }
@@ -103,56 +130,56 @@ namespace NetCoreServer.Models.DataModels
         /// </summary>
         /// <param name="calculatedTotals">Calculated data with given agregation</param>
         /// <param name="filter"></param>
-        private void CheckValueFilterQuery(ref Dictionary<Value, double> calculatedTotals, Filter filter)
+        private void CheckValueFilterQuery(ref Dictionary<object, double> calculatedTotals, Filter filter)
         {
             if (filter.Query.ContainsKey("top"))
             {
                 calculatedTotals = calculatedTotals.OrderByDescending(elem => elem.Value)
                     .Take((int)filter.Query["top"].NumberValue).ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("bottom"))
+            else if (filter.Query.ContainsKey("bottom"))
             {
                 calculatedTotals = calculatedTotals.OrderBy(elem => elem.Value)
                     .Take((int)filter.Query["bottom"].NumberValue).ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("equal"))
+            else if (filter.Query.ContainsKey("equal"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value == filter.Query["equal"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("not_equal"))
+            else if (filter.Query.ContainsKey("not_equal"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value != filter.Query["not_equal"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("greater"))
+            else if (filter.Query.ContainsKey("greater"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value > filter.Query["greater"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("greater_equal"))
+            else if (filter.Query.ContainsKey("greater_equal"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value >= filter.Query["greater_equal"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("less"))
+            else if (filter.Query.ContainsKey("less"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value < filter.Query["less"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("less_equal"))
+            else if (filter.Query.ContainsKey("less_equal"))
             {
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value <= filter.Query["less_equal"].NumberValue)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("between"))
+            else if (filter.Query.ContainsKey("between"))
             {
                 var from = filter.Query["between"].ListNumberValue[0];
                 var to = filter.Query["between"].ListNumberValue[1];
                 calculatedTotals = calculatedTotals.Where(elem => elem.Value >= from && elem.Value <= to)
                     .ToDictionary(elem => elem.Key, elem => elem.Value);
             }
-            if (filter.Query.ContainsKey("not_between"))
+            else if (filter.Query.ContainsKey("not_between"))
             {
                 var from = filter.Query["not_between"].ListNumberValue[0];
                 var to = filter.Query["not_between"].ListNumberValue[1];
@@ -162,92 +189,92 @@ namespace NetCoreServer.Models.DataModels
         }
 
         /// <summary>
-        /// Checks whether the data item meets the filter query
+        /// Checks whether the data item present in include filter
         /// </summary>
-        /// <param name="dataElement">data value</param>
+        /// <param name="dataColumn">data column</param>
         /// <param name="filter">filter to apply</param>
-        private bool CheckFilter(Value dataElement, Filter filter)
+        /// <param name="indexes">index of data items present in slice</param>
+        private void CheckIncludeFilter<T>(DataColumn<T> dataColumn, List<ValueObject> filter, ref ParallelQuery<int> indexes)
         {
-            if (dataElement == null)
+            if (dataColumn.ColumnType == ColumnType.doubleType || dataColumn.ColumnType == ColumnType.dateType)
             {
-                return false;
+                var numberFilter = filter.Select(value => value.NumberValue);
+                indexes = indexes.Where(index => numberFilter.Contains(dataColumn[index] as double?));
             }
-            if (filter.Include != null)
+            else if (dataColumn.ColumnType == ColumnType.stringType)
             {
-                return filter.Include.Contains(dataElement);
+                var stringFilter = filter.Select(value => value.StringValue);
+                indexes = indexes.Where(index => stringFilter.Contains(dataColumn[index] as string));
             }
-            else if (filter.Exclude != null)
+        }
+        /// <summary>
+        /// Checks whether the data item present in exclude filter
+        /// </summary>
+        /// <param name="dataColumn">data column</param>
+        /// <param name="filter">filter to apply</param>
+        /// <param name="indexes">index of data items present in slice</param>
+        private void CheckExcludeFilter<T>(DataColumn<T> dataColumn, List<ValueObject> filter, ref ParallelQuery<int> indexes)
+        {
+            if (dataColumn.ColumnType == ColumnType.doubleType || dataColumn.ColumnType == ColumnType.dateType)
             {
-                return !filter.Exclude.Contains(dataElement);
+                var numberFilter = filter.Select(value => value.NumberValue);
+                indexes = indexes.Where(index => !numberFilter.Contains(dataColumn[index] as double?));
             }
-            else if (filter.Query != null)
+            else if (dataColumn.ColumnType == ColumnType.stringType)
             {
-                if (filter.Field.Type == "date")
-                {
-                    return CheckDateFilterQuery(dataElement.DateValue, filter.Query);
-                }
-                else if (filter.Field.Type == "number")
-                {
-                    return CheckNumberFilterQuery(dataElement.NumberValue, filter.Query);
-                }
-                else
-                {
-                    return CheckStringFilterQuery(dataElement.StringValue, filter.Query);
-                }
+                var stringFilter = filter.Select(value => value.StringValue);
+                indexes = indexes.Where(index => !stringFilter.Contains(dataColumn[index] as string));
             }
-            return true;
         }
 
         /// <summary>
         /// Checks whether the DateTime meets the query condition
         /// </summary>
-        /// <param name="dataElementValue">DateTime data value</param>
+        /// <param name="dateElementValue">DateTime data value</param>
         /// <param name="query">Query object</param>
-        private bool CheckDateFilterQuery(DateTime? dataElementValue, Dictionary<string, Value> query)
+        private bool CheckDateFilterQuery(double? dateElementValue, Dictionary<string, ValueObject> query)
         {
             if (query.ContainsKey("equal"))
             {
-                var date = query["equal"].DateValue;
-                return date.Equals(dataElementValue);
+                var date = query["equal"].NumberValue;
+                return date.Equals(dateElementValue);
             }
             if (query.ContainsKey("not_equal"))
             {
-                var date = query["not_equal"].DateValue;
-                return !date.Equals(dataElementValue);
+                var date = query["not_equal"].NumberValue;
+                return !date.Equals(dateElementValue);
             }
             if (query.ContainsKey("after"))
             {
-                var date = query["after"].DateValue;
-                return dataElementValue?.CompareTo(date) > 0;
+                var date = query["after"].NumberValue;
+                return dateElementValue?.CompareTo(date) > 0;
             }
             if (query.ContainsKey("after_equal"))
             {
-                var date = query["after_equal"].DateValue;
-                return dataElementValue?.CompareTo(date) >= 0;
+                var date = query["after_equal"].NumberValue;
+                return dateElementValue?.CompareTo(date) >= 0;
             }
             if (query.ContainsKey("before"))
             {
-                var date = query["before"].DateValue;
-                return dataElementValue?.CompareTo(date) < 0;
+                var date = query["before"].NumberValue;
+                return dateElementValue?.CompareTo(date) < 0;
             }
             if (query.ContainsKey("before_equal"))
             {
-                var date = query["before_equal"].DateValue;
-                return dataElementValue?.CompareTo(date) <= 0;
+                var date = query["before_equal"].NumberValue;
+                return dateElementValue?.CompareTo(date) <= 0;
             }
             if (query.ContainsKey("between"))
             {
                 var v1 = query["between"].ListNumberValue[0];
                 var v2 = query["between"].ListNumberValue[1];
-                var dataElementValueInUnix = dataElementValue?.ToUnixTimestamp();
-                return dataElementValueInUnix >= v1 && dataElementValueInUnix <= v2;
+                return dateElementValue >= v1 && dateElementValue <= v2;
             }
             if (query.ContainsKey("not_between"))
             {
                 var v1 = query["not_between"].ListNumberValue[0];
                 var v2 = query["not_between"].ListNumberValue[1];
-                var dataElementValueInUnix = dataElementValue?.ToUnixTimestamp();
-                return dataElementValueInUnix < v1 || dataElementValueInUnix > v2;
+                return dateElementValue < v1 || dateElementValue > v2;
             }
             return false;
         }
@@ -255,46 +282,46 @@ namespace NetCoreServer.Models.DataModels
         /// <summary>
         /// Checks whether the number value meets the query condition
         /// </summary>
-        /// <param name="dataElementValue">Number value(store as double)</param>
+        /// <param name="numberElementValue">Number value(store as double)</param>
         /// <param name="query">Query object</param>
-        private bool CheckNumberFilterQuery(double? dataElementValue, Dictionary<string, Value> query)
+        private bool CheckNumberFilterQuery(double? numberElementValue, Dictionary<string, ValueObject> query)
         {
-            if (!dataElementValue.HasValue) return false;
+            if (!numberElementValue.HasValue) return false;
             if (query.ContainsKey("equal"))
             {
-                return dataElementValue == query["equal"].NumberValue;
+                return numberElementValue == query["equal"].NumberValue;
             }
             if (query.ContainsKey("not_equal"))
             {
-                return dataElementValue != query["not_equal"].NumberValue;
+                return numberElementValue != query["not_equal"].NumberValue;
             }
             if (query.ContainsKey("greater"))
             {
-                return dataElementValue > query["greater"].NumberValue;
+                return numberElementValue > query["greater"].NumberValue;
             }
             if (query.ContainsKey("greater_equal"))
             {
-                return dataElementValue >= query["greater_equal"].NumberValue;
+                return numberElementValue >= query["greater_equal"].NumberValue;
             }
             if (query.ContainsKey("less"))
             {
-                return dataElementValue < query["less"].NumberValue;
+                return numberElementValue < query["less"].NumberValue;
             }
             if (query.ContainsKey("less_equal"))
             {
-                return dataElementValue <= query["less_equal"].NumberValue;
+                return numberElementValue <= query["less_equal"].NumberValue;
             }
             if (query.ContainsKey("between"))
             {
                 var v1 = query["between"].ListNumberValue[0];
                 var v2 = query["between"].ListNumberValue[1];
-                return dataElementValue >= v1 && dataElementValue <= v2;
+                return numberElementValue >= v1 && numberElementValue <= v2;
             }
             if (query.ContainsKey("not_between"))
             {
                 var v1 = query["not_between"].ListNumberValue[0];
                 var v2 = query["not_between"].ListNumberValue[1];
-                return dataElementValue < v1 || dataElementValue > v2;
+                return numberElementValue < v1 || numberElementValue > v2;
             }
             return false;
         }
@@ -302,11 +329,11 @@ namespace NetCoreServer.Models.DataModels
         /// <summary>
         /// Checks whether the number value meets the query condition
         /// </summary>
-        /// <param name="dataElementValue">String value</param>
+        /// <param name="stringElementValue">String value</param>
         /// <param name="query">Query object</param>
-        private bool CheckStringFilterQuery(string dataElementValue, Dictionary<string, Value> query)
+        private bool CheckStringFilterQuery(string stringElementValue, Dictionary<string, ValueObject> query)
         {
-            var dataElementValueToLower = dataElementValue.ToLower();
+            var dataElementValueToLower = stringElementValue.ToLower();
             if (query.ContainsKey("equal"))
             {
                 return dataElementValueToLower == query["equal"].StringValue.ToLower();
@@ -379,7 +406,7 @@ namespace NetCoreServer.Models.DataModels
         /// <param name="response">Output response</param>
         /// <param name="keys">Key-value pairs that describes specific tuple</param>
         public void CalcByFields(List<FieldModel> fields, List<FieldModel> fieldsInColumns, List<FieldFuncValue> values,
-           ref List<Aggregation> response, Dictionary<string, Value> keys = null)
+           ref List<Aggregation> response, Dictionary<string, object> keys = null)
         {
             if (fields.Count < 1)
             {
@@ -387,14 +414,14 @@ namespace NetCoreServer.Models.DataModels
             }
             var field = fields[0];
             var fieldsSkipped = fields.Skip(1).ToList();
-            var groupsByField = GroupBy(field.UniqueName);
+            var groupsByField = GroupBy(field.UniqueName, field.Type);
             foreach (var group in groupsByField)
             {
-                var subdata = new DataSlice(group.Value.ToArray());
+                var subdata = new DataSlice(group.Value.ToArray(), _indexesCount);
                 var item = subdata.CalcValues(values);
                 if (item.Values.Count != 0)
                 {
-                    item.Keys = keys != null ? new Dictionary<string, Value>(keys) : new Dictionary<string, Value>();
+                    item.Keys = keys != null ? new Dictionary<string, object>(keys) : new Dictionary<string, object>();
                     item.Keys.Add(field.UniqueName, group.Key);
                     response.Add(item);
                     subdata.CalcByFields(fieldsSkipped, fieldsInColumns, values, ref response, item.Keys);
@@ -405,14 +432,14 @@ namespace NetCoreServer.Models.DataModels
             {
                 var colField = fieldsInColumns[0];
                 var colsSkipped = fieldsInColumns.Skip(1).ToList();
-                var colGroupsByField = GroupBy(colField.UniqueName);
+                var colGroupsByField = GroupBy(colField.UniqueName, colField.Type);
                 foreach (var group in colGroupsByField)
                 {
-                    var subdata = new DataSlice(group.Value.ToArray());
+                    var subdata = new DataSlice(group.Value.ToArray(), _indexesCount);
                     var item = subdata.CalcValues(values);
                     if (item.Values.Count != 0)
                     {
-                        item.Keys = keys != null ? new Dictionary<string, Value>(keys) : new Dictionary<string, Value>();
+                        item.Keys = keys != null ? new Dictionary<string, object>(keys) : new Dictionary<string, object>();
                         item.Keys.Add(colField.UniqueName, group.Key);
                         response.Add(item);
                         subdata.CalcByFields(colsSkipped, null, values, ref response, item.Keys);
@@ -422,24 +449,50 @@ namespace NetCoreServer.Models.DataModels
         }
 
         /// <summary>
-        /// Groups data by <paramref name="field"></paramref>
+        /// Groups data by <paramref name="fieldName"></paramref>
         /// </summary>
-        /// <param name="field">Field's name</param>    
+        /// <param name="fieldName">Field's name</param>
+        /// <param name="type">Field's type</param>
         /// <returns>Collection of groups</returns>
-        private Dictionary<Value, List<int>> GroupBy(string field)
+        private Dictionary<object, List<int>> GroupBy(string fieldName, ColumnType type)
         {
-            Dictionary<Value, List<int>> groups = new Dictionary<Value, List<int>>();
-            foreach (var index in DataColumnIndexes)
+            Dictionary<object, List<int>> groups = new Dictionary<object, List<int>>();
+            if (type == ColumnType.stringType)
             {
-                if (!groups.ContainsKey(Data.GetValue(field, index)))
+                var column = Data.GetColumn<string>(fieldName);
+                foreach (var index in DataColumnIndexes)
                 {
-                    groups.Add(Data.GetValue(field, index), new List<int>());
+                    var value = column[index] == null ? "" : column[index];
+                    if (!groups.ContainsKey(value))
+                    {
+                        groups.Add(value, new List<int>());
+                    }
+                    groups[value].Add(index);
                 }
-                groups[Data.GetValue(field, index)].Add(index);
+            }
+            else if (type == ColumnType.doubleType || type == ColumnType.dateType)
+            {
+                var column = Data.GetColumn<double?>(fieldName);
+                foreach (var index in DataColumnIndexes)
+                {
+                    object value = null;
+                    if (column[index] != null)
+                    {
+                        value = column[index];
+                    }
+                    else
+                    {
+                        value = "";
+                    }
+                    if (!groups.ContainsKey(value))
+                    {
+                        groups.Add(value, new List<int>());
+                    }
+                    groups[value].Add(index);
+                }
             }
             return groups;
         }
-
 
         /// <summary>
         /// Calculates aggregated values
@@ -479,61 +532,48 @@ namespace NetCoreServer.Models.DataModels
         /// <returns>Calculated aggregation</returns>
         private double CalcValue(FieldModel field, string func)
         {
-            var validDataColumnIndexes = DataColumnIndexes.Where(index => !(Data.GetValue(field.UniqueName, index).StringValue == "")
-            && (Data.GetValue(field.UniqueName, index) != null)).DefaultIfEmpty(-1).ToArray();
-
             if (func == "count")
             {
-                if (validDataColumnIndexes[0] == -1)
-                {
-                    return 0;
-                }
-                return validDataColumnIndexes.Count();
+                return DataColumnIndexes.Count();
             }
-            if (func == "distinctcount")
+            if (field.Type == ColumnType.stringType)
             {
-                if (validDataColumnIndexes[0] == -1)
+                var validDataColumnIndexes = DataColumnIndexes.Where(index => Data.GetColumn<string>(field.UniqueName)[index] != null).DefaultIfEmpty(-1).ToArray();
+                if (func == "distinctcount")
                 {
-                    return 0;
+                    return DataColumnIndexes.Select(index => Data.GetColumn<string>(field.UniqueName)[index]).Distinct().ToList().Count;
                 }
-                return validDataColumnIndexes.Select(index => Data.GetValue(field.UniqueName, index)).Distinct().ToList().Count;
             }
-            if (field.Type == "number")
+            if (field.Type == ColumnType.doubleType || field.Type == ColumnType.dateType)
             {
+                var validDataColumnIndexes = DataColumnIndexes.Where(index => Data.GetColumn<double?>(field.UniqueName)[index].HasValue).DefaultIfEmpty(-1).ToArray();
+                var column = Data.GetColumn<double?>(field.UniqueName);
                 if (validDataColumnIndexes[0] == -1)
                 {
                     return double.NaN;
                 }
+                if (func == "distinctcount")
+                {
+                    return DataColumnIndexes.Select(index => column[index]).Distinct().ToList().Count;
+                }
                 if (func == "sum" || func == "none")
                 {
-                    return validDataColumnIndexes.Sum(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
+                    return validDataColumnIndexes.Sum(index => column[index].Value);
                 }
                 if (func == "average")
                 {
-                    return validDataColumnIndexes.Average(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
+                    return validDataColumnIndexes.Average(index => column[index].Value);
                 }
                 if (func == "min")
                 {
-                    return validDataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
+                    return validDataColumnIndexes.Min(index => column[index].Value);
                 }
                 if (func == "max")
                 {
-                    return validDataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).NumberValue.Value);
-                }
-            }
-            if (field.Type == "date")
-            {
-                if (func == "min")
-                {
-                    return validDataColumnIndexes.Min(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
-                }
-                if (func == "max")
-                {
-                    return validDataColumnIndexes.Max(index => Data.GetValue(field.UniqueName, index).DateValue.Value.ToUnixTimestamp());
+                    return validDataColumnIndexes.Max(index => column[index].Value);
                 }
             }
             return 0;
         }
-
     }
 }

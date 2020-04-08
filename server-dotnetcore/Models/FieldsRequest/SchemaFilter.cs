@@ -8,6 +8,5 @@ namespace NetCoreServer.Models.Fields
         {
             Any = new SchemaFilterElement();
         }
-
     }
 }

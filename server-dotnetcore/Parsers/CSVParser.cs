@@ -1,9 +1,9 @@
-﻿using System;
+﻿using NetCoreServer.Models;
+using NetCoreServer.Models.DataModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using NetCoreServer.Models;
-
 
 namespace NetCoreServer.Parsers
 {
@@ -13,22 +13,29 @@ namespace NetCoreServer.Parsers
         private readonly string _fullFilePath;
         private const ushort CHUNK_SIZE = ushort.MaxValue;
 
-
-        private Dictionary<string, List<Value>> _dataBlock;
+        private Dictionary<string, dynamic> dataBlock;
         private int index;
+        private Dictionary<int, string> _columnsNames;
+        private Dictionary<string, ColumnType> _dataTypes;
 
-        private Dictionary<int, string> _columnNames;
-        private Dictionary<int, Func<string, Value>> _columnTypesConvertion;
-        public CSVParser(string index, CSVSerializerOptions serializerOptions)
+        public Dictionary<string, ColumnType> DataTypes
         {
-            _fullFilePath = $"./data/{index}.csv";
-            _serializerOptions = serializerOptions;
-            _columnNames = new Dictionary<int, string>();
-            _columnTypesConvertion = new Dictionary<int, Func<string, Value>>();
+            get
+            {
+                return _dataTypes;
+            }
         }
-        public IEnumerable<Dictionary<string, List<Value>>> Parse()
-        {
 
+        public CSVParser(string path, CSVSerializerOptions serializerOptions)
+        {
+            _fullFilePath = path;
+            _columnsNames = new Dictionary<int, string>();
+            _dataTypes = new Dictionary<string, ColumnType>();
+            _serializerOptions = serializerOptions;
+        }
+
+        public IEnumerable<Dictionary<string, dynamic>> Parse()
+        {
             using (StreamReader reader = File.OpenText(_fullFilePath))
             {
                 string line = "";
@@ -37,7 +44,7 @@ namespace NetCoreServer.Parsers
                 List<string> readingChunk = new List<string>(CHUNK_SIZE);
 
                 // first lines are required to detect data types
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     line = reader.ReadLine();
                     if (line != null) readingChunk.Add(line);
@@ -57,12 +64,21 @@ namespace NetCoreServer.Parsers
                         {
                             ParseBlock(readingChunk);
                             readingChunk = new List<string>();
-                            yield return _dataBlock;
+                            yield return dataBlock;
 
-                            var dataBlockColumns = _dataBlock.Keys.ToList();
-                            foreach (var column in dataBlockColumns)
+                            var dataBlockColumns = dataBlock.Keys.ToList();
+                            int i = 0;
+                            foreach (var columnName in dataBlockColumns)
                             {
-                                _dataBlock[column] = new List<Value>();
+                                if (_dataTypes[columnName] == ColumnType.stringType)
+                                {
+                                    dataBlock[columnName] = new List<string>();
+                                }
+                                else
+                                {
+                                    dataBlock[columnName] = new List<double?>();
+                                }
+                                i++;
                             }
                         }
                     }
@@ -70,14 +86,10 @@ namespace NetCoreServer.Parsers
 
                 ParseBlock(readingChunk);
                 readingChunk = new List<string>();
-                yield return _dataBlock;
+                yield return dataBlock;
             }
         }
-        /// <summary>
-        /// Parse header to get names
-        /// </summary>
-        /// <param name="header">Header</param>
-        /// <param name="firstLines">First lines to detect type</param>
+
         private void ParseHeader(string header, List<string> firstLines)
         {
             var columnNames = header.Split(_serializerOptions.FieldSeparator);
@@ -88,7 +100,7 @@ namespace NetCoreServer.Parsers
                 lines[i] = line.Split(_serializerOptions.FieldSeparator);
                 i++;
             });
-            _dataBlock = new Dictionary<string, List<Value>>();
+            dataBlock = new Dictionary<string, dynamic>();
             i = 0;
             foreach (var columnName in columnNames)
             {
@@ -97,24 +109,26 @@ namespace NetCoreServer.Parsers
                 {
                     column.Add(lines[j][i]);
                 }
-                _dataBlock.Add(columnName, new List<Value>());
-                _columnNames.Add(i, columnName);
-                _columnTypesConvertion.Add(i, DetectType(column));
+                _dataTypes.Add(columnName, DetectType(column));
+                _columnsNames.Add(i, columnName);
+                if (_dataTypes[columnName] == ColumnType.stringType)
+                {
+                    dataBlock.Add(columnName, new List<string>());
+                }
+                else
+                {
+                    dataBlock.Add(columnName, new List<double?>());
+                }
                 i++;
             }
-
         }
 
-        /// <summary>
-        /// Detect Type
-        /// </summary>
-        /// <param name="column">Values from one column to detect type</param>
-        /// <returns></returns>
-        private Func<string, Value> DetectType(List<string> column)
+        private ColumnType DetectType(List<string> column)
         {
             int dateCount = 0;
             int numberCount = 0;
             int stringCount = 0;
+            int emptyCount = 0;
             foreach (var value in column)
             {
                 if (DateTime.TryParse(value, out _))
@@ -125,37 +139,33 @@ namespace NetCoreServer.Parsers
                 {
                     numberCount++;
                 }
-                else
+                else if (value != "")
                 {
                     stringCount++;
                 }
-            }
-            if (dateCount >= numberCount)
-            {
-                if (dateCount >= stringCount)
-                    return (value) =>
-                    {
-                        if (!string.IsNullOrEmpty(value))
-                            return new Value(Convert.ToDateTime(value));
-                        return new Value("");
-                    };
-            }
-            else if (numberCount >= stringCount)
-            {
-                return (value) =>
+                else
                 {
-                    if (!string.IsNullOrEmpty(value))
-                        return new Value(Convert.ToDouble(value));
-                    return new Value("");
-                };
+                    emptyCount++;
+                }
             }
-            return (value) => { return new Value(Convert.ToString(value)); };
+            if (dateCount >= stringCount)
+            {
+                if (dateCount >= numberCount)
+                {
+                    return ColumnType.stringType;
+                }
+            }
+            if (stringCount > 0)
+            {
+                return ColumnType.stringType;
+            }
+            if (numberCount > 0)
+            {
+                return ColumnType.doubleType;
+            }
+            return ColumnType.stringType;
         }
 
-        /// <summary>
-        /// Parse block of data
-        /// </summary>
-        /// <param name="lines">Rows to be parsed</param>
         private void ParseBlock(List<string> lines)
         {
             lines.ForEach(line =>
@@ -163,6 +173,7 @@ namespace NetCoreServer.Parsers
                 ParseLine(line);
             });
         }
+
         private void ParseLine(string line)
         {
             bool isQuote = false;
@@ -180,7 +191,20 @@ namespace NetCoreServer.Parsers
                 else
                 if (char_ == _serializerOptions.FieldSeparator && !isQuote)
                 {
-                    _dataBlock[_columnNames[currentWord]].Add(_columnTypesConvertion[currentWord].Invoke(value));
+                    if (_dataTypes[_columnsNames[currentWord]] == ColumnType.doubleType)
+                    {
+                        if (double.TryParse(value, out double convertedValue))
+                            dataBlock[_columnsNames[currentWord]].Add(convertedValue);
+                        else
+                            dataBlock[_columnsNames[currentWord]].Add((double?)null);
+                    }
+                    else
+                    {
+                        if (value != "")
+                            dataBlock[_columnsNames[currentWord]].Add(value);
+                        else
+                            dataBlock[_columnsNames[currentWord]].Add((string)null);
+                    }
                     currentWord++;
                     value = "";
                 }
@@ -189,15 +213,34 @@ namespace NetCoreServer.Parsers
                     value += char_;
                 }
             }
-            _dataBlock[_columnNames[currentWord]].Add(_columnTypesConvertion[currentWord].Invoke(value));
-            if (currentWord + 1 < _dataBlock.Count)
+            if (_dataTypes[_columnsNames[currentWord]] == ColumnType.doubleType)
             {
-                for (int i = currentWord + 1; i < _dataBlock.Count; i++)
+                if (double.TryParse(value, out double convertedValue))
+                    dataBlock[_columnsNames[currentWord]].Add(convertedValue);
+                else
+                    dataBlock[_columnsNames[currentWord]].Add((double?)null);
+            }
+            else
+            {
+                if (value != "")
+                    dataBlock[_columnsNames[currentWord]].Add(value);
+                else
+                    dataBlock[_columnsNames[currentWord]].Add((string)null);
+            }
+            if (currentWord + 1 < dataBlock.Count)
+            {
+                for (int i = currentWord + 1; i < dataBlock.Count; i++)
                 {
-                    _dataBlock[_columnNames[i]].Add(new Value(""));
+                    if (_dataTypes[_columnsNames[i]] == ColumnType.doubleType)
+                    {
+                        dataBlock[_columnsNames[i]].Add((double?)null);
+                    }
+                    else
+                    {
+                        dataBlock[_columnsNames[i]].Add((string)null);
+                    }
                 }
             }
         }
-
     }
 }

@@ -4,13 +4,14 @@ namespace NetCoreServer.Models.DataModels
 {
     public interface IDataStructure
     {
-        void Add(Dictionary<string, Value> row);
-        void AddBlock(Dictionary<string, List<Value>> dataBlock);
-        void AddColumns(List<string> columnNames);
-        int Count();
-        Value GetValue(string columnName, int index);
-        List<Value> GetColumn(string columnName);
+        void AddColumn(string column, ColumnType type);
+
+        DataColumn<T> GetColumn<T>(string columnName);
+
         List<string> GetColumnNames();
-        Dictionary<string, Value> GetRow(int position);
+
+        public void AddBlock(Dictionary<string, dynamic> dataBlock);
+
+        Dictionary<string, ColumnType> GetNameAndTypes();
     }
 }

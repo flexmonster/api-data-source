@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using NetCoreServer.Models.DataModels;
 using NetCoreServer.Models;
 
 namespace NetCoreServer.Comparators
@@ -9,21 +8,22 @@ namespace NetCoreServer.Comparators
     /// <summary>
     /// Compare months by its name
     /// </summary>
-    public class MonthComparator : Comparer<Value>
+    public class MonthComparator<T> : Comparer<T>
     {
-        public override int Compare([AllowNull] Value x, [AllowNull] Value y)
+        public override int Compare([AllowNull] T x, [AllowNull] T y)
         {
+
             if (x == null || y == null) return -1;
-            if (Enum.TryParse(x.StringValue, out Month xInEnum))
+            if (Enum.TryParse(x.ToString(), out Month xInEnum))
             {
-                if (Enum.TryParse(y.StringValue, out Month yInEnum))
+                if (Enum.TryParse(y.ToString(), out Month yInEnum))
                 {
                     return xInEnum.CompareTo(yInEnum);
                 }
             }
-            if (Enum.TryParse(x.StringValue, out ShortMonth xInShortEnum))
+            if (Enum.TryParse(x.ToString(), out ShortMonth xInShortEnum))
             {
-                if (Enum.TryParse(y.StringValue, out ShortMonth yInShortEnum))
+                if (Enum.TryParse(y.ToString(), out ShortMonth yInShortEnum))
                 {
                     return xInShortEnum.CompareTo(yInShortEnum);
                 }

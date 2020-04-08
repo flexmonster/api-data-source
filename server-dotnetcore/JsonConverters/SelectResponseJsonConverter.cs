@@ -1,5 +1,3 @@
-using NetCoreServer.Extensions;
-using NetCoreServer.Models;
 using NetCoreServer.Models.Select;
 using System;
 using System.Text.Json;
@@ -28,13 +26,11 @@ namespace NetCoreServer.JsonConverters
             writer.WriteStartObject();
             if (value.Fields != null)
             {
-
                 writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'f', 'i', 'e', 'l', 'd', 's' }));
 
                 writer.WriteStartArray();
                 foreach (var field in value.Fields)
                 {
-
                     writer.WriteStartObject();
                     writer.WriteString(new ReadOnlySpan<char>(new char[] { 'u', 'n', 'i', 'q', 'u', 'e', 'N', 'a', 'm', 'e' }), field.UniqueName);
                     writer.WriteEndObject();
@@ -52,18 +48,7 @@ namespace NetCoreServer.JsonConverters
                     {
                         if (value.Hits[i][j] != null)
                         {
-                            if (value.Hits[i][j].StringValue != null)
-                            {
-                                writer.WriteStringValue(value.Hits[i][j].StringValue);
-                            }
-                            else if (value.Hits[i][j].DateValue != null)
-                            {
-                                writer.WriteNumberValue(value.Hits[i][j].DateValue.Value.ToUnixTimestamp());
-                            }
-                            else
-                            {
-                                writer.WriteNumberValue(value.Hits[i][j].NumberValue.Value);
-                            }
+                            JsonSerializer.Serialize(writer, value.Hits[i][j], options);
                         }
                         else
                         {
@@ -85,7 +70,7 @@ namespace NetCoreServer.JsonConverters
                     writer.WriteStartObject();
                     foreach (var memberval in member.Values)
                     {
-                        writer.WritePropertyName(memberval.Key);                        
+                        writer.WritePropertyName(memberval.Key);
                         writer.WriteStartObject();
                         foreach (var val in memberval.Value)
                         {
@@ -100,18 +85,8 @@ namespace NetCoreServer.JsonConverters
                         writer.WriteStartObject();
                         foreach (var memberkey in member.Keys)
                         {
-                            if (memberkey.Value.StringValue != null)
-                            {
-                                writer.WriteString(memberkey.Key, memberkey.Value.StringValue);
-                            }
-                            else if (memberkey.Value.DateValue.HasValue)
-                            {
-                                writer.WriteString(memberkey.Key, memberkey.Value.DateValue.Value.ToUnixTimestamp().ToString());
-                            }
-                            else
-                            {
-                                writer.WriteString(memberkey.Key, memberkey.Value.NumberValue.Value.ToString());
-                            }
+                            writer.WritePropertyName(memberkey.Key);
+                            JsonSerializer.Serialize(writer, memberkey.Value, options);
                         }
                         writer.WriteEndObject();
                     }
@@ -124,6 +99,5 @@ namespace NetCoreServer.JsonConverters
 
             writer.WriteEndObject();
         }
-
     }
 }

@@ -1,43 +1,40 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using NetCoreServer.Comparators;
+using NetCoreServer.DataStorages;
 using NetCoreServer.JsonConverters;
 using NetCoreServer.Models;
+using NetCoreServer.Models.DataModels;
 using NetCoreServer.Models.Fields;
 using NetCoreServer.Models.Handshake;
 using NetCoreServer.Models.Members;
 using NetCoreServer.Models.Select;
-using NetCoreServer.Comparators;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using NetCoreServer.Models.DataModels;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Configuration;
-using NetCoreServer.DataLoaders;
 
 namespace NetCoreServer.Controllers
 {
-
     [ApiController]
     public class CubeController : ControllerBase
     {
+        private const int MEMBERS_PAGE_SIZE = 50000;
+        private const int SELECT_PAGE_SIZE = 50000;
+
         private readonly IMemoryCache _cache;
 
-        private readonly IConfiguration _configuration;
+        private readonly IDataStorage _dataStorage;
 
-        const string API_VERSION = "2.8.0";
-
-        const int MEMBERS_PAGE_SIZE = 50000;
-
-        const int SELECT_PAGE_SIZE = 50000;
-
-        public CubeController(IConfiguration configuration, IMemoryCache cache)
+        public CubeController(IMemoryCache cache, IDataStorage dataStorage)
         {
             _cache = cache;
-            _configuration = configuration;
+            _dataStorage = dataStorage;
         }
 
         /// <summary>
@@ -52,7 +49,7 @@ namespace NetCoreServer.Controllers
             object response = null;
             if (request.Type == RequestType.Handshake)
             {
-                response = new { version = API_VERSION };
+                response = new { isSingleEndpointApi = false };
             }
             return new JsonResult(response);
         }
@@ -64,14 +61,14 @@ namespace NetCoreServer.Controllers
         /// <returns></returns>
         [Route("/api/cube/fields")]
         [HttpPost]
-        public IActionResult PostFields([FromBody]FieldsRequest request)
+        public async Task<IActionResult> PostFields([FromBody]FieldsRequest request)
         {
             object response = null;
             if (request.Type == RequestType.Fields)
             {
                 try
                 {
-                    response = GetShema(request.Index);
+                    response = await GetShema(request.Index);
                 }
                 catch (Exception e)
                 {
@@ -85,7 +82,7 @@ namespace NetCoreServer.Controllers
                 Response.StatusCode = 400;
                 return Content("Incorrect request for this endpoint.");
             }
-            return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+            return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new ColumnTypeJsonConverter() } });
         }
 
         /// <summary>
@@ -95,15 +92,22 @@ namespace NetCoreServer.Controllers
         /// <returns></returns>
         [Route("/api/cube/members")]
         [HttpPost]
-        public IActionResult PostMembers([FromBody]MembersRequest request)
+        public async Task<IActionResult> PostMembers([FromBody]MembersRequest request)
         {
-            MembersResponse response = null;
-            JsonSerializerOptions options = new JsonSerializerOptions { Converters = { new MembersResponseJsonConverter() } };
             if (request.Type == RequestType.Members)
             {
                 try
                 {
-                    response = GetMembers(request.Index, request.Page, request.Field);
+                    if (request.Field.Type == ColumnType.doubleType || request.Field.Type == ColumnType.dateType)
+                    {
+                        var response = await GetMembers<double?>(request.Index, request.Page, request.Filter, request.Field);
+                        return Content(response, "application/json");
+                    }
+                    else if (request.Field.Type == ColumnType.stringType)
+                    {
+                        var response = await GetMembers<string>(request.Index, request.Page, request.Filter, request.Field);
+                        return Content(response, "application/json");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -112,13 +116,8 @@ namespace NetCoreServer.Controllers
                     return Content(e.Message);
                 }
             }
-            if (response == null)
-            {
-                Response.StatusCode = 400;
-                return Content("Incorrect request for this endpoint.");
-            }
-            return new JsonResult(response, options);
-
+            Response.StatusCode = 400;
+            return Content("Incorrect request for this endpoint.");
         }
 
         /// <summary>
@@ -128,15 +127,15 @@ namespace NetCoreServer.Controllers
         /// <returns></returns>
         [Route("/api/cube/select")]
         [HttpPost]
-        public IActionResult PostSelect([FromBody]SelectRequest request)
+        public async Task<IActionResult> PostSelect([FromBody]SelectRequest request)
         {
-            SelectResponse response = null;
+            string response = null;
 
             if (request.Type == RequestType.Select)
             {
                 try
                 {
-                    response = SelectData(request.Index, request.Query, request.Page);
+                    response = await SelectData(request.Index, request.Query, request.Page);
                 }
                 catch (Exception e)
                 {
@@ -150,18 +149,20 @@ namespace NetCoreServer.Controllers
                 Response.StatusCode = 400;
                 return Content("Incorrect request for this endpoint.");
             }
-            return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new SelectResponseJsonConverter() } });
+            return Content(response);
         }
+
         /// <summary>
         /// Load schema and create object based on it
         /// </summary>
         /// <param name="index">index</param>
         /// <returns></returns>
-        private Schema GetShema(string index)
+        private async Task<Schema> GetShema(string index)
         {
-            return _cache.GetOrCreate(index + "schema",
-                (cacheEntry) =>
+            return await _cache.GetOrCreateAsync(index + "schema",
+                async (cacheEntry) =>
                 {
+                    cacheEntry.SetSize(1);
                     cacheEntry.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(240);
                     Schema schema = new Schema();
                     schema.Sorted = false;
@@ -171,24 +172,13 @@ namespace NetCoreServer.Controllers
                     schema.Filters.Any.Members = true;
                     schema.Filters.Any.Query = true;
                     schema.Filters.Any.ValueQuery = true;
-                    var data = LoadData(index);
-                    var firstElement = data.GetRow(0);
-                    foreach (var member in firstElement)
+                    var data = await LoadData(index);
+                    var firstElement = data.GetNameAndTypes();
+                    foreach (var elem in firstElement)
                     {
                         FieldModel field = new FieldModel();
-                        field.UniqueName = member.Key;
-                        if (member.Value.StringValue != null)
-                        {
-                            field.Type = "string";
-                        }
-                        else if (member.Value.DateValue != null)
-                        {
-                            field.Type = "date";
-                        }
-                        else
-                        {
-                            field.Type = "number";
-                        }
+                        field.UniqueName = elem.Key;
+                        field.Type = elem.Value;
                         schema.Fields.Add(field);
                     }
                     return schema;
@@ -200,21 +190,57 @@ namespace NetCoreServer.Controllers
         /// </summary>
         /// <param name="index">index</param>
         /// <returns></returns>
-        private IDataStructure LoadData(string index)
+        private async Task<IDataStructure> LoadData(string index)
         {
-            return _cache.GetOrCreate(index,
-                (cacheEntry) =>
-                {
-                    cacheEntry.AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(60);
-                    using (ParserFactory parserFactory = new ParserFactory(_configuration, index))
-                    {
-                        var dataSourceType = _configuration.GetValue<DataSourceType>("DataSource:DataSourceName");
-                        var parser = parserFactory.CreateParser(dataSourceType);
-                        DataLoader dataLoader = new DataLoader(parser);
-                        return dataLoader.Load();
-                    }
-                });
+            return await _dataStorage.GetOrAddAsync(index);
         }
+
+        private async Task<string> GetMembers<T>(string index, int page, List<Filter> filter, FieldModel field)
+        {
+            return (await _cache.GetOrCreateAsync(index + field.UniqueName,
+                   async (cacheEntry) =>
+                   {
+                       cacheEntry.SetSize(1);
+                       JsonSerializerOptions options = new JsonSerializerOptions { Converters = { new MembersResponseJsonConverter<T>() } };
+                       IDataStructure data = await LoadData(index);
+                       DataSlice dataSlice = new DataSlice(data);
+                       if (filter != null)
+                       {
+                           dataSlice.FilterData(filter);
+                       }
+                       bool sorted = false;
+                       var column = DataSlice.Data.GetColumn<T>(field.UniqueName);
+                       List<T> members = dataSlice.DataColumnIndexes.Select(index => column[index]).Distinct().ToList();
+                       var first = members.First();
+                       if (first is string)
+                           if (Enum.TryParse(first.ToString(), out Month m) || Enum.TryParse(first.ToString(), out ShortMonth m1))
+                           {
+                               members.Sort(new MonthComparator<T>());
+                               sorted = true;
+                           }
+                       int pageTotal = (int)Math.Ceiling(members.Count / (double)MEMBERS_PAGE_SIZE);
+                       pageTotal = pageTotal == 0 ? 1 : pageTotal;
+                       string[] responses = new string[pageTotal];
+                       int currentPage = 0;
+                       while (currentPage < pageTotal)
+                       {
+                           MembersResponse<T> response = new MembersResponse<T>();
+                           response.Sorted = sorted;
+                           response.Page = currentPage;
+                           response.PageTotal = pageTotal;
+                           int from = currentPage * MEMBERS_PAGE_SIZE;
+                           int size = Math.Min(members.Count, from + MEMBERS_PAGE_SIZE);
+                           for (int i = from; i < size; i++)
+                           {
+                               response.Members.Add(members[i]);
+                           }
+                           responses[currentPage] = JsonSerializer.Serialize(response, options);
+                           currentPage++;
+                       }
+                       return responses;
+                   }))[page];
+        }
+
         /// <summary>
         /// Gets field's members
         /// </summary>
@@ -222,32 +248,6 @@ namespace NetCoreServer.Controllers
         /// <param name="page">page number to load</param>
         /// <param name="field">field's name</param>
         /// <returns></returns>
-        private MembersResponse GetMembers(string index, int page, FieldModel field)
-        {
-            IDataStructure data = LoadData(index);
-            MembersResponse response = new MembersResponse();
-            var members = data.GetColumn(field.UniqueName).Distinct().ToList();
-            if (Enum.TryParse(members.First().StringValue, out Month _) || Enum.TryParse(members.First().StringValue, out ShortMonth _))
-            {
-                members.Sort(new MonthComparator());
-                response.Sorted = true;
-            }
-            int pageTotal = (int)Math.Ceiling(members.Count / (double)MEMBERS_PAGE_SIZE);
-            if (pageTotal > 1)
-            {
-                response.Page = (page == 0) ? 0 : page;
-                response.PageTotal = pageTotal;
-            }
-            int from = page * MEMBERS_PAGE_SIZE;
-            int size = Math.Min(members.Count, from + MEMBERS_PAGE_SIZE);
-
-            for (int i = from; i < size; i++)
-            {
-                response.Members.Add(members[i]);
-            }
-            return response;
-        }
-
         /// <summary>
         /// Select data according to query
         /// </summary>
@@ -255,80 +255,127 @@ namespace NetCoreServer.Controllers
         /// <param name="query">query</param>
         /// <param name="page">page number to load</param>
         /// <returns></returns>
-        private SelectResponse SelectData(string index, Query query, int page)
+        private async Task<string> SelectData(string index, Query query, int page)
         {
-            DataSlice data = new DataSlice(LoadData(index));
-            SelectResponse response = new SelectResponse();
-            if (query.Filter != null)
-            {
-                data.FilterData(query.Filter);
-            }
-            if (query.Aggs != null && query.Aggs.Values != null)
-            {
-                response.Aggs = new List<Aggregation>();
-                if (query.Aggs.By != null)
-                {
-                    if (query.Aggs.By.Rows == null)
-                    {
-                        query.Aggs.By.Rows = new List<FieldModel>();
-                    }
-                    if (query.Aggs.By.Cols == null)
-                    {
-                        query.Aggs.By.Cols = new List<FieldModel>();
-                    }
-                    if (data.DataColumnIndexes.Count() != 0)
-                    {
-                        var tempAggs = new List<Aggregation>();
-                        var concatedFields = query.Aggs.By.Rows.Union(query.Aggs.By.Cols).ToList();
-                        data.CalcByFields(concatedFields, query.Aggs.By.Cols, query.Aggs.Values, ref tempAggs);
-                        response.Aggs = tempAggs;
-                        response.Aggs.Add(data.CalcValues(query.Aggs.Values));
-                    }
-                    else
-                    {
-                        response.Aggs = new List<Aggregation>();
-                    }
-                }
-                else
-                {
-                    response.Aggs.Add(data.CalcValues(query.Aggs.Values));
-                }
-                int pageTotal = (int)Math.Ceiling((double)response.Aggs.Count / SELECT_PAGE_SIZE);
-                if (pageTotal > 1)
-                {
-                    response.Page = (page == 0) ? 0 : page;
-                    response.PageTotal = pageTotal;
-                    int from = page * SELECT_PAGE_SIZE;
-                    int size = Math.Min(response.Aggs.Count - from, SELECT_PAGE_SIZE);
-                    response.Aggs = response.Aggs.GetRange(from, size);
-                }
-            }
-            if (query.Fields != null)
-            {
-                for (int i = 0; i < query.Fields.Count; i++)
-                {
-                    response.Fields.Add(query.Fields[i]);
-                }
-                response.Hits = new List<List<Value>>();
-                var limit = query.Limit == 0 ? data.DataColumnIndexes.Count() : Math.Min(query.Limit, data.DataColumnIndexes.Count());
+            var hash = CalculateMD5Hash(index + JsonSerializer.Serialize(query));
+            return (await _cache.GetOrCreateAsync(hash,
+              async (cacheEntry) =>
+              {
+                  cacheEntry.SetSize(1);
+                  DataSlice data = new DataSlice(await LoadData(index));
+                  SelectResponse response = new SelectResponse();
+                  string[] responses = null;
+                  JsonSerializerOptions options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new SelectResponseJsonConverter() } };
+                  if (query.Filter != null)
+                  {
+                      data.FilterData(query.Filter);
+                  }
+                  if (query.Aggs != null && query.Aggs.Values != null)
+                  {
+                      response.Aggs = new List<Aggregation>();
+                      if (query.Aggs.By != null)
+                      {
+                          if (query.Aggs.By.Rows == null)
+                          {
+                              query.Aggs.By.Rows = new List<FieldModel>();
+                          }
+                          if (query.Aggs.By.Cols == null)
+                          {
+                              query.Aggs.By.Cols = new List<FieldModel>();
+                          }
+                          if (data.DataColumnIndexes.Count() != 0)
+                          {
+                              var tempAggs = new List<Aggregation>();
+                              var concatedFields = query.Aggs.By.Rows.Union(query.Aggs.By.Cols).ToList();
+                              data.CalcByFields(concatedFields, query.Aggs.By.Cols, query.Aggs.Values, ref tempAggs);
+                              response.Aggs = tempAggs;
+                              response.Aggs.Add(data.CalcValues(query.Aggs.Values));
+                          }
+                          else
+                          {
+                              response.Aggs = new List<Aggregation>();
+                          }
+                      }
+                      else
+                      {
+                          response.Aggs.Add(data.CalcValues(query.Aggs.Values));
+                      }
+                      int pageTotal = (int)Math.Ceiling((double)response.Aggs.Count / SELECT_PAGE_SIZE);
+                      pageTotal = pageTotal == 0 ? 1 : pageTotal;
+                      responses = new string[pageTotal];
+                      int currentPage = 0;
+                      while (currentPage < pageTotal)
+                      {
+                          SelectResponse partitialResponse = new SelectResponse();
+                          partitialResponse.Page = currentPage;
+                          partitialResponse.PageTotal = pageTotal;
+                          int from = currentPage * SELECT_PAGE_SIZE;
+                          int size = Math.Min(response.Aggs.Count - from, SELECT_PAGE_SIZE);
+                          partitialResponse.Aggs = response.Aggs.GetRange(from, size);
+                          responses[currentPage] = JsonSerializer.Serialize(partitialResponse, options);
+                          currentPage++;
+                      }
+                  }
+                  if (query.Fields != null)
+                  {
+                      for (int i = 0; i < query.Fields.Count; i++)
+                      {
+                          response.Fields.Add(query.Fields[i]);
+                      }
+                      response.Hits = new List<List<object>>();
+                      var limit = query.Limit == 0 ? data.DataColumnIndexes.Count() : Math.Min(query.Limit, data.DataColumnIndexes.Count());
 
-                for (int i = 0; i < limit; i++)
-                {
-                    var row = query.Fields.Select(field => { return DataSlice.Data.GetValue(field.UniqueName, data.DataColumnIndexes[i]); }).ToList();
-                    response.Hits.Add(row);
-                }
+                      for (int i = 0; i < limit; i++)
+                      {
+                          List<object> row = new List<object>();
+                          query.Fields.ForEach(field =>
+                          {
+                              if (field.Type == ColumnType.stringType)
+                              {
+                                  row.Add(DataSlice.Data.GetColumn<string>(field.UniqueName)[data.DataColumnIndexes[i]]);
+                              }
+                              else
+                              {
+                                  row.Add(DataSlice.Data.GetColumn<double?>(field.UniqueName)[data.DataColumnIndexes[i]]);
+                              }
+                          });
 
-                int pageTotal = (int)Math.Ceiling((double)response.Hits.Count / MEMBERS_PAGE_SIZE);
-                if (pageTotal > 1)
-                {
-                    response.Page = (page == 0) ? 0 : page;
-                    response.PageTotal = pageTotal;
-                    int from = page * MEMBERS_PAGE_SIZE;
-                    int size = Math.Min(response.Hits.Count, from + MEMBERS_PAGE_SIZE);
-                    response.Hits = response.Hits.GetRange(from, size);
-                }
+                          response.Hits.Add(row);
+                      }
+                      int pageTotal = (int)Math.Ceiling((double)response.Hits.Count / SELECT_PAGE_SIZE);
+                      pageTotal = pageTotal == 0 ? 1 : pageTotal;
+                      responses = new string[pageTotal];
+                      int currentPage = 0;
+                      while (currentPage < pageTotal)
+                      {
+                          SelectResponse partitialResponse = new SelectResponse();
+                          partitialResponse.Page = currentPage;
+                          partitialResponse.PageTotal = pageTotal;
+                          partitialResponse.Fields = response.Fields;
+                          partitialResponse.Aggs = response.Aggs;
+                          int from = currentPage * SELECT_PAGE_SIZE;
+                          int size = Math.Min(response.Hits.Count - from, SELECT_PAGE_SIZE);
+                          partitialResponse.Hits = response.Hits.GetRange(from, size);
+                          responses[currentPage] = JsonSerializer.Serialize(partitialResponse, options);
+                          currentPage++;
+                      }
+                  }
+                  return responses;
+              }))[page];
+        }
+
+        private string CalculateMD5Hash(string input)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
             }
-            return response;
+            return sb.ToString();
         }
     }
 }

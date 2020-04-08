@@ -1,4 +1,7 @@
-﻿using NetCoreServer.Models;
+﻿using NetCoreServer.JsonConverters;
+using NetCoreServer.Models.DataModels;
+using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,71 +11,89 @@ namespace NetCoreServer.Parsers
 {
     public class JSONParser : IParser
     {
+        private const int CHUNK_SIZE = int.MaxValue / 4;
         private readonly string _fullFilePath;
         private readonly JsonSerializerOptions _serializerOptions;
-        public JSONParser(string index, JsonSerializerOptions serializerOptions)
+        private byte[] _buffer = new byte[CHUNK_SIZE];
+        private Dictionary<string, dynamic> _dataBlock = new Dictionary<string, dynamic>();
+        private Lazy<Dictionary<string, ColumnType>> _dataTypes;
+        private int _offset = 0;
+        private int inBuffer = 0;
+        public JSONParser(string path, JsonSerializerOptions serializerOptions)
         {
-            _fullFilePath = $"./data/{index}.json";
+            _fullFilePath = path;
             _serializerOptions = serializerOptions;
+            _dataTypes = new Lazy<Dictionary<string, ColumnType>>(() => (_serializerOptions.Converters[0] as DataJsonConverter).GetTypes());
         }
-        public IEnumerable<Dictionary<string, List<Value>>> Parse()
+        public Dictionary<string, ColumnType> DataTypes
         {
-            using FileStream fileStream = new FileStream(_fullFilePath, FileMode.Open);
-            List<Dictionary<string, Value>> dataRows = JsonSerializer.DeserializeAsync<List<Dictionary<string, Value>>>(fileStream, _serializerOptions).Result;
-            yield return ToColumnView(dataRows);
-        }
-        /// <summary>
-        /// Change list of rows to list of columns
-        /// </summary>
-        /// <param name="dataValues">List of rows</param>
-        /// <returns></returns>
-        private Dictionary<string, List<Value>> ToColumnView(List<Dictionary<string, Value>> dataValues)
-        {
-            var columnView = new Dictionary<string, Value[]>();
-            if (dataValues != null && dataValues.Count > 0)
+            get
             {
-                var firstElement = dataValues[0];
-                foreach (var field in firstElement)
-                {
-                    columnView.Add(field.Key, new Value[dataValues.Count]);
-                }
+                return _dataTypes.Value;
+            }
+        }
 
-                int i = 0;
-                foreach (var dataElement in dataValues)
+        public IEnumerable<Dictionary<string, dynamic>> Parse()
+        {
+            using (FileStream fs = new FileStream(_fullFilePath, FileMode.Open, FileAccess.Read))
+            {
+                bool canRead = true;
+                bool isFirst = true;
+                while (canRead)
                 {
-                    foreach (var field in dataElement)
+                    byte[] chunk = new byte[CHUNK_SIZE];
+                    if (isFirst)
                     {
-                        columnView.TryGetValue(field.Key, out Value[] value);
-                        if (value != null) value[i] = field.Value;
+                        _offset = 0;
                     }
-                    i++;
-                }
-            }
-            ReplaceNullsWithEmptyValues(ref columnView);
-
-            var columnViewList = new Dictionary<string, List<Value>>();
-            foreach (var column in columnView)
-            {
-                columnViewList.Add(column.Key, column.Value.ToList());
-            }
-            return columnViewList;
-        }
-
-        private void ReplaceNullsWithEmptyValues(ref Dictionary<string, Value[]> columnView)
-        {
-            foreach (var column in columnView)
-            {
-                int i = 0;
-                foreach (var value in column.Value)
-                {
-                    if (value == null)
-
+                    else
                     {
-                        columnView[column.Key][i] = new Value("");
+                        _offset = 1;
+                        chunk[0] = 91;
+                        while (inBuffer != 0)
+                        {
+                            inBuffer--;
+                            chunk[_offset] = _buffer[inBuffer];
+                            _offset++;
+                        }
                     }
-                    i++;
+                    var count = fs.Read(chunk, _offset, CHUNK_SIZE - _offset - 1);
+                    isFirst = false;
+                    if (count < CHUNK_SIZE - _offset - 1) canRead = false;
+                    for (int i = count + _offset - 1; i > 0; i--)
+                    {
+                        if (chunk[i] != 125)
+                        {
+                            _buffer[inBuffer] = chunk[i];
+                            inBuffer++;
+                        }
+                        else
+                        {
+                            chunk[i + 1] = 93;
+                            break;
+                        }
+                    }
+                    if (_offset > 0)
+                    {
+                        for (int i = 1; i < CHUNK_SIZE; i++)
+                        {
+                            if (chunk[i] != 123)
+                            {
+                                chunk[i] = 32;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    ReadOnlySequence<byte> bytesSpan = new ReadOnlySequence<byte>(chunk);
+                    Utf8JsonReader jsonReader = new Utf8JsonReader(bytesSpan);
+                    Dictionary<string, dynamic> dataRows = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(ref jsonReader, _serializerOptions);
+                    yield return dataRows;
                 }
             }
+            yield return _dataBlock;
         }
     }
 }

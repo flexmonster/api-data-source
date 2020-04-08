@@ -1,7 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
-using System.Data;
 using Npgsql;
+using Oracle.ManagedDataAccess.Client;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace NetCoreServer.DataLoaders
 {
@@ -29,10 +30,12 @@ namespace NetCoreServer.DataLoaders
                     {
                         return new NpgsqlConnection(connectionString);
                     }
+                case DatabaseType.oracle:
+                    {
+                        return new OracleConnection(connectionString);
+                    }
                 default: return null;
             }
         }
-
-
     }
 }
