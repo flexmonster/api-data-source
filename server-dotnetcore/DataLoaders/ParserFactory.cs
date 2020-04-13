@@ -6,24 +6,10 @@ using System.Text.Json;
 
 namespace NetCoreServer.DataLoaders
 {
-    public enum DatabaseType
-    {
-        mysql = 0,
-        mssql,
-        postgresql,
-        oracle
-    }
-
-    public enum DataSourceType
-    {
-        json = 0,
-        csv,
-        database
-    }
 
     public class ParserFactory : IDisposable
     {
-        private readonly DatasourceOptions _options;
+        private readonly IndexOptions _options;
         private readonly DatabaseConnectionFactory _databaseConnectionFactory;
         private IDbConnection _dbConnection;
         private bool _disposed = false;
@@ -33,7 +19,7 @@ namespace NetCoreServer.DataLoaders
         /// </summary>
         /// <param name="configuration">Configuration with datasource and other mandatory parameters</param>
         /// <param name="index">Index</param>
-        public ParserFactory(DatasourceOptions options)
+        public ParserFactory(IndexOptions options)
         {
             _options = options;
             _databaseConnectionFactory = new DatabaseConnectionFactory();
@@ -46,30 +32,31 @@ namespace NetCoreServer.DataLoaders
         /// <returns>Created Parser</returns>
         public IParser CreateParser(string index)
         {
-            switch (_options.DataSourceName)
+            switch (_options.Type)
             {
-                case DataSourceType.json:
+                case "json":
                     {
+                        var path = (_options as JsonIndexOptions)?.Path;
                         JsonSerializerOptions serializerOptions = new JsonSerializerOptions
                         {
                             AllowTrailingCommas = true,
                             Converters = { new DataJsonConverter() }
                         };
-                        var path = _options.Indexes[index];
                         return new JSONParser(path, serializerOptions);
                     }
-                case DataSourceType.csv:
+                case "csv":
                     {
-                        CSVSerializerOptions serializerOptions = new CSVSerializerOptions(fieldEnclosureToken: '+');
-                        var path = _options.Indexes[index];
+                        var path = (_options as CsvIndexOptions)?.Path;
+                        CSVSerializerOptions serializerOptions = new CSVSerializerOptions();
                         return new CSVParser(path, serializerOptions);
                     }
-                case DataSourceType.database:
+                case "database":
                     {
-                        _dbConnection = _databaseConnectionFactory.GetDbConnection(_options.ConnectionStrings["DefaultConnection"], _options.DatabaseType);
+                        var options = _options as DatabaseIndexOptions;
+                        _dbConnection = _databaseConnectionFactory.GetDbConnection(options.ConnectionString, options.DatabaseType);
                         _dbConnection.Open();
                         var dbCommand = _dbConnection.CreateCommand();
-                        dbCommand.CommandText = _options.Indexes[index];
+                        dbCommand.CommandText = options?.Query;
                         dbCommand.Prepare();
                         return new DatabaseParser(dbCommand.ExecuteReader());
                     }

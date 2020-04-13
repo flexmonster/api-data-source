@@ -39,7 +39,7 @@ namespace NetCoreServer.DataStorages
                 {
                     if (!_memoryCache.TryGetValue(cacheKey, out dataStructure))
                     {
-                        using (var parserFactory = new ParserFactory(_datasourceOptions))
+                        using (var parserFactory = new ParserFactory(_datasourceOptions.Indexes[cacheKey]))
                         {
                             var parser = parserFactory.CreateParser(cacheKey);
                             var dataLoader = new DataLoader(parser);
@@ -78,7 +78,7 @@ namespace NetCoreServer.DataStorages
                     if (reason == EvictionReason.TokenExpired || reason == EvictionReason.Expired)
                     {
                         IDataStructure dataStructure = null;
-                        using (var parserFactory = new ParserFactory(_datasourceOptions))
+                        using (var parserFactory = new ParserFactory(_datasourceOptions.Indexes[key as string]))
                         {
                             var parser = parserFactory.CreateParser(key as string);
                             var dataLoader = new DataLoader(parser);

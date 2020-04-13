@@ -12,25 +12,25 @@ namespace NetCoreServer.DataLoaders
         /// Get connection based on property in settings
         /// </summary>
         /// <param name="connectionString">Connection string</param>
-        /// <param name="type">Type of database. Set in property. Can be "mysql", "mssql", "postgresql"</param>
+        /// <param name="type">Type of database. Set in property. Can be "mysql", "mssql", "postgresql","oracle"</param>
         /// <returns>Connection to database</returns>
-        public IDbConnection GetDbConnection(string connectionString, DatabaseType type)
+        public IDbConnection GetDbConnection(string connectionString, string type)
         {
             switch (type)
             {
-                case DatabaseType.mysql:
+                case "mysql":
                     {
                         return new MySqlConnection(connectionString);
                     }
-                case DatabaseType.mssql:
+                case "mssql":
                     {
                         return new SqlConnection(connectionString);
                     }
-                case DatabaseType.postgresql:
+                case "postgresql":
                     {
                         return new NpgsqlConnection(connectionString);
                     }
-                case DatabaseType.oracle:
+                case "oracle":
                     {
                         return new OracleConnection(connectionString);
                     }
