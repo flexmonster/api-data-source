@@ -6,13 +6,13 @@ const _ = require('lodash');
  * API endpoints
  */
 
-const API_VERSION = "2.8.0";
+const API_VERSION = "2.8.5";
 
 cube.post("/handshake", async (req, res) => {
     try {
         res.json({ version: API_VERSION });
     } catch (err) {
-        handleError(err, res);
+        handleError(err, res, req);
     }
 });
 
@@ -21,7 +21,7 @@ cube.post("/fields", async (req, res) => {
         const result = await getFields(req.body.index);
         res.json(result);
     } catch (err) {
-        handleError(err, res);
+        handleError(err, res, req);
     }
 });
 
@@ -30,7 +30,7 @@ cube.post("/members", async (req, res) => {
         const result = await getMembers(req.body.index, req.body.field, req.body.page);
         res.json(result);
     } catch (err) {
-        handleError(err, res);
+        handleError(err, res, req);
     }
 });
 
@@ -39,13 +39,13 @@ cube.post("/select", async (req, res) => {
         const result = await getSelectResult(req.body.index, req.body.query, req.body.page);
         res.json(result);
     } catch (err) {
-        handleError(err, res);
+        handleError(err, res, req);
     }
 });
 
 // throw an error on other endpoints
 cube.post("*", async (req, res) => {
-    handleError(`Request type '${req.body.type}' is not implemented.`, res);
+    handleError(`Request type '${req.body.type}' is not implemented.`, res, req);
 });
 
 /**
@@ -105,6 +105,20 @@ function resolveDataType(value) {
 }
 
 /**
+ * Gets field type by unique name from the index schema.
+ * @param {object} fields the index schema
+ * @param {string} fieldName field unique name
+ */
+function getFieldType(fields, fieldName) {
+    for (let i = 0; i < fields.fields.length; i++) {
+        if (fieldName == fields.fields[i].uniqueName) {
+            return fields.fields[i].type;
+        }
+    }
+    return undefined;
+}
+
+/**
  * ===============
  * MEMBERS REQUEST
  * ===============
@@ -120,8 +134,9 @@ const MEMBERS_PAGE_SIZE = 5000;
  */
 async function getMembers(index, field, page) {
     const data = await getData(index);
+    const fields = await getFields(index);
     const fieldName = field.uniqueName;
-    const fieldType = field.type;
+    const fieldType = getFieldType(fields, fieldName);
     const output = {
         members: []
     };
@@ -189,6 +204,10 @@ async function getSelectResult(index, query, page) {
     const output = {};
     let data = await getData(index);
     if (query.filter) {
+        const fields = await getFields(index);
+        for (const filter of query.filter) {
+            filter["field"].type = getFieldType(fields, filter["field"].uniqueName);
+        }
         data = filterData(data, query.filter);
     }
     if (query.aggs && query.aggs.values) {
@@ -267,9 +286,20 @@ function checkFilter(item, filter) {
     const fieldType = filter["field"].type;
     const value = item[fieldName];
     if (filter["include"]) {
-        check = filter["include"].indexOf(value) >= 0;
+        check = false;
+        for (let i = 0; i < filter["include"].length; i++) {
+            if (value === filter["include"][i].member) {
+                check = true;
+                break;
+            }
+        }
     } else if (filter["exclude"]) {
-        check = filter["exclude"].indexOf(value) < 0;
+        for (let i = 0; i < filter["exclude"].length; i++) {
+            if (value === filter["exclude"][i].member) {
+                check = false;
+                break;
+            }
+        }
     } else if (filter["query"]) {
         const query = filter["query"];
         if (fieldType == "date") {
@@ -561,9 +591,13 @@ function parseDates(data) {
     }
 }
 
-function handleError(err, res, status) {
+function handleError(err, res, req, status) {
     if (!res) {
-        throw "Second parameter is required";
+        throw "The second parameter is required";
+    }
+    if (req && req.body && req.body.index == null) {
+        err = "Index property is missing.";
+        status = 400;
     }
     console.error(err);
     status = status || 500;
