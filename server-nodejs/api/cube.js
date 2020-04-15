@@ -12,7 +12,7 @@ cube.post("/handshake", async (req, res) => {
     try {
         res.json({ version: API_VERSION });
     } catch (err) {
-        handleError(err, res, req);
+        handleError(err, res);
     }
 });
 
@@ -21,7 +21,7 @@ cube.post("/fields", async (req, res) => {
         const result = await getFields(req.body.index);
         res.json(result);
     } catch (err) {
-        handleError(err, res, req);
+        handleError(err, res);
     }
 });
 
@@ -30,7 +30,7 @@ cube.post("/members", async (req, res) => {
         const result = await getMembers(req.body.index, req.body.field, req.body.page);
         res.json(result);
     } catch (err) {
-        handleError(err, res, req);
+        handleError(err, res);
     }
 });
 
@@ -39,13 +39,13 @@ cube.post("/select", async (req, res) => {
         const result = await getSelectResult(req.body.index, req.body.query, req.body.page);
         res.json(result);
     } catch (err) {
-        handleError(err, res, req);
+        handleError(err, res);
     }
 });
 
 // throw an error on other endpoints
 cube.post("*", async (req, res) => {
-    handleError(`Request type '${req.body.type}' is not implemented.`, res, req);
+    handleError(`Request type '${req.body.type}' is not implemented.`, res);
 });
 
 /**
@@ -74,19 +74,26 @@ async function getFields(index) {
                 }
             }
         };
-        const fileContent = await fs.readFile(`./data/${index}.json`);
-        const data = JSON.parse(fileContent);
-        const dataRow = data[0];
-        if (dataRow) {
-            for (const fieldName in dataRow) {
-                const value = dataRow[fieldName];
-                const type = resolveDataType(value);
-                output.fields.push({
-                    "uniqueName": fieldName,
-                    "caption": fieldName,
-                    "type": type,
-                })
+        try {
+            const fileContent = await fs.readFile(`./data/${index}.json`);
+            const data = JSON.parse(fileContent);
+            const dataRow = data[0];
+            if (dataRow) {
+                for (const fieldName in dataRow) {
+                    const value = dataRow[fieldName];
+                    const type = resolveDataType(value);
+                    output.fields.push({
+                        "uniqueName": fieldName,
+                        "caption": fieldName,
+                        "type": type,
+                    })
+                }
             }
+        } catch (err) {
+            const message = (index == null)
+                ? "Index property is missing."
+                : `Index with name "${index}" was not found.`;
+            throw URIError(message);
         }
         fieldsCache[index] = output;
     }
@@ -591,12 +598,11 @@ function parseDates(data) {
     }
 }
 
-function handleError(err, res, req, status) {
+function handleError(err, res, status) {
     if (!res) {
         throw "The second parameter is required";
     }
-    if (req && req.body && req.body.index == null) {
-        err = "Index property is missing.";
+    if (err instanceof URIError) {
         status = 400;
     }
     console.error(err);
