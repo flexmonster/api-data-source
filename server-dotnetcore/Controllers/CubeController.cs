@@ -66,6 +66,11 @@ namespace NetCoreServer.Controllers
         public async Task<IActionResult> PostFields([FromBody]FieldsRequest request)
         {
             object response = null;
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing.");
+            }
             if (request.Type == RequestType.Fields)
             {
                 try
@@ -82,7 +87,7 @@ namespace NetCoreServer.Controllers
             if (response == null)
             {
                 Response.StatusCode = 400;
-                return Content("Incorrect request for this endpoint.");
+                return new JsonResult("Incorrect request for this endpoint.");
             }
             return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new ColumnTypeJsonConverter() } });
         }
@@ -96,6 +101,11 @@ namespace NetCoreServer.Controllers
         [HttpPost]
         public async Task<IActionResult> PostMembers([FromBody]MembersRequest request)
         {
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing.");
+            }
             if (request.Type == RequestType.Members)
             {
                 try
@@ -107,7 +117,7 @@ namespace NetCoreServer.Controllers
                 {
                     Console.WriteLine(e.StackTrace);
                     Response.StatusCode = 500;
-                    return Content(e.Message);
+                    return new JsonResult(e.Message);
                 }
             }
             Response.StatusCode = 400;
@@ -125,6 +135,11 @@ namespace NetCoreServer.Controllers
         {
             string response = null;
 
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing");
+            }
             if (request.Type == RequestType.Select)
             {
                 try
@@ -141,7 +156,7 @@ namespace NetCoreServer.Controllers
             if (response == null)
             {
                 Response.StatusCode = 400;
-                return Content("Incorrect request for this endpoint.");
+                return new JsonResult("Incorrect request for this endpoint.");
             }
             return Content(response);
         }
