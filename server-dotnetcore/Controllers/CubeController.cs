@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using NetCoreServer.Comparators;
 using NetCoreServer.DataStorages;
+using NetCoreServer.Extensions;
 using NetCoreServer.JsonConverters;
 using NetCoreServer.Models;
 using NetCoreServer.Models.DataModels;
@@ -24,6 +25,7 @@ namespace NetCoreServer.Controllers
     [ApiController]
     public class CubeController : ControllerBase
     {
+        private const string API_VERSION = "2.8.5";
         private const int MEMBERS_PAGE_SIZE = 50000;
         private const int SELECT_PAGE_SIZE = 50000;
 
@@ -49,7 +51,7 @@ namespace NetCoreServer.Controllers
             object response = null;
             if (request.Type == RequestType.Handshake)
             {
-                response = new { isSingleEndpointApi = false };
+                response = new { version = API_VERSION };
             }
             return new JsonResult(response);
         }
@@ -64,6 +66,11 @@ namespace NetCoreServer.Controllers
         public async Task<IActionResult> PostFields([FromBody]FieldsRequest request)
         {
             object response = null;
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing.");
+            }
             if (request.Type == RequestType.Fields)
             {
                 try
@@ -80,7 +87,7 @@ namespace NetCoreServer.Controllers
             if (response == null)
             {
                 Response.StatusCode = 400;
-                return Content("Incorrect request for this endpoint.");
+                return new JsonResult("Incorrect request for this endpoint.");
             }
             return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new ColumnTypeJsonConverter() } });
         }
@@ -94,26 +101,23 @@ namespace NetCoreServer.Controllers
         [HttpPost]
         public async Task<IActionResult> PostMembers([FromBody]MembersRequest request)
         {
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing.");
+            }
             if (request.Type == RequestType.Members)
             {
                 try
                 {
-                    if (request.Field.Type == ColumnType.doubleType || request.Field.Type == ColumnType.dateType)
-                    {
-                        var response = await GetMembers<double?>(request.Index, request.Page, request.Filter, request.Field);
-                        return Content(response, "application/json");
-                    }
-                    else if (request.Field.Type == ColumnType.stringType)
-                    {
-                        var response = await GetMembers<string>(request.Index, request.Page, request.Filter, request.Field);
-                        return Content(response, "application/json");
-                    }
+                    var response = await GetMembers(request.Index, request.Page, request.Field);
+                    return Content(response, "application/json");
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.StackTrace);
                     Response.StatusCode = 500;
-                    return Content(e.Message);
+                    return new JsonResult(e.Message);
                 }
             }
             Response.StatusCode = 400;
@@ -131,6 +135,11 @@ namespace NetCoreServer.Controllers
         {
             string response = null;
 
+            if (request.Index == null)
+            {
+                Response.StatusCode = 400;
+                return new JsonResult("Index property is missing");
+            }
             if (request.Type == RequestType.Select)
             {
                 try
@@ -147,7 +156,7 @@ namespace NetCoreServer.Controllers
             if (response == null)
             {
                 Response.StatusCode = 400;
-                return Content("Incorrect request for this endpoint.");
+                return new JsonResult("Incorrect request for this endpoint.");
             }
             return Content(response);
         }
@@ -195,36 +204,46 @@ namespace NetCoreServer.Controllers
             return await _dataStorage.GetOrAddAsync(index);
         }
 
-        private async Task<string> GetMembers<T>(string index, int page, List<Filter> filter, FieldModel field)
+        private async Task<string> GetMembers(string index, int page, FieldModel field)
         {
             return (await _cache.GetOrCreateAsync(index + field.UniqueName,
                    async (cacheEntry) =>
                    {
                        cacheEntry.SetSize(1);
-                       JsonSerializerOptions options = new JsonSerializerOptions { Converters = { new MembersResponseJsonConverter<T>() } };
+                       JsonSerializerOptions options = new JsonSerializerOptions { Converters = { new MembersResponseJsonConverter() } };
                        IDataStructure data = await LoadData(index);
+                       var namesAndTypes = data.GetNameAndTypes();
                        DataSlice dataSlice = new DataSlice(data);
-                       if (filter != null)
-                       {
-                           dataSlice.FilterData(filter);
-                       }
+                       List<object> members = null;
                        bool sorted = false;
-                       var column = DataSlice.Data.GetColumn<T>(field.UniqueName);
-                       List<T> members = dataSlice.DataColumnIndexes.Select(index => column[index]).Distinct().ToList();
-                       var first = members.First();
-                       if (first is string)
-                           if (Enum.TryParse(first.ToString(), out Month m) || Enum.TryParse(first.ToString(), out ShortMonth m1))
+                       if (namesAndTypes[field.UniqueName] == ColumnType.stringType)
+                       {
+                           var column = DataSlice.Data.GetColumn<string>(field.UniqueName);
+                           var stringMembers = dataSlice.DataColumnIndexes.Select(index => column[index]).Distinct().ToList();
+                           if (stringMembers.Count != 0)
                            {
-                               members.Sort(new MonthComparator<T>());
-                               sorted = true;
+                               var first = stringMembers.First();
+                               if (Enum.TryParse(first.ToString(), out Month m) || Enum.TryParse(first.ToString(), out ShortMonth m1))
+                               {
+                                   stringMembers.Sort(new MonthComparator<string>());
+                                   sorted = true;
+                               }
                            }
+                           members = stringMembers.ConvertAll<object>(new Converter<string, object>(str => (object)str));
+                       }
+                       else
+                       {
+                           var column = DataSlice.Data.GetColumn<double?>(field.UniqueName);
+                           members = dataSlice.DataColumnIndexes.Select(index => column[index] as object).Distinct().ToList();
+                       }
+
                        int pageTotal = (int)Math.Ceiling(members.Count / (double)MEMBERS_PAGE_SIZE);
                        pageTotal = pageTotal == 0 ? 1 : pageTotal;
                        string[] responses = new string[pageTotal];
                        int currentPage = 0;
                        while (currentPage < pageTotal)
                        {
-                           MembersResponse<T> response = new MembersResponse<T>();
+                           MembersResponse response = new MembersResponse();
                            response.Sorted = sorted;
                            response.Page = currentPage;
                            response.PageTotal = pageTotal;
@@ -262,7 +281,9 @@ namespace NetCoreServer.Controllers
               async (cacheEntry) =>
               {
                   cacheEntry.SetSize(1);
-                  DataSlice data = new DataSlice(await LoadData(index));
+                  var rawData = await LoadData(index);
+                  var nameTypes = rawData.GetNameAndTypes();
+                  DataSlice data = new DataSlice(rawData);
                   SelectResponse response = new SelectResponse();
                   string[] responses = null;
                   JsonSerializerOptions options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new SelectResponseJsonConverter() } };
@@ -273,6 +294,7 @@ namespace NetCoreServer.Controllers
                   if (query.Aggs != null && query.Aggs.Values != null)
                   {
                       response.Aggs = new List<Aggregation>();
+                      query.Aggs.Values.ForEach(aggvalue => aggvalue.Field.Type = nameTypes[aggvalue.Field.UniqueName]);
                       if (query.Aggs.By != null)
                       {
                           if (query.Aggs.By.Rows == null)
@@ -287,6 +309,7 @@ namespace NetCoreServer.Controllers
                           {
                               var tempAggs = new List<Aggregation>();
                               var concatedFields = query.Aggs.By.Rows.Union(query.Aggs.By.Cols).ToList();
+                              concatedFields.ForEach(concatedField => concatedField.Type = nameTypes[concatedField.UniqueName]);
                               data.CalcByFields(concatedFields, query.Aggs.By.Cols, query.Aggs.Values, ref tempAggs);
                               response.Aggs = tempAggs;
                               response.Aggs.Add(data.CalcValues(query.Aggs.Values));
@@ -320,6 +343,7 @@ namespace NetCoreServer.Controllers
                   {
                       for (int i = 0; i < query.Fields.Count; i++)
                       {
+                          query.Fields[i].Type = nameTypes[query.Fields[i].UniqueName];
                           response.Fields.Add(query.Fields[i]);
                       }
                       response.Hits = new List<List<object>>();
@@ -363,6 +387,8 @@ namespace NetCoreServer.Controllers
                   return responses;
               }))[page];
         }
+
+
 
         private string CalculateMD5Hash(string input)
         {

@@ -23,7 +23,6 @@ namespace NetCoreServer.Models.Members
         public RequestType Type { get; set; }
 
         public FieldModel Field { get; set; }
-        public List<Filter> Filter { get; set; }
 
         public int Page { get; set; }
     }

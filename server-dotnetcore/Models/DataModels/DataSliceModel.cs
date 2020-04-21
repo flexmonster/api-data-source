@@ -13,12 +13,13 @@ namespace NetCoreServer.Models
         public int[] DataColumnIndexes { get; set; }
 
         public static IDataStructure Data { get; set; }
+        private static Dictionary<string, ColumnType> _columnNameTypes;
 
         public DataSlice(IDataStructure data)
         {
             Data = data;
-            var columnNames = Data.GetNameAndTypes();
-            var firstNameAndType = columnNames.First();
+            _columnNameTypes = Data.GetNameAndTypes();
+            var firstNameAndType = _columnNameTypes.First();
             int dataVauesCount = 0;
             if (firstNameAndType.Value == ColumnType.stringType)
             {
@@ -55,6 +56,7 @@ namespace NetCoreServer.Models
             }
             foreach (var filter in filters)
             {
+                filter.Field.Type = _columnNameTypes[filter.Field.UniqueName];
                 if (filter.Value == null)
                 {
                     ParallelQuery<int> indexes = DataColumnIndexes.AsParallel();
@@ -103,6 +105,7 @@ namespace NetCoreServer.Models
 
                 if (filter.Value != null)
                 {
+                    filter.Value.Field.Type = _columnNameTypes[filter.Value.Field.UniqueName];
                     var calculatedTotalsAggregation = new List<Aggregation>();
                     CalcByFields(new List<FieldModel> { filter.Field }, null, new List<FieldFuncValue> { filter.Value }, ref calculatedTotalsAggregation);
                     var calculatedTotals = new Dictionary<object, double>();
@@ -194,16 +197,16 @@ namespace NetCoreServer.Models
         /// <param name="dataColumn">data column</param>
         /// <param name="filter">filter to apply</param>
         /// <param name="indexes">index of data items present in slice</param>
-        private void CheckIncludeFilter<T>(DataColumn<T> dataColumn, List<ValueObject> filter, ref ParallelQuery<int> indexes)
+        private void CheckIncludeFilter<T>(DataColumn<T> dataColumn, List<HierarchyObject> filter, ref ParallelQuery<int> indexes)
         {
             if (dataColumn.ColumnType == ColumnType.doubleType || dataColumn.ColumnType == ColumnType.dateType)
             {
-                var numberFilter = filter.Select(value => value.NumberValue);
+                var numberFilter = filter.Select(value => value?.Member?.NumberValue);
                 indexes = indexes.Where(index => numberFilter.Contains(dataColumn[index] as double?));
             }
             else if (dataColumn.ColumnType == ColumnType.stringType)
             {
-                var stringFilter = filter.Select(value => value.StringValue);
+                var stringFilter = filter.Select(value => value?.Member?.StringValue);
                 indexes = indexes.Where(index => stringFilter.Contains(dataColumn[index] as string));
             }
         }
@@ -213,16 +216,16 @@ namespace NetCoreServer.Models
         /// <param name="dataColumn">data column</param>
         /// <param name="filter">filter to apply</param>
         /// <param name="indexes">index of data items present in slice</param>
-        private void CheckExcludeFilter<T>(DataColumn<T> dataColumn, List<ValueObject> filter, ref ParallelQuery<int> indexes)
+        private void CheckExcludeFilter<T>(DataColumn<T> dataColumn, List<HierarchyObject> filter, ref ParallelQuery<int> indexes)
         {
             if (dataColumn.ColumnType == ColumnType.doubleType || dataColumn.ColumnType == ColumnType.dateType)
             {
-                var numberFilter = filter.Select(value => value.NumberValue);
+                var numberFilter = filter.Select(value => value?.Member?.NumberValue);
                 indexes = indexes.Where(index => !numberFilter.Contains(dataColumn[index] as double?));
             }
             else if (dataColumn.ColumnType == ColumnType.stringType)
             {
-                var stringFilter = filter.Select(value => value.StringValue);
+                var stringFilter = filter.Select(value => value?.Member?.StringValue == "" ? null : value?.Member?.StringValue);
                 indexes = indexes.Where(index => !stringFilter.Contains(dataColumn[index] as string));
             }
         }

@@ -9,9 +9,9 @@ namespace NetCoreServer.Models.Select
 
         public string FieldType { get; set; }
 
-        public List<ValueObject> Include { get; set; }
+        public List<HierarchyObject> Include { get; set; }
 
-        public List<ValueObject> Exclude { get; set; }
+        public List<HierarchyObject> Exclude { get; set; }
 
         public Dictionary<string, ValueObject> Query { get; set; }
 
