@@ -11,12 +11,12 @@ namespace NetCoreServer
         private static readonly Dictionary<string, string> DEFAULTS = new Dictionary<string, string>
             {
                 { "settings", "appsettings.json" },
-                { "urls", "http://0.0.0.0:3400" }
+                { "port", "3400" }
             };
         private static readonly Dictionary<string, string> ARGS_MAPPING = new Dictionary<string, string>
             {
                 { "-s", "settings" },
-                { "-u", "urls" }
+                { "-p", "port" }
             };
         public static void Main(string[] args)
         {
@@ -48,7 +48,7 @@ namespace NetCoreServer
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                        .UseUrls(configuration.GetValue<string>("urls"));
+                        .UseUrls("http://0.0.0.0:" + configuration.GetValue<string>("port"));
                 });
 
             return hostBuilder;

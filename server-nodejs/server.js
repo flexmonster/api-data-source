@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 
 app.use('/api/cube', require('./api/cube.js'));
 
-app.listen(3400, () => {
-    console.log("Server running on port 3400");
+const port = process.argv[2] || 3400;
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });

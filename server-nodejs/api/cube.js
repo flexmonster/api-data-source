@@ -1,6 +1,7 @@
 const cube = require('express').Router();
 const fs = require('fs').promises;
 const _ = require('lodash');
+const dataFolder = process.argv[3] || './data';
 
 /**
  * API endpoints
@@ -55,7 +56,7 @@ cube.post("*", async (req, res) => {
  */
 
 /**
- * Composes the index schema based on the data file from the `./data` folder.
+ * Composes the index schema based on the data file from the data folder.
  * @param {string} index index name
  */
 async function getFields(index) {
@@ -75,7 +76,7 @@ async function getFields(index) {
             }
         };
         try {
-            const fileContent = await fs.readFile(`./data/${index}.json`);
+            const fileContent = await fs.readFile(`${dataFolder}/${index}.json`);
             const data = JSON.parse(fileContent);
             const dataRow = data[0];
             if (dataRow) {
@@ -565,12 +566,12 @@ function calcAverage(data, fieldName) {
 }
 
 /**
- * Gets index raw data. Reads the `.json` file from the `./data` folder. 
+ * Gets index raw data. Reads the `.json` file from the data folder. 
  * @param {string} index index name
  */
 async function getData(index) {
     if (!dataCache[index]) {
-        const dataRaw = await fs.readFile(`./data/${index}.json`);
+        const dataRaw = await fs.readFile(`${dataFolder}/${index}.json`);
         const data = JSON.parse(dataRaw);
         parseDates(data);
         dataCache[index] = data;
