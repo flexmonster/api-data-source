@@ -61,11 +61,11 @@ namespace NetCoreServer.DataStorages
         /// </summary>
         /// <param name="expireInMilliseconds">Time when cache entry will expire</param>
         /// <returns></returns>
-        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(int expireInMilliseconds = 3600)
+        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(int expireInMinutes = 60)
         {
-            var expirationTime = DateTime.Now.AddMilliseconds(expireInMilliseconds);
+            var expirationTime = DateTime.Now.AddMinutes(expireInMinutes);
             var expirationToken = new CancellationChangeToken(
-                new CancellationTokenSource(TimeSpan.FromMilliseconds(expireInMilliseconds + .01)).Token);
+                new CancellationTokenSource(TimeSpan.FromMinutes(expireInMinutes + .01)).Token);
 
             var memoryCacheEntryOptions = new MemoryCacheEntryOptions();
             memoryCacheEntryOptions.SetAbsoluteExpiration(expirationTime);
@@ -86,11 +86,11 @@ namespace NetCoreServer.DataStorages
                         }
                         if (dataStructure != null)
                         {
-                            _memoryCache.Set(key, dataStructure, GetMemoryCacheEntryOptions(expireInMilliseconds));
+                            _memoryCache.Set(key, dataStructure, GetMemoryCacheEntryOptions(expireInMinutes));
                         }
                         else
                         {
-                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInMilliseconds));
+                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInMinutes));
                         }
                     }
                 }
