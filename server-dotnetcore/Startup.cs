@@ -30,8 +30,7 @@ namespace NetCoreServer
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
                 });
             });
-            services.Configure<DatasourceOptions>(Configuration.GetSection("DataSource"));
-            services.Configure<DataStorageOptions>(Configuration.GetSection("DataStorageOptions"));
+            services.ConfigureFlexmonsterOptions(Configuration);
             services.AddSingleton<IDataStorage, DataStorage>();
             services.AddScoped<IPrepopulatingService, PrepopulatingCacheService>();
             services.AddControllers().AddJsonOptions(options =>

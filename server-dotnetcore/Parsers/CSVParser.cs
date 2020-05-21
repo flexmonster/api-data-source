@@ -152,7 +152,7 @@ namespace NetCoreServer.Parsers
             {
                 if (dateCount >= numberCount)
                 {
-                    return ColumnType.stringType;
+                    return ColumnType.dateType;
                 }
             }
             if (stringCount > 0)

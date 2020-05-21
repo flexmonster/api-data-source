@@ -39,13 +39,20 @@ namespace NetCoreServer.DataStorages
                 {
                     if (!_memoryCache.TryGetValue(cacheKey, out dataStructure))
                     {
-                        using (var parserFactory = new ParserFactory(_datasourceOptions))
+                        using (var parserFactory = new ParserFactory(_datasourceOptions.Indexes[cacheKey]))
                         {
                             var parser = parserFactory.CreateParser(cacheKey);
                             var dataLoader = new DataLoader(parser);
                             dataStructure = dataLoader.Load();
                         }
-                        _memoryCache.Set(cacheKey, dataStructure, GetMemoryCacheEntryOptions(_dataStorageOptions.DataRefreshTime));
+                        if (_dataStorageOptions.DataRefreshTime != 0)
+                        {
+                            _memoryCache.Set(cacheKey, dataStructure, GetMemoryCacheEntryOptions(_dataStorageOptions.DataRefreshTime));
+                        }
+                        else
+                        {
+                            _memoryCache.Set(cacheKey, dataStructure);
+                        }
                     }
                 }
                 finally
@@ -61,11 +68,11 @@ namespace NetCoreServer.DataStorages
         /// </summary>
         /// <param name="expireInMilliseconds">Time when cache entry will expire</param>
         /// <returns></returns>
-        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(int expireInMilliseconds = 3600)
+        private MemoryCacheEntryOptions GetMemoryCacheEntryOptions(int expireInMinutes = 60)
         {
-            var expirationTime = DateTime.Now.AddMilliseconds(expireInMilliseconds);
+            var expirationTime = DateTime.Now.AddMinutes(expireInMinutes);
             var expirationToken = new CancellationChangeToken(
-                new CancellationTokenSource(TimeSpan.FromMilliseconds(expireInMilliseconds + .01)).Token);
+                new CancellationTokenSource(TimeSpan.FromMinutes(expireInMinutes + .01)).Token);
 
             var memoryCacheEntryOptions = new MemoryCacheEntryOptions();
             memoryCacheEntryOptions.SetAbsoluteExpiration(expirationTime);
@@ -78,7 +85,7 @@ namespace NetCoreServer.DataStorages
                     if (reason == EvictionReason.TokenExpired || reason == EvictionReason.Expired)
                     {
                         IDataStructure dataStructure = null;
-                        using (var parserFactory = new ParserFactory(_datasourceOptions))
+                        using (var parserFactory = new ParserFactory(_datasourceOptions.Indexes[key as string]))
                         {
                             var parser = parserFactory.CreateParser(key as string);
                             var dataLoader = new DataLoader(parser);
@@ -86,11 +93,11 @@ namespace NetCoreServer.DataStorages
                         }
                         if (dataStructure != null)
                         {
-                            _memoryCache.Set(key, dataStructure, GetMemoryCacheEntryOptions(expireInMilliseconds));
+                            _memoryCache.Set(key, dataStructure, GetMemoryCacheEntryOptions(expireInMinutes));
                         }
                         else
                         {
-                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInMilliseconds));
+                            _memoryCache.Set(key, value, GetMemoryCacheEntryOptions(expireInMinutes));
                         }
                     }
                 }
