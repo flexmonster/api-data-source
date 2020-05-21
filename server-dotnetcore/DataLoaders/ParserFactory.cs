@@ -46,8 +46,14 @@ namespace NetCoreServer.DataLoaders
                     }
                 case "csv":
                     {
-                        var path = (_options as CsvIndexOptions)?.Path;
+                        var csvOptions = _options as CsvIndexOptions;
+                        var path = csvOptions?.Path;
+                        var delimeter = csvOptions?.Delimiter;
                         CSVSerializerOptions serializerOptions = new CSVSerializerOptions();
+                        if (delimeter.HasValue)
+                        {
+                            serializerOptions.FieldSeparator = delimeter.Value;
+                        }
                         return new CSVParser(path, serializerOptions);
                     }
                 case "database":

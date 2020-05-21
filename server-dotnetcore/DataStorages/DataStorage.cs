@@ -45,7 +45,14 @@ namespace NetCoreServer.DataStorages
                             var dataLoader = new DataLoader(parser);
                             dataStructure = dataLoader.Load();
                         }
-                        _memoryCache.Set(cacheKey, dataStructure, GetMemoryCacheEntryOptions(_dataStorageOptions.DataRefreshTime));
+                        if (_dataStorageOptions.DataRefreshTime != 0)
+                        {
+                            _memoryCache.Set(cacheKey, dataStructure, GetMemoryCacheEntryOptions(_dataStorageOptions.DataRefreshTime));
+                        }
+                        else
+                        {
+                            _memoryCache.Set(cacheKey, dataStructure);
+                        }
                     }
                 }
                 finally
