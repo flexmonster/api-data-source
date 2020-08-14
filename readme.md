@@ -24,27 +24,27 @@ To run the custom data source API project, you will need Node.js and npm. [Get i
 
 1. Download the `.zip` archive with the sample project or clone it from GitHub with the following command:
 
-```bash
-git clone https://github.com/flexmonster/api-data-source.git
-```
+    ```bash
+    git clone https://github.com/flexmonster/api-data-source.git
+    ```
 
 2. Run the project using one of the following ways:
     
     - To start the sample Node.js server:
 
-    ```
-    cd server-nodejs
-    npm install
-    npm start
-    ```
+        ```
+        cd server-nodejs
+        npm install
+        npm start
+        ```
 
     - To start the sample .NET Code server:
 
-    ```
-    cd server-dotnetcore
-    dotnet restore
-    dotnet run
-    ```
+        ```
+        cd server-dotnetcore
+        dotnet restore
+        dotnet run
+        ```
 
 ## Usage
 
