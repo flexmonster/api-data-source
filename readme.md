@@ -52,5 +52,5 @@ For details on usage, refer to our documentation:
 
 - [A quick overview of the sample Node.js server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-node-js-server/) 
 - [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-net-core-server/)
-- [Quick start guide to the custom data source API implementation](https://www.flexmonster.com/doc/implementing-the-custom-data-source-api-server/)
+- [Implementing the custom data source API server](https://www.flexmonster.com/doc/implementing-the-custom-data-source-api-server/)
 - [API documentation](https://www.flexmonster.com/api/all-requests/)
