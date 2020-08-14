@@ -38,7 +38,7 @@ To run the custom data source API project, you will need Node.js and npm. [Get i
         npm start
         ```
 
-    - To start the sample .NET Code server:
+    - To start the sample .NET Core server:
 
         ```
         cd server-dotnetcore
