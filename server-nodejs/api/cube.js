@@ -168,9 +168,16 @@ async function getMembers(index, field, page) {
 }
 
 function createMember(value, fieldType) {
-    return {
-        value: value
-    };
+    if (value || value === 0 || value === false || value === NaN) {
+        return {
+            value: value
+        }
+    }
+    else {
+        return {
+            value: ""
+        }
+    }
 }
 
 const monthOrder = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -223,8 +230,10 @@ async function getSelectResult(index, query, page) {
         if (query.aggs.by) {
             const rows = query.aggs.by.rows || [];
             const cols = query.aggs.by.cols || [];
-            calcByFields(data, rows.concat(cols), cols, query.aggs.values, output.aggs); // data
-            output.aggs.push(calcValues(data, query.aggs.values)); // grand totals
+            if (data.length != 0) {
+                calcByFields(data, rows.concat(cols), cols, query.aggs.values, output.aggs); // data
+                output.aggs.push(calcValues(data, query.aggs.values)); // grand totals
+            }
         } else { // only grand totals
             output.aggs.push(calcValues(data, query.aggs.values));
         }
@@ -247,7 +256,14 @@ async function getSelectResult(index, query, page) {
         output.hits = [];
         const limit = isNaN(query.limit) ? data.length : Math.min(query.limit, data.length);
         for (let i = 0; i < limit; i++) {
-            const row = query.fields.map(f => data[i][f.uniqueName]);
+            const row = query.fields.map(f => {
+                const value = data[i][f.uniqueName]
+                if (value === undefined || value === null) {
+                    return "";
+                } else {
+                    return value;
+                }
+            });
             output.hits.push(row)
         }
         page = isNaN(page) ? 0 : page;
@@ -292,7 +308,10 @@ function checkFilter(item, filter) {
     let check = true;
     const fieldName = filter["field"].uniqueName;
     const fieldType = filter["field"].type;
-    const value = item[fieldName];
+    let value = item[fieldName];
+    if (value === undefined || value === null) {
+        value = "";
+    }
     if (filter["include"]) {
         check = false;
         for (let i = 0; i < filter["include"].length; i++) {
@@ -433,10 +452,13 @@ function checkStringFilterQuery(value, query) {
  */
 function checkNumberFilterQuery(value, query) {
     if (query["equal"] !== undefined) {
-        return value == query["equal"];
+        return value === query["equal"];
     }
     if (query["not_equal"] !== undefined) {
-        return value != query["not_equal"];
+        return value !== query["not_equal"];
+    }
+    if (value === "") {
+        return false;
     }
     if (query["greater"] !== undefined) {
         return value > query["greater"];
@@ -459,6 +481,18 @@ function checkNumberFilterQuery(value, query) {
     return false;
 }
 
+const groupBy = (array, keyName) =>
+    array.reduce((objectsByKeyValue, obj) => {
+        let valueObject = obj[keyName];
+        if (valueObject === undefined || valueObject === null) {
+            valueObject = "";
+        }
+        objectsByKeyValue[valueObject] = objectsByKeyValue[valueObject] || {};
+        objectsByKeyValue[valueObject].key = valueObject;
+        objectsByKeyValue[valueObject].values = (objectsByKeyValue[valueObject].values || []).concat(obj);
+        return objectsByKeyValue;
+    }, {});
+
 /**
  * Groups data by fields and calculates numberic data. Works recursively.
  * @param {object[]} data input data
@@ -474,9 +508,10 @@ function calcByFields(data, fields, cols, values, output, keys) {
     }
     const fieldName = fields[0].uniqueName;
     const subfields = fields.slice(1);
-    const groups = _.groupBy(data, fieldName);
-    for (const key in groups) {
-        const subdata = groups[key];
+    const groups = groupBy(data, fieldName);
+    for (const index in groups) {
+        const key = groups[index].key;
+        const subdata = groups[index].values;
         const item = calcValues(subdata, values);
         item.keys = keys ? _.clone(keys) : {};
         item.keys[fieldName] = key;
@@ -487,9 +522,10 @@ function calcByFields(data, fields, cols, values, output, keys) {
     if (cols && cols.length > 0 && fields.length > cols.length) {
         const colFieldName = cols[0].uniqueName;
         const subCols = cols.slice(1);
-        const colGroups = _.groupBy(data, colFieldName);
-        for (const key in colGroups) {
-            const subdata = colGroups[key];
+        const colGroups = groupBy(data, colFieldName);
+        for (const index in colGroups) {
+            const key = colGroups[index].key;
+            const subdata = colGroups[index].values;
             const item = calcValues(subdata, values);
             item.keys = keys ? _.clone(keys) : {};
             item.keys[colFieldName] = key;
@@ -529,10 +565,15 @@ function calcValue(data, fieldName, func) {
         return _.sumBy(data, fieldName);
     }
     if (func == "count") {
-        return data.length;
+        return _.filter(data, (value) => {
+            return typeof value[fieldName] == "number" || typeof value[fieldName] == "string";
+        }).length;
     }
     if (func == "distinctcount") {
-        return _.uniqBy(data, fieldName).length;
+        let notEmptyData = _.filter(data, (value) => {
+            return typeof value[fieldName] == "number" || typeof value[fieldName] == "string";
+        });
+        return _.uniqBy(notEmptyData, fieldName).length;
     }
     if (func == "average") {
         return calcAverage(data, fieldName);
