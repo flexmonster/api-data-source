@@ -1,0 +1,17 @@
+{
+  "name": "testforcustomapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha test/*Spec.js",
+    "debug": "mocha --inspect-brk test/*Spec.js"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3"
+  }
+}
