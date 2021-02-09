@@ -289,7 +289,6 @@ namespace NetCoreServer.Models
         /// <param name="query">Query object</param>
         private bool CheckNumberFilterQuery(double? numberElementValue, Dictionary<string, ValueObject> query)
         {
-            if (!numberElementValue.HasValue) return false;
             if (query.ContainsKey("equal"))
             {
                 return numberElementValue == query["equal"].NumberValue;
@@ -535,16 +534,20 @@ namespace NetCoreServer.Models
         /// <returns>Calculated aggregation</returns>
         private double CalcValue(FieldModel field, string func)
         {
-            if (func == "count")
-            {
-                return DataColumnIndexes.Count();
-            }
             if (field.Type == ColumnType.stringType)
             {
                 var validDataColumnIndexes = DataColumnIndexes.Where(index => Data.GetColumn<string>(field.UniqueName)[index] != null).DefaultIfEmpty(-1).ToArray();
+                if (validDataColumnIndexes[0] == -1)
+                {
+                    return 0;
+                }
+                if (func == "count")
+                {
+                    return validDataColumnIndexes.Count();
+                }
                 if (func == "distinctcount")
                 {
-                    return DataColumnIndexes.Select(index => Data.GetColumn<string>(field.UniqueName)[index]).Distinct().ToList().Count;
+                    return validDataColumnIndexes.Select(index => Data.GetColumn<string>(field.UniqueName)[index]).Distinct().ToList().Count;
                 }
             }
             if (field.Type == ColumnType.doubleType || field.Type == ColumnType.dateType)
@@ -555,9 +558,13 @@ namespace NetCoreServer.Models
                 {
                     return double.NaN;
                 }
+                if (func == "count")
+                {
+                    return validDataColumnIndexes.Count();
+                }
                 if (func == "distinctcount")
                 {
-                    return DataColumnIndexes.Select(index => column[index]).Distinct().ToList().Count;
+                    return validDataColumnIndexes.Select(index => column[index]).Distinct().ToList().Count;
                 }
                 if (func == "sum" || func == "none")
                 {

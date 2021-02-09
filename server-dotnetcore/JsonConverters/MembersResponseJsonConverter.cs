@@ -25,12 +25,12 @@ namespace NetCoreServer.JsonConverters
                                    JsonSerializerOptions options)
         {
             writer.WriteStartObject();
-            writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'm', 'e', 'm', 'b', 'e', 'r', 's' }));
+            writer.WritePropertyName("members");
             writer.WriteStartArray();
             foreach (var member in value.Members)
             {
                 writer.WriteStartObject();
-                writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'v', 'a', 'l', 'u', 'e' }));
+                writer.WritePropertyName("value");
                 if (member != null)
                 {
                     JsonSerializer.Serialize(writer, member, options);
@@ -42,9 +42,9 @@ namespace NetCoreServer.JsonConverters
                 writer.WriteEndObject();
             }
             writer.WriteEndArray();
-            writer.WriteBoolean(new ReadOnlySpan<char>(new char[] { 's', 'o', 'r', 't', 'e', 'd' }), value.Sorted);
-            writer.WriteNumber(new ReadOnlySpan<char>(new char[] { 'p', 'a', 'g', 'e' }), value.Page);
-            writer.WriteNumber(new ReadOnlySpan<char>(new char[] { 'p', 'a', 'g', 'e', 'T', 'o', 't', 'a', 'l' }), value.PageTotal);
+            writer.WriteBoolean("sorted", value.Sorted);
+            writer.WriteNumber("page", value.Page);
+            writer.WriteNumber("pageTotal", value.PageTotal);
 
             writer.WriteEndObject();
         }

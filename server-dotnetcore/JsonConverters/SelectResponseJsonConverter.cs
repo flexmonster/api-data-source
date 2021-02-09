@@ -26,20 +26,20 @@ namespace NetCoreServer.JsonConverters
             writer.WriteStartObject();
             if (value.Fields != null)
             {
-                writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'f', 'i', 'e', 'l', 'd', 's' }));
+                writer.WritePropertyName("fields");
 
                 writer.WriteStartArray();
                 foreach (var field in value.Fields)
                 {
                     writer.WriteStartObject();
-                    writer.WriteString(new ReadOnlySpan<char>(new char[] { 'u', 'n', 'i', 'q', 'u', 'e', 'N', 'a', 'm', 'e' }), field.UniqueName);
+                    writer.WriteString("uniqueName", field.UniqueName);
                     writer.WriteEndObject();
                 }
                 writer.WriteEndArray();
             }
             if (value.Hits != null)
             {
-                writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'h', 'i', 't', 's' }));
+                writer.WritePropertyName("hits");
                 writer.WriteStartArray();
                 for (int i = 0; i < value.Hits.Count; i++)
                 {
@@ -52,7 +52,7 @@ namespace NetCoreServer.JsonConverters
                         }
                         else
                         {
-                            writer.WriteNullValue();
+                            writer.WriteStringValue("");
                         }
                     }
                     writer.WriteEndArray();
@@ -61,12 +61,12 @@ namespace NetCoreServer.JsonConverters
             }
             if (value.Aggs != null)
             {
-                writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'a', 'g', 'g', 's' }));
+                writer.WritePropertyName("aggs");
                 writer.WriteStartArray();
                 foreach (var member in value.Aggs)
                 {
                     writer.WriteStartObject();
-                    writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'v', 'a', 'l', 'u', 'e', 's' }));
+                    writer.WritePropertyName("values");
                     writer.WriteStartObject();
                     foreach (var memberval in member.Values)
                     {
@@ -81,7 +81,7 @@ namespace NetCoreServer.JsonConverters
                     writer.WriteEndObject();
                     if (member.Keys != null)
                     {
-                        writer.WritePropertyName(new ReadOnlySpan<char>(new char[] { 'k', 'e', 'y', 's' }));
+                        writer.WritePropertyName("keys");
                         writer.WriteStartObject();
                         foreach (var memberkey in member.Keys)
                         {
@@ -94,8 +94,8 @@ namespace NetCoreServer.JsonConverters
                 }
                 writer.WriteEndArray();
             }
-            writer.WriteNumber(new ReadOnlySpan<char>(new char[] { 'p', 'a', 'g', 'e' }), value.Page);
-            writer.WriteNumber(new ReadOnlySpan<char>(new char[] { 'p', 'a', 'g', 'e', 'T', 'o', 't', 'a', 'l' }), value.PageTotal);
+            writer.WriteNumber("page", value.Page);
+            writer.WriteNumber("pageTotal", value.PageTotal);
 
             writer.WriteEndObject();
         }

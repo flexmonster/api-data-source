@@ -15,7 +15,7 @@ namespace NetCoreServer.Extensions
         public static double ToUnixTimestamp(this DateTime date)
         {
             DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            TimeSpan diff = date.ToUniversalTime() - origin;
+            TimeSpan diff = date.Kind == DateTimeKind.Local ? date.ToUniversalTime() - origin : date - origin;
             return Math.Floor(diff.TotalMilliseconds);
         }
     }

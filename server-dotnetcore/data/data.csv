@@ -1,0 +1,1000 @@
+Category,Size,Color,Destination,Business Type,Country,Order Date,Price,Quantity,Discount
+Accessories,262 oz,red,Australia,Specialty Bike Shop,Australia,2018-08-23T00:00:00Z,174,225,23
+Accessories,214 oz,yellow,Canada,Specialty Bike Shop,Canada,2018-11-23T00:00:00Z,502,90,17
+Accessories,147 oz,white,France,Specialty Bike Shop,France,2020-04-08T00:00:00Z,242,855,37
+Accessories,112 oz,yellow,Germany,Specialty Bike Shop,Germany,2018-11-13T00:00:00Z,102,897,42
+Accessories,256 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,2019-11-17T00:00:00Z,126,115,44
+Accessories,278 oz,yellow,United States,Specialty Bike Shop,United States,2019-01-06T00:00:00Z,1246,88,47
+Accessories,8 oz,green,Australia,Value Added Reseller,Australia,2019-11-30T00:00:00Z,680,66,80
+Accessories,181 oz,yellow,Canada,Value Added Reseller,Canada,2020-04-30T00:00:00Z,1241,939,66
+Accessories,181 oz,yellow,Canada,Value Added Reseller,Canada,2019-01-19T00:00:00Z,1241,939,66
+Accessories,344 oz,yellow,France,Value Added Reseller,France,2018-06-14T00:00:00Z,150,67,30
+Accessories,291 oz,red,Germany,Value Added Reseller,Germany,2018-02-25T00:00:00Z,244,963,22
+Accessories,126 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,2020-05-19T00:00:00Z,501,556,9
+Accessories,317 oz,red,United States,Value Added Reseller,United States,2019-09-07T00:00:00Z,4960,898,41
+Accessories,124 oz,yellow,Australia,Warehouse,Australia,2018-08-16T00:00:00Z,9,578,8
+Accessories,23 oz,red,Canada,Warehouse,Canada,2020-01-13T00:00:00Z,3655,64,70
+Accessories,124 oz,green,France,Warehouse,France,2020-08-16T00:00:00Z,1654,556,95
+Accessories,310 oz,yellow,Germany,Warehouse,Germany,2019-01-18T00:00:00Z,1190,292,36
+Accessories,277 oz,red,United Kingdom,Warehouse,United Kingdom,2020-03-24T00:00:00Z,1222,730,38
+Accessories,47 oz,white,United States,Warehouse,United States,2019-05-08T00:00:00Z,7941,73,53
+Bikes,264 oz,white,Australia,Specialty Bike Shop,Australia,2020-08-09T00:00:00Z,6829,19,56
+Bikes,76 oz,red,Canada,Specialty Bike Shop,Canada,2019-08-02T00:00:00Z,1664,19,75
+Bikes,217 oz,red,France,Specialty Bike Shop,France,2020-01-01T00:00:00Z,2995,98,88
+Bikes,251 oz,green,Germany,Specialty Bike Shop,Germany,2018-10-27T00:00:00Z,1487,96,100
+Bikes,292 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,2019-06-30T00:00:00Z,9245,51,29
+Bikes,266 oz,green,United States,Specialty Bike Shop,United States,2018-03-31T00:00:00Z,9008,76,66
+Bikes,198 oz,green,Australia,Value Added Reseller,Australia,2018-12-04T00:00:00Z,9376,92,7
+Bikes,109 oz,red,Canada,Value Added Reseller,Canada,2018-10-10T00:00:00Z,1531,56,31
+Bikes,54 oz,yellow,France,Value Added Reseller,France,2019-08-23T00:00:00Z,5421,83,22
+Bikes,93 oz,red,Germany,Value Added Reseller,Germany,2019-05-13T00:00:00Z,6975,73,41
+Bikes,297 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-06-14T00:00:00Z,4320,59,100
+Bikes,339 oz,red,Australia,Value Added Reseller,United States,2018-09-23T00:00:00Z,3200,27,41
+Bikes,205 oz,blue,Canada,Warehouse,Australia,2018-11-15T00:00:00Z,6688,22,41
+Bikes,226 oz,blue,France,Warehouse,Canada,2020-04-01T00:00:00Z,699,22,42
+Bikes,311 oz,purple,Germany,Warehouse,France,2018-11-12T00:00:00Z,5403,75,70
+Bikes,282 oz,red,United Kingdom,Warehouse,Germany,2019-09-12T00:00:00Z,6377,28,49
+Bikes,286 oz,blue,United States,Warehouse,United Kingdom,2019-06-09T00:00:00Z,2471,93,14
+Bikes,100 oz,blue,Australia,Warehouse,United States,2019-03-24T00:00:00Z,6650,40,4
+Clothing,218 oz,yellow,Canada,Specialty Bike Shop,Australia,2019-11-11T00:00:00Z,865,4513,70
+Clothing,216 oz,blue,France,Specialty Bike Shop,Canada,2018-04-07T00:00:00Z,511,4615,20
+Clothing,284 oz,blue,Germany,Specialty Bike Shop,France,2018-11-20T00:00:00Z,981,1854,36
+Clothing,325 oz,blue,United Kingdom,Specialty Bike Shop,Germany,2018-01-28T00:00:00Z,57,1187,10
+Clothing,192 oz,white,United States,Specialty Bike Shop,United Kingdom,2019-10-19T00:00:00Z,675,1527,38
+Clothing,25 oz,purple,Australia,Specialty Bike Shop,United States,2020-09-02T00:00:00Z,40,4342,72
+Clothing,95 oz,red,Canada,Value Added Reseller,Australia,2020-01-30T00:00:00Z,400,8975,63
+Clothing,39 oz,purple,France,Value Added Reseller,Canada,2019-09-26T00:00:00Z,971,3522,90
+Clothing,36 oz,green,Germany,Value Added Reseller,France,2019-02-05T00:00:00Z,357,3939,93
+Clothing,208 oz,red,United Kingdom,Value Added Reseller,Germany,2018-11-30T00:00:00Z,820,3560,40
+Clothing,3 oz,white,United States,Value Added Reseller,United Kingdom,2018-11-10T00:00:00Z,520,3892,32
+Clothing,147 oz,white,Australia,Value Added Reseller,United States,2019-04-05T00:00:00Z,448,3906,24
+Clothing,68 oz,red,United Kingdom,Warehouse,Australia,2019-03-19T00:00:00Z,513,9790,40
+Clothing,267 oz,blue,United States,Warehouse,Canada,2020-03-04T00:00:00Z,977,6107,8
+Clothing,33 oz,green,Australia,Warehouse,France,2018-05-22T00:00:00Z,118,4718,84
+Clothing,319 oz,blue,Canada,Warehouse,Germany,2020-08-02T00:00:00Z,161,7988,29
+Clothing,326 oz,green,France,Warehouse,United Kingdom,2019-06-06T00:00:00Z,239,840,89
+Clothing,184 oz,green,Germany,Warehouse,United States,2019-02-03T00:00:00Z,327,6574,79
+Components,255 oz,red,United Kingdom,Specialty Bike Shop,Australia,2019-05-02T00:00:00Z,284,2471,42
+Components,144 oz,green,United States,Specialty Bike Shop,Canada,2018-01-27T00:00:00Z,827,4772,26
+Components,283 oz,red,Australia,Specialty Bike Shop,France,2018-10-10T00:00:00Z,967,1646,42
+Components,299 oz,blue,United Kingdom,Specialty Bike Shop,Germany,2018-08-16T00:00:00Z,569,6568,58
+Components,88 oz,blue,United States,Specialty Bike Shop,United Kingdom,2018-12-15T00:00:00Z,156,7585,35
+Components,161 oz,red,Australia,Specialty Bike Shop,United States,2018-03-30T00:00:00Z,845,4208,42
+Components,242 oz,blue,Canada,Value Added Reseller,Australia,2018-04-10T00:00:00Z,838,6460,41
+Components,25 oz,red,France,Value Added Reseller,Canada,2018-12-19T00:00:00Z,51,410,97
+Components,317 oz,blue,Germany,Value Added Reseller,France,2020-04-15T00:00:00Z,95,2307,64
+Components,295 oz,red,France,Value Added Reseller,Germany,2020-05-31T00:00:00Z,885,6843,10
+Components,69 oz,blue,Germany,Value Added Reseller,United Kingdom,2019-12-20T00:00:00Z,239,7541,36
+Components,320 oz,blue,United Kingdom,Value Added Reseller,United States,2018-02-18T00:00:00Z,145,7978,78
+Components,104 oz,green,United States,Warehouse,Australia,2018-10-27T00:00:00Z,605,458,72
+Components,34 oz,white,Australia,Warehouse,Canada,2019-08-13T00:00:00Z,778,8918,89
+Components,194 oz,blue,Canada,Value Added Reseller,Australia,2018-08-07T00:00:00Z,434,1297,60
+Components,340 oz,red,Australia,Value Added Reseller,Canada,2019-05-27T00:00:00Z,732,8420,62
+Components,49 oz,blue,Canada,Value Added Reseller,France,2019-11-16T00:00:00Z,780,5535,29
+Components,94 oz,red,France,Value Added Reseller,Germany,2019-12-19T00:00:00Z,85,2063,98
+Components,203 oz,blue,Germany,Value Added Reseller,United Kingdom,2018-06-18T00:00:00Z,672,316,62
+Components,350 oz,blue,United Kingdom,Value Added Reseller,United States,2020-07-13T00:00:00Z,389,4900,46
+Components,106 oz,green,United States,Warehouse,Australia,2020-06-23T00:00:00Z,81,3674,34
+Components,348 oz,white,Germany,Warehouse,Canada,2020-01-07T00:00:00Z,959,4819,14
+Components,200 oz,green,United Kingdom,Warehouse,Australia,2019-06-07T00:00:00Z,666,780,88
+Components,209 oz,white,United States,Warehouse,Canada,2020-06-12T00:00:00Z,326,7308,29
+Components,220 oz,white,Australia,Warehouse,France,2019-11-02T00:00:00Z,550,3635,99
+Components,303 oz,blue,Canada,Warehouse,Germany,2018-01-05T00:00:00Z,192,2895,77
+Components,193 oz,white,Australia,Warehouse,United Kingdom,2020-08-08T00:00:00Z,564,4306,53
+Components,53 oz,blue,Canada,Warehouse,United States,2018-05-20T00:00:00Z,751,4835,34
+Components,43 oz,red,France,Specialty Bike Shop,Australia,2018-02-24T00:00:00Z,750,178,62
+Components,114 oz,green,Germany,Specialty Bike Shop,Canada,2019-12-19T00:00:00Z,106,4571,12
+Components,231 oz,red,United Kingdom,Specialty Bike Shop,France,2018-05-04T00:00:00Z,436,7733,94
+Components,26 oz,blue,United States,Specialty Bike Shop,Germany,2018-12-22T00:00:00Z,314,1033,14
+Components,140 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2018-10-27T00:00:00Z,370,5788,76
+Components,158 oz,red,Canada,Specialty Bike Shop,United States,2020-06-18T00:00:00Z,984,6047,35
+Components,25 oz,blue,France,Value Added Reseller,Australia,2018-05-13T00:00:00Z,531,7845,83
+Components,231 oz,red,Germany,Value Added Reseller,Canada,2019-05-13T00:00:00Z,907,3829,15
+Components,150 oz,blue,United Kingdom,Value Added Reseller,France,2018-06-14T00:00:00Z,233,5546,80
+Components,258 oz,red,United States,Value Added Reseller,Germany,2019-03-28T00:00:00Z,548,2777,74
+Components,119 oz,blue,Australia,Value Added Reseller,United Kingdom,2020-01-01T00:00:00Z,723,9333,10
+Components,116 oz,blue,Canada,Value Added Reseller,United States,2018-08-24T00:00:00Z,55,9755,21
+Components,339 oz,green,Germany,Warehouse,Australia,2020-06-28T00:00:00Z,523,3115,73
+Components,263 oz,white,United Kingdom,Warehouse,Canada,2018-10-31T00:00:00Z,978,1561,43
+Components,30 oz,blue,United States,Value Added Reseller,Australia,2018-05-20T00:00:00Z,522,7101,52
+Components,349 oz,red,Australia,Value Added Reseller,Canada,2020-05-10T00:00:00Z,681,6964,47
+Components,67 oz,blue,Canada,Value Added Reseller,France,2020-06-16T00:00:00Z,166,1589,8
+Components,70 oz,red,Australia,Value Added Reseller,Germany,2018-12-19T00:00:00Z,342,7198,14
+Components,17 oz,blue,Canada,Value Added Reseller,United Kingdom,2018-02-03T00:00:00Z,654,8039,10
+Components,270 oz,blue,France,Value Added Reseller,United States,2019-12-07T00:00:00Z,259,8551,18
+Components,247 oz,green,Germany,Warehouse,Australia,2018-08-30T00:00:00Z,756,3897,40
+Components,114 oz,white,United Kingdom,Warehouse,Canada,2020-07-02T00:00:00Z,751,2158,16
+Components,39 oz,green,United States,Warehouse,Australia,2018-04-20T00:00:00Z,830,4341,63
+Components,54 oz,white,Australia,Warehouse,Canada,2019-02-11T00:00:00Z,789,7973,37
+Components,344 oz,white,Canada,Warehouse,France,2020-02-15T00:00:00Z,324,1908,73
+Components,39 oz,blue,France,Warehouse,Germany,2019-08-03T00:00:00Z,831,6912,62
+Components,314 oz,white,Germany,Warehouse,United Kingdom,2019-04-21T00:00:00Z,86,4346,96
+Components,324 oz,blue,United Kingdom,Warehouse,United States,2020-01-02T00:00:00Z,181,3045,48
+Components,148 oz,red,United States,Specialty Bike Shop,Australia,2019-05-02T00:00:00Z,295,3429,68
+Components,105 oz,green,Australia,Specialty Bike Shop,Canada,2019-01-06T00:00:00Z,675,2581,3
+Components,91 oz,red,Canada,Specialty Bike Shop,France,2019-06-23T00:00:00Z,302,5919,46
+Components,39 oz,blue,United Kingdom,Specialty Bike Shop,Germany,2018-12-10T00:00:00Z,620,180,64
+Components,4 oz,blue,United States,Specialty Bike Shop,United Kingdom,2018-04-30T00:00:00Z,390,2174,22
+Components,266 oz,red,Australia,Specialty Bike Shop,United States,2020-07-30T00:00:00Z,698,2281,61
+Components,114 oz,blue,Canada,Value Added Reseller,Australia,2018-10-25T00:00:00Z,195,3606,1
+Components,220 oz,red,France,Value Added Reseller,Canada,2018-04-28T00:00:00Z,542,6412,55
+Components,15 oz,blue,Germany,Value Added Reseller,France,2020-01-28T00:00:00Z,159,7231,79
+Components,203 oz,red,United Kingdom,Value Added Reseller,Germany,2018-12-29T00:00:00Z,190,6419,100
+Components,257 oz,blue,United States,Value Added Reseller,United Kingdom,2020-01-01T00:00:00Z,440,9871,88
+Components,236 oz,blue,Australia,Value Added Reseller,United States,2019-01-18T00:00:00Z,935,9985,1
+Components,50 oz,green,United Kingdom,Warehouse,Australia,2019-04-02T00:00:00Z,971,4955,72
+Components,194 oz,white,United States,Warehouse,Canada,2019-12-04T00:00:00Z,95,9544,69
+Components,293 oz,blue,Australia,Value Added Reseller,Australia,2018-12-13T00:00:00Z,365,1431,94
+Components,128 oz,red,Canada,Value Added Reseller,Canada,2018-08-22T00:00:00Z,566,3776,49
+Components,193 oz,blue,France,Value Added Reseller,France,2020-08-27T00:00:00Z,770,3037,59
+Components,342 oz,red,Germany,Value Added Reseller,Germany,2020-07-04T00:00:00Z,590,434,60
+Components,44 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-01-15T00:00:00Z,903,9479,96
+Components,123 oz,blue,United States,Value Added Reseller,United States,2019-08-24T00:00:00Z,278,8185,91
+Components,235 oz,green,Australia,Warehouse,Australia,2019-08-21T00:00:00Z,551,1950,51
+Components,307 oz,white,United Kingdom,Warehouse,Canada,2019-10-07T00:00:00Z,842,8212,55
+Components,197 oz,green,United States,Warehouse,Australia,2020-09-05T00:00:00Z,480,4721,56
+Components,299 oz,white,Australia,Warehouse,Canada,2018-11-15T00:00:00Z,705,9027,51
+Components,174 oz,white,Canada,Warehouse,France,2020-08-10T00:00:00Z,628,4955,30
+Components,4 oz,blue,France,Warehouse,Germany,2018-09-02T00:00:00Z,458,8561,69
+Components,108 oz,white,Germany,Warehouse,United Kingdom,2020-05-30T00:00:00Z,549,2214,73
+Components,346 oz,blue,United Kingdom,Warehouse,United States,2018-05-04T00:00:00Z,179,6684,94
+Components,236 oz,red,United States,Specialty Bike Shop,Australia,2019-09-01T00:00:00Z,96,2187,56
+Components,323 oz,green,Australia,Specialty Bike Shop,Canada,2019-12-01T00:00:00Z,361,3485,76
+Components,187 oz,red,Australia,Specialty Bike Shop,France,2019-07-17T00:00:00Z,734,8064,42
+Components,210 oz,blue,Canada,Specialty Bike Shop,Germany,2019-12-04T00:00:00Z,807,9929,32
+Components,323 oz,blue,France,Specialty Bike Shop,United Kingdom,2019-02-28T00:00:00Z,348,5143,36
+Components,327 oz,red,Germany,Specialty Bike Shop,United States,2019-01-18T00:00:00Z,185,4411,76
+Components,190 oz,blue,United Kingdom,Value Added Reseller,Australia,2018-01-12T00:00:00Z,684,1641,17
+Components,169 oz,red,United States,Value Added Reseller,Canada,2020-02-16T00:00:00Z,828,9451,55
+Components,159 oz,blue,Australia,Value Added Reseller,France,2020-06-13T00:00:00Z,814,5582,65
+Components,63 oz,red,Canada,Value Added Reseller,Germany,2019-01-22T00:00:00Z,373,8757,53
+Components,85 oz,blue,France,Value Added Reseller,United Kingdom,2018-04-26T00:00:00Z,889,7752,85
+Components,246 oz,blue,Germany,Value Added Reseller,United States,2020-08-08T00:00:00Z,904,1064,17
+Components,280 oz,green,United Kingdom,Warehouse,Australia,2018-01-07T00:00:00Z,113,3945,92
+Components,60 oz,white,United States,Warehouse,Canada,2018-01-23T00:00:00Z,342,2508,84
+Components,257 oz,blue,Australia,Value Added Reseller,Australia,2018-04-13T00:00:00Z,557,8695,90
+Components,103 oz,red,Canada,Value Added Reseller,Canada,2019-06-19T00:00:00Z,198,5742,7
+Components,184 oz,blue,Australia,Value Added Reseller,France,2019-08-27T00:00:00Z,188,3430,57
+Components,340 oz,red,Canada,Value Added Reseller,Germany,2019-09-26T00:00:00Z,331,4245,37
+Components,251 oz,blue,France,Value Added Reseller,United Kingdom,2018-09-07T00:00:00Z,34,5691,33
+Components,92 oz,blue,Germany,Value Added Reseller,United States,2019-06-06T00:00:00Z,231,936,33
+Components,107 oz,green,Australia,Warehouse,Australia,2019-07-22T00:00:00Z,688,9925,8
+Components,84 oz,white,Canada,Warehouse,Canada,2020-05-07T00:00:00Z,53,7524,39
+Components,202 oz,green,France,Warehouse,Australia,2019-02-23T00:00:00Z,822,5978,28
+Components,309 oz,white,Germany,Warehouse,Canada,2020-04-21T00:00:00Z,637,7137,25
+Components,309 oz,white,United Kingdom,Warehouse,France,2019-07-19T00:00:00Z,180,5678,10
+Components,348 oz,blue,United States,Warehouse,Germany,2020-05-07T00:00:00Z,742,6056,33
+Components,39 oz,white,Australia,Warehouse,United Kingdom,2018-05-15T00:00:00Z,782,8577,35
+Components,104 oz,blue,Canada,Warehouse,United States,2020-04-04T00:00:00Z,115,2586,99
+Components,330 oz,red,France,Specialty Bike Shop,Australia,2019-01-10T00:00:00Z,676,1980,30
+Components,96 oz,green,Germany,Specialty Bike Shop,Canada,2018-08-09T00:00:00Z,904,1752,8
+Components,14 oz,red,United Kingdom,Specialty Bike Shop,France,2019-01-09T00:00:00Z,981,7228,83
+Components,166 oz,blue,United States,Specialty Bike Shop,Germany,2020-05-06T00:00:00Z,383,3419,13
+Components,298 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2018-03-03T00:00:00Z,189,6398,42
+Components,112 oz,red,Canada,Specialty Bike Shop,United States,2018-06-24T00:00:00Z,423,2636,96
+Components,203 oz,blue,Australia,Value Added Reseller,Australia,2019-05-06T00:00:00Z,61,3012,67
+Components,18 oz,red,Canada,Value Added Reseller,Canada,2018-02-27T00:00:00Z,781,6423,54
+Components,347 oz,blue,France,Value Added Reseller,France,2020-02-22T00:00:00Z,758,687,4
+Components,277 oz,red,Germany,Value Added Reseller,Germany,2018-01-28T00:00:00Z,902,7931,31
+Components,285 oz,blue,France,Value Added Reseller,United Kingdom,2020-07-30T00:00:00Z,619,2797,1
+Components,6 oz,blue,Germany,Value Added Reseller,United States,2018-03-16T00:00:00Z,292,8841,22
+Components,336 oz,green,United Kingdom,Warehouse,Australia,2019-11-22T00:00:00Z,986,9811,59
+Components,157 oz,white,United States,Warehouse,Canada,2019-07-07T00:00:00Z,194,1320,83
+Components,101 oz,blue,Australia,Value Added Reseller,Australia,2018-11-17T00:00:00Z,890,7481,58
+Components,346 oz,red,Canada,Value Added Reseller,Canada,2019-08-07T00:00:00Z,381,5940,12
+Components,205 oz,blue,Australia,Value Added Reseller,France,2020-03-11T00:00:00Z,735,633,57
+Components,195 oz,red,Canada,Value Added Reseller,Germany,2018-02-16T00:00:00Z,211,6508,36
+Components,179 oz,blue,France,Value Added Reseller,United Kingdom,2019-08-18T00:00:00Z,834,8234,8
+Components,142 oz,blue,Germany,Value Added Reseller,United States,2019-07-30T00:00:00Z,646,2296,18
+Components,36 oz,green,United Kingdom,Warehouse,Australia,2019-06-26T00:00:00Z,79,726,16
+Components,190 oz,white,United States,Warehouse,Canada,2019-03-21T00:00:00Z,129,4956,32
+Components,81 oz,green,Australia,Warehouse,Australia,2019-11-28T00:00:00Z,899,2927,70
+Components,315 oz,white,Canada,Warehouse,Canada,2018-11-16T00:00:00Z,266,3561,77
+Components,92 oz,white,France,Warehouse,France,2020-09-04T00:00:00Z,492,1519,76
+Components,158 oz,blue,Germany,Warehouse,Germany,2018-12-25T00:00:00Z,519,2093,47
+Components,223 oz,white,France,Warehouse,United Kingdom,2019-06-23T00:00:00Z,549,2363,50
+Components,166 oz,blue,Germany,Warehouse,United States,2020-01-03T00:00:00Z,444,9908,52
+Components,236 oz,red,United Kingdom,Specialty Bike Shop,Australia,2018-10-09T00:00:00Z,899,6816,19
+Components,27 oz,green,United States,Specialty Bike Shop,Canada,2019-12-04T00:00:00Z,596,481,73
+Components,28 oz,red,Australia,Specialty Bike Shop,France,2018-05-19T00:00:00Z,102,9587,76
+Components,292 oz,blue,Canada,Specialty Bike Shop,Germany,2019-07-02T00:00:00Z,189,8228,62
+Components,50 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2018-09-06T00:00:00Z,70,9156,38
+Components,20 oz,red,Canada,Specialty Bike Shop,United States,2018-06-19T00:00:00Z,476,1233,12
+Components,152 oz,blue,France,Value Added Reseller,Australia,2019-02-07T00:00:00Z,466,6456,29
+Components,224 oz,red,Germany,Value Added Reseller,Canada,2019-11-06T00:00:00Z,119,5747,89
+Components,18 oz,blue,United Kingdom,Value Added Reseller,France,2018-01-13T00:00:00Z,887,9592,63
+Components,287 oz,red,United States,Value Added Reseller,Germany,2018-08-29T00:00:00Z,730,826,83
+Components,246 oz,blue,Australia,Value Added Reseller,United Kingdom,2020-06-07T00:00:00Z,988,4096,90
+Components,259 oz,blue,Canada,Value Added Reseller,United States,2020-03-24T00:00:00Z,409,3091,47
+Components,111 oz,green,France,Warehouse,Australia,2019-05-29T00:00:00Z,688,1801,99
+Components,160 oz,white,Germany,Warehouse,Canada,2018-02-15T00:00:00Z,312,2121,7
+Components,313 oz,blue,Germany,Value Added Reseller,Australia,2020-01-04T00:00:00Z,193,2728,29
+Components,57 oz,red,United Kingdom,Value Added Reseller,Canada,2019-07-31T00:00:00Z,866,4317,58
+Components,175 oz,blue,United States,Value Added Reseller,France,2019-11-06T00:00:00Z,672,703,97
+Components,12 oz,red,Australia,Value Added Reseller,Germany,2018-06-25T00:00:00Z,674,9810,72
+Components,45 oz,blue,Canada,Value Added Reseller,United Kingdom,2020-03-23T00:00:00Z,350,8356,0
+Components,164 oz,blue,Australia,Value Added Reseller,United States,2018-01-16T00:00:00Z,182,4151,93
+Components,29 oz,green,Canada,Warehouse,Australia,2019-06-22T00:00:00Z,357,9535,87
+Components,250 oz,white,France,Warehouse,Canada,2020-03-27T00:00:00Z,72,6426,11
+Components,55 oz,green,Germany,Warehouse,Australia,2018-02-11T00:00:00Z,752,9260,44
+Components,45 oz,white,United Kingdom,Warehouse,Canada,2019-06-03T00:00:00Z,766,1411,10
+Components,102 oz,white,United States,Warehouse,France,2018-09-21T00:00:00Z,351,4156,68
+Components,48 oz,blue,Australia,Warehouse,Germany,2019-06-26T00:00:00Z,799,6014,55
+Components,88 oz,white,Canada,Warehouse,United Kingdom,2018-10-10T00:00:00Z,536,3930,61
+Components,302 oz,blue,France,Warehouse,United States,2020-06-30T00:00:00Z,84,4657,85
+Components,89 oz,red,Germany,Specialty Bike Shop,Australia,2019-05-21T00:00:00Z,488,2746,1
+Components,95 oz,green,United Kingdom,Specialty Bike Shop,Canada,2018-02-23T00:00:00Z,758,8344,65
+Components,45 oz,red,United States,Specialty Bike Shop,France,2020-05-11T00:00:00Z,322,8885,92
+Components,311 oz,blue,Australia,Specialty Bike Shop,Germany,2019-11-16T00:00:00Z,909,4780,13
+Components,171 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2019-09-11T00:00:00Z,687,4817,100
+Components,155 oz,red,France,Specialty Bike Shop,United States,2020-01-11T00:00:00Z,116,4834,59
+Components,25 oz,blue,Germany,Value Added Reseller,Australia,2020-01-29T00:00:00Z,797,2034,27
+Components,301 oz,red,United Kingdom,Value Added Reseller,Canada,2018-03-22T00:00:00Z,746,402,86
+Components,55 oz,blue,Germany,Value Added Reseller,France,2020-05-21T00:00:00Z,193,8886,1
+Components,212 oz,red,United Kingdom,Value Added Reseller,Germany,2019-01-29T00:00:00Z,920,5339,48
+Components,105 oz,blue,United States,Value Added Reseller,United Kingdom,2020-03-18T00:00:00Z,597,8674,45
+Components,127 oz,blue,Australia,Value Added Reseller,United States,2019-06-06T00:00:00Z,712,991,38
+Components,303 oz,green,Canada,Warehouse,Australia,2018-05-31T00:00:00Z,923,4553,85
+Components,304 oz,white,Australia,Warehouse,Canada,2019-09-20T00:00:00Z,314,5330,50
+Components,258 oz,blue,Canada,Value Added Reseller,Australia,2019-07-25T00:00:00Z,977,9449,54
+Components,58 oz,red,France,Value Added Reseller,Canada,2019-07-14T00:00:00Z,775,5980,24
+Components,192 oz,blue,Germany,Value Added Reseller,France,2018-05-20T00:00:00Z,451,851,50
+Components,1 oz,red,United Kingdom,Value Added Reseller,Germany,2020-02-02T00:00:00Z,102,581,36
+Components,2 oz,blue,United States,Value Added Reseller,United Kingdom,2018-03-03T00:00:00Z,632,3152,20
+Components,210 oz,blue,Australia,Value Added Reseller,United States,2019-05-12T00:00:00Z,292,3785,37
+Components,40 oz,green,Canada,Warehouse,Australia,2019-11-25T00:00:00Z,93,4998,14
+Components,53 oz,white,France,Warehouse,Canada,2018-05-01T00:00:00Z,440,2988,93
+Components,245 oz,green,Germany,Warehouse,Australia,2019-09-20T00:00:00Z,388,2345,80
+Components,228 oz,white,United Kingdom,Warehouse,Canada,2020-03-13T00:00:00Z,984,2116,79
+Components,56 oz,white,United States,Warehouse,France,2019-06-13T00:00:00Z,48,742,14
+Components,215 oz,blue,Australia,Warehouse,Germany,2019-06-08T00:00:00Z,992,2500,0
+Components,81 oz,white,Canada,Warehouse,United Kingdom,2018-07-15T00:00:00Z,216,7771,82
+Components,212 oz,blue,France,Warehouse,United States,2019-03-23T00:00:00Z,543,927,46
+Components,277 oz,red,Germany,Specialty Bike Shop,Australia,2019-10-23T00:00:00Z,627,1674,18
+Components,128 oz,green,United Kingdom,Specialty Bike Shop,Canada,2019-08-25T00:00:00Z,452,6047,7
+Components,193 oz,red,Australia,Specialty Bike Shop,France,2018-10-12T00:00:00Z,911,5372,55
+Components,70 oz,blue,Canada,Specialty Bike Shop,Germany,2019-11-20T00:00:00Z,373,7146,95
+Components,271 oz,blue,France,Specialty Bike Shop,United Kingdom,2020-05-18T00:00:00Z,588,756,6
+Components,263 oz,red,Germany,Specialty Bike Shop,United States,2019-04-18T00:00:00Z,374,4335,20
+Components,272 oz,blue,United Kingdom,Value Added Reseller,Australia,2018-06-18T00:00:00Z,146,2658,44
+Components,41 oz,red,United States,Value Added Reseller,Canada,2020-07-30T00:00:00Z,306,5543,73
+Components,111 oz,blue,Australia,Value Added Reseller,France,2018-12-28T00:00:00Z,545,100,78
+Components,153 oz,red,Canada,Value Added Reseller,Germany,2018-07-23T00:00:00Z,387,757,40
+Components,280 oz,blue,France,Value Added Reseller,United Kingdom,2018-07-15T00:00:00Z,644,8997,66
+Components,36 oz,blue,Germany,Value Added Reseller,United States,2020-01-26T00:00:00Z,851,4247,9
+Components,52 oz,green,United Kingdom,Warehouse,Australia,2018-09-27T00:00:00Z,860,7795,39
+Components,15 oz,white,United States,Warehouse,Canada,2019-10-15T00:00:00Z,305,1815,51
+Components,349 oz,blue,Australia,Value Added Reseller,Australia,2019-11-18T00:00:00Z,837,1342,28
+Components,309 oz,red,Canada,Value Added Reseller,Canada,2018-10-08T00:00:00Z,456,8651,18
+Components,116 oz,blue,France,Value Added Reseller,France,2018-12-16T00:00:00Z,214,150,35
+Components,129 oz,red,Germany,Value Added Reseller,Germany,2018-10-18T00:00:00Z,253,7619,31
+Components,249 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2020-04-26T00:00:00Z,399,4001,20
+Components,59 oz,blue,United States,Value Added Reseller,United States,2020-06-11T00:00:00Z,733,5481,93
+Components,298 oz,green,Canada,Warehouse,Australia,2018-09-04T00:00:00Z,81,2426,63
+Components,95 oz,white,France,Warehouse,Canada,2019-04-10T00:00:00Z,920,7491,69
+Components,349 oz,green,Germany,Warehouse,Australia,2019-01-14T00:00:00Z,750,6334,21
+Components,172 oz,white,United Kingdom,Warehouse,Canada,2019-04-28T00:00:00Z,536,2329,70
+Components,270 oz,white,United States,Warehouse,France,2019-04-25T00:00:00Z,943,3658,18
+Components,289 oz,blue,Australia,Warehouse,Germany,2020-02-08T00:00:00Z,346,3765,42
+Components,95 oz,white,Canada,Warehouse,United Kingdom,2018-08-07T00:00:00Z,203,398,18
+Components,229 oz,blue,France,Warehouse,United States,2019-01-21T00:00:00Z,978,497,81
+Cars,140 oz,green,Germany,Specialty Bike Shop,Australia,2019-02-13T00:00:00Z,28849,15,69
+Cars,140 oz,white,United Kingdom,Specialty Bike Shop,Canada,2018-02-28T00:00:00Z,41350,3,63
+Cars,223 oz,green,United States,Specialty Bike Shop,France,2018-06-06T00:00:00Z,34563,43,0
+Cars,350 oz,red,Australia,Specialty Bike Shop,Germany,2018-04-06T00:00:00Z,29638,59,78
+Cars,279 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2019-06-29T00:00:00Z,53737,49,17
+Cars,253 oz,white,France,Specialty Bike Shop,United States,2018-11-08T00:00:00Z,31974,57,58
+Cars,193 oz,red,Germany,Value Added Reseller,Australia,2019-02-07T00:00:00Z,58383,37,84
+Cars,245 oz,green,United Kingdom,Value Added Reseller,Canada,2018-09-27T00:00:00Z,52421,27,31
+Cars,97 oz,red,United States,Value Added Reseller,France,2018-04-19T00:00:00Z,55410,41,30
+Cars,145 oz,blue,Australia,Value Added Reseller,Germany,2018-04-29T00:00:00Z,32640,51,46
+Cars,128 oz,white,Canada,Value Added Reseller,United Kingdom,2019-09-28T00:00:00Z,6529,27,82
+Cars,102 oz,white,France,Value Added Reseller,United States,2019-10-22T00:00:00Z,7769,24,36
+Cars,218 oz,red,Germany,Warehouse,Australia,2019-04-04T00:00:00Z,30275,60,62
+Cars,342 oz,blue,United Kingdom,Warehouse,Canada,2019-09-04T00:00:00Z,27607,51,62
+Cars,108 oz,white,United States,Warehouse,France,2018-07-17T00:00:00Z,25123,49,51
+Cars,185 oz,red,Australia,Warehouse,Germany,2020-07-07T00:00:00Z,19302,60,0
+Cars,30 oz,white,Canada,Warehouse,United Kingdom,2019-07-22T00:00:00Z,23360,33,83
+Cars,90 oz,white,France,Warehouse,United States,2018-10-16T00:00:00Z,11932,33,89
+Cars,19 oz,green,Germany,Specialty Bike Shop,Australia,2018-08-15T00:00:00Z,37690,47,73
+Cars,145 oz,white,United Kingdom,Specialty Bike Shop,Canada,2018-02-10T00:00:00Z,4210,28,55
+Cars,188 oz,green,United States,Specialty Bike Shop,France,2019-02-20T00:00:00Z,37789,7,35
+Cars,115 oz,red,Australia,Specialty Bike Shop,Germany,2018-12-13T00:00:00Z,19231,43,98
+Cars,46 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2019-03-30T00:00:00Z,35546,33,69
+Cars,272 oz,white,France,Specialty Bike Shop,United States,2018-08-26T00:00:00Z,8564,53,94
+Cars,300 oz,red,Germany,Value Added Reseller,Australia,2019-10-21T00:00:00Z,8640,56,21
+Cars,290 oz,green,United Kingdom,Value Added Reseller,Canada,2018-10-13T00:00:00Z,27166,39,69
+Cars,159 oz,red,United States,Value Added Reseller,France,2018-07-20T00:00:00Z,41694,56,31
+Cars,140 oz,blue,Australia,Value Added Reseller,Germany,2018-07-15T00:00:00Z,32146,58,31
+Cars,345 oz,white,Canada,Value Added Reseller,United Kingdom,2018-08-12T00:00:00Z,41357,37,34
+Cars,69 oz,white,France,Value Added Reseller,United States,2020-02-24T00:00:00Z,51936,45,87
+Cars,151 oz,red,Germany,Warehouse,Australia,2018-07-29T00:00:00Z,388436,50,19
+Cars,269 oz,blue,United Kingdom,Warehouse,Canada,2018-04-10T00:00:00Z,30384,3,98
+Cars,205 oz,white,United States,Warehouse,France,2018-09-12T00:00:00Z,50190,6,15
+Cars,34 oz,red,Australia,Warehouse,Germany,2020-02-04T00:00:00Z,173481,5,92
+Cars,259 oz,white,Canada,Warehouse,United Kingdom,2019-06-18T00:00:00Z,14598,37,4
+Cars,37 oz,white,France,Warehouse,United States,2018-10-30T00:00:00Z,20013,3,64
+Cars,255 oz,green,Germany,Specialty Bike Shop,Australia,2018-02-16T00:00:00Z,40203,12,53
+Cars,240 oz,white,United Kingdom,Specialty Bike Shop,Canada,2018-04-11T00:00:00Z,19505,2,56
+Cars,102 oz,green,United States,Specialty Bike Shop,France,2018-07-30T00:00:00Z,56675,35,41
+Cars,99 oz,red,Australia,Specialty Bike Shop,Germany,2020-07-28T00:00:00Z,52117,4,81
+Cars,6 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2018-09-08T00:00:00Z,8902,5,62
+Cars,344 oz,white,France,Specialty Bike Shop,United States,2019-02-22T00:00:00Z,57322,44,57
+Cars,341 oz,red,Germany,Value Added Reseller,Australia,2018-06-22T00:00:00Z,13667,29,66
+Cars,87 oz,green,United Kingdom,Value Added Reseller,Canada,2018-08-19T00:00:00Z,68483,23,31
+Cars,109 oz,red,United States,Value Added Reseller,France,2019-09-30T00:00:00Z,12979,4,34
+Cars,229 oz,blue,Australia,Value Added Reseller,Germany,2018-07-07T00:00:00Z,16950,4,99
+Cars,127 oz,white,France,Value Added Reseller,United Kingdom,2019-03-10T00:00:00Z,12766,59,68
+Cars,310 oz,white,Germany,Value Added Reseller,United States,2019-09-09T00:00:00Z,20699,38,89
+Cars,24 oz,red,United Kingdom,Warehouse,Australia,2018-09-25T00:00:00Z,36607,59,18
+Cars,312 oz,blue,United States,Warehouse,Canada,2019-03-19T00:00:00Z,15976,29,51
+Cars,236 oz,white,Australia,Warehouse,France,2020-06-16T00:00:00Z,7043,27,89
+Cars,53 oz,red,Canada,Warehouse,Germany,2018-07-10T00:00:00Z,6662,31,52
+Cars,280 oz,white,France,Warehouse,United Kingdom,2019-06-26T00:00:00Z,22318,7,42
+Cars,303 oz,white,Germany,Warehouse,United States,2018-06-28T00:00:00Z,43935,55,12
+Accessories,36 oz,red,United Kingdom,Specialty Bike Shop,Australia,2020-08-10T00:00:00Z,174,605,43
+Accessories,65 oz,yellow,United States,Specialty Bike Shop,Canada,2018-03-03T00:00:00Z,502,825,33
+Accessories,6 oz,white,Australia,Specialty Bike Shop,France,2019-08-11T00:00:00Z,242,71,41
+Accessories,2 oz,yellow,Canada,Specialty Bike Shop,Germany,2020-06-20T00:00:00Z,102,561,92
+Accessories,90 oz,red,France,Specialty Bike Shop,United Kingdom,2019-02-23T00:00:00Z,126,233,49
+Accessories,23 oz,yellow,Germany,Specialty Bike Shop,United States,2018-09-17T00:00:00Z,1246,331,98
+Accessories,148 oz,green,United Kingdom,Value Added Reseller,Australia,2018-04-22T00:00:00Z,680,144,11
+Accessories,97 oz,yellow,France,Value Added Reseller,Canada,2018-07-26T00:00:00Z,1241,483,21
+Accessories,198 oz,yellow,Germany,Value Added Reseller,France,2018-02-15T00:00:00Z,150,99,12
+Accessories,281 oz,red,United Kingdom,Value Added Reseller,Germany,2018-11-03T00:00:00Z,244,686,75
+Accessories,3 oz,yellow,United States,Value Added Reseller,United Kingdom,2020-06-10T00:00:00Z,501,126,20
+Accessories,111 oz,red,Australia,Value Added Reseller,United States,2019-06-20T00:00:00Z,4960,930,39
+Accessories,135 oz,yellow,Canada,Warehouse,Australia,2019-02-10T00:00:00Z,9,966,90
+Accessories,304 oz,red,France,Warehouse,Canada,2019-11-08T00:00:00Z,3655,999,73
+Accessories,25 oz,green,Germany,Warehouse,France,2018-03-19T00:00:00Z,1654,959,99
+Accessories,185 oz,yellow,United Kingdom,Warehouse,Germany,2020-05-26T00:00:00Z,1190,28,53
+Accessories,10 oz,red,United States,Warehouse,United Kingdom,2020-05-21T00:00:00Z,1222,405,41
+Accessories,237 oz,white,Australia,Warehouse,United States,2019-04-12T00:00:00Z,7941,84,61
+Bikes,16 oz,white,Canada,Specialty Bike Shop,Australia,2018-03-20T00:00:00Z,7310,31,44
+Bikes,122 oz,red,France,Specialty Bike Shop,Canada,2018-09-27T00:00:00Z,9423,21,79
+Bikes,3 oz,red,Germany,Specialty Bike Shop,France,2020-02-11T00:00:00Z,9225,20,58
+Bikes,86 oz,green,United Kingdom,Specialty Bike Shop,Germany,2020-09-07T00:00:00Z,1624,48,74
+Bikes,306 oz,green,France,Specialty Bike Shop,United Kingdom,2018-06-24T00:00:00Z,7217,31,81
+Bikes,172 oz,green,Germany,Specialty Bike Shop,United States,2018-08-11T00:00:00Z,4467,16,90
+Bikes,87 oz,green,United Kingdom,Value Added Reseller,Australia,2019-08-05T00:00:00Z,3449,63,6
+Bikes,334 oz,red,United States,Value Added Reseller,Canada,2019-04-16T00:00:00Z,738,35,28
+Bikes,107 oz,yellow,Australia,Value Added Reseller,France,2020-04-13T00:00:00Z,8457,35,99
+Bikes,350 oz,red,Canada,Value Added Reseller,Germany,2019-07-20T00:00:00Z,2876,20,99
+Bikes,327 oz,blue,France,Value Added Reseller,United Kingdom,2020-06-29T00:00:00Z,8142,29,36
+Bikes,37 oz,red,Germany,Value Added Reseller,United States,2020-02-03T00:00:00Z,5042,73,23
+Bikes,276 oz,blue,United Kingdom,Warehouse,Australia,2020-05-19T00:00:00Z,8393,56,97
+Bikes,53 oz,blue,United States,Warehouse,Canada,2018-01-19T00:00:00Z,2002,53,88
+Bikes,281 oz,purple,Australia,Warehouse,France,2019-06-24T00:00:00Z,5532,92,61
+Bikes,108 oz,red,Canada,Warehouse,Germany,2018-03-18T00:00:00Z,6665,87,99
+Bikes,192 oz,blue,France,Warehouse,United Kingdom,2020-03-05T00:00:00Z,3449,91,39
+Bikes,181 oz,blue,Germany,Warehouse,United States,2019-04-17T00:00:00Z,3871,41,55
+Clothing,228 oz,yellow,United Kingdom,Specialty Bike Shop,Australia,2019-11-29T00:00:00Z,573,1850,87
+Clothing,226 oz,blue,United Kingdom,Specialty Bike Shop,Canada,2018-05-08T00:00:00Z,122,2474,53
+Clothing,77 oz,blue,United States,Specialty Bike Shop,France,2019-10-26T00:00:00Z,358,9752,53
+Clothing,112 oz,blue,Australia,Specialty Bike Shop,Germany,2020-07-21T00:00:00Z,535,9996,3
+Clothing,292 oz,white,Canada,Specialty Bike Shop,United Kingdom,2020-04-08T00:00:00Z,12,3128,52
+Clothing,22 oz,purple,France,Specialty Bike Shop,United States,2018-02-14T00:00:00Z,422,6602,60
+Clothing,133 oz,red,Germany,Value Added Reseller,Australia,2019-01-07T00:00:00Z,548,4819,82
+Clothing,235 oz,purple,United Kingdom,Value Added Reseller,Canada,2020-04-28T00:00:00Z,955,3379,93
+Clothing,107 oz,green,United States,Value Added Reseller,France,2018-11-17T00:00:00Z,919,3763,36
+Clothing,230 oz,red,Australia,Value Added Reseller,Germany,2018-04-13T00:00:00Z,772,7329,67
+Clothing,161 oz,white,Canada,Value Added Reseller,United Kingdom,2020-02-03T00:00:00Z,322,6948,64
+Clothing,328 oz,white,France,Value Added Reseller,United States,2020-01-10T00:00:00Z,153,2122,64
+Clothing,108 oz,red,Germany,Warehouse,Australia,2019-06-24T00:00:00Z,56,4993,36
+Clothing,190 oz,blue,United Kingdom,Warehouse,Canada,2019-01-08T00:00:00Z,269,6431,29
+Clothing,54 oz,green,United States,Warehouse,France,2019-07-07T00:00:00Z,797,7253,74
+Clothing,198 oz,blue,Australia,Warehouse,Germany,2019-03-07T00:00:00Z,593,3836,5
+Clothing,63 oz,green,Canada,Warehouse,United Kingdom,2018-04-22T00:00:00Z,957,5405,80
+Clothing,169 oz,green,France,Warehouse,United States,2018-09-30T00:00:00Z,976,6190,54
+Components,312 oz,red,Germany,Specialty Bike Shop,Australia,2019-01-24T00:00:00Z,645,7079,18
+Components,115 oz,green,United Kingdom,Specialty Bike Shop,Canada,2020-08-12T00:00:00Z,445,7289,72
+Components,240 oz,red,United States,Specialty Bike Shop,France,2020-05-19T00:00:00Z,73,8624,10
+Components,18 oz,blue,Australia,Specialty Bike Shop,Germany,2018-12-31T00:00:00Z,776,3344,76
+Components,48 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2018-11-17T00:00:00Z,444,2591,82
+Components,46 oz,red,France,Specialty Bike Shop,United States,2020-07-18T00:00:00Z,547,9271,46
+Components,124 oz,blue,Germany,Value Added Reseller,Australia,2019-02-13T00:00:00Z,58,1469,12
+Components,155 oz,red,United Kingdom,Value Added Reseller,Canada,2019-06-13T00:00:00Z,95,5239,54
+Components,172 oz,blue,United States,Value Added Reseller,France,2018-10-06T00:00:00Z,193,4019,98
+Components,119 oz,red,Australia,Value Added Reseller,Germany,2018-09-22T00:00:00Z,383,8248,9
+Components,27 oz,blue,Canada,Value Added Reseller,United Kingdom,2019-02-23T00:00:00Z,344,5566,72
+Components,225 oz,blue,France,Value Added Reseller,United States,2020-05-23T00:00:00Z,365,4454,20
+Components,214 oz,green,Germany,Warehouse,Australia,2020-09-04T00:00:00Z,543,5380,69
+Components,97 oz,white,United Kingdom,Warehouse,Canada,2018-11-26T00:00:00Z,687,4264,43
+Components,25 oz,blue,United States,Value Added Reseller,Australia,2020-05-13T00:00:00Z,283,791,95
+Components,267 oz,red,Australia,Value Added Reseller,Canada,2019-08-12T00:00:00Z,35,1843,90
+Components,57 oz,blue,Canada,Value Added Reseller,France,2018-06-29T00:00:00Z,844,8074,20
+Components,142 oz,red,France,Value Added Reseller,Germany,2020-01-15T00:00:00Z,754,8246,20
+Components,151 oz,blue,Germany,Value Added Reseller,United Kingdom,2020-02-24T00:00:00Z,533,6920,24
+Components,183 oz,blue,United Kingdom,Value Added Reseller,United States,2018-05-09T00:00:00Z,139,6053,83
+Components,267 oz,green,United States,Warehouse,Australia,2019-02-27T00:00:00Z,551,5177,84
+Components,330 oz,white,Australia,Warehouse,Canada,2019-12-29T00:00:00Z,455,1610,32
+Components,9 oz,green,France,Warehouse,Australia,2019-09-01T00:00:00Z,805,9759,52
+Components,54 oz,white,Germany,Warehouse,Canada,2018-11-05T00:00:00Z,207,8172,79
+Components,18 oz,white,United Kingdom,Warehouse,France,2020-06-03T00:00:00Z,360,2152,18
+Components,174 oz,blue,United States,Warehouse,Germany,2019-04-25T00:00:00Z,929,5383,83
+Components,48 oz,white,Australia,Warehouse,United Kingdom,2019-11-21T00:00:00Z,225,2347,48
+Components,196 oz,blue,Canada,Warehouse,United States,2018-04-05T00:00:00Z,52,551,45
+Components,30 oz,red,France,Specialty Bike Shop,Australia,2018-01-27T00:00:00Z,25,3937,31
+Components,226 oz,green,Germany,Specialty Bike Shop,Canada,2019-06-22T00:00:00Z,85,4960,24
+Components,288 oz,red,United Kingdom,Specialty Bike Shop,France,2018-07-30T00:00:00Z,846,4494,23
+Components,142 oz,blue,United States,Specialty Bike Shop,Germany,2019-03-15T00:00:00Z,122,5248,99
+Components,343 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2020-06-07T00:00:00Z,542,8465,68
+Components,126 oz,red,Canada,Specialty Bike Shop,United States,2018-09-24T00:00:00Z,645,3214,84
+Components,202 oz,blue,France,Value Added Reseller,Australia,2019-11-01T00:00:00Z,995,5569,85
+Components,97 oz,red,Germany,Value Added Reseller,Canada,2020-04-02T00:00:00Z,485,329,62
+Components,272 oz,blue,United Kingdom,Value Added Reseller,France,2019-08-08T00:00:00Z,212,4057,27
+Components,334 oz,red,France,Value Added Reseller,Germany,2018-11-30T00:00:00Z,183,1242,74
+Components,301 oz,blue,Germany,Value Added Reseller,United Kingdom,2020-02-29T00:00:00Z,502,6990,4
+Components,324 oz,blue,United Kingdom,Value Added Reseller,United States,2019-12-17T00:00:00Z,678,2603,99
+Components,78 oz,green,United States,Warehouse,Australia,2019-06-09T00:00:00Z,224,403,62
+Components,250 oz,white,Australia,Warehouse,Canada,2018-10-28T00:00:00Z,765,672,29
+Components,35 oz,blue,Canada,Value Added Reseller,Australia,2020-01-19T00:00:00Z,193,3731,53
+Components,289 oz,red,France,Value Added Reseller,Canada,2018-04-17T00:00:00Z,793,849,62
+Components,193 oz,blue,Germany,Value Added Reseller,France,2019-03-06T00:00:00Z,958,2509,37
+Components,181 oz,red,United Kingdom,Value Added Reseller,Germany,2019-03-06T00:00:00Z,891,4710,67
+Components,38 oz,blue,United States,Value Added Reseller,United Kingdom,2018-04-17T00:00:00Z,69,7560,41
+Components,185 oz,blue,Australia,Value Added Reseller,United States,2019-03-11T00:00:00Z,479,1757,83
+Components,103 oz,green,Canada,Warehouse,Australia,2020-05-07T00:00:00Z,34,2740,27
+Components,175 oz,white,France,Warehouse,Canada,2020-07-21T00:00:00Z,992,9024,50
+Components,216 oz,green,Germany,Warehouse,Australia,2018-07-13T00:00:00Z,754,703,42
+Components,160 oz,white,United Kingdom,Warehouse,Canada,2020-02-29T00:00:00Z,908,8846,36
+Components,272 oz,white,France,Warehouse,France,2019-09-20T00:00:00Z,166,9070,49
+Components,92 oz,blue,Germany,Warehouse,Germany,2020-08-23T00:00:00Z,831,5055,6
+Components,274 oz,white,United Kingdom,Warehouse,United Kingdom,2020-04-11T00:00:00Z,313,4520,30
+Components,281 oz,blue,United States,Warehouse,United States,2019-10-06T00:00:00Z,616,3911,13
+Components,132 oz,red,Australia,Specialty Bike Shop,Australia,2018-12-12T00:00:00Z,636,4305,89
+Components,150 oz,green,Canada,Specialty Bike Shop,Canada,2019-07-16T00:00:00Z,601,400,72
+Components,316 oz,red,France,Specialty Bike Shop,France,2019-04-08T00:00:00Z,680,414,43
+Components,159 oz,blue,Germany,Specialty Bike Shop,Germany,2020-04-02T00:00:00Z,707,8900,54
+Components,84 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2018-08-29T00:00:00Z,877,1662,29
+Components,301 oz,red,United States,Specialty Bike Shop,United States,2018-11-10T00:00:00Z,706,7611,21
+Components,91 oz,blue,Australia,Value Added Reseller,Australia,2019-05-17T00:00:00Z,495,6507,15
+Components,125 oz,red,Canada,Value Added Reseller,Canada,2019-12-24T00:00:00Z,370,3836,16
+Components,149 oz,blue,France,Value Added Reseller,France,2018-02-23T00:00:00Z,490,8751,99
+Components,50 oz,red,Germany,Value Added Reseller,Germany,2020-08-20T00:00:00Z,207,5350,3
+Components,299 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2020-08-24T00:00:00Z,287,3216,1
+Components,110 oz,blue,United Kingdom,Value Added Reseller,United States,2019-12-12T00:00:00Z,366,1157,94
+Components,282 oz,green,United States,Warehouse,Australia,2019-10-04T00:00:00Z,660,3618,58
+Components,100 oz,white,Australia,Warehouse,Canada,2018-02-11T00:00:00Z,502,8895,99
+Components,317 oz,blue,Canada,Value Added Reseller,Australia,2018-01-04T00:00:00Z,691,1936,62
+Components,254 oz,red,France,Value Added Reseller,Canada,2020-04-07T00:00:00Z,765,3610,37
+Components,38 oz,blue,Germany,Value Added Reseller,France,2020-07-26T00:00:00Z,903,8582,50
+Components,122 oz,red,United Kingdom,Value Added Reseller,Germany,2018-03-11T00:00:00Z,766,5804,27
+Components,129 oz,blue,United States,Value Added Reseller,United Kingdom,2019-08-10T00:00:00Z,315,8684,65
+Components,196 oz,blue,Australia,Value Added Reseller,United States,2018-05-03T00:00:00Z,246,267,25
+Components,322 oz,green,Canada,Warehouse,Australia,2020-08-19T00:00:00Z,619,9788,23
+Components,156 oz,white,France,Warehouse,Canada,2019-05-18T00:00:00Z,674,5068,80
+Components,212 oz,green,Germany,Warehouse,Australia,2020-05-10T00:00:00Z,511,4314,53
+Components,349 oz,white,United Kingdom,Warehouse,Canada,2019-04-01T00:00:00Z,706,8906,61
+Components,220 oz,white,United States,Warehouse,France,2019-01-09T00:00:00Z,338,3630,42
+Components,286 oz,blue,Australia,Warehouse,Germany,2018-09-12T00:00:00Z,34,6256,74
+Components,287 oz,white,Canada,Warehouse,United Kingdom,2018-08-08T00:00:00Z,222,945,89
+Components,10 oz,blue,France,Warehouse,United States,2018-03-17T00:00:00Z,962,4718,97
+Components,296 oz,red,Germany,Specialty Bike Shop,Australia,2018-12-11T00:00:00Z,954,977,59
+Components,168 oz,green,United Kingdom,Specialty Bike Shop,Canada,2019-02-07T00:00:00Z,954,6371,73
+Components,105 oz,red,United States,Specialty Bike Shop,France,2020-03-03T00:00:00Z,366,3357,30
+Components,242 oz,blue,Australia,Specialty Bike Shop,Germany,2020-06-24T00:00:00Z,666,5730,88
+Components,327 oz,blue,Canada,Specialty Bike Shop,United Kingdom,2019-02-22T00:00:00Z,489,9161,91
+Components,276 oz,red,France,Specialty Bike Shop,United States,2018-01-27T00:00:00Z,960,1492,16
+Components,250 oz,blue,Germany,Value Added Reseller,Australia,2019-04-23T00:00:00Z,908,6235,94
+Components,76 oz,red,United Kingdom,Value Added Reseller,Canada,2018-01-24T00:00:00Z,861,6070,62
+Components,45 oz,blue,United States,Value Added Reseller,France,2020-05-02T00:00:00Z,74,3358,9
+Components,137 oz,red,Australia,Value Added Reseller,Germany,2020-08-06T00:00:00Z,119,3431,61
+Components,270 oz,blue,Canada,Value Added Reseller,United Kingdom,2019-04-20T00:00:00Z,663,1399,26
+Components,129 oz,blue,France,Value Added Reseller,United States,2018-07-30T00:00:00Z,32,5544,99
+Components,34 oz,green,Germany,Warehouse,Australia,2020-02-20T00:00:00Z,625,7303,2
+Components,65 oz,white,United Kingdom,Warehouse,Canada,2018-01-27T00:00:00Z,376,879,8
+Components,124 oz,blue,United States,Value Added Reseller,Australia,2018-02-23T00:00:00Z,622,4345,71
+Components,46 oz,red,Australia,Value Added Reseller,Canada,2019-03-25T00:00:00Z,53,6543,65
+Components,174 oz,blue,Canada,Value Added Reseller,France,2019-03-21T00:00:00Z,846,3878,60
+Components,6 oz,red,France,Value Added Reseller,Germany,2019-01-13T00:00:00Z,743,4086,95
+Components,131 oz,blue,Germany,Value Added Reseller,United Kingdom,2020-02-15T00:00:00Z,412,9739,29
+Components,186 oz,blue,United Kingdom,Value Added Reseller,United States,2020-03-27T00:00:00Z,500,4686,69
+Components,173 oz,green,United States,Warehouse,Australia,2020-07-17T00:00:00Z,11,521,80
+Components,277 oz,white,Australia,Warehouse,Canada,2018-12-14T00:00:00Z,624,4697,32
+Components,292 oz,green,France,Warehouse,Australia,2020-04-14T00:00:00Z,483,6271,75
+Components,140 oz,white,Germany,Warehouse,Canada,2019-07-13T00:00:00Z,384,9825,32
+Components,197 oz,white,United Kingdom,Warehouse,France,2019-01-14T00:00:00Z,277,8509,57
+Components,87 oz,blue,United States,Warehouse,Germany,2019-12-11T00:00:00Z,614,7424,72
+Components,107 oz,white,Australia,Warehouse,United Kingdom,2019-10-27T00:00:00Z,913,7601,74
+Components,9 oz,blue,Canada,Warehouse,United States,2020-04-04T00:00:00Z,610,9938,16
+Components,200 oz,red,France,Specialty Bike Shop,Australia,2019-11-14T00:00:00Z,965,2181,49
+Components,284 oz,green,Germany,Specialty Bike Shop,Canada,2018-01-08T00:00:00Z,794,9925,37
+Components,83 oz,red,United Kingdom,Specialty Bike Shop,France,2019-03-26T00:00:00Z,632,8874,43
+Components,327 oz,blue,United States,Specialty Bike Shop,Germany,2020-08-26T00:00:00Z,418,7398,1
+Components,259 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2018-04-05T00:00:00Z,680,320,82
+Components,126 oz,red,Canada,Specialty Bike Shop,United States,2019-03-03T00:00:00Z,44,9688,73
+Components,109 oz,blue,France,Value Added Reseller,Australia,2019-01-13T00:00:00Z,195,3271,93
+Components,7 oz,red,Germany,Value Added Reseller,Canada,2019-09-25T00:00:00Z,938,5153,25
+Components,205 oz,blue,United Kingdom,Value Added Reseller,France,2018-06-20T00:00:00Z,768,2423,69
+Components,303 oz,red,France,Value Added Reseller,Germany,2018-03-03T00:00:00Z,567,127,51
+Components,125 oz,blue,Germany,Value Added Reseller,United Kingdom,2018-10-21T00:00:00Z,521,8131,46
+Components,321 oz,blue,United Kingdom,Value Added Reseller,United States,2019-09-08T00:00:00Z,928,8763,16
+Components,56 oz,green,United States,Warehouse,Australia,2019-06-30T00:00:00Z,949,2054,79
+Components,223 oz,white,Australia,Warehouse,Canada,2020-08-20T00:00:00Z,113,552,0
+Components,299 oz,blue,Canada,Value Added Reseller,Australia,2020-08-15T00:00:00Z,273,1418,67
+Components,86 oz,red,France,Value Added Reseller,Canada,2020-08-28T00:00:00Z,669,2752,13
+Components,96 oz,blue,Germany,Value Added Reseller,France,2019-07-31T00:00:00Z,905,2326,16
+Components,324 oz,red,United Kingdom,Value Added Reseller,Germany,2019-01-11T00:00:00Z,996,7181,15
+Components,169 oz,blue,United States,Value Added Reseller,United Kingdom,2018-11-21T00:00:00Z,265,6498,72
+Components,246 oz,blue,Australia,Value Added Reseller,United States,2020-07-23T00:00:00Z,376,8198,4
+Components,147 oz,green,Canada,Warehouse,Australia,2019-03-26T00:00:00Z,541,5319,73
+Components,142 oz,white,France,Warehouse,Canada,2019-02-17T00:00:00Z,529,6244,72
+Components,22 oz,green,Germany,Warehouse,Australia,2018-01-11T00:00:00Z,363,8279,24
+Components,78 oz,white,United Kingdom,Warehouse,Canada,2020-09-04T00:00:00Z,713,5587,47
+Components,343 oz,white,France,Warehouse,France,2019-04-07T00:00:00Z,411,8200,54
+Components,346 oz,blue,Germany,Warehouse,Germany,2019-01-20T00:00:00Z,247,9598,2
+Components,247 oz,white,United Kingdom,Warehouse,United Kingdom,2018-05-09T00:00:00Z,781,3662,63
+Components,325 oz,blue,United States,Warehouse,United States,2020-09-05T00:00:00Z,175,3539,53
+Components,27 oz,red,Australia,Specialty Bike Shop,Australia,2019-07-05T00:00:00Z,609,2904,19
+Components,269 oz,green,Canada,Specialty Bike Shop,Canada,2018-08-22T00:00:00Z,72,4962,67
+Components,71 oz,red,France,Specialty Bike Shop,France,2019-06-11T00:00:00Z,344,7016,67
+Components,264 oz,blue,Germany,Specialty Bike Shop,Germany,2019-11-21T00:00:00Z,874,4941,39
+Components,177 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2018-12-10T00:00:00Z,578,5169,20
+Components,161 oz,red,United States,Specialty Bike Shop,United States,2019-09-27T00:00:00Z,505,3668,28
+Components,312 oz,blue,Australia,Value Added Reseller,Australia,2018-11-19T00:00:00Z,586,5521,3
+Components,149 oz,red,Canada,Value Added Reseller,Canada,2020-04-25T00:00:00Z,950,4597,74
+Components,21 oz,blue,France,Value Added Reseller,France,2019-05-15T00:00:00Z,302,963,68
+Components,2 oz,red,Germany,Value Added Reseller,Germany,2019-05-04T00:00:00Z,648,9159,60
+Components,169 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-04-27T00:00:00Z,487,7781,43
+Components,5 oz,blue,Germany,Value Added Reseller,United States,2018-12-21T00:00:00Z,262,5294,66
+Components,103 oz,green,United Kingdom,Warehouse,Australia,2019-09-23T00:00:00Z,697,3467,62
+Components,217 oz,white,United States,Warehouse,Canada,2019-02-07T00:00:00Z,608,523,17
+Components,49 oz,blue,Australia,Value Added Reseller,Australia,2018-10-06T00:00:00Z,504,9693,44
+Components,68 oz,red,Canada,Value Added Reseller,Canada,2019-01-19T00:00:00Z,778,3778,97
+Components,320 oz,blue,France,Value Added Reseller,France,2018-03-25T00:00:00Z,51,8972,60
+Components,175 oz,red,Germany,Value Added Reseller,Germany,2018-06-09T00:00:00Z,675,9852,48
+Components,344 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-09-28T00:00:00Z,428,5002,72
+Components,91 oz,blue,United States,Value Added Reseller,United States,2020-08-05T00:00:00Z,330,2568,62
+Components,38 oz,green,Australia,Warehouse,Australia,2019-01-08T00:00:00Z,785,3211,55
+Components,94 oz,white,Canada,Warehouse,Canada,2020-04-25T00:00:00Z,243,7902,19
+Components,55 oz,green,France,Warehouse,Australia,2020-08-22T00:00:00Z,331,299,85
+Components,273 oz,white,Germany,Warehouse,Canada,2018-01-04T00:00:00Z,768,1347,74
+Components,143 oz,white,United Kingdom,Warehouse,France,2019-01-20T00:00:00Z,319,2080,38
+Components,261 oz,blue,United States,Warehouse,Germany,2019-12-13T00:00:00Z,401,598,90
+Components,329 oz,white,Australia,Warehouse,United Kingdom,2019-01-11T00:00:00Z,576,412,28
+Components,273 oz,blue,Canada,Warehouse,United States,2018-09-28T00:00:00Z,950,2507,53
+Components,206 oz,red,France,Specialty Bike Shop,Australia,2020-09-05T00:00:00Z,381,1925,35
+Components,347 oz,green,Germany,Specialty Bike Shop,Canada,2019-03-30T00:00:00Z,79,4682,45
+Components,124 oz,red,United Kingdom,Specialty Bike Shop,France,2019-05-23T00:00:00Z,357,583,9
+Components,117 oz,blue,United States,Specialty Bike Shop,Germany,2019-11-23T00:00:00Z,309,9357,52
+Components,44 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2018-10-25T00:00:00Z,83,9559,67
+Components,172 oz,red,Canada,Specialty Bike Shop,United States,2019-01-17T00:00:00Z,77,7107,39
+Components,176 oz,blue,France,Value Added Reseller,Australia,2018-03-24T00:00:00Z,152,7686,38
+Components,322 oz,red,Germany,Value Added Reseller,Canada,2020-07-07T00:00:00Z,46,9908,62
+Components,222 oz,blue,United Kingdom,Value Added Reseller,France,2019-06-01T00:00:00Z,104,1092,49
+Components,194 oz,red,United States,Value Added Reseller,Germany,2019-08-09T00:00:00Z,86,2975,87
+Components,215 oz,blue,Australia,Value Added Reseller,United Kingdom,2018-09-29T00:00:00Z,743,8945,40
+Components,146 oz,blue,Canada,Value Added Reseller,United States,2020-06-12T00:00:00Z,666,6199,14
+Components,272 oz,green,France,Warehouse,Australia,2019-10-03T00:00:00Z,376,9751,76
+Components,101 oz,white,Germany,Warehouse,Canada,2018-04-22T00:00:00Z,391,4799,51
+Components,130 oz,blue,United Kingdom,Value Added Reseller,Australia,2019-04-17T00:00:00Z,636,650,32
+Components,188 oz,red,United States,Value Added Reseller,Canada,2018-03-29T00:00:00Z,656,5629,53
+Components,76 oz,blue,Australia,Value Added Reseller,France,2018-09-16T00:00:00Z,229,7565,87
+Components,141 oz,red,Canada,Value Added Reseller,Germany,2020-08-10T00:00:00Z,413,6320,59
+Components,350 oz,blue,France,Value Added Reseller,United Kingdom,2018-11-01T00:00:00Z,802,5251,53
+Components,81 oz,blue,Germany,Value Added Reseller,United States,2018-02-16T00:00:00Z,337,1825,36
+Components,349 oz,green,United Kingdom,Warehouse,Australia,2018-05-14T00:00:00Z,631,1818,7
+Components,182 oz,white,United States,Warehouse,Canada,2019-09-02T00:00:00Z,482,2118,32
+Components,276 oz,green,Australia,Warehouse,Australia,2020-06-12T00:00:00Z,717,124,8
+Components,77 oz,white,Canada,Warehouse,Canada,2018-10-29T00:00:00Z,405,980,18
+Components,228 oz,white,France,Warehouse,France,2018-04-25T00:00:00Z,108,6474,54
+Components,49 oz,blue,Germany,Warehouse,Germany,2018-06-13T00:00:00Z,190,3303,72
+Components,187 oz,white,United Kingdom,Warehouse,United Kingdom,2019-08-30T00:00:00Z,328,9574,94
+Components,322 oz,blue,United States,Warehouse,United States,2019-11-18T00:00:00Z,841,4661,44
+Components,69 oz,red,Australia,Specialty Bike Shop,Australia,2018-09-08T00:00:00Z,847,4541,78
+Components,194 oz,green,Canada,Specialty Bike Shop,Canada,2019-06-08T00:00:00Z,843,6201,28
+Components,238 oz,red,France,Specialty Bike Shop,France,2018-11-01T00:00:00Z,958,1885,81
+Components,241 oz,blue,Germany,Specialty Bike Shop,Germany,2019-09-07T00:00:00Z,496,2066,32
+Components,4 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2018-09-16T00:00:00Z,504,7668,98
+Components,135 oz,red,United States,Specialty Bike Shop,United States,2018-02-22T00:00:00Z,40,8296,14
+Components,162 oz,blue,Australia,Value Added Reseller,Australia,2020-04-29T00:00:00Z,777,6754,88
+Components,244 oz,red,Canada,Value Added Reseller,Canada,2018-02-15T00:00:00Z,457,5011,86
+Components,322 oz,blue,France,Value Added Reseller,France,2020-08-20T00:00:00Z,532,3745,99
+Components,110 oz,red,Germany,Value Added Reseller,Germany,2019-02-12T00:00:00Z,260,8153,87
+Components,196 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-02-26T00:00:00Z,329,8625,50
+Components,234 oz,blue,United States,Value Added Reseller,United States,2018-09-07T00:00:00Z,364,762,88
+Components,26 oz,green,Australia,Warehouse,Australia,2018-11-17T00:00:00Z,961,5083,19
+Components,256 oz,white,Canada,Warehouse,Canada,2018-12-08T00:00:00Z,740,6461,85
+Components,263 oz,blue,Australia,Value Added Reseller,Australia,2020-04-28T00:00:00Z,393,5756,26
+Components,269 oz,red,Canada,Value Added Reseller,Canada,2019-04-25T00:00:00Z,499,2359,11
+Components,324 oz,blue,France,Value Added Reseller,France,2020-05-20T00:00:00Z,412,4512,78
+Components,15 oz,red,Germany,Value Added Reseller,Germany,2018-12-25T00:00:00Z,797,4892,31
+Components,306 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-11-04T00:00:00Z,730,7342,72
+Components,91 oz,blue,United States,Value Added Reseller,United States,2018-09-19T00:00:00Z,578,6783,48
+Components,58 oz,green,Australia,Warehouse,Australia,2019-01-09T00:00:00Z,718,8154,73
+Components,59 oz,white,Canada,Warehouse,Canada,2020-05-27T00:00:00Z,807,2875,11
+Components,306 oz,green,Australia,Warehouse,Australia,2019-12-28T00:00:00Z,598,4782,31
+Components,132 oz,white,Canada,Warehouse,Canada,2019-02-19T00:00:00Z,412,440,24
+Components,147 oz,white,France,Warehouse,France,2019-02-11T00:00:00Z,407,9706,32
+Components,231 oz,blue,Germany,Warehouse,Germany,2018-11-26T00:00:00Z,480,3599,1
+Components,304 oz,white,United Kingdom,Warehouse,United Kingdom,2018-05-17T00:00:00Z,755,7251,92
+Components,76 oz,blue,United States,Warehouse,United States,2019-01-05T00:00:00Z,96,8862,33
+Cars,4 oz,green,Australia,Specialty Bike Shop,Australia,2019-06-26T00:00:00Z,28832,20,30
+Cars,245 oz,white,Canada,Specialty Bike Shop,Canada,2018-07-26T00:00:00Z,25115,38,5
+Cars,33 oz,green,France,Specialty Bike Shop,France,2019-07-31T00:00:00Z,44932,17,70
+Cars,54 oz,red,Germany,Specialty Bike Shop,Germany,2018-05-15T00:00:00Z,54071,11,61
+Cars,35 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2020-01-27T00:00:00Z,59030,49,55
+Cars,114 oz,white,United States,Specialty Bike Shop,United States,2019-01-13T00:00:00Z,46757,40,12
+Cars,97 oz,red,Australia,Value Added Reseller,Australia,2019-10-31T00:00:00Z,43134,32,41
+Cars,308 oz,green,Canada,Value Added Reseller,Canada,2020-09-01T00:00:00Z,9403,23,95
+Cars,168 oz,red,France,Value Added Reseller,France,2018-10-09T00:00:00Z,20437,10,49
+Cars,79 oz,blue,Germany,Value Added Reseller,Germany,2019-10-01T00:00:00Z,7726,38,27
+Cars,50 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2019-09-28T00:00:00Z,36101,17,83
+Cars,34 oz,white,United States,Value Added Reseller,United States,2019-08-12T00:00:00Z,2280,24,69
+Cars,112 oz,red,Australia,Warehouse,Australia,2018-09-02T00:00:00Z,36395,33,30
+Cars,136 oz,blue,Canada,Warehouse,Canada,2019-03-03T00:00:00Z,38544,7,85
+Cars,293 oz,white,Australia,Warehouse,France,2018-04-17T00:00:00Z,51754,9,13
+Cars,62 oz,red,Canada,Warehouse,Germany,2020-04-13T00:00:00Z,35354,1,95
+Cars,171 oz,white,France,Warehouse,United Kingdom,2020-06-14T00:00:00Z,51742,34,39
+Cars,8 oz,white,Germany,Warehouse,United States,2018-02-25T00:00:00Z,15310,38,49
+Cars,159 oz,green,United Kingdom,Specialty Bike Shop,Australia,2019-12-10T00:00:00Z,4550,16,54
+Cars,121 oz,white,United States,Specialty Bike Shop,Canada,2020-02-14T00:00:00Z,18582,58,59
+Cars,18 oz,green,Australia,Specialty Bike Shop,France,2020-01-13T00:00:00Z,47120,42,100
+Cars,276 oz,red,Canada,Specialty Bike Shop,Germany,2019-02-19T00:00:00Z,15100,36,53
+Cars,52 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2019-02-17T00:00:00Z,6606,37,55
+Cars,295 oz,white,Canada,Specialty Bike Shop,United States,2020-01-08T00:00:00Z,10684,43,65
+Cars,106 oz,red,France,Value Added Reseller,Australia,2020-04-17T00:00:00Z,20976,55,33
+Cars,144 oz,green,Germany,Value Added Reseller,Canada,2018-12-12T00:00:00Z,34487,40,60
+Cars,284 oz,red,United Kingdom,Value Added Reseller,France,2018-11-10T00:00:00Z,33428,52,91
+Cars,108 oz,blue,United States,Value Added Reseller,Germany,2018-12-22T00:00:00Z,23236,45,86
+Cars,62 oz,white,Australia,Value Added Reseller,United Kingdom,2020-02-19T00:00:00Z,8303,10,91
+Cars,120 oz,white,Canada,Value Added Reseller,United States,2020-05-22T00:00:00Z,38552,15,6
+Cars,156 oz,red,France,Warehouse,Australia,2018-07-27T00:00:00Z,9718,18,76
+Cars,261 oz,blue,Germany,Warehouse,Canada,2020-06-30T00:00:00Z,39460,5,39
+Cars,339 oz,white,United Kingdom,Warehouse,France,2020-06-16T00:00:00Z,22319,58,83
+Cars,339 oz,red,United States,Warehouse,Germany,2019-04-25T00:00:00Z,37048,49,59
+Cars,325 oz,white,Australia,Warehouse,United Kingdom,2019-05-01T00:00:00Z,36241,59,43
+Cars,322 oz,white,Canada,Warehouse,United States,2020-01-27T00:00:00Z,13270,42,31
+Cars,326 oz,green,France,Specialty Bike Shop,Australia,2020-03-24T00:00:00Z,9065,2,57
+Cars,67 oz,white,Germany,Specialty Bike Shop,Canada,2020-06-23T00:00:00Z,7560,28,9
+Cars,48 oz,green,United Kingdom,Specialty Bike Shop,France,2019-04-20T00:00:00Z,32950,35,14
+Cars,181 oz,red,United States,Specialty Bike Shop,Germany,2020-07-13T00:00:00Z,47837,16,35
+Cars,211 oz,blue,Australia,Specialty Bike Shop,United Kingdom,2019-10-17T00:00:00Z,15195,19,24
+Cars,192 oz,white,Canada,Specialty Bike Shop,United States,2020-05-05T00:00:00Z,34759,37,64
+Cars,256 oz,red,Australia,Value Added Reseller,Australia,2018-07-18T00:00:00Z,21195,1,30
+Cars,48 oz,green,Canada,Value Added Reseller,Canada,2018-08-20T00:00:00Z,623,55,19
+Cars,348 oz,red,France,Value Added Reseller,France,2019-12-07T00:00:00Z,27052,41,91
+Cars,158 oz,blue,Germany,Value Added Reseller,Germany,2019-12-02T00:00:00Z,37983,58,74
+Cars,277 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2018-01-17T00:00:00Z,22172,1,44
+Cars,257 oz,white,United States,Value Added Reseller,United States,2020-07-18T00:00:00Z,21879,36,10
+Cars,115 oz,red,Australia,Warehouse,Australia,2020-02-10T00:00:00Z,40065,45,0
+Cars,338 oz,blue,Canada,Warehouse,Canada,2020-05-24T00:00:00Z,10116,52,42
+Cars,87 oz,white,Australia,Warehouse,France,2019-05-17T00:00:00Z,43266,30,91
+Cars,287 oz,red,Canada,Warehouse,Germany,2018-12-18T00:00:00Z,56999,58,58
+Cars,240 oz,white,France,Warehouse,United Kingdom,2019-08-27T00:00:00Z,31754,55,79
+Cars,219 oz,white,Germany,Warehouse,United States,2018-12-10T00:00:00Z,29428,42,36
+Components,75 oz,blue,France,Value Added Reseller,United Kingdom,2019-09-02T00:00:00Z,999,6023,28
+Components,247 oz,blue,Germany,Value Added Reseller,United States,2018-05-08T00:00:00Z,168,1863,75
+Components,97 oz,green,United Kingdom,Warehouse,Australia,2020-02-15T00:00:00Z,892,3917,96
+Components,297 oz,white,United States,Warehouse,Canada,2020-03-31T00:00:00Z,418,3832,50
+Components,350 oz,green,Australia,Warehouse,Australia,2018-10-06T00:00:00Z,459,9624,47
+Components,201 oz,white,Canada,Warehouse,Canada,2019-02-16T00:00:00Z,757,1642,66
+Components,89 oz,white,France,Warehouse,France,2018-03-06T00:00:00Z,225,2104,0
+Components,4 oz,blue,Germany,Warehouse,Germany,2018-11-10T00:00:00Z,890,1531,84
+Components,279 oz,white,United Kingdom,Warehouse,United Kingdom,2018-07-15T00:00:00Z,662,1698,61
+Components,22 oz,blue,United States,Warehouse,United States,2019-01-26T00:00:00Z,505,1213,46
+Components,238 oz,red,Australia,Specialty Bike Shop,Australia,2019-03-08T00:00:00Z,996,6706,70
+Components,308 oz,green,Canada,Specialty Bike Shop,Canada,2019-12-07T00:00:00Z,245,2272,21
+Components,346 oz,red,France,Specialty Bike Shop,France,2019-11-04T00:00:00Z,388,2326,36
+Components,19 oz,blue,Germany,Specialty Bike Shop,Germany,2020-01-18T00:00:00Z,632,3212,95
+Components,107 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2020-07-11T00:00:00Z,576,4015,64
+Components,170 oz,red,United States,Specialty Bike Shop,United States,2018-11-28T00:00:00Z,783,9245,25
+Components,173 oz,blue,Australia,Value Added Reseller,Australia,2018-01-21T00:00:00Z,30,846,36
+Components,92 oz,red,Canada,Value Added Reseller,Canada,2020-08-31T00:00:00Z,102,2788,13
+Components,60 oz,blue,France,Value Added Reseller,France,2019-07-17T00:00:00Z,611,5158,4
+Components,225 oz,red,Germany,Value Added Reseller,Germany,2020-02-05T00:00:00Z,241,2085,21
+Components,282 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-04-30T00:00:00Z,490,7373,28
+Components,315 oz,blue,United States,Value Added Reseller,United States,2020-05-18T00:00:00Z,646,4248,19
+Components,62 oz,green,Australia,Warehouse,Australia,2018-08-04T00:00:00Z,55,5314,39
+Components,235 oz,white,Canada,Warehouse,Canada,2018-07-01T00:00:00Z,33,1713,46
+Components,127 oz,blue,Australia,Value Added Reseller,Australia,2018-02-02T00:00:00Z,473,6585,49
+Components,328 oz,red,Canada,Value Added Reseller,Canada,2018-05-17T00:00:00Z,322,1877,62
+Components,271 oz,blue,France,Value Added Reseller,France,2018-11-25T00:00:00Z,235,6409,93
+Components,324 oz,red,Germany,Value Added Reseller,Germany,2019-01-02T00:00:00Z,683,9767,17
+Components,43 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-07-21T00:00:00Z,657,1580,47
+Components,160 oz,blue,United States,Value Added Reseller,United States,2020-06-05T00:00:00Z,774,4956,2
+Components,63 oz,green,Australia,Warehouse,Australia,2019-01-07T00:00:00Z,595,2661,99
+Components,163 oz,white,Canada,Warehouse,Canada,2020-04-17T00:00:00Z,564,9512,25
+Components,182 oz,green,Australia,Warehouse,Australia,2018-11-05T00:00:00Z,365,5654,85
+Components,18 oz,white,Canada,Warehouse,Canada,2019-07-09T00:00:00Z,273,1169,23
+Components,297 oz,white,France,Warehouse,France,2020-05-01T00:00:00Z,462,8007,62
+Components,121 oz,blue,Germany,Warehouse,Germany,2018-12-25T00:00:00Z,635,6827,7
+Components,208 oz,white,United Kingdom,Warehouse,United Kingdom,2020-08-21T00:00:00Z,53,3817,22
+Components,71 oz,blue,United States,Warehouse,United States,2020-09-01T00:00:00Z,362,4733,40
+Cars,194 oz,green,Australia,Specialty Bike Shop,Australia,2019-09-18T00:00:00Z,8684,39,100
+Cars,145 oz,white,Canada,Specialty Bike Shop,Canada,2018-03-04T00:00:00Z,19963,56,34
+Cars,115 oz,green,France,Specialty Bike Shop,France,2020-05-10T00:00:00Z,19938,47,33
+Cars,33 oz,red,Germany,Specialty Bike Shop,Germany,2018-12-08T00:00:00Z,6088,58,76
+Cars,42 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2019-10-23T00:00:00Z,25832,3,94
+Cars,252 oz,white,United States,Specialty Bike Shop,United States,2020-02-29T00:00:00Z,25706,15,98
+Cars,221 oz,red,Australia,Value Added Reseller,Australia,2020-02-22T00:00:00Z,36145,58,97
+Cars,91 oz,green,Canada,Value Added Reseller,Canada,2020-09-08T00:00:00Z,46466,52,22
+Cars,106 oz,red,France,Value Added Reseller,France,2018-01-29T00:00:00Z,16873,47,38
+Cars,124 oz,blue,Germany,Value Added Reseller,Germany,2018-09-09T00:00:00Z,1586,3,68
+Cars,71 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2018-01-07T00:00:00Z,8947,44,72
+Cars,314 oz,white,United States,Value Added Reseller,United States,2019-03-15T00:00:00Z,43687,46,46
+Cars,329 oz,red,Australia,Warehouse,Australia,2020-05-04T00:00:00Z,25947,36,17
+Cars,255 oz,blue,Canada,Warehouse,Canada,2019-05-25T00:00:00Z,23972,36,49
+Cars,241 oz,white,Australia,Warehouse,France,2020-02-11T00:00:00Z,5717,23,96
+Cars,188 oz,red,Canada,Warehouse,Germany,2020-03-30T00:00:00Z,39056,7,7
+Components,307 oz,blue,France,Value Added Reseller,United Kingdom,2018-08-12T00:00:00Z,660,5623,83
+Components,185 oz,blue,Germany,Value Added Reseller,United States,2019-12-25T00:00:00Z,176,1401,35
+Components,108 oz,green,United Kingdom,Warehouse,Australia,2020-06-12T00:00:00Z,994,9882,1
+Components,249 oz,white,United States,Warehouse,Canada,2019-08-17T00:00:00Z,962,3258,89
+Components,145 oz,green,Australia,Warehouse,Australia,2020-02-28T00:00:00Z,483,6517,86
+Components,58 oz,white,Canada,Warehouse,Canada,2018-05-22T00:00:00Z,146,9510,93
+Components,340 oz,white,France,Warehouse,France,2018-03-25T00:00:00Z,270,182,42
+Components,300 oz,blue,Germany,Warehouse,Germany,2019-11-12T00:00:00Z,215,5292,23
+Components,349 oz,white,United Kingdom,Warehouse,United Kingdom,2019-12-30T00:00:00Z,859,6227,74
+Components,240 oz,blue,United States,Warehouse,United States,2018-10-18T00:00:00Z,703,539,18
+Components,285 oz,red,Australia,Specialty Bike Shop,Australia,2018-01-20T00:00:00Z,172,1409,67
+Components,169 oz,green,Canada,Specialty Bike Shop,Canada,2019-07-30T00:00:00Z,776,4987,4
+Components,79 oz,red,France,Specialty Bike Shop,France,2019-02-02T00:00:00Z,195,1834,19
+Components,220 oz,blue,Germany,Specialty Bike Shop,Germany,2018-04-29T00:00:00Z,562,7903,0
+Components,178 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2020-05-27T00:00:00Z,469,8694,8
+Components,194 oz,red,United States,Specialty Bike Shop,United States,2019-07-19T00:00:00Z,318,3636,68
+Components,15 oz,blue,Australia,Value Added Reseller,Australia,2018-12-17T00:00:00Z,941,750,25
+Components,147 oz,red,Canada,Value Added Reseller,Canada,2018-01-28T00:00:00Z,220,8586,36
+Components,115 oz,blue,France,Value Added Reseller,France,2018-12-14T00:00:00Z,58,8024,78
+Components,136 oz,red,Germany,Value Added Reseller,Germany,2019-05-15T00:00:00Z,48,8552,59
+Components,198 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2020-06-05T00:00:00Z,700,3292,80
+Components,84 oz,blue,United States,Value Added Reseller,United States,2020-01-31T00:00:00Z,594,4517,17
+Components,236 oz,green,Australia,Warehouse,Australia,2018-07-28T00:00:00Z,61,6171,31
+Components,311 oz,white,Canada,Warehouse,Canada,2019-02-12T00:00:00Z,560,4815,59
+Components,129 oz,blue,Australia,Value Added Reseller,Australia,2019-01-17T00:00:00Z,958,4967,23
+Components,234 oz,red,Canada,Value Added Reseller,Canada,2018-02-02T00:00:00Z,206,7635,47
+Components,238 oz,blue,France,Value Added Reseller,France,2018-04-19T00:00:00Z,40,2057,89
+Components,317 oz,red,Germany,Value Added Reseller,Germany,2018-03-18T00:00:00Z,208,7764,19
+Components,139 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-12-26T00:00:00Z,917,4945,54
+Components,60 oz,blue,United States,Value Added Reseller,United States,2018-05-08T00:00:00Z,226,7058,82
+Components,162 oz,green,Australia,Warehouse,Australia,2018-02-01T00:00:00Z,995,6785,59
+Components,137 oz,white,Canada,Warehouse,Canada,2020-04-23T00:00:00Z,14,5222,15
+Components,88 oz,green,Australia,Warehouse,Australia,2018-03-08T00:00:00Z,347,9027,78
+Components,81 oz,white,Canada,Warehouse,Canada,2019-04-16T00:00:00Z,306,917,84
+Components,287 oz,white,France,Warehouse,France,2018-11-27T00:00:00Z,308,3216,52
+Components,177 oz,blue,Germany,Warehouse,Germany,2018-05-09T00:00:00Z,194,1274,88
+Components,136 oz,white,United Kingdom,Warehouse,United Kingdom,2019-03-23T00:00:00Z,746,8268,46
+Components,178 oz,blue,United States,Warehouse,United States,2019-01-05T00:00:00Z,137,6245,79
+Cars,206 oz,green,Australia,Specialty Bike Shop,Australia,2018-07-05T00:00:00Z,17741,58,42
+Cars,293 oz,white,Canada,Specialty Bike Shop,Canada,2019-04-30T00:00:00Z,15501,13,14
+Cars,293 oz,green,France,Specialty Bike Shop,France,2020-08-19T00:00:00Z,57051,8,84
+Cars,271 oz,red,Germany,Specialty Bike Shop,Germany,2018-06-30T00:00:00Z,10713,16,33
+Cars,68 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2019-08-18T00:00:00Z,30166,59,7
+Cars,53 oz,white,United States,Specialty Bike Shop,United States,2019-01-05T00:00:00Z,54286,36,22
+Cars,200 oz,red,Australia,Value Added Reseller,Australia,2020-02-10T00:00:00Z,6095,10,88
+Cars,332 oz,green,Canada,Value Added Reseller,Canada,2018-07-26T00:00:00Z,11624,43,47
+Cars,30 oz,red,France,Value Added Reseller,France,2019-08-07T00:00:00Z,12866,60,27
+Cars,15 oz,blue,Germany,Value Added Reseller,Germany,2020-06-10T00:00:00Z,26637,20,34
+Cars,340 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2018-12-23T00:00:00Z,14959,41,14
+Cars,125 oz,white,United States,Value Added Reseller,United States,2019-02-28T00:00:00Z,30873,15,78
+Cars,121 oz,red,Australia,Warehouse,Australia,2018-03-30T00:00:00Z,59783,13,66
+Cars,321 oz,blue,Canada,Warehouse,Canada,2020-04-06T00:00:00Z,57039,27,14
+Cars,167 oz,white,Australia,Warehouse,France,2018-06-12T00:00:00Z,33260,39,44
+Cars,110 oz,red,Canada,Warehouse,Germany,2018-09-29T00:00:00Z,3745,22,68
+Components,308 oz,blue,France,Value Added Reseller,United Kingdom,2020-07-04T00:00:00Z,258,7979,85
+Components,334 oz,blue,Germany,Value Added Reseller,United States,2019-03-22T00:00:00Z,878,5115,30
+Components,124 oz,green,United Kingdom,Warehouse,Australia,2019-05-30T00:00:00Z,534,8651,90
+Components,48 oz,white,United States,Warehouse,Canada,2019-05-02T00:00:00Z,716,7552,89
+Components,206 oz,green,Australia,Warehouse,Australia,2018-08-01T00:00:00Z,693,8414,91
+Components,78 oz,white,Canada,Warehouse,Canada,2020-01-27T00:00:00Z,753,6339,62
+Components,350 oz,white,France,Warehouse,France,2018-02-02T00:00:00Z,356,1761,2
+Components,52 oz,blue,Germany,Warehouse,Germany,2018-01-07T00:00:00Z,124,4673,36
+Components,134 oz,white,United Kingdom,Warehouse,United Kingdom,2018-11-17T00:00:00Z,602,4038,41
+Components,224 oz,blue,United States,Warehouse,United States,2019-08-24T00:00:00Z,662,3496,93
+Components,157 oz,red,Australia,Specialty Bike Shop,Australia,2018-09-17T00:00:00Z,110,587,7
+Components,328 oz,green,Canada,Specialty Bike Shop,Canada,2018-06-08T00:00:00Z,520,8535,84
+Components,328 oz,red,France,Specialty Bike Shop,France,2019-05-24T00:00:00Z,177,1208,11
+Components,113 oz,blue,Germany,Specialty Bike Shop,Germany,2020-06-28T00:00:00Z,428,7126,62
+Components,307 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2020-02-10T00:00:00Z,264,7877,13
+Components,123 oz,red,United States,Specialty Bike Shop,United States,2020-01-19T00:00:00Z,395,1086,90
+Components,253 oz,blue,Australia,Value Added Reseller,Australia,2018-04-29T00:00:00Z,485,9746,55
+Components,28 oz,red,Canada,Value Added Reseller,Canada,2020-08-20T00:00:00Z,925,1416,45
+Components,2 oz,blue,France,Value Added Reseller,France,2020-04-04T00:00:00Z,189,3088,3
+Components,312 oz,red,Germany,Value Added Reseller,Germany,2020-04-25T00:00:00Z,459,8394,41
+Components,202 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-06-04T00:00:00Z,745,9252,57
+Components,27 oz,blue,United States,Value Added Reseller,United States,2019-12-08T00:00:00Z,493,6918,4
+Components,312 oz,green,Australia,Warehouse,Australia,2018-06-15T00:00:00Z,376,9196,28
+Components,75 oz,white,Canada,Warehouse,Canada,2020-03-31T00:00:00Z,332,5130,9
+Components,251 oz,blue,Australia,Value Added Reseller,Australia,2019-09-12T00:00:00Z,777,6356,58
+Components,139 oz,red,Canada,Value Added Reseller,Canada,2018-06-24T00:00:00Z,919,3621,85
+Components,97 oz,blue,France,Value Added Reseller,France,2019-03-07T00:00:00Z,536,214,58
+Components,155 oz,red,Germany,Value Added Reseller,Germany,2018-07-19T00:00:00Z,152,9581,98
+Components,29 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-12-04T00:00:00Z,666,2549,89
+Components,250 oz,blue,United States,Value Added Reseller,United States,2020-07-07T00:00:00Z,336,7845,11
+Components,111 oz,green,Australia,Warehouse,Australia,2018-02-09T00:00:00Z,305,5163,12
+Components,84 oz,white,Canada,Warehouse,Canada,2018-07-06T00:00:00Z,738,8963,59
+Components,268 oz,green,Australia,Warehouse,Australia,2019-11-12T00:00:00Z,687,1763,64
+Components,160 oz,white,Canada,Warehouse,Canada,2020-02-17T00:00:00Z,686,9857,52
+Components,257 oz,white,France,Warehouse,France,2019-06-22T00:00:00Z,671,2035,55
+Components,58 oz,blue,Germany,Warehouse,Germany,2020-05-16T00:00:00Z,136,5437,18
+Components,24 oz,white,United Kingdom,Warehouse,United Kingdom,2019-08-19T00:00:00Z,701,1860,42
+Components,237 oz,blue,United States,Warehouse,United States,2020-07-31T00:00:00Z,32,2471,76
+Cars,257 oz,green,Australia,Specialty Bike Shop,Australia,2018-06-07T00:00:00Z,56947,49,90
+Cars,147 oz,white,Canada,Specialty Bike Shop,Canada,2019-02-16T00:00:00Z,55342,53,56
+Cars,100 oz,green,France,Specialty Bike Shop,France,2019-03-28T00:00:00Z,22784,36,12
+Cars,128 oz,red,Germany,Specialty Bike Shop,Germany,2020-08-12T00:00:00Z,19722,38,6
+Cars,90 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2020-04-22T00:00:00Z,6743,28,49
+Cars,257 oz,white,United States,Specialty Bike Shop,United States,2020-09-02T00:00:00Z,18673,2,38
+Cars,274 oz,red,Australia,Value Added Reseller,Australia,2018-04-21T00:00:00Z,49650,17,24
+Cars,328 oz,green,Canada,Value Added Reseller,Canada,2019-09-04T00:00:00Z,53599,59,97
+Cars,112 oz,red,France,Value Added Reseller,France,2019-11-11T00:00:00Z,36460,58,100
+Cars,61 oz,blue,Germany,Value Added Reseller,Germany,2019-10-19T00:00:00Z,57571,37,56
+Cars,323 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2018-05-02T00:00:00Z,47317,45,83
+Cars,158 oz,white,United States,Value Added Reseller,United States,2019-08-14T00:00:00Z,12166,19,30
+Cars,175 oz,red,Australia,Warehouse,Australia,2018-11-01T00:00:00Z,2560,18,72
+Cars,124 oz,blue,Canada,Warehouse,Canada,2018-04-18T00:00:00Z,19974,36,11
+Cars,172 oz,white,Australia,Warehouse,France,2018-01-03T00:00:00Z,59455,4,12
+Cars,307 oz,red,Canada,Warehouse,Germany,2018-10-27T00:00:00Z,4684,11,74
+Components,17 oz,blue,France,Value Added Reseller,United Kingdom,2020-01-04T00:00:00Z,347,8680,39
+Components,181 oz,blue,Germany,Value Added Reseller,United States,2018-07-29T00:00:00Z,611,6518,24
+Components,41 oz,green,United Kingdom,Warehouse,Australia,2018-10-08T00:00:00Z,411,8165,77
+Components,203 oz,white,United States,Warehouse,Canada,2019-11-07T00:00:00Z,34,5412,53
+Components,89 oz,green,Australia,Warehouse,Australia,2020-04-28T00:00:00Z,677,1707,76
+Components,197 oz,white,Canada,Warehouse,Canada,2018-02-07T00:00:00Z,760,2492,81
+Components,79 oz,white,France,Warehouse,France,2018-11-22T00:00:00Z,336,758,22
+Components,170 oz,blue,Germany,Warehouse,Germany,2020-03-26T00:00:00Z,395,4268,12
+Components,286 oz,white,United Kingdom,Warehouse,United Kingdom,2018-10-14T00:00:00Z,34,6125,51
+Components,16 oz,blue,United States,Warehouse,United States,2019-01-19T00:00:00Z,659,393,66
+Components,72 oz,red,Australia,Specialty Bike Shop,Australia,2019-07-16T00:00:00Z,165,9383,22
+Components,102 oz,green,Canada,Specialty Bike Shop,Canada,2018-03-14T00:00:00Z,836,9514,19
+Components,7 oz,red,France,Specialty Bike Shop,France,2019-04-05T00:00:00Z,625,6753,3
+Components,173 oz,blue,Germany,Specialty Bike Shop,Germany,2019-12-15T00:00:00Z,86,8137,92
+Components,229 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2019-01-08T00:00:00Z,153,6080,69
+Components,306 oz,red,United States,Specialty Bike Shop,United States,2020-06-04T00:00:00Z,269,4198,97
+Components,130 oz,blue,Australia,Value Added Reseller,Australia,2018-06-02T00:00:00Z,519,4722,42
+Components,67 oz,red,Canada,Value Added Reseller,Canada,2018-06-08T00:00:00Z,925,5287,73
+Components,190 oz,blue,France,Value Added Reseller,France,2020-03-16T00:00:00Z,741,3804,74
+Components,325 oz,red,Germany,Value Added Reseller,Germany,2019-02-18T00:00:00Z,928,283,26
+Components,302 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-01-29T00:00:00Z,686,6027,64
+Components,12 oz,blue,United States,Value Added Reseller,United States,2019-07-02T00:00:00Z,628,9886,78
+Components,336 oz,green,Australia,Warehouse,Australia,2020-04-25T00:00:00Z,16,9439,60
+Components,63 oz,white,Canada,Warehouse,Canada,2018-06-21T00:00:00Z,105,4911,74
+Components,166 oz,blue,Australia,Value Added Reseller,Australia,2019-12-12T00:00:00Z,636,9372,18
+Components,312 oz,red,Canada,Value Added Reseller,Canada,2018-01-09T00:00:00Z,416,1643,38
+Components,233 oz,blue,France,Value Added Reseller,France,2019-04-22T00:00:00Z,447,6737,7
+Components,171 oz,red,Germany,Value Added Reseller,Germany,2020-01-27T00:00:00Z,76,1419,28
+Components,312 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-03-19T00:00:00Z,706,1646,76
+Components,60 oz,blue,United States,Value Added Reseller,United States,2018-04-22T00:00:00Z,205,5725,41
+Components,43 oz,green,Australia,Warehouse,Australia,2019-09-07T00:00:00Z,139,3667,23
+Components,283 oz,white,Canada,Warehouse,Canada,2020-07-02T00:00:00Z,244,9637,34
+Components,274 oz,green,Australia,Warehouse,Australia,2018-07-04T00:00:00Z,355,6069,18
+Components,127 oz,white,Canada,Warehouse,Canada,2019-01-17T00:00:00Z,956,7240,21
+Components,253 oz,white,France,Warehouse,France,2018-02-14T00:00:00Z,519,3130,69
+Components,64 oz,blue,Germany,Warehouse,Germany,2018-11-24T00:00:00Z,16,1339,56
+Components,69 oz,white,United Kingdom,Warehouse,United Kingdom,2019-08-10T00:00:00Z,864,5127,89
+Components,7 oz,blue,United States,Warehouse,United States,2020-06-21T00:00:00Z,579,5947,26
+Cars,146 oz,green,Australia,Specialty Bike Shop,Australia,2018-04-04T00:00:00Z,43924,23,40
+Cars,84 oz,white,Canada,Specialty Bike Shop,Canada,2018-04-30T00:00:00Z,41952,43,36
+Cars,131 oz,green,France,Specialty Bike Shop,France,2018-03-27T00:00:00Z,5826,31,11
+Cars,190 oz,red,Germany,Specialty Bike Shop,Germany,2019-09-11T00:00:00Z,59747,59,57
+Cars,248 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,2019-10-31T00:00:00Z,24784,23,86
+Cars,73 oz,white,United States,Specialty Bike Shop,United States,2019-04-04T00:00:00Z,16775,19,52
+Cars,343 oz,red,Australia,Value Added Reseller,Australia,2019-02-19T00:00:00Z,42975,26,62
+Cars,346 oz,green,Canada,Value Added Reseller,Canada,2018-02-07T00:00:00Z,25316,28,38
+Cars,30 oz,red,France,Value Added Reseller,France,2018-06-02T00:00:00Z,21044,28,66
+Cars,252 oz,blue,Germany,Value Added Reseller,Germany,2020-08-06T00:00:00Z,2083,14,52
+Cars,199 oz,white,United Kingdom,Value Added Reseller,United Kingdom,2018-10-11T00:00:00Z,25789,21,55
+Cars,105 oz,white,United States,Value Added Reseller,United States,2018-08-06T00:00:00Z,16806,24,32
+Cars,201 oz,red,Australia,Warehouse,Australia,2019-03-14T00:00:00Z,10818,26,22
+Cars,345 oz,blue,Canada,Warehouse,Canada,2018-05-26T00:00:00Z,46741,54,68
+Cars,3 oz,white,Australia,Warehouse,France,2018-10-11T00:00:00Z,51389,45,29
+Cars,297 oz,red,Canada,Warehouse,Germany,2019-07-26T00:00:00Z,34215,43,7
+Accessories,127 oz,red,Australia,Specialty Bike Shop,Australia,2020-06-06T00:00:00Z,174,854,
+Accessories,317 oz,yellow,Canada,Specialty Bike Shop,Canada,2018-07-06T00:00:00Z,502,227,
+Accessories,194 oz,white,France,Specialty Bike Shop,France,2018-12-12T00:00:00Z,242,121,
+Accessories,310 oz,yellow,Germany,Specialty Bike Shop,Germany,2018-04-19T00:00:00Z,102,289,
+Accessories,11 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,2020-08-04T00:00:00Z,126,48,
+Accessories,163 oz,yellow,United States,Specialty Bike Shop,United States,2020-04-20T00:00:00Z,1246,944,
+Accessories,169 oz,green,Australia,Value Added Reseller,Australia,2019-06-27T00:00:00Z,680,639,
+Accessories,152 oz,yellow,Canada,Value Added Reseller,Canada,2019-07-06T00:00:00Z,1241,892,
+Accessories,332 oz,yellow,France,Value Added Reseller,France,2020-01-08T00:00:00Z,150,953,
+Accessories,333 oz,red,Germany,Value Added Reseller,Germany,2018-06-24T00:00:00Z,244,791,
+Accessories,295 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,2020-01-22T00:00:00Z,501,20,
+Accessories,284 oz,red,United States,Value Added Reseller,United States,2019-09-22T00:00:00Z,4960,336,
+Accessories,339 oz,yellow,Australia,Warehouse,Australia,2020-05-20T00:00:00Z,9,121,
+Accessories,343 oz,red,Canada,Warehouse,Canada,2018-03-20T00:00:00Z,3655,812,
+Accessories,326 oz,green,France,Warehouse,France,2019-11-01T00:00:00Z,1654,663,
+Accessories,139 oz,yellow,Germany,Warehouse,Germany,2018-02-14T00:00:00Z,1190,108,
+Accessories,193 oz,red,United Kingdom,Warehouse,United Kingdom,2018-10-26T00:00:00Z,1222,459,
+Accessories,186 oz,white,United States,Warehouse,United States,2018-08-21T00:00:00Z,7941,386,
+Bikes,114 oz,white,Australia,Specialty Bike Shop,Australia,2018-03-06T00:00:00Z,2038,94,
+Bikes,238 oz,red,Canada,Specialty Bike Shop,Canada,2019-11-17T00:00:00Z,3271,20,
+Bikes,98 oz,red,France,Specialty Bike Shop,France,2018-11-25T00:00:00Z,1706,77,
+Bikes,345 oz,green,Germany,Specialty Bike Shop,Germany,2020-01-28T00:00:00Z,3297,65,
+Bikes,15 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,2020-05-10T00:00:00Z,518,98,
+Bikes,197 oz,green,United States,Specialty Bike Shop,United States,2019-01-23T00:00:00Z,2047,59,
+Bikes,267 oz,green,Australia,Value Added Reseller,Australia,2020-01-10T00:00:00Z,5582,65,
+Bikes,185 oz,red,Canada,Value Added Reseller,Canada,2019-11-05T00:00:00Z,4235,56,
+Bikes,156 oz,yellow,France,Value Added Reseller,France,2020-04-18T00:00:00Z,9127,21,
+Bikes,40 oz,red,Germany,Value Added Reseller,Germany,2019-05-25T00:00:00Z,4297,12,
+Bikes,304 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2019-04-18T00:00:00Z,7214,58,
+Bikes,149 oz,red,Australia,Value Added Reseller,United States,2020-04-21T00:00:00Z,8641,73,
+Bikes,181 oz,blue,Canada,Warehouse,Australia,2019-10-19T00:00:00Z,7833,20,
+Bikes,118 oz,blue,France,Warehouse,Canada,2019-04-14T00:00:00Z,6627,89,
+Bikes,130 oz,purple,Germany,Warehouse,France,2019-09-23T00:00:00Z,9979,61,
+Bikes,53 oz,red,United Kingdom,Warehouse,Germany,2019-08-19T00:00:00Z,2751,39,
+Bikes,91 oz,blue,United States,Warehouse,United Kingdom,2019-04-21T00:00:00Z,1167,51,
+Bikes,261 oz,blue,Australia,Warehouse,United States,2020-04-19T00:00:00Z,8236,16,
+Clothing,91 oz,yellow,Canada,Specialty Bike Shop,Australia,2020-08-22T00:00:00Z,62,4061,
+Clothing,338 oz,blue,France,Specialty Bike Shop,Canada,2019-04-24T00:00:00Z,512,3852,
+Clothing,41 oz,blue,Germany,Specialty Bike Shop,France,2020-07-26T00:00:00Z,861,8426,
+Clothing,18 oz,blue,United Kingdom,Specialty Bike Shop,Germany,2018-08-24T00:00:00Z,454,821,
+Clothing,167 oz,white,United States,Specialty Bike Shop,United Kingdom,2019-07-13T00:00:00Z,44,3402,
+Clothing,143 oz,purple,Australia,Specialty Bike Shop,United States,2019-05-31T00:00:00Z,698,2570,
+Clothing,18 oz,red,Canada,Value Added Reseller,Australia,2020-05-12T00:00:00Z,838,6220,
+Clothing,76 oz,purple,France,Value Added Reseller,Canada,2019-05-09T00:00:00Z,708,3030,
+Clothing,127 oz,green,Germany,Value Added Reseller,France,2019-11-21T00:00:00Z,486,8539,
+Clothing,164 oz,red,United Kingdom,Value Added Reseller,Germany,2020-02-06T00:00:00Z,160,8231,
+Clothing,185 oz,white,United States,Value Added Reseller,United Kingdom,2018-05-30T00:00:00Z,403,4240,
+Clothing,271 oz,white,Australia,Value Added Reseller,United States,2018-03-15T00:00:00Z,259,8317,
+Clothing,76 oz,red,United Kingdom,Warehouse,Australia,2018-10-07T00:00:00Z,373,9660,
+Clothing,60 oz,blue,United States,Warehouse,Canada,2018-08-28T00:00:00Z,781,6787,
+Clothing,26 oz,green,Australia,Warehouse,France,2020-06-20T00:00:00Z,839,8285,
+Clothing,180 oz,blue,Canada,Warehouse,Germany,2018-07-25T00:00:00Z,102,5120,
+Clothing,34 oz,green,France,Warehouse,United Kingdom,2018-03-22T00:00:00Z,837,6726,
+Clothing,128 oz,green,Germany,Warehouse,United States,2019-08-03T00:00:00Z,385,7670,
+Components,16 oz,red,United Kingdom,Specialty Bike Shop,Australia,2018-08-31T00:00:00Z,356,3141,
+Components,216 oz,green,United States,Specialty Bike Shop,Canada,2018-05-11T00:00:00Z,829,6800,
+Components,219 oz,red,Australia,Specialty Bike Shop,France,2018-11-04T00:00:00Z,842,9285,
+Components,343 oz,blue,United Kingdom,Specialty Bike Shop,Germany,2020-07-29T00:00:00Z,740,3246,
+Components,212 oz,blue,United States,Specialty Bike Shop,United Kingdom,2018-12-18T00:00:00Z,822,5027,
+Components,74 oz,red,Australia,Specialty Bike Shop,United States,2018-10-01T00:00:00Z,785,4653,
+Components,168 oz,blue,Canada,Value Added Reseller,Australia,2018-01-02T00:00:00Z,250,3974,
+Components,36 oz,red,France,Value Added Reseller,Canada,2018-02-02T00:00:00Z,414,1668,
+Components,286 oz,blue,Germany,Value Added Reseller,France,2018-03-20T00:00:00Z,253,741,
+Components,303 oz,red,France,Value Added Reseller,Germany,2020-05-27T00:00:00Z,730,4650,
+Components,231 oz,blue,Germany,Value Added Reseller,United Kingdom,2019-05-16T00:00:00Z,430,4001,
+Components,70 oz,blue,United Kingdom,Value Added Reseller,United States,2018-10-10T00:00:00Z,678,1938,
+Components,6 oz,green,United States,Warehouse,Australia,2020-09-08T00:00:00Z,363,6459,
+Components,14 oz,white,Australia,Warehouse,Canada,2018-10-02T00:00:00Z,735,352,
+Components,109 oz,blue,Canada,Value Added Reseller,Australia,2019-08-08T00:00:00Z,766,6306,
+Components,169 oz,red,Australia,Value Added Reseller,Canada,2020-03-22T00:00:00Z,113,6532,
+Components,42 oz,blue,Canada,Value Added Reseller,France,2018-03-03T00:00:00Z,22,5766,
+Components,233 oz,red,France,Value Added Reseller,Germany,2020-03-13T00:00:00Z,797,6738,
+Components,318 oz,blue,Germany,Value Added Reseller,United Kingdom,2018-10-05T00:00:00Z,26,4829,
+Components,55 oz,blue,United Kingdom,Value Added Reseller,United States,2020-03-22T00:00:00Z,515,971,
+Components,118 oz,green,United States,Warehouse,Australia,2018-05-08T00:00:00Z,959,9815,
+Components,64 oz,white,Germany,Warehouse,Canada,2020-03-05T00:00:00Z,72,8940,
+Components,72 oz,green,United Kingdom,Warehouse,Australia,2020-05-26T00:00:00Z,204,2766,
+Components,205 oz,white,United States,Warehouse,Canada,2019-01-03T00:00:00Z,838,4115,
+Components,78 oz,white,Australia,Warehouse,France,2019-11-11T00:00:00Z,705,5804,
+Components,78 oz,blue,Canada,Warehouse,Germany,2020-08-12T00:00:00Z,369,2138,
+Components,317 oz,white,Australia,Warehouse,United Kingdom,2019-06-08T00:00:00Z,804,964,
+Components,259 oz,blue,Canada,Warehouse,United States,2020-02-04T00:00:00Z,35,2548,
+Components,251 oz,red,France,Specialty Bike Shop,Australia,2018-08-19T00:00:00Z,700,3288,
+Components,141 oz,green,Germany,Specialty Bike Shop,Canada,2018-08-22T00:00:00Z,108,2821,
+Accessories,121 oz,red,Australia,Specialty Bike Shop,Australia,2020-07-11T00:00:00Z,174,459,
+Accessories,278 oz,yellow,Canada,Specialty Bike Shop,Canada,2019-03-28T00:00:00Z,502,662,
+Accessories,67 oz,white,France,Specialty Bike Shop,France,2019-01-23T00:00:00Z,242,856,
+Accessories,345 oz,yellow,Germany,Specialty Bike Shop,Germany,2018-02-20T00:00:00Z,102,828,
+Accessories,149 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,2018-12-19T00:00:00Z,126,385,
+Accessories,196 oz,yellow,United States,Specialty Bike Shop,United States,2018-12-11T00:00:00Z,1246,721,
+Accessories,225 oz,green,Australia,Value Added Reseller,Australia,2019-06-17T00:00:00Z,680,386,
+Accessories,107 oz,yellow,Canada,Value Added Reseller,Canada,2018-01-25T00:00:00Z,1241,920,
+Accessories,170 oz,yellow,France,Value Added Reseller,France,2018-05-07T00:00:00Z,150,335,
+Accessories,140 oz,red,Germany,Value Added Reseller,Germany,2019-10-26T00:00:00Z,244,365,
+Accessories,336 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,2018-08-22T00:00:00Z,501,248,
+Accessories,343 oz,red,United States,Value Added Reseller,United States,2019-06-11T00:00:00Z,4960,762,
+Accessories,228 oz,yellow,Australia,Warehouse,Australia,2019-03-14T00:00:00Z,9,487,
+Accessories,65 oz,red,Canada,Warehouse,Canada,2020-08-24T00:00:00Z,3655,522,
+Accessories,321 oz,green,France,Warehouse,France,2020-09-02T00:00:00Z,1654,108,
+Accessories,142 oz,yellow,Germany,Warehouse,Germany,2019-02-11T00:00:00Z,1190,219,
+Accessories,344 oz,red,United Kingdom,Warehouse,United Kingdom,2020-02-07T00:00:00Z,1222,419,
+Accessories,29 oz,white,United States,Warehouse,United States,2020-05-06T00:00:00Z,7941,60,
+Bikes,283 oz,white,Australia,Specialty Bike Shop,Australia,2019-04-17T00:00:00Z,6152,64,
+Bikes,81 oz,red,Canada,Specialty Bike Shop,Canada,2019-03-27T00:00:00Z,7623,44,
+Bikes,219 oz,red,France,Specialty Bike Shop,France,2018-06-27T00:00:00Z,3971,17,
+Bikes,238 oz,green,Germany,Specialty Bike Shop,Germany,2018-04-09T00:00:00Z,3591,11,
+Bikes,286 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,2020-06-29T00:00:00Z,2564,61,
+Bikes,333 oz,green,United States,Specialty Bike Shop,United States,2018-09-09T00:00:00Z,5165,13,
+Bikes,242 oz,green,Australia,Value Added Reseller,Australia,2019-03-29T00:00:00Z,2344,56,
+Bikes,67 oz,red,Canada,Value Added Reseller,Canada,2019-03-07T00:00:00Z,3864,24,
+Bikes,40 oz,yellow,France,Value Added Reseller,France,2018-08-24T00:00:00Z,9845,23,
+Bikes,201 oz,red,Germany,Value Added Reseller,Germany,2020-07-11T00:00:00Z,4822,27,
+Bikes,1 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,2018-09-18T00:00:00Z,3857,98,
+Bikes,141 oz,red,Australia,Value Added Reseller,United States,2019-01-15T00:00:00Z,2360,55,
+Bikes,182 oz,blue,Canada,Warehouse,Australia,2020-01-03T00:00:00Z,8499,62,
+Bikes,294 oz,blue,France,Warehouse,Canada,2018-08-08T00:00:00Z,4516,38,
+Bikes,158 oz,purple,Germany,Warehouse,France,2020-02-24T00:00:00Z,5239,39,
+Bikes,243 oz,red,United Kingdom,Warehouse,Germany,2020-04-07T00:00:00Z,9633,19,

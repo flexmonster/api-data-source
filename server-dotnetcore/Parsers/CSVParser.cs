@@ -1,4 +1,5 @@
-﻿using NetCoreServer.Models;
+﻿using NetCoreServer.Extensions;
+using NetCoreServer.Models;
 using NetCoreServer.Models.DataModels;
 using System;
 using System.Collections.Generic;
@@ -198,6 +199,13 @@ namespace NetCoreServer.Parsers
                         else
                             dataBlock[_columnsNames[currentWord]].Add((double?)null);
                     }
+                    else if (_dataTypes[_columnsNames[currentWord]] == ColumnType.dateType)
+                    {
+                        if (DateTime.TryParse(value, out DateTime convertedValue))
+                            dataBlock[_columnsNames[currentWord]].Add(convertedValue.ToUnixTimestamp());
+                        else
+                            dataBlock[_columnsNames[currentWord]].Add((double?)null);
+                    }
                     else
                     {
                         if (value != "")
@@ -217,6 +225,13 @@ namespace NetCoreServer.Parsers
             {
                 if (double.TryParse(value, out double convertedValue))
                     dataBlock[_columnsNames[currentWord]].Add(convertedValue);
+                else
+                    dataBlock[_columnsNames[currentWord]].Add((double?)null);
+            }
+            else if (_dataTypes[_columnsNames[currentWord]] == ColumnType.dateType)
+            {
+                if (DateTime.TryParse(value, out DateTime convertedValue))
+                    dataBlock[_columnsNames[currentWord]].Add(convertedValue.ToUnixTimestamp());
                 else
                     dataBlock[_columnsNames[currentWord]].Add((double?)null);
             }
