@@ -10,7 +10,7 @@
     "debug": "mocha --inspect-brk test/*Spec.js"
   },
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "mocha": "^8.1.3"
   }
