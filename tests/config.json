@@ -1,6 +1,6 @@
 {
     "url": "http://localhost:3400/api/cube",
     "emptyValue": "",
-    "valueFilters": true,
+    "valueFilters": false,
     "hierarchy": false
 }

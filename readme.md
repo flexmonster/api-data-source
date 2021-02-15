@@ -12,9 +12,10 @@ Flexmonster custom data source API is designed for summarized data retrieval fro
 This API will work for projects with their own data access layer, where filtering and aggregation are delegated to a server and Flexmonster receives ready-to-show data.
 
 The table of contents:
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Tests](#tests)
 
 ## Prerequisites
 
@@ -54,3 +55,13 @@ For details on usage, refer to our documentation:
 - [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/a-quick-overview-of-the-sample-net-core-server/)
 - [Implementing the custom data source API server](https://www.flexmonster.com/doc/implementing-the-custom-data-source-api-server/)
 - [API documentation](https://www.flexmonster.com/api/all-requests/)
+
+## Tests
+
+To run test suite for custom API implementation: 
+
+   ```
+    cd tests
+    npm install
+    npm test
+    ```
