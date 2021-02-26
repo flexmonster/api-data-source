@@ -58,10 +58,12 @@ For details on usage, refer to our documentation:
 
 ## Tests
 
-To run test suite for custom API implementation: 
+If needed, you can check a custom data source API server with our [test suite](https://github.com/flexmonster/api-data-source/tree/master/tests). Run the tests with the following commands: 
 
    ```
     cd tests
     npm install
     npm test
-    ```
+   ```
+
+Note that these tests will work only if one of the sample servers is running. To learn how your server can be tested, [see our documentation](https://www.flexmonster.com/doc/test-custom-data-source-api-server/).
