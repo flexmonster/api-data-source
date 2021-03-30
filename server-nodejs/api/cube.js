@@ -489,7 +489,8 @@ const groupBy = (array, keyName) =>
         }
         objectsByKeyValue[valueObject] = objectsByKeyValue[valueObject] || {};
         objectsByKeyValue[valueObject].key = valueObject;
-        objectsByKeyValue[valueObject].values = (objectsByKeyValue[valueObject].values || []).concat(obj);
+        objectsByKeyValue[valueObject].values = objectsByKeyValue[valueObject].values || [];
+        objectsByKeyValue[valueObject].values.push(obj);
         return objectsByKeyValue;
     }, {});
 
