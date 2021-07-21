@@ -19,7 +19,7 @@ The table of contents:
 
 ## Prerequisites
 
-To run the custom data source API project, you will need Node.js and npm. [Get it here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if it's not already installed on your machine.
+To run the custom data source API project, you will need Node.js and npm. [Get them here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if they're not already installed on your machine.
 
 ## Installation
 
