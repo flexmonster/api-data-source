@@ -1,0 +1,80 @@
+{
+    "fields": [
+        {
+            "uniqueName": "country",
+            "type": "string",
+            "caption": "Country",
+            "folder": "Geo"
+        },
+        {
+            "uniqueName": "city",
+            "type": "string",
+            "caption": "City",
+            "folder": "Geo/SubGeo"
+        },
+        {
+            "uniqueName": "price",
+            "type": "number",
+            "caption": "Price",
+            "aggregations": ["sum", "average", "count", "distinctcount", "min", "max"]
+        },
+        {
+            "uniqueName": "color",
+            "type": "string",
+            "caption": "Color",
+            "aggregations": [{"test":"count"}, {"test":"count"}]
+        },
+        {
+            "uniqueName": "quantity",
+            "type": "number",
+            "caption": "Quantity"
+        },
+        {
+            "uniqueName": "date_year",
+            "type": "string",
+            "caption": "Year",
+            "folder": "Date",
+            "_calc": {
+                "basedOn": "date",
+                "format": "YYYY"
+            }
+        },
+        {
+            "uniqueName": "date_month",
+            "type": "string",
+            "caption": "Month",
+            "folder": "Date",
+            "_calc": {
+                "basedOn": "date",
+                "format": "MMM-MM"
+            }
+        },
+        {
+            "uniqueName": "date_day",
+            "type": "date",
+            "caption": "Day",
+            "folder": "Date",
+            "interval": "s",
+            "_calc": {
+                "basedOn": "date",
+                "interval": 86400000
+            },
+            "filters": {
+                "query": ["last", "current", "next"],
+                "valueQuery": true
+            }
+        }
+    ],
+    "aggregations": {
+        "any": ["count", "distinctcount"],
+        "number": ["sum", "average", "count"]
+    },
+    "sorted": true,
+    "filters": {
+        "any": {
+            "members": true,
+            "query": ["equal", "not_equal"],
+            "valueQuery": ["top", "bottom"]
+        }
+    }
+}

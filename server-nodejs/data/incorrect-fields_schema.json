@@ -1,0 +1,10 @@
+{
+    "tests": [
+        {
+            "uniqueName": "country",
+            "type": "string",
+            "caption": "Country",
+            "folder": "Geo"
+        }
+    ]
+}

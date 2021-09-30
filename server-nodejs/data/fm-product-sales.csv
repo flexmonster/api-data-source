@@ -1,0 +1,1000 @@
+Category,Size,Color,Destination,Business Type,Country,Price,Quantity,Discount
+Accessories,262 oz,red,Australia,Specialty Bike Shop,Australia,174,225,23
+Accessories,214 oz,yellow,Canada,Specialty Bike Shop,Canada,502,90,17
+Accessories,147 oz,white,France,Specialty Bike Shop,France,242,855,37
+Accessories,112 oz,yellow,Germany,Specialty Bike Shop,Germany,102,897,42
+Accessories,256 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,126,115,44
+Accessories,278 oz,yellow,United States,Specialty Bike Shop,United States,1246,88,47
+Accessories,8 oz,green,Australia,Value Added Reseller,Australia,680,66,80
+Accessories,181 oz,yellow,Canada,Value Added Reseller,Canada,1241,939,66
+Accessories,181 oz,yellow,Canada,Value Added Reseller,Canada,1241,939,66
+Accessories,344 oz,yellow,France,Value Added Reseller,France,150,67,30
+Accessories,291 oz,red,Germany,Value Added Reseller,Germany,244,963,22
+Accessories,126 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,501,556,9
+Accessories,317 oz,red,United States,Value Added Reseller,United States,4960,898,41
+Accessories,124 oz,yellow,Australia,Warehouse,Australia,9,578,8
+Accessories,23 oz,red,Canada,Warehouse,Canada,3655,64,70
+Accessories,124 oz,green,France,Warehouse,France,1654,556,95
+Accessories,310 oz,yellow,Germany,Warehouse,Germany,1190,292,36
+Accessories,277 oz,red,United Kingdom,Warehouse,United Kingdom,1222,730,38
+Accessories,47 oz,white,United States,Warehouse,United States,7941,73,53
+Bikes,264 oz,white,Australia,Specialty Bike Shop,Australia,6829,19,56
+Bikes,76 oz,red,Canada,Specialty Bike Shop,Canada,1664,19,75
+Bikes,217 oz,red,France,Specialty Bike Shop,France,2995,98,88
+Bikes,251 oz,green,Germany,Specialty Bike Shop,Germany,1487,96,100
+Bikes,292 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,9245,51,29
+Bikes,266 oz,green,United States,Specialty Bike Shop,United States,9008,76,66
+Bikes,198 oz,green,Australia,Value Added Reseller,Australia,9376,92,7
+Bikes,109 oz,red,Canada,Value Added Reseller,Canada,1531,56,31
+Bikes,54 oz,yellow,France,Value Added Reseller,France,5421,83,22
+Bikes,93 oz,red,Germany,Value Added Reseller,Germany,6975,73,41
+Bikes,297 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,4320,59,100
+Bikes,339 oz,red,Australia,Value Added Reseller,United States,3200,27,41
+Bikes,205 oz,blue,Canada,Warehouse,Australia,6688,22,41
+Bikes,226 oz,blue,France,Warehouse,Canada,699,22,42
+Bikes,311 oz,purple,Germany,Warehouse,France,5403,75,70
+Bikes,282 oz,red,United Kingdom,Warehouse,Germany,6377,28,49
+Bikes,286 oz,blue,United States,Warehouse,United Kingdom,2471,93,14
+Bikes,100 oz,blue,Australia,Warehouse,United States,6650,40,4
+Clothing,218 oz,yellow,Canada,Specialty Bike Shop,Australia,865,4513,70
+Clothing,216 oz,blue,France,Specialty Bike Shop,Canada,511,4615,20
+Clothing,284 oz,blue,Germany,Specialty Bike Shop,France,981,1854,36
+Clothing,325 oz,blue,United Kingdom,Specialty Bike Shop,Germany,57,1187,10
+Clothing,192 oz,white,United States,Specialty Bike Shop,United Kingdom,675,1527,38
+Clothing,25 oz,purple,Australia,Specialty Bike Shop,United States,40,4342,72
+Clothing,95 oz,red,Canada,Value Added Reseller,Australia,400,8975,63
+Clothing,39 oz,purple,France,Value Added Reseller,Canada,971,3522,90
+Clothing,36 oz,green,Germany,Value Added Reseller,France,357,3939,93
+Clothing,208 oz,red,United Kingdom,Value Added Reseller,Germany,820,3560,40
+Clothing,3 oz,white,United States,Value Added Reseller,United Kingdom,520,3892,32
+Clothing,147 oz,white,Australia,Value Added Reseller,United States,448,3906,24
+Clothing,68 oz,red,United Kingdom,Warehouse,Australia,513,9790,40
+Clothing,267 oz,blue,United States,Warehouse,Canada,977,6107,8
+Clothing,33 oz,green,Australia,Warehouse,France,118,4718,84
+Clothing,319 oz,blue,Canada,Warehouse,Germany,161,7988,29
+Clothing,326 oz,green,France,Warehouse,United Kingdom,239,840,89
+Clothing,184 oz,green,Germany,Warehouse,United States,327,6574,79
+Components,255 oz,red,United Kingdom,Specialty Bike Shop,Australia,284,2471,42
+Components,144 oz,green,United States,Specialty Bike Shop,Canada,827,4772,26
+Components,283 oz,red,Australia,Specialty Bike Shop,France,967,1646,42
+Components,299 oz,blue,United Kingdom,Specialty Bike Shop,Germany,569,6568,58
+Components,88 oz,blue,United States,Specialty Bike Shop,United Kingdom,156,7585,35
+Components,161 oz,red,Australia,Specialty Bike Shop,United States,845,4208,42
+Components,242 oz,blue,Canada,Value Added Reseller,Australia,838,6460,41
+Components,25 oz,red,France,Value Added Reseller,Canada,51,410,97
+Components,317 oz,blue,Germany,Value Added Reseller,France,95,2307,64
+Components,295 oz,red,France,Value Added Reseller,Germany,885,6843,10
+Components,69 oz,blue,Germany,Value Added Reseller,United Kingdom,239,7541,36
+Components,320 oz,blue,United Kingdom,Value Added Reseller,United States,145,7978,78
+Components,104 oz,green,United States,Warehouse,Australia,605,458,72
+Components,34 oz,white,Australia,Warehouse,Canada,778,8918,89
+Components,194 oz,blue,Canada,Value Added Reseller,Australia,434,1297,60
+Components,340 oz,red,Australia,Value Added Reseller,Canada,732,8420,62
+Components,49 oz,blue,Canada,Value Added Reseller,France,780,5535,29
+Components,94 oz,red,France,Value Added Reseller,Germany,85,2063,98
+Components,203 oz,blue,Germany,Value Added Reseller,United Kingdom,672,316,62
+Components,350 oz,blue,United Kingdom,Value Added Reseller,United States,389,4900,46
+Components,106 oz,green,United States,Warehouse,Australia,81,3674,34
+Components,348 oz,white,Germany,Warehouse,Canada,959,4819,14
+Components,200 oz,green,United Kingdom,Warehouse,Australia,666,780,88
+Components,209 oz,white,United States,Warehouse,Canada,326,7308,29
+Components,220 oz,white,Australia,Warehouse,France,550,3635,99
+Components,303 oz,blue,Canada,Warehouse,Germany,192,2895,77
+Components,193 oz,white,Australia,Warehouse,United Kingdom,564,4306,53
+Components,53 oz,blue,Canada,Warehouse,United States,751,4835,34
+Components,43 oz,red,France,Specialty Bike Shop,Australia,750,178,62
+Components,114 oz,green,Germany,Specialty Bike Shop,Canada,106,4571,12
+Components,231 oz,red,United Kingdom,Specialty Bike Shop,France,436,7733,94
+Components,26 oz,blue,United States,Specialty Bike Shop,Germany,314,1033,14
+Components,140 oz,blue,Australia,Specialty Bike Shop,United Kingdom,370,5788,76
+Components,158 oz,red,Canada,Specialty Bike Shop,United States,984,6047,35
+Components,25 oz,blue,France,Value Added Reseller,Australia,531,7845,83
+Components,231 oz,red,Germany,Value Added Reseller,Canada,907,3829,15
+Components,150 oz,blue,United Kingdom,Value Added Reseller,France,233,5546,80
+Components,258 oz,red,United States,Value Added Reseller,Germany,548,2777,74
+Components,119 oz,blue,Australia,Value Added Reseller,United Kingdom,723,9333,10
+Components,116 oz,blue,Canada,Value Added Reseller,United States,55,9755,21
+Components,339 oz,green,Germany,Warehouse,Australia,523,3115,73
+Components,263 oz,white,United Kingdom,Warehouse,Canada,978,1561,43
+Components,30 oz,blue,United States,Value Added Reseller,Australia,522,7101,52
+Components,349 oz,red,Australia,Value Added Reseller,Canada,681,6964,47
+Components,67 oz,blue,Canada,Value Added Reseller,France,166,1589,8
+Components,70 oz,red,Australia,Value Added Reseller,Germany,342,7198,14
+Components,17 oz,blue,Canada,Value Added Reseller,United Kingdom,654,8039,10
+Components,270 oz,blue,France,Value Added Reseller,United States,259,8551,18
+Components,247 oz,green,Germany,Warehouse,Australia,756,3897,40
+Components,114 oz,white,United Kingdom,Warehouse,Canada,751,2158,16
+Components,39 oz,green,United States,Warehouse,Australia,830,4341,63
+Components,54 oz,white,Australia,Warehouse,Canada,789,7973,37
+Components,344 oz,white,Canada,Warehouse,France,324,1908,73
+Components,39 oz,blue,France,Warehouse,Germany,831,6912,62
+Components,314 oz,white,Germany,Warehouse,United Kingdom,86,4346,96
+Components,324 oz,blue,United Kingdom,Warehouse,United States,181,3045,48
+Components,148 oz,red,United States,Specialty Bike Shop,Australia,295,3429,68
+Components,105 oz,green,Australia,Specialty Bike Shop,Canada,675,2581,3
+Components,91 oz,red,Canada,Specialty Bike Shop,France,302,5919,46
+Components,39 oz,blue,United Kingdom,Specialty Bike Shop,Germany,620,180,64
+Components,4 oz,blue,United States,Specialty Bike Shop,United Kingdom,390,2174,22
+Components,266 oz,red,Australia,Specialty Bike Shop,United States,698,2281,61
+Components,114 oz,blue,Canada,Value Added Reseller,Australia,195,3606,1
+Components,220 oz,red,France,Value Added Reseller,Canada,542,6412,55
+Components,15 oz,blue,Germany,Value Added Reseller,France,159,7231,79
+Components,203 oz,red,United Kingdom,Value Added Reseller,Germany,190,6419,100
+Components,257 oz,blue,United States,Value Added Reseller,United Kingdom,440,9871,88
+Components,236 oz,blue,Australia,Value Added Reseller,United States,935,9985,1
+Components,50 oz,green,United Kingdom,Warehouse,Australia,971,4955,72
+Components,194 oz,white,United States,Warehouse,Canada,95,9544,69
+Components,293 oz,blue,Australia,Value Added Reseller,Australia,365,1431,94
+Components,128 oz,red,Canada,Value Added Reseller,Canada,566,3776,49
+Components,193 oz,blue,France,Value Added Reseller,France,770,3037,59
+Components,342 oz,red,Germany,Value Added Reseller,Germany,590,434,60
+Components,44 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,903,9479,96
+Components,123 oz,blue,United States,Value Added Reseller,United States,278,8185,91
+Components,235 oz,green,Australia,Warehouse,Australia,551,1950,51
+Components,307 oz,white,United Kingdom,Warehouse,Canada,842,8212,55
+Components,197 oz,green,United States,Warehouse,Australia,480,4721,56
+Components,299 oz,white,Australia,Warehouse,Canada,705,9027,51
+Components,174 oz,white,Canada,Warehouse,France,628,4955,30
+Components,4 oz,blue,France,Warehouse,Germany,458,8561,69
+Components,108 oz,white,Germany,Warehouse,United Kingdom,549,2214,73
+Components,346 oz,blue,United Kingdom,Warehouse,United States,179,6684,94
+Components,236 oz,red,United States,Specialty Bike Shop,Australia,96,2187,56
+Components,323 oz,green,Australia,Specialty Bike Shop,Canada,361,3485,76
+Components,187 oz,red,Australia,Specialty Bike Shop,France,734,8064,42
+Components,210 oz,blue,Canada,Specialty Bike Shop,Germany,807,9929,32
+Components,323 oz,blue,France,Specialty Bike Shop,United Kingdom,348,5143,36
+Components,327 oz,red,Germany,Specialty Bike Shop,United States,185,4411,76
+Components,190 oz,blue,United Kingdom,Value Added Reseller,Australia,684,1641,17
+Components,169 oz,red,United States,Value Added Reseller,Canada,828,9451,55
+Components,159 oz,blue,Australia,Value Added Reseller,France,814,5582,65
+Components,63 oz,red,Canada,Value Added Reseller,Germany,373,8757,53
+Components,85 oz,blue,France,Value Added Reseller,United Kingdom,889,7752,85
+Components,246 oz,blue,Germany,Value Added Reseller,United States,904,1064,17
+Components,280 oz,green,United Kingdom,Warehouse,Australia,113,3945,92
+Components,60 oz,white,United States,Warehouse,Canada,342,2508,84
+Components,257 oz,blue,Australia,Value Added Reseller,Australia,557,8695,90
+Components,103 oz,red,Canada,Value Added Reseller,Canada,198,5742,7
+Components,184 oz,blue,Australia,Value Added Reseller,France,188,3430,57
+Components,340 oz,red,Canada,Value Added Reseller,Germany,331,4245,37
+Components,251 oz,blue,France,Value Added Reseller,United Kingdom,34,5691,33
+Components,92 oz,blue,Germany,Value Added Reseller,United States,231,936,33
+Components,107 oz,green,Australia,Warehouse,Australia,688,9925,8
+Components,84 oz,white,Canada,Warehouse,Canada,53,7524,39
+Components,202 oz,green,France,Warehouse,Australia,822,5978,28
+Components,309 oz,white,Germany,Warehouse,Canada,637,7137,25
+Components,309 oz,white,United Kingdom,Warehouse,France,180,5678,10
+Components,348 oz,blue,United States,Warehouse,Germany,742,6056,33
+Components,39 oz,white,Australia,Warehouse,United Kingdom,782,8577,35
+Components,104 oz,blue,Canada,Warehouse,United States,115,2586,99
+Components,330 oz,red,France,Specialty Bike Shop,Australia,676,1980,30
+Components,96 oz,green,Germany,Specialty Bike Shop,Canada,904,1752,8
+Components,14 oz,red,United Kingdom,Specialty Bike Shop,France,981,7228,83
+Components,166 oz,blue,United States,Specialty Bike Shop,Germany,383,3419,13
+Components,298 oz,blue,Australia,Specialty Bike Shop,United Kingdom,189,6398,42
+Components,112 oz,red,Canada,Specialty Bike Shop,United States,423,2636,96
+Components,203 oz,blue,Australia,Value Added Reseller,Australia,61,3012,67
+Components,18 oz,red,Canada,Value Added Reseller,Canada,781,6423,54
+Components,347 oz,blue,France,Value Added Reseller,France,758,687,4
+Components,277 oz,red,Germany,Value Added Reseller,Germany,902,7931,31
+Components,285 oz,blue,France,Value Added Reseller,United Kingdom,619,2797,1
+Components,6 oz,blue,Germany,Value Added Reseller,United States,292,8841,22
+Components,336 oz,green,United Kingdom,Warehouse,Australia,986,9811,59
+Components,157 oz,white,United States,Warehouse,Canada,194,1320,83
+Components,101 oz,blue,Australia,Value Added Reseller,Australia,890,7481,58
+Components,346 oz,red,Canada,Value Added Reseller,Canada,381,5940,12
+Components,205 oz,blue,Australia,Value Added Reseller,France,735,633,57
+Components,195 oz,red,Canada,Value Added Reseller,Germany,211,6508,36
+Components,179 oz,blue,France,Value Added Reseller,United Kingdom,834,8234,8
+Components,142 oz,blue,Germany,Value Added Reseller,United States,646,2296,18
+Components,36 oz,green,United Kingdom,Warehouse,Australia,79,726,16
+Components,190 oz,white,United States,Warehouse,Canada,129,4956,32
+Components,81 oz,green,Australia,Warehouse,Australia,899,2927,70
+Components,315 oz,white,Canada,Warehouse,Canada,266,3561,77
+Components,92 oz,white,France,Warehouse,France,492,1519,76
+Components,158 oz,blue,Germany,Warehouse,Germany,519,2093,47
+Components,223 oz,white,France,Warehouse,United Kingdom,549,2363,50
+Components,166 oz,blue,Germany,Warehouse,United States,444,9908,52
+Components,236 oz,red,United Kingdom,Specialty Bike Shop,Australia,899,6816,19
+Components,27 oz,green,United States,Specialty Bike Shop,Canada,596,481,73
+Components,28 oz,red,Australia,Specialty Bike Shop,France,102,9587,76
+Components,292 oz,blue,Canada,Specialty Bike Shop,Germany,189,8228,62
+Components,50 oz,blue,Australia,Specialty Bike Shop,United Kingdom,70,9156,38
+Components,20 oz,red,Canada,Specialty Bike Shop,United States,476,1233,12
+Components,152 oz,blue,France,Value Added Reseller,Australia,466,6456,29
+Components,224 oz,red,Germany,Value Added Reseller,Canada,119,5747,89
+Components,18 oz,blue,United Kingdom,Value Added Reseller,France,887,9592,63
+Components,287 oz,red,United States,Value Added Reseller,Germany,730,826,83
+Components,246 oz,blue,Australia,Value Added Reseller,United Kingdom,988,4096,90
+Components,259 oz,blue,Canada,Value Added Reseller,United States,409,3091,47
+Components,111 oz,green,France,Warehouse,Australia,688,1801,99
+Components,160 oz,white,Germany,Warehouse,Canada,312,2121,7
+Components,313 oz,blue,Germany,Value Added Reseller,Australia,193,2728,29
+Components,57 oz,red,United Kingdom,Value Added Reseller,Canada,866,4317,58
+Components,175 oz,blue,United States,Value Added Reseller,France,672,703,97
+Components,12 oz,red,Australia,Value Added Reseller,Germany,674,9810,72
+Components,45 oz,blue,Canada,Value Added Reseller,United Kingdom,350,8356,0
+Components,164 oz,blue,Australia,Value Added Reseller,United States,182,4151,93
+Components,29 oz,green,Canada,Warehouse,Australia,357,9535,87
+Components,250 oz,white,France,Warehouse,Canada,72,6426,11
+Components,55 oz,green,Germany,Warehouse,Australia,752,9260,44
+Components,45 oz,white,United Kingdom,Warehouse,Canada,766,1411,10
+Components,102 oz,white,United States,Warehouse,France,351,4156,68
+Components,48 oz,blue,Australia,Warehouse,Germany,799,6014,55
+Components,88 oz,white,Canada,Warehouse,United Kingdom,536,3930,61
+Components,302 oz,blue,France,Warehouse,United States,84,4657,85
+Components,89 oz,red,Germany,Specialty Bike Shop,Australia,488,2746,1
+Components,95 oz,green,United Kingdom,Specialty Bike Shop,Canada,758,8344,65
+Components,45 oz,red,United States,Specialty Bike Shop,France,322,8885,92
+Components,311 oz,blue,Australia,Specialty Bike Shop,Germany,909,4780,13
+Components,171 oz,blue,Canada,Specialty Bike Shop,United Kingdom,687,4817,100
+Components,155 oz,red,France,Specialty Bike Shop,United States,116,4834,59
+Components,25 oz,blue,Germany,Value Added Reseller,Australia,797,2034,27
+Components,301 oz,red,United Kingdom,Value Added Reseller,Canada,746,402,86
+Components,55 oz,blue,Germany,Value Added Reseller,France,193,8886,1
+Components,212 oz,red,United Kingdom,Value Added Reseller,Germany,920,5339,48
+Components,105 oz,blue,United States,Value Added Reseller,United Kingdom,597,8674,45
+Components,127 oz,blue,Australia,Value Added Reseller,United States,712,991,38
+Components,303 oz,green,Canada,Warehouse,Australia,923,4553,85
+Components,304 oz,white,Australia,Warehouse,Canada,314,5330,50
+Components,258 oz,blue,Canada,Value Added Reseller,Australia,977,9449,54
+Components,58 oz,red,France,Value Added Reseller,Canada,775,5980,24
+Components,192 oz,blue,Germany,Value Added Reseller,France,451,851,50
+Components,1 oz,red,United Kingdom,Value Added Reseller,Germany,102,581,36
+Components,2 oz,blue,United States,Value Added Reseller,United Kingdom,632,3152,20
+Components,210 oz,blue,Australia,Value Added Reseller,United States,292,3785,37
+Components,40 oz,green,Canada,Warehouse,Australia,93,4998,14
+Components,53 oz,white,France,Warehouse,Canada,440,2988,93
+Components,245 oz,green,Germany,Warehouse,Australia,388,2345,80
+Components,228 oz,white,United Kingdom,Warehouse,Canada,984,2116,79
+Components,56 oz,white,United States,Warehouse,France,48,742,14
+Components,215 oz,blue,Australia,Warehouse,Germany,992,2500,0
+Components,81 oz,white,Canada,Warehouse,United Kingdom,216,7771,82
+Components,212 oz,blue,France,Warehouse,United States,543,927,46
+Components,277 oz,red,Germany,Specialty Bike Shop,Australia,627,1674,18
+Components,128 oz,green,United Kingdom,Specialty Bike Shop,Canada,452,6047,7
+Components,193 oz,red,Australia,Specialty Bike Shop,France,911,5372,55
+Components,70 oz,blue,Canada,Specialty Bike Shop,Germany,373,7146,95
+Components,271 oz,blue,France,Specialty Bike Shop,United Kingdom,588,756,6
+Components,263 oz,red,Germany,Specialty Bike Shop,United States,374,4335,20
+Components,272 oz,blue,United Kingdom,Value Added Reseller,Australia,146,2658,44
+Components,41 oz,red,United States,Value Added Reseller,Canada,306,5543,73
+Components,111 oz,blue,Australia,Value Added Reseller,France,545,100,78
+Components,153 oz,red,Canada,Value Added Reseller,Germany,387,757,40
+Components,280 oz,blue,France,Value Added Reseller,United Kingdom,644,8997,66
+Components,36 oz,blue,Germany,Value Added Reseller,United States,851,4247,9
+Components,52 oz,green,United Kingdom,Warehouse,Australia,860,7795,39
+Components,15 oz,white,United States,Warehouse,Canada,305,1815,51
+Components,349 oz,blue,Australia,Value Added Reseller,Australia,837,1342,28
+Components,309 oz,red,Canada,Value Added Reseller,Canada,456,8651,18
+Components,116 oz,blue,France,Value Added Reseller,France,214,150,35
+Components,129 oz,red,Germany,Value Added Reseller,Germany,253,7619,31
+Components,249 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,399,4001,20
+Components,59 oz,blue,United States,Value Added Reseller,United States,733,5481,93
+Components,298 oz,green,Canada,Warehouse,Australia,81,2426,63
+Components,95 oz,white,France,Warehouse,Canada,920,7491,69
+Components,349 oz,green,Germany,Warehouse,Australia,750,6334,21
+Components,172 oz,white,United Kingdom,Warehouse,Canada,536,2329,70
+Components,270 oz,white,United States,Warehouse,France,943,3658,18
+Components,289 oz,blue,Australia,Warehouse,Germany,346,3765,42
+Components,95 oz,white,Canada,Warehouse,United Kingdom,203,398,18
+Components,229 oz,blue,France,Warehouse,United States,978,497,81
+Cars,140 oz,green,Germany,Specialty Bike Shop,Australia,28849,15,69
+Cars,140 oz,white,United Kingdom,Specialty Bike Shop,Canada,41350,3,63
+Cars,223 oz,green,United States,Specialty Bike Shop,France,34563,43,0
+Cars,350 oz,red,Australia,Specialty Bike Shop,Germany,29638,59,78
+Cars,279 oz,blue,Canada,Specialty Bike Shop,United Kingdom,53737,49,17
+Cars,253 oz,white,France,Specialty Bike Shop,United States,31974,57,58
+Cars,193 oz,red,Germany,Value Added Reseller,Australia,58383,37,84
+Cars,245 oz,green,United Kingdom,Value Added Reseller,Canada,52421,27,31
+Cars,97 oz,red,United States,Value Added Reseller,France,55410,41,30
+Cars,145 oz,blue,Australia,Value Added Reseller,Germany,32640,51,46
+Cars,128 oz,white,Canada,Value Added Reseller,United Kingdom,6529,27,82
+Cars,102 oz,white,France,Value Added Reseller,United States,7769,24,36
+Cars,218 oz,red,Germany,Warehouse,Australia,30275,60,62
+Cars,342 oz,blue,United Kingdom,Warehouse,Canada,27607,51,62
+Cars,108 oz,white,United States,Warehouse,France,25123,49,51
+Cars,185 oz,red,Australia,Warehouse,Germany,19302,60,0
+Cars,30 oz,white,Canada,Warehouse,United Kingdom,23360,33,83
+Cars,90 oz,white,France,Warehouse,United States,11932,33,89
+Cars,19 oz,green,Germany,Specialty Bike Shop,Australia,37690,47,73
+Cars,145 oz,white,United Kingdom,Specialty Bike Shop,Canada,4210,28,55
+Cars,188 oz,green,United States,Specialty Bike Shop,France,37789,7,35
+Cars,115 oz,red,Australia,Specialty Bike Shop,Germany,19231,43,98
+Cars,46 oz,blue,Canada,Specialty Bike Shop,United Kingdom,35546,33,69
+Cars,272 oz,white,France,Specialty Bike Shop,United States,8564,53,94
+Cars,300 oz,red,Germany,Value Added Reseller,Australia,8640,56,21
+Cars,290 oz,green,United Kingdom,Value Added Reseller,Canada,27166,39,69
+Cars,159 oz,red,United States,Value Added Reseller,France,41694,56,31
+Cars,140 oz,blue,Australia,Value Added Reseller,Germany,32146,58,31
+Cars,345 oz,white,Canada,Value Added Reseller,United Kingdom,41357,37,34
+Cars,69 oz,white,France,Value Added Reseller,United States,51936,45,87
+Cars,151 oz,red,Germany,Warehouse,Australia,388436,50,19
+Cars,269 oz,blue,United Kingdom,Warehouse,Canada,30384,3,98
+Cars,205 oz,white,United States,Warehouse,France,50190,6,15
+Cars,34 oz,red,Australia,Warehouse,Germany,173481,5,92
+Cars,259 oz,white,Canada,Warehouse,United Kingdom,14598,37,4
+Cars,37 oz,white,France,Warehouse,United States,20013,3,64
+Cars,255 oz,green,Germany,Specialty Bike Shop,Australia,40203,12,53
+Cars,240 oz,white,United Kingdom,Specialty Bike Shop,Canada,19505,2,56
+Cars,102 oz,green,United States,Specialty Bike Shop,France,56675,35,41
+Cars,99 oz,red,Australia,Specialty Bike Shop,Germany,52117,4,81
+Cars,6 oz,blue,Canada,Specialty Bike Shop,United Kingdom,8902,5,62
+Cars,344 oz,white,France,Specialty Bike Shop,United States,57322,44,57
+Cars,341 oz,red,Germany,Value Added Reseller,Australia,13667,29,66
+Cars,87 oz,green,United Kingdom,Value Added Reseller,Canada,68483,23,31
+Cars,109 oz,red,United States,Value Added Reseller,France,12979,4,34
+Cars,229 oz,blue,Australia,Value Added Reseller,Germany,16950,4,99
+Cars,127 oz,white,France,Value Added Reseller,United Kingdom,12766,59,68
+Cars,310 oz,white,Germany,Value Added Reseller,United States,20699,38,89
+Cars,24 oz,red,United Kingdom,Warehouse,Australia,36607,59,18
+Cars,312 oz,blue,United States,Warehouse,Canada,15976,29,51
+Cars,236 oz,white,Australia,Warehouse,France,7043,27,89
+Cars,53 oz,red,Canada,Warehouse,Germany,6662,31,52
+Cars,280 oz,white,France,Warehouse,United Kingdom,22318,7,42
+Cars,303 oz,white,Germany,Warehouse,United States,43935,55,12
+Accessories,36 oz,red,United Kingdom,Specialty Bike Shop,Australia,174,605,43
+Accessories,65 oz,yellow,United States,Specialty Bike Shop,Canada,502,825,33
+Accessories,6 oz,white,Australia,Specialty Bike Shop,France,242,71,41
+Accessories,2 oz,yellow,Canada,Specialty Bike Shop,Germany,102,561,92
+Accessories,90 oz,red,France,Specialty Bike Shop,United Kingdom,126,233,49
+Accessories,23 oz,yellow,Germany,Specialty Bike Shop,United States,1246,331,98
+Accessories,148 oz,green,United Kingdom,Value Added Reseller,Australia,680,144,11
+Accessories,97 oz,yellow,France,Value Added Reseller,Canada,1241,483,21
+Accessories,198 oz,yellow,Germany,Value Added Reseller,France,150,99,12
+Accessories,281 oz,red,United Kingdom,Value Added Reseller,Germany,244,686,75
+Accessories,3 oz,yellow,United States,Value Added Reseller,United Kingdom,501,126,20
+Accessories,111 oz,red,Australia,Value Added Reseller,United States,4960,930,39
+Accessories,135 oz,yellow,Canada,Warehouse,Australia,9,966,90
+Accessories,304 oz,red,France,Warehouse,Canada,3655,999,73
+Accessories,25 oz,green,Germany,Warehouse,France,1654,959,99
+Accessories,185 oz,yellow,United Kingdom,Warehouse,Germany,1190,28,53
+Accessories,10 oz,red,United States,Warehouse,United Kingdom,1222,405,41
+Accessories,237 oz,white,Australia,Warehouse,United States,7941,84,61
+Bikes,16 oz,white,Canada,Specialty Bike Shop,Australia,7310,31,44
+Bikes,122 oz,red,France,Specialty Bike Shop,Canada,9423,21,79
+Bikes,3 oz,red,Germany,Specialty Bike Shop,France,9225,20,58
+Bikes,86 oz,green,United Kingdom,Specialty Bike Shop,Germany,1624,48,74
+Bikes,306 oz,green,France,Specialty Bike Shop,United Kingdom,7217,31,81
+Bikes,172 oz,green,Germany,Specialty Bike Shop,United States,4467,16,90
+Bikes,87 oz,green,United Kingdom,Value Added Reseller,Australia,3449,63,6
+Bikes,334 oz,red,United States,Value Added Reseller,Canada,738,35,28
+Bikes,107 oz,yellow,Australia,Value Added Reseller,France,8457,35,99
+Bikes,350 oz,red,Canada,Value Added Reseller,Germany,2876,20,99
+Bikes,327 oz,blue,France,Value Added Reseller,United Kingdom,8142,29,36
+Bikes,37 oz,red,Germany,Value Added Reseller,United States,5042,73,23
+Bikes,276 oz,blue,United Kingdom,Warehouse,Australia,8393,56,97
+Bikes,53 oz,blue,United States,Warehouse,Canada,2002,53,88
+Bikes,281 oz,purple,Australia,Warehouse,France,5532,92,61
+Bikes,108 oz,red,Canada,Warehouse,Germany,6665,87,99
+Bikes,192 oz,blue,France,Warehouse,United Kingdom,3449,91,39
+Bikes,181 oz,blue,Germany,Warehouse,United States,3871,41,55
+Clothing,228 oz,yellow,United Kingdom,Specialty Bike Shop,Australia,573,1850,87
+Clothing,226 oz,blue,United Kingdom,Specialty Bike Shop,Canada,122,2474,53
+Clothing,77 oz,blue,United States,Specialty Bike Shop,France,358,9752,53
+Clothing,112 oz,blue,Australia,Specialty Bike Shop,Germany,535,9996,3
+Clothing,292 oz,white,Canada,Specialty Bike Shop,United Kingdom,12,3128,52
+Clothing,22 oz,purple,France,Specialty Bike Shop,United States,422,6602,60
+Clothing,133 oz,red,Germany,Value Added Reseller,Australia,548,4819,82
+Clothing,235 oz,purple,United Kingdom,Value Added Reseller,Canada,955,3379,93
+Clothing,107 oz,green,United States,Value Added Reseller,France,919,3763,36
+Clothing,230 oz,red,Australia,Value Added Reseller,Germany,772,7329,67
+Clothing,161 oz,white,Canada,Value Added Reseller,United Kingdom,322,6948,64
+Clothing,328 oz,white,France,Value Added Reseller,United States,153,2122,64
+Clothing,108 oz,red,Germany,Warehouse,Australia,56,4993,36
+Clothing,190 oz,blue,United Kingdom,Warehouse,Canada,269,6431,29
+Clothing,54 oz,green,United States,Warehouse,France,797,7253,74
+Clothing,198 oz,blue,Australia,Warehouse,Germany,593,3836,5
+Clothing,63 oz,green,Canada,Warehouse,United Kingdom,957,5405,80
+Clothing,169 oz,green,France,Warehouse,United States,976,6190,54
+Components,312 oz,red,Germany,Specialty Bike Shop,Australia,645,7079,18
+Components,115 oz,green,United Kingdom,Specialty Bike Shop,Canada,445,7289,72
+Components,240 oz,red,United States,Specialty Bike Shop,France,73,8624,10
+Components,18 oz,blue,Australia,Specialty Bike Shop,Germany,776,3344,76
+Components,48 oz,blue,Canada,Specialty Bike Shop,United Kingdom,444,2591,82
+Components,46 oz,red,France,Specialty Bike Shop,United States,547,9271,46
+Components,124 oz,blue,Germany,Value Added Reseller,Australia,58,1469,12
+Components,155 oz,red,United Kingdom,Value Added Reseller,Canada,95,5239,54
+Components,172 oz,blue,United States,Value Added Reseller,France,193,4019,98
+Components,119 oz,red,Australia,Value Added Reseller,Germany,383,8248,9
+Components,27 oz,blue,Canada,Value Added Reseller,United Kingdom,344,5566,72
+Components,225 oz,blue,France,Value Added Reseller,United States,365,4454,20
+Components,214 oz,green,Germany,Warehouse,Australia,543,5380,69
+Components,97 oz,white,United Kingdom,Warehouse,Canada,687,4264,43
+Components,25 oz,blue,United States,Value Added Reseller,Australia,283,791,95
+Components,267 oz,red,Australia,Value Added Reseller,Canada,35,1843,90
+Components,57 oz,blue,Canada,Value Added Reseller,France,844,8074,20
+Components,142 oz,red,France,Value Added Reseller,Germany,754,8246,20
+Components,151 oz,blue,Germany,Value Added Reseller,United Kingdom,533,6920,24
+Components,183 oz,blue,United Kingdom,Value Added Reseller,United States,139,6053,83
+Components,267 oz,green,United States,Warehouse,Australia,551,5177,84
+Components,330 oz,white,Australia,Warehouse,Canada,455,1610,32
+Components,9 oz,green,France,Warehouse,Australia,805,9759,52
+Components,54 oz,white,Germany,Warehouse,Canada,207,8172,79
+Components,18 oz,white,United Kingdom,Warehouse,France,360,2152,18
+Components,174 oz,blue,United States,Warehouse,Germany,929,5383,83
+Components,48 oz,white,Australia,Warehouse,United Kingdom,225,2347,48
+Components,196 oz,blue,Canada,Warehouse,United States,52,551,45
+Components,30 oz,red,France,Specialty Bike Shop,Australia,25,3937,31
+Components,226 oz,green,Germany,Specialty Bike Shop,Canada,85,4960,24
+Components,288 oz,red,United Kingdom,Specialty Bike Shop,France,846,4494,23
+Components,142 oz,blue,United States,Specialty Bike Shop,Germany,122,5248,99
+Components,343 oz,blue,Australia,Specialty Bike Shop,United Kingdom,542,8465,68
+Components,126 oz,red,Canada,Specialty Bike Shop,United States,645,3214,84
+Components,202 oz,blue,France,Value Added Reseller,Australia,995,5569,85
+Components,97 oz,red,Germany,Value Added Reseller,Canada,485,329,62
+Components,272 oz,blue,United Kingdom,Value Added Reseller,France,212,4057,27
+Components,334 oz,red,France,Value Added Reseller,Germany,183,1242,74
+Components,301 oz,blue,Germany,Value Added Reseller,United Kingdom,502,6990,4
+Components,324 oz,blue,United Kingdom,Value Added Reseller,United States,678,2603,99
+Components,78 oz,green,United States,Warehouse,Australia,224,403,62
+Components,250 oz,white,Australia,Warehouse,Canada,765,672,29
+Components,35 oz,blue,Canada,Value Added Reseller,Australia,193,3731,53
+Components,289 oz,red,France,Value Added Reseller,Canada,793,849,62
+Components,193 oz,blue,Germany,Value Added Reseller,France,958,2509,37
+Components,181 oz,red,United Kingdom,Value Added Reseller,Germany,891,4710,67
+Components,38 oz,blue,United States,Value Added Reseller,United Kingdom,69,7560,41
+Components,185 oz,blue,Australia,Value Added Reseller,United States,479,1757,83
+Components,103 oz,green,Canada,Warehouse,Australia,34,2740,27
+Components,175 oz,white,France,Warehouse,Canada,992,9024,50
+Components,216 oz,green,Germany,Warehouse,Australia,754,703,42
+Components,160 oz,white,United Kingdom,Warehouse,Canada,908,8846,36
+Components,272 oz,white,France,Warehouse,France,166,9070,49
+Components,92 oz,blue,Germany,Warehouse,Germany,831,5055,6
+Components,274 oz,white,United Kingdom,Warehouse,United Kingdom,313,4520,30
+Components,281 oz,blue,United States,Warehouse,United States,616,3911,13
+Components,132 oz,red,Australia,Specialty Bike Shop,Australia,636,4305,89
+Components,150 oz,green,Canada,Specialty Bike Shop,Canada,601,400,72
+Components,316 oz,red,France,Specialty Bike Shop,France,680,414,43
+Components,159 oz,blue,Germany,Specialty Bike Shop,Germany,707,8900,54
+Components,84 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,877,1662,29
+Components,301 oz,red,United States,Specialty Bike Shop,United States,706,7611,21
+Components,91 oz,blue,Australia,Value Added Reseller,Australia,495,6507,15
+Components,125 oz,red,Canada,Value Added Reseller,Canada,370,3836,16
+Components,149 oz,blue,France,Value Added Reseller,France,490,8751,99
+Components,50 oz,red,Germany,Value Added Reseller,Germany,207,5350,3
+Components,299 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,287,3216,1
+Components,110 oz,blue,United Kingdom,Value Added Reseller,United States,366,1157,94
+Components,282 oz,green,United States,Warehouse,Australia,660,3618,58
+Components,100 oz,white,Australia,Warehouse,Canada,502,8895,99
+Components,317 oz,blue,Canada,Value Added Reseller,Australia,691,1936,62
+Components,254 oz,red,France,Value Added Reseller,Canada,765,3610,37
+Components,38 oz,blue,Germany,Value Added Reseller,France,903,8582,50
+Components,122 oz,red,United Kingdom,Value Added Reseller,Germany,766,5804,27
+Components,129 oz,blue,United States,Value Added Reseller,United Kingdom,315,8684,65
+Components,196 oz,blue,Australia,Value Added Reseller,United States,246,267,25
+Components,322 oz,green,Canada,Warehouse,Australia,619,9788,23
+Components,156 oz,white,France,Warehouse,Canada,674,5068,80
+Components,212 oz,green,Germany,Warehouse,Australia,511,4314,53
+Components,349 oz,white,United Kingdom,Warehouse,Canada,706,8906,61
+Components,220 oz,white,United States,Warehouse,France,338,3630,42
+Components,286 oz,blue,Australia,Warehouse,Germany,34,6256,74
+Components,287 oz,white,Canada,Warehouse,United Kingdom,222,945,89
+Components,10 oz,blue,France,Warehouse,United States,962,4718,97
+Components,296 oz,red,Germany,Specialty Bike Shop,Australia,954,977,59
+Components,168 oz,green,United Kingdom,Specialty Bike Shop,Canada,954,6371,73
+Components,105 oz,red,United States,Specialty Bike Shop,France,366,3357,30
+Components,242 oz,blue,Australia,Specialty Bike Shop,Germany,666,5730,88
+Components,327 oz,blue,Canada,Specialty Bike Shop,United Kingdom,489,9161,91
+Components,276 oz,red,France,Specialty Bike Shop,United States,960,1492,16
+Components,250 oz,blue,Germany,Value Added Reseller,Australia,908,6235,94
+Components,76 oz,red,United Kingdom,Value Added Reseller,Canada,861,6070,62
+Components,45 oz,blue,United States,Value Added Reseller,France,74,3358,9
+Components,137 oz,red,Australia,Value Added Reseller,Germany,119,3431,61
+Components,270 oz,blue,Canada,Value Added Reseller,United Kingdom,663,1399,26
+Components,129 oz,blue,France,Value Added Reseller,United States,32,5544,99
+Components,34 oz,green,Germany,Warehouse,Australia,625,7303,2
+Components,65 oz,white,United Kingdom,Warehouse,Canada,376,879,8
+Components,124 oz,blue,United States,Value Added Reseller,Australia,622,4345,71
+Components,46 oz,red,Australia,Value Added Reseller,Canada,53,6543,65
+Components,174 oz,blue,Canada,Value Added Reseller,France,846,3878,60
+Components,6 oz,red,France,Value Added Reseller,Germany,743,4086,95
+Components,131 oz,blue,Germany,Value Added Reseller,United Kingdom,412,9739,29
+Components,186 oz,blue,United Kingdom,Value Added Reseller,United States,500,4686,69
+Components,173 oz,green,United States,Warehouse,Australia,11,521,80
+Components,277 oz,white,Australia,Warehouse,Canada,624,4697,32
+Components,292 oz,green,France,Warehouse,Australia,483,6271,75
+Components,140 oz,white,Germany,Warehouse,Canada,384,9825,32
+Components,197 oz,white,United Kingdom,Warehouse,France,277,8509,57
+Components,87 oz,blue,United States,Warehouse,Germany,614,7424,72
+Components,107 oz,white,Australia,Warehouse,United Kingdom,913,7601,74
+Components,9 oz,blue,Canada,Warehouse,United States,610,9938,16
+Components,200 oz,red,France,Specialty Bike Shop,Australia,965,2181,49
+Components,284 oz,green,Germany,Specialty Bike Shop,Canada,794,9925,37
+Components,83 oz,red,United Kingdom,Specialty Bike Shop,France,632,8874,43
+Components,327 oz,blue,United States,Specialty Bike Shop,Germany,418,7398,1
+Components,259 oz,blue,Australia,Specialty Bike Shop,United Kingdom,680,320,82
+Components,126 oz,red,Canada,Specialty Bike Shop,United States,44,9688,73
+Components,109 oz,blue,France,Value Added Reseller,Australia,195,3271,93
+Components,7 oz,red,Germany,Value Added Reseller,Canada,938,5153,25
+Components,205 oz,blue,United Kingdom,Value Added Reseller,France,768,2423,69
+Components,303 oz,red,France,Value Added Reseller,Germany,567,127,51
+Components,125 oz,blue,Germany,Value Added Reseller,United Kingdom,521,8131,46
+Components,321 oz,blue,United Kingdom,Value Added Reseller,United States,928,8763,16
+Components,56 oz,green,United States,Warehouse,Australia,949,2054,79
+Components,223 oz,white,Australia,Warehouse,Canada,113,552,0
+Components,299 oz,blue,Canada,Value Added Reseller,Australia,273,1418,67
+Components,86 oz,red,France,Value Added Reseller,Canada,669,2752,13
+Components,96 oz,blue,Germany,Value Added Reseller,France,905,2326,16
+Components,324 oz,red,United Kingdom,Value Added Reseller,Germany,996,7181,15
+Components,169 oz,blue,United States,Value Added Reseller,United Kingdom,265,6498,72
+Components,246 oz,blue,Australia,Value Added Reseller,United States,376,8198,4
+Components,147 oz,green,Canada,Warehouse,Australia,541,5319,73
+Components,142 oz,white,France,Warehouse,Canada,529,6244,72
+Components,22 oz,green,Germany,Warehouse,Australia,363,8279,24
+Components,78 oz,white,United Kingdom,Warehouse,Canada,713,5587,47
+Components,343 oz,white,France,Warehouse,France,411,8200,54
+Components,346 oz,blue,Germany,Warehouse,Germany,247,9598,2
+Components,247 oz,white,United Kingdom,Warehouse,United Kingdom,781,3662,63
+Components,325 oz,blue,United States,Warehouse,United States,175,3539,53
+Components,27 oz,red,Australia,Specialty Bike Shop,Australia,609,2904,19
+Components,269 oz,green,Canada,Specialty Bike Shop,Canada,72,4962,67
+Components,71 oz,red,France,Specialty Bike Shop,France,344,7016,67
+Components,264 oz,blue,Germany,Specialty Bike Shop,Germany,874,4941,39
+Components,177 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,578,5169,20
+Components,161 oz,red,United States,Specialty Bike Shop,United States,505,3668,28
+Components,312 oz,blue,Australia,Value Added Reseller,Australia,586,5521,3
+Components,149 oz,red,Canada,Value Added Reseller,Canada,950,4597,74
+Components,21 oz,blue,France,Value Added Reseller,France,302,963,68
+Components,2 oz,red,Germany,Value Added Reseller,Germany,648,9159,60
+Components,169 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,487,7781,43
+Components,5 oz,blue,Germany,Value Added Reseller,United States,262,5294,66
+Components,103 oz,green,United Kingdom,Warehouse,Australia,697,3467,62
+Components,217 oz,white,United States,Warehouse,Canada,608,523,17
+Components,49 oz,blue,Australia,Value Added Reseller,Australia,504,9693,44
+Components,68 oz,red,Canada,Value Added Reseller,Canada,778,3778,97
+Components,320 oz,blue,France,Value Added Reseller,France,51,8972,60
+Components,175 oz,red,Germany,Value Added Reseller,Germany,675,9852,48
+Components,344 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,428,5002,72
+Components,91 oz,blue,United States,Value Added Reseller,United States,330,2568,62
+Components,38 oz,green,Australia,Warehouse,Australia,785,3211,55
+Components,94 oz,white,Canada,Warehouse,Canada,243,7902,19
+Components,55 oz,green,France,Warehouse,Australia,331,299,85
+Components,273 oz,white,Germany,Warehouse,Canada,768,1347,74
+Components,143 oz,white,United Kingdom,Warehouse,France,319,2080,38
+Components,261 oz,blue,United States,Warehouse,Germany,401,598,90
+Components,329 oz,white,Australia,Warehouse,United Kingdom,576,412,28
+Components,273 oz,blue,Canada,Warehouse,United States,950,2507,53
+Components,206 oz,red,France,Specialty Bike Shop,Australia,381,1925,35
+Components,347 oz,green,Germany,Specialty Bike Shop,Canada,79,4682,45
+Components,124 oz,red,United Kingdom,Specialty Bike Shop,France,357,583,9
+Components,117 oz,blue,United States,Specialty Bike Shop,Germany,309,9357,52
+Components,44 oz,blue,Australia,Specialty Bike Shop,United Kingdom,83,9559,67
+Components,172 oz,red,Canada,Specialty Bike Shop,United States,77,7107,39
+Components,176 oz,blue,France,Value Added Reseller,Australia,152,7686,38
+Components,322 oz,red,Germany,Value Added Reseller,Canada,46,9908,62
+Components,222 oz,blue,United Kingdom,Value Added Reseller,France,104,1092,49
+Components,194 oz,red,United States,Value Added Reseller,Germany,86,2975,87
+Components,215 oz,blue,Australia,Value Added Reseller,United Kingdom,743,8945,40
+Components,146 oz,blue,Canada,Value Added Reseller,United States,666,6199,14
+Components,272 oz,green,France,Warehouse,Australia,376,9751,76
+Components,101 oz,white,Germany,Warehouse,Canada,391,4799,51
+Components,130 oz,blue,United Kingdom,Value Added Reseller,Australia,636,650,32
+Components,188 oz,red,United States,Value Added Reseller,Canada,656,5629,53
+Components,76 oz,blue,Australia,Value Added Reseller,France,229,7565,87
+Components,141 oz,red,Canada,Value Added Reseller,Germany,413,6320,59
+Components,350 oz,blue,France,Value Added Reseller,United Kingdom,802,5251,53
+Components,81 oz,blue,Germany,Value Added Reseller,United States,337,1825,36
+Components,349 oz,green,United Kingdom,Warehouse,Australia,631,1818,7
+Components,182 oz,white,United States,Warehouse,Canada,482,2118,32
+Components,276 oz,green,Australia,Warehouse,Australia,717,124,8
+Components,77 oz,white,Canada,Warehouse,Canada,405,980,18
+Components,228 oz,white,France,Warehouse,France,108,6474,54
+Components,49 oz,blue,Germany,Warehouse,Germany,190,3303,72
+Components,187 oz,white,United Kingdom,Warehouse,United Kingdom,328,9574,94
+Components,322 oz,blue,United States,Warehouse,United States,841,4661,44
+Components,69 oz,red,Australia,Specialty Bike Shop,Australia,847,4541,78
+Components,194 oz,green,Canada,Specialty Bike Shop,Canada,843,6201,28
+Components,238 oz,red,France,Specialty Bike Shop,France,958,1885,81
+Components,241 oz,blue,Germany,Specialty Bike Shop,Germany,496,2066,32
+Components,4 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,504,7668,98
+Components,135 oz,red,United States,Specialty Bike Shop,United States,40,8296,14
+Components,162 oz,blue,Australia,Value Added Reseller,Australia,777,6754,88
+Components,244 oz,red,Canada,Value Added Reseller,Canada,457,5011,86
+Components,322 oz,blue,France,Value Added Reseller,France,532,3745,99
+Components,110 oz,red,Germany,Value Added Reseller,Germany,260,8153,87
+Components,196 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,329,8625,50
+Components,234 oz,blue,United States,Value Added Reseller,United States,364,762,88
+Components,26 oz,green,Australia,Warehouse,Australia,961,5083,19
+Components,256 oz,white,Canada,Warehouse,Canada,740,6461,85
+Components,263 oz,blue,Australia,Value Added Reseller,Australia,393,5756,26
+Components,269 oz,red,Canada,Value Added Reseller,Canada,499,2359,11
+Components,324 oz,blue,France,Value Added Reseller,France,412,4512,78
+Components,15 oz,red,Germany,Value Added Reseller,Germany,797,4892,31
+Components,306 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,730,7342,72
+Components,91 oz,blue,United States,Value Added Reseller,United States,578,6783,48
+Components,58 oz,green,Australia,Warehouse,Australia,718,8154,73
+Components,59 oz,white,Canada,Warehouse,Canada,807,2875,11
+Components,306 oz,green,Australia,Warehouse,Australia,598,4782,31
+Components,132 oz,white,Canada,Warehouse,Canada,412,440,24
+Components,147 oz,white,France,Warehouse,France,407,9706,32
+Components,231 oz,blue,Germany,Warehouse,Germany,480,3599,1
+Components,304 oz,white,United Kingdom,Warehouse,United Kingdom,755,7251,92
+Components,76 oz,blue,United States,Warehouse,United States,96,8862,33
+Cars,4 oz,green,Australia,Specialty Bike Shop,Australia,28832,20,30
+Cars,245 oz,white,Canada,Specialty Bike Shop,Canada,25115,38,5
+Cars,33 oz,green,France,Specialty Bike Shop,France,44932,17,70
+Cars,54 oz,red,Germany,Specialty Bike Shop,Germany,54071,11,61
+Cars,35 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,59030,49,55
+Cars,114 oz,white,United States,Specialty Bike Shop,United States,46757,40,12
+Cars,97 oz,red,Australia,Value Added Reseller,Australia,43134,32,41
+Cars,308 oz,green,Canada,Value Added Reseller,Canada,9403,23,95
+Cars,168 oz,red,France,Value Added Reseller,France,20437,10,49
+Cars,79 oz,blue,Germany,Value Added Reseller,Germany,7726,38,27
+Cars,50 oz,white,United Kingdom,Value Added Reseller,United Kingdom,36101,17,83
+Cars,34 oz,white,United States,Value Added Reseller,United States,2280,24,69
+Cars,112 oz,red,Australia,Warehouse,Australia,36395,33,30
+Cars,136 oz,blue,Canada,Warehouse,Canada,38544,7,85
+Cars,293 oz,white,Australia,Warehouse,France,51754,9,13
+Cars,62 oz,red,Canada,Warehouse,Germany,35354,1,95
+Cars,171 oz,white,France,Warehouse,United Kingdom,51742,34,39
+Cars,8 oz,white,Germany,Warehouse,United States,15310,38,49
+Cars,159 oz,green,United Kingdom,Specialty Bike Shop,Australia,4550,16,54
+Cars,121 oz,white,United States,Specialty Bike Shop,Canada,18582,58,59
+Cars,18 oz,green,Australia,Specialty Bike Shop,France,47120,42,100
+Cars,276 oz,red,Canada,Specialty Bike Shop,Germany,15100,36,53
+Cars,52 oz,blue,Australia,Specialty Bike Shop,United Kingdom,6606,37,55
+Cars,295 oz,white,Canada,Specialty Bike Shop,United States,10684,43,65
+Cars,106 oz,red,France,Value Added Reseller,Australia,20976,55,33
+Cars,144 oz,green,Germany,Value Added Reseller,Canada,34487,40,60
+Cars,284 oz,red,United Kingdom,Value Added Reseller,France,33428,52,91
+Cars,108 oz,blue,United States,Value Added Reseller,Germany,23236,45,86
+Cars,62 oz,white,Australia,Value Added Reseller,United Kingdom,8303,10,91
+Cars,120 oz,white,Canada,Value Added Reseller,United States,38552,15,6
+Cars,156 oz,red,France,Warehouse,Australia,9718,18,76
+Cars,261 oz,blue,Germany,Warehouse,Canada,39460,5,39
+Cars,339 oz,white,United Kingdom,Warehouse,France,22319,58,83
+Cars,339 oz,red,United States,Warehouse,Germany,37048,49,59
+Cars,325 oz,white,Australia,Warehouse,United Kingdom,36241,59,43
+Cars,322 oz,white,Canada,Warehouse,United States,13270,42,31
+Cars,326 oz,green,France,Specialty Bike Shop,Australia,9065,2,57
+Cars,67 oz,white,Germany,Specialty Bike Shop,Canada,7560,28,9
+Cars,48 oz,green,United Kingdom,Specialty Bike Shop,France,32950,35,14
+Cars,181 oz,red,United States,Specialty Bike Shop,Germany,47837,16,35
+Cars,211 oz,blue,Australia,Specialty Bike Shop,United Kingdom,15195,19,24
+Cars,192 oz,white,Canada,Specialty Bike Shop,United States,34759,37,64
+Cars,256 oz,red,Australia,Value Added Reseller,Australia,21195,1,30
+Cars,48 oz,green,Canada,Value Added Reseller,Canada,623,55,19
+Cars,348 oz,red,France,Value Added Reseller,France,27052,41,91
+Cars,158 oz,blue,Germany,Value Added Reseller,Germany,37983,58,74
+Cars,277 oz,white,United Kingdom,Value Added Reseller,United Kingdom,22172,1,44
+Cars,257 oz,white,United States,Value Added Reseller,United States,21879,36,10
+Cars,115 oz,red,Australia,Warehouse,Australia,40065,45,0
+Cars,338 oz,blue,Canada,Warehouse,Canada,10116,52,42
+Cars,87 oz,white,Australia,Warehouse,France,43266,30,91
+Cars,287 oz,red,Canada,Warehouse,Germany,56999,58,58
+Cars,240 oz,white,France,Warehouse,United Kingdom,31754,55,79
+Cars,219 oz,white,Germany,Warehouse,United States,29428,42,36
+Components,75 oz,blue,France,Value Added Reseller,United Kingdom,999,6023,28
+Components,247 oz,blue,Germany,Value Added Reseller,United States,168,1863,75
+Components,97 oz,green,United Kingdom,Warehouse,Australia,892,3917,96
+Components,297 oz,white,United States,Warehouse,Canada,418,3832,50
+Components,350 oz,green,Australia,Warehouse,Australia,459,9624,47
+Components,201 oz,white,Canada,Warehouse,Canada,757,1642,66
+Components,89 oz,white,France,Warehouse,France,225,2104,0
+Components,4 oz,blue,Germany,Warehouse,Germany,890,1531,84
+Components,279 oz,white,United Kingdom,Warehouse,United Kingdom,662,1698,61
+Components,22 oz,blue,United States,Warehouse,United States,505,1213,46
+Components,238 oz,red,Australia,Specialty Bike Shop,Australia,996,6706,70
+Components,308 oz,green,Canada,Specialty Bike Shop,Canada,245,2272,21
+Components,346 oz,red,France,Specialty Bike Shop,France,388,2326,36
+Components,19 oz,blue,Germany,Specialty Bike Shop,Germany,632,3212,95
+Components,107 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,576,4015,64
+Components,170 oz,red,United States,Specialty Bike Shop,United States,783,9245,25
+Components,173 oz,blue,Australia,Value Added Reseller,Australia,30,846,36
+Components,92 oz,red,Canada,Value Added Reseller,Canada,102,2788,13
+Components,60 oz,blue,France,Value Added Reseller,France,611,5158,4
+Components,225 oz,red,Germany,Value Added Reseller,Germany,241,2085,21
+Components,282 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,490,7373,28
+Components,315 oz,blue,United States,Value Added Reseller,United States,646,4248,19
+Components,62 oz,green,Australia,Warehouse,Australia,55,5314,39
+Components,235 oz,white,Canada,Warehouse,Canada,33,1713,46
+Components,127 oz,blue,Australia,Value Added Reseller,Australia,473,6585,49
+Components,328 oz,red,Canada,Value Added Reseller,Canada,322,1877,62
+Components,271 oz,blue,France,Value Added Reseller,France,235,6409,93
+Components,324 oz,red,Germany,Value Added Reseller,Germany,683,9767,17
+Components,43 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,657,1580,47
+Components,160 oz,blue,United States,Value Added Reseller,United States,774,4956,2
+Components,63 oz,green,Australia,Warehouse,Australia,595,2661,99
+Components,163 oz,white,Canada,Warehouse,Canada,564,9512,25
+Components,182 oz,green,Australia,Warehouse,Australia,365,5654,85
+Components,18 oz,white,Canada,Warehouse,Canada,273,1169,23
+Components,297 oz,white,France,Warehouse,France,462,8007,62
+Components,121 oz,blue,Germany,Warehouse,Germany,635,6827,7
+Components,208 oz,white,United Kingdom,Warehouse,United Kingdom,53,3817,22
+Components,71 oz,blue,United States,Warehouse,United States,362,4733,40
+Cars,194 oz,green,Australia,Specialty Bike Shop,Australia,8684,39,100
+Cars,145 oz,white,Canada,Specialty Bike Shop,Canada,19963,56,34
+Cars,115 oz,green,France,Specialty Bike Shop,France,19938,47,33
+Cars,33 oz,red,Germany,Specialty Bike Shop,Germany,6088,58,76
+Cars,42 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,25832,3,94
+Cars,252 oz,white,United States,Specialty Bike Shop,United States,25706,15,98
+Cars,221 oz,red,Australia,Value Added Reseller,Australia,36145,58,97
+Cars,91 oz,green,Canada,Value Added Reseller,Canada,46466,52,22
+Cars,106 oz,red,France,Value Added Reseller,France,16873,47,38
+Cars,124 oz,blue,Germany,Value Added Reseller,Germany,1586,3,68
+Cars,71 oz,white,United Kingdom,Value Added Reseller,United Kingdom,8947,44,72
+Cars,314 oz,white,United States,Value Added Reseller,United States,43687,46,46
+Cars,329 oz,red,Australia,Warehouse,Australia,25947,36,17
+Cars,255 oz,blue,Canada,Warehouse,Canada,23972,36,49
+Cars,241 oz,white,Australia,Warehouse,France,5717,23,96
+Cars,188 oz,red,Canada,Warehouse,Germany,39056,7,7
+Components,307 oz,blue,France,Value Added Reseller,United Kingdom,660,5623,83
+Components,185 oz,blue,Germany,Value Added Reseller,United States,176,1401,35
+Components,108 oz,green,United Kingdom,Warehouse,Australia,994,9882,1
+Components,249 oz,white,United States,Warehouse,Canada,962,3258,89
+Components,145 oz,green,Australia,Warehouse,Australia,483,6517,86
+Components,58 oz,white,Canada,Warehouse,Canada,146,9510,93
+Components,340 oz,white,France,Warehouse,France,270,182,42
+Components,300 oz,blue,Germany,Warehouse,Germany,215,5292,23
+Components,349 oz,white,United Kingdom,Warehouse,United Kingdom,859,6227,74
+Components,240 oz,blue,United States,Warehouse,United States,703,539,18
+Components,285 oz,red,Australia,Specialty Bike Shop,Australia,172,1409,67
+Components,169 oz,green,Canada,Specialty Bike Shop,Canada,776,4987,4
+Components,79 oz,red,France,Specialty Bike Shop,France,195,1834,19
+Components,220 oz,blue,Germany,Specialty Bike Shop,Germany,562,7903,0
+Components,178 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,469,8694,8
+Components,194 oz,red,United States,Specialty Bike Shop,United States,318,3636,68
+Components,15 oz,blue,Australia,Value Added Reseller,Australia,941,750,25
+Components,147 oz,red,Canada,Value Added Reseller,Canada,220,8586,36
+Components,115 oz,blue,France,Value Added Reseller,France,58,8024,78
+Components,136 oz,red,Germany,Value Added Reseller,Germany,48,8552,59
+Components,198 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,700,3292,80
+Components,84 oz,blue,United States,Value Added Reseller,United States,594,4517,17
+Components,236 oz,green,Australia,Warehouse,Australia,61,6171,31
+Components,311 oz,white,Canada,Warehouse,Canada,560,4815,59
+Components,129 oz,blue,Australia,Value Added Reseller,Australia,958,4967,23
+Components,234 oz,red,Canada,Value Added Reseller,Canada,206,7635,47
+Components,238 oz,blue,France,Value Added Reseller,France,40,2057,89
+Components,317 oz,red,Germany,Value Added Reseller,Germany,208,7764,19
+Components,139 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,917,4945,54
+Components,60 oz,blue,United States,Value Added Reseller,United States,226,7058,82
+Components,162 oz,green,Australia,Warehouse,Australia,995,6785,59
+Components,137 oz,white,Canada,Warehouse,Canada,14,5222,15
+Components,88 oz,green,Australia,Warehouse,Australia,347,9027,78
+Components,81 oz,white,Canada,Warehouse,Canada,306,917,84
+Components,287 oz,white,France,Warehouse,France,308,3216,52
+Components,177 oz,blue,Germany,Warehouse,Germany,194,1274,88
+Components,136 oz,white,United Kingdom,Warehouse,United Kingdom,746,8268,46
+Components,178 oz,blue,United States,Warehouse,United States,137,6245,79
+Cars,206 oz,green,Australia,Specialty Bike Shop,Australia,17741,58,42
+Cars,293 oz,white,Canada,Specialty Bike Shop,Canada,15501,13,14
+Cars,293 oz,green,France,Specialty Bike Shop,France,57051,8,84
+Cars,271 oz,red,Germany,Specialty Bike Shop,Germany,10713,16,33
+Cars,68 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,30166,59,7
+Cars,53 oz,white,United States,Specialty Bike Shop,United States,54286,36,22
+Cars,200 oz,red,Australia,Value Added Reseller,Australia,6095,10,88
+Cars,332 oz,green,Canada,Value Added Reseller,Canada,11624,43,47
+Cars,30 oz,red,France,Value Added Reseller,France,12866,60,27
+Cars,15 oz,blue,Germany,Value Added Reseller,Germany,26637,20,34
+Cars,340 oz,white,United Kingdom,Value Added Reseller,United Kingdom,14959,41,14
+Cars,125 oz,white,United States,Value Added Reseller,United States,30873,15,78
+Cars,121 oz,red,Australia,Warehouse,Australia,59783,13,66
+Cars,321 oz,blue,Canada,Warehouse,Canada,57039,27,14
+Cars,167 oz,white,Australia,Warehouse,France,33260,39,44
+Cars,110 oz,red,Canada,Warehouse,Germany,3745,22,68
+Components,308 oz,blue,France,Value Added Reseller,United Kingdom,258,7979,85
+Components,334 oz,blue,Germany,Value Added Reseller,United States,878,5115,30
+Components,124 oz,green,United Kingdom,Warehouse,Australia,534,8651,90
+Components,48 oz,white,United States,Warehouse,Canada,716,7552,89
+Components,206 oz,green,Australia,Warehouse,Australia,693,8414,91
+Components,78 oz,white,Canada,Warehouse,Canada,753,6339,62
+Components,350 oz,white,France,Warehouse,France,356,1761,2
+Components,52 oz,blue,Germany,Warehouse,Germany,124,4673,36
+Components,134 oz,white,United Kingdom,Warehouse,United Kingdom,602,4038,41
+Components,224 oz,blue,United States,Warehouse,United States,662,3496,93
+Components,157 oz,red,Australia,Specialty Bike Shop,Australia,110,587,7
+Components,328 oz,green,Canada,Specialty Bike Shop,Canada,520,8535,84
+Components,328 oz,red,France,Specialty Bike Shop,France,177,1208,11
+Components,113 oz,blue,Germany,Specialty Bike Shop,Germany,428,7126,62
+Components,307 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,264,7877,13
+Components,123 oz,red,United States,Specialty Bike Shop,United States,395,1086,90
+Components,253 oz,blue,Australia,Value Added Reseller,Australia,485,9746,55
+Components,28 oz,red,Canada,Value Added Reseller,Canada,925,1416,45
+Components,2 oz,blue,France,Value Added Reseller,France,189,3088,3
+Components,312 oz,red,Germany,Value Added Reseller,Germany,459,8394,41
+Components,202 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,745,9252,57
+Components,27 oz,blue,United States,Value Added Reseller,United States,493,6918,4
+Components,312 oz,green,Australia,Warehouse,Australia,376,9196,28
+Components,75 oz,white,Canada,Warehouse,Canada,332,5130,9
+Components,251 oz,blue,Australia,Value Added Reseller,Australia,777,6356,58
+Components,139 oz,red,Canada,Value Added Reseller,Canada,919,3621,85
+Components,97 oz,blue,France,Value Added Reseller,France,536,214,58
+Components,155 oz,red,Germany,Value Added Reseller,Germany,152,9581,98
+Components,29 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,666,2549,89
+Components,250 oz,blue,United States,Value Added Reseller,United States,336,7845,11
+Components,111 oz,green,Australia,Warehouse,Australia,305,5163,12
+Components,84 oz,white,Canada,Warehouse,Canada,738,8963,59
+Components,268 oz,green,Australia,Warehouse,Australia,687,1763,64
+Components,160 oz,white,Canada,Warehouse,Canada,686,9857,52
+Components,257 oz,white,France,Warehouse,France,671,2035,55
+Components,58 oz,blue,Germany,Warehouse,Germany,136,5437,18
+Components,24 oz,white,United Kingdom,Warehouse,United Kingdom,701,1860,42
+Components,237 oz,blue,United States,Warehouse,United States,32,2471,76
+Cars,257 oz,green,Australia,Specialty Bike Shop,Australia,56947,49,90
+Cars,147 oz,white,Canada,Specialty Bike Shop,Canada,55342,53,56
+Cars,100 oz,green,France,Specialty Bike Shop,France,22784,36,12
+Cars,128 oz,red,Germany,Specialty Bike Shop,Germany,19722,38,6
+Cars,90 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,6743,28,49
+Cars,257 oz,white,United States,Specialty Bike Shop,United States,18673,2,38
+Cars,274 oz,red,Australia,Value Added Reseller,Australia,49650,17,24
+Cars,328 oz,green,Canada,Value Added Reseller,Canada,53599,59,97
+Cars,112 oz,red,France,Value Added Reseller,France,36460,58,100
+Cars,61 oz,blue,Germany,Value Added Reseller,Germany,57571,37,56
+Cars,323 oz,white,United Kingdom,Value Added Reseller,United Kingdom,47317,45,83
+Cars,158 oz,white,United States,Value Added Reseller,United States,12166,19,30
+Cars,175 oz,red,Australia,Warehouse,Australia,2560,18,72
+Cars,124 oz,blue,Canada,Warehouse,Canada,19974,36,11
+Cars,172 oz,white,Australia,Warehouse,France,59455,4,12
+Cars,307 oz,red,Canada,Warehouse,Germany,4684,11,74
+Components,17 oz,blue,France,Value Added Reseller,United Kingdom,347,8680,39
+Components,181 oz,blue,Germany,Value Added Reseller,United States,611,6518,24
+Components,41 oz,green,United Kingdom,Warehouse,Australia,411,8165,77
+Components,203 oz,white,United States,Warehouse,Canada,34,5412,53
+Components,89 oz,green,Australia,Warehouse,Australia,677,1707,76
+Components,197 oz,white,Canada,Warehouse,Canada,760,2492,81
+Components,79 oz,white,France,Warehouse,France,336,758,22
+Components,170 oz,blue,Germany,Warehouse,Germany,395,4268,12
+Components,286 oz,white,United Kingdom,Warehouse,United Kingdom,34,6125,51
+Components,16 oz,blue,United States,Warehouse,United States,659,393,66
+Components,72 oz,red,Australia,Specialty Bike Shop,Australia,165,9383,22
+Components,102 oz,green,Canada,Specialty Bike Shop,Canada,836,9514,19
+Components,7 oz,red,France,Specialty Bike Shop,France,625,6753,3
+Components,173 oz,blue,Germany,Specialty Bike Shop,Germany,86,8137,92
+Components,229 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,153,6080,69
+Components,306 oz,red,United States,Specialty Bike Shop,United States,269,4198,97
+Components,130 oz,blue,Australia,Value Added Reseller,Australia,519,4722,42
+Components,67 oz,red,Canada,Value Added Reseller,Canada,925,5287,73
+Components,190 oz,blue,France,Value Added Reseller,France,741,3804,74
+Components,325 oz,red,Germany,Value Added Reseller,Germany,928,283,26
+Components,302 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,686,6027,64
+Components,12 oz,blue,United States,Value Added Reseller,United States,628,9886,78
+Components,336 oz,green,Australia,Warehouse,Australia,16,9439,60
+Components,63 oz,white,Canada,Warehouse,Canada,105,4911,74
+Components,166 oz,blue,Australia,Value Added Reseller,Australia,636,9372,18
+Components,312 oz,red,Canada,Value Added Reseller,Canada,416,1643,38
+Components,233 oz,blue,France,Value Added Reseller,France,447,6737,7
+Components,171 oz,red,Germany,Value Added Reseller,Germany,76,1419,28
+Components,312 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,706,1646,76
+Components,60 oz,blue,United States,Value Added Reseller,United States,205,5725,41
+Components,43 oz,green,Australia,Warehouse,Australia,139,3667,23
+Components,283 oz,white,Canada,Warehouse,Canada,244,9637,34
+Components,274 oz,green,Australia,Warehouse,Australia,355,6069,18
+Components,127 oz,white,Canada,Warehouse,Canada,956,7240,21
+Components,253 oz,white,France,Warehouse,France,519,3130,69
+Components,64 oz,blue,Germany,Warehouse,Germany,16,1339,56
+Components,69 oz,white,United Kingdom,Warehouse,United Kingdom,864,5127,89
+Components,7 oz,blue,United States,Warehouse,United States,579,5947,26
+Cars,146 oz,green,Australia,Specialty Bike Shop,Australia,43924,23,40
+Cars,84 oz,white,Canada,Specialty Bike Shop,Canada,41952,43,36
+Cars,131 oz,green,France,Specialty Bike Shop,France,5826,31,11
+Cars,190 oz,red,Germany,Specialty Bike Shop,Germany,59747,59,57
+Cars,248 oz,blue,United Kingdom,Specialty Bike Shop,United Kingdom,24784,23,86
+Cars,73 oz,white,United States,Specialty Bike Shop,United States,16775,19,52
+Cars,343 oz,red,Australia,Value Added Reseller,Australia,42975,26,62
+Cars,346 oz,green,Canada,Value Added Reseller,Canada,25316,28,38
+Cars,30 oz,red,France,Value Added Reseller,France,21044,28,66
+Cars,252 oz,blue,Germany,Value Added Reseller,Germany,2083,14,52
+Cars,199 oz,white,United Kingdom,Value Added Reseller,United Kingdom,25789,21,55
+Cars,105 oz,white,United States,Value Added Reseller,United States,16806,24,32
+Cars,201 oz,red,Australia,Warehouse,Australia,10818,26,22
+Cars,345 oz,blue,Canada,Warehouse,Canada,46741,54,68
+Cars,3 oz,white,Australia,Warehouse,France,51389,45,29
+Cars,297 oz,red,Canada,Warehouse,Germany,34215,43,7
+Accessories,127 oz,red,Australia,Specialty Bike Shop,Australia,174,854,
+Accessories,317 oz,yellow,Canada,Specialty Bike Shop,Canada,502,227,
+Accessories,194 oz,white,France,Specialty Bike Shop,France,242,121,
+Accessories,310 oz,yellow,Germany,Specialty Bike Shop,Germany,102,289,
+Accessories,11 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,126,48,
+Accessories,163 oz,yellow,United States,Specialty Bike Shop,United States,1246,944,
+Accessories,169 oz,green,Australia,Value Added Reseller,Australia,680,639,
+Accessories,152 oz,yellow,Canada,Value Added Reseller,Canada,1241,892,
+Accessories,332 oz,yellow,France,Value Added Reseller,France,150,953,
+Accessories,333 oz,red,Germany,Value Added Reseller,Germany,244,791,
+Accessories,295 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,501,20,
+Accessories,284 oz,red,United States,Value Added Reseller,United States,4960,336,
+Accessories,339 oz,yellow,Australia,Warehouse,Australia,9,121,
+Accessories,343 oz,red,Canada,Warehouse,Canada,3655,812,
+Accessories,326 oz,green,France,Warehouse,France,1654,663,
+Accessories,139 oz,yellow,Germany,Warehouse,Germany,1190,108,
+Accessories,193 oz,red,United Kingdom,Warehouse,United Kingdom,1222,459,
+Accessories,186 oz,white,United States,Warehouse,United States,7941,386,
+Bikes,114 oz,white,Australia,Specialty Bike Shop,Australia,2038,94,
+Bikes,238 oz,red,Canada,Specialty Bike Shop,Canada,3271,20,
+Bikes,98 oz,red,France,Specialty Bike Shop,France,1706,77,
+Bikes,345 oz,green,Germany,Specialty Bike Shop,Germany,3297,65,
+Bikes,15 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,518,98,
+Bikes,197 oz,green,United States,Specialty Bike Shop,United States,2047,59,
+Bikes,267 oz,green,Australia,Value Added Reseller,Australia,5582,65,
+Bikes,185 oz,red,Canada,Value Added Reseller,Canada,4235,56,
+Bikes,156 oz,yellow,France,Value Added Reseller,France,9127,21,
+Bikes,40 oz,red,Germany,Value Added Reseller,Germany,4297,12,
+Bikes,304 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,7214,58,
+Bikes,149 oz,red,Australia,Value Added Reseller,United States,8641,73,
+Bikes,181 oz,blue,Canada,Warehouse,Australia,7833,20,
+Bikes,118 oz,blue,France,Warehouse,Canada,6627,89,
+Bikes,130 oz,purple,Germany,Warehouse,France,9979,61,
+Bikes,53 oz,red,United Kingdom,Warehouse,Germany,2751,39,
+Bikes,91 oz,blue,United States,Warehouse,United Kingdom,1167,51,
+Bikes,261 oz,blue,Australia,Warehouse,United States,8236,16,
+Clothing,91 oz,yellow,Canada,Specialty Bike Shop,Australia,62,4061,
+Clothing,338 oz,blue,France,Specialty Bike Shop,Canada,512,3852,
+Clothing,41 oz,blue,Germany,Specialty Bike Shop,France,861,8426,
+Clothing,18 oz,blue,United Kingdom,Specialty Bike Shop,Germany,454,821,
+Clothing,167 oz,white,United States,Specialty Bike Shop,United Kingdom,44,3402,
+Clothing,143 oz,purple,Australia,Specialty Bike Shop,United States,698,2570,
+Clothing,18 oz,red,Canada,Value Added Reseller,Australia,838,6220,
+Clothing,76 oz,purple,France,Value Added Reseller,Canada,708,3030,
+Clothing,127 oz,green,Germany,Value Added Reseller,France,486,8539,
+Clothing,164 oz,red,United Kingdom,Value Added Reseller,Germany,160,8231,
+Clothing,185 oz,white,United States,Value Added Reseller,United Kingdom,403,4240,
+Clothing,271 oz,white,Australia,Value Added Reseller,United States,259,8317,
+Clothing,76 oz,red,United Kingdom,Warehouse,Australia,373,9660,
+Clothing,60 oz,blue,United States,Warehouse,Canada,781,6787,
+Clothing,26 oz,green,Australia,Warehouse,France,839,8285,
+Clothing,180 oz,blue,Canada,Warehouse,Germany,102,5120,
+Clothing,34 oz,green,France,Warehouse,United Kingdom,837,6726,
+Clothing,128 oz,green,Germany,Warehouse,United States,385,7670,
+Components,16 oz,red,United Kingdom,Specialty Bike Shop,Australia,356,3141,
+Components,216 oz,green,United States,Specialty Bike Shop,Canada,829,6800,
+Components,219 oz,red,Australia,Specialty Bike Shop,France,842,9285,
+Components,343 oz,blue,United Kingdom,Specialty Bike Shop,Germany,740,3246,
+Components,212 oz,blue,United States,Specialty Bike Shop,United Kingdom,822,5027,
+Components,74 oz,red,Australia,Specialty Bike Shop,United States,785,4653,
+Components,168 oz,blue,Canada,Value Added Reseller,Australia,250,3974,
+Components,36 oz,red,France,Value Added Reseller,Canada,414,1668,
+Components,286 oz,blue,Germany,Value Added Reseller,France,253,741,
+Components,303 oz,red,France,Value Added Reseller,Germany,730,4650,
+Components,231 oz,blue,Germany,Value Added Reseller,United Kingdom,430,4001,
+Components,70 oz,blue,United Kingdom,Value Added Reseller,United States,678,1938,
+Components,6 oz,green,United States,Warehouse,Australia,363,6459,
+Components,14 oz,white,Australia,Warehouse,Canada,735,352,
+Components,109 oz,blue,Canada,Value Added Reseller,Australia,766,6306,
+Components,169 oz,red,Australia,Value Added Reseller,Canada,113,6532,
+Components,42 oz,blue,Canada,Value Added Reseller,France,22,5766,
+Components,233 oz,red,France,Value Added Reseller,Germany,797,6738,
+Components,318 oz,blue,Germany,Value Added Reseller,United Kingdom,26,4829,
+Components,55 oz,blue,United Kingdom,Value Added Reseller,United States,515,971,
+Components,118 oz,green,United States,Warehouse,Australia,959,9815,
+Components,64 oz,white,Germany,Warehouse,Canada,72,8940,
+Components,72 oz,green,United Kingdom,Warehouse,Australia,204,2766,
+Components,205 oz,white,United States,Warehouse,Canada,838,4115,
+Components,78 oz,white,Australia,Warehouse,France,705,5804,
+Components,78 oz,blue,Canada,Warehouse,Germany,369,2138,
+Components,317 oz,white,Australia,Warehouse,United Kingdom,804,964,
+Components,259 oz,blue,Canada,Warehouse,United States,35,2548,
+Components,251 oz,red,France,Specialty Bike Shop,Australia,700,3288,
+Components,141 oz,green,Germany,Specialty Bike Shop,Canada,108,2821,
+Accessories,121 oz,red,Australia,Specialty Bike Shop,Australia,174,459,
+Accessories,278 oz,yellow,Canada,Specialty Bike Shop,Canada,502,662,
+Accessories,67 oz,white,France,Specialty Bike Shop,France,242,856,
+Accessories,345 oz,yellow,Germany,Specialty Bike Shop,Germany,102,828,
+Accessories,149 oz,red,United Kingdom,Specialty Bike Shop,United Kingdom,126,385,
+Accessories,196 oz,yellow,United States,Specialty Bike Shop,United States,1246,721,
+Accessories,225 oz,green,Australia,Value Added Reseller,Australia,680,386,
+Accessories,107 oz,yellow,Canada,Value Added Reseller,Canada,1241,920,
+Accessories,170 oz,yellow,France,Value Added Reseller,France,150,335,
+Accessories,140 oz,red,Germany,Value Added Reseller,Germany,244,365,
+Accessories,336 oz,yellow,United Kingdom,Value Added Reseller,United Kingdom,501,248,
+Accessories,343 oz,red,United States,Value Added Reseller,United States,4960,762,
+Accessories,228 oz,yellow,Australia,Warehouse,Australia,9,487,
+Accessories,65 oz,red,Canada,Warehouse,Canada,3655,522,
+Accessories,321 oz,green,France,Warehouse,France,1654,108,
+Accessories,142 oz,yellow,Germany,Warehouse,Germany,1190,219,
+Accessories,344 oz,red,United Kingdom,Warehouse,United Kingdom,1222,419,
+Accessories,29 oz,white,United States,Warehouse,United States,7941,60,
+Bikes,283 oz,white,Australia,Specialty Bike Shop,Australia,6152,64,
+Bikes,81 oz,red,Canada,Specialty Bike Shop,Canada,7623,44,
+Bikes,219 oz,red,France,Specialty Bike Shop,France,3971,17,
+Bikes,238 oz,green,Germany,Specialty Bike Shop,Germany,3591,11,
+Bikes,286 oz,green,United Kingdom,Specialty Bike Shop,United Kingdom,2564,61,
+Bikes,333 oz,green,United States,Specialty Bike Shop,United States,5165,13,
+Bikes,242 oz,green,Australia,Value Added Reseller,Australia,2344,56,
+Bikes,67 oz,red,Canada,Value Added Reseller,Canada,3864,24,
+Bikes,40 oz,yellow,France,Value Added Reseller,France,9845,23,
+Bikes,201 oz,red,Germany,Value Added Reseller,Germany,4822,27,
+Bikes,1 oz,blue,United Kingdom,Value Added Reseller,United Kingdom,3857,98,
+Bikes,141 oz,red,Australia,Value Added Reseller,United States,2360,55,
+Bikes,182 oz,blue,Canada,Warehouse,Australia,8499,62,
+Bikes,294 oz,blue,France,Warehouse,Canada,4516,38,
+Bikes,158 oz,purple,Germany,Warehouse,France,5239,39,
+Bikes,243 oz,red,United Kingdom,Warehouse,Germany,9633,19,

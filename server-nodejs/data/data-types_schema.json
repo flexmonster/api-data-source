@@ -1,0 +1,74 @@
+{
+    "fields": [
+        {
+            "uniqueName": "country",
+            "type": "string",
+            "caption": "Country",
+            "folder": "Geography",
+            "aggregations": ["count", "distinctcount"]
+        },
+        {
+            "uniqueName": "city",
+            "type": "string",
+            "caption": "City",
+            "folder": "Geography/Subfolder"
+        },
+        {
+            "uniqueName": "date_year",
+            "type": "string",
+            "caption": "Year",
+            "folder": "Date"
+        },
+        {
+            "uniqueName": "date_month",
+            "type": "string",
+            "caption": "Month",
+            "folder": "Date"
+        },
+        {
+            "uniqueName": "date",
+            "type": "date",
+            "caption": "Date",
+            "folder": "Date",
+            "interval": "m"
+        },
+        {
+            "uniqueName": "color",
+            "type": "string",
+            "caption": "Color"
+        },
+        {
+            "uniqueName": "quantity",
+            "type": "number",
+            "caption": "Quantity"
+        },
+        {
+            "uniqueName": "price",
+            "type": "number",
+            "caption": "Price"
+        }
+    ],
+    "sorted": true,
+    "aggregations": {
+        "string": ["count"],
+        "date": ["min", "count"],
+        "number": ["sum", "average", "count", "distinctcount", "min", "max"]
+    },
+    "filters": {
+        "string": {
+            "members": true,
+            "query": ["equal", "not_equal", "begin", "not_begin", "end", "not_end", "contain", "not_contain", "greater", "greater_equal", "less", "less_equal", "between", "not_between"],
+            "valueQuery": false
+        },
+        "number": {
+            "members": true,
+            "query": ["equal", "not_equal", "greater", "greater_equal", "less", "less_equal", "between", "not_between"],
+            "valueQuery": false
+        },
+        "date": {
+            "members": true,
+            "query": ["equal", "not_equal", "before", "before_equal", "after", "after_equal", "between", "not_between", "last", "current", "next"],
+            "valueQuery": false
+        }
+    }
+}
