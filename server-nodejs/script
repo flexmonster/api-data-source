@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-npm i
-node server 5000 ./data
+eval "npm i"
+eval "node server 5000 ./data"
