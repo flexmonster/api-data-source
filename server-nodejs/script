@@ -1,2 +1,4 @@
+#!/usr/bin/env bash
+
 npm i
 node server 5000 ./data
