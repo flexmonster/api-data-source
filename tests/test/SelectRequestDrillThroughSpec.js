@@ -8,7 +8,7 @@ describe('Select request for drill-through view', function () {
 
     it('Grand total drill-throught', function (done) {
 
-        const requestBody = { "type": "select", "index": "data", "query": { "fields": [{ "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
+        const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "fields": [{ "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
 
         axios.post(url, requestBody).then(function (response) {
             expect(response.status).to.equal(200);
@@ -39,7 +39,7 @@ describe('Select request for drill-through view', function () {
 
     it('Grand total drill-throught(nulls)', function (done) {
 
-        const requestBody = { "type": "select", "index": "data", "query": { "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Discount" }] }, "page": 0 }
+        const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Discount" }] }, "page": 0 }
 
         axios.post(url, requestBody).then(function (response) {
             expect(response.status).to.equal(200);
@@ -65,7 +65,7 @@ describe('Select request for drill-through view', function () {
 
     it('Grand total(with filter)', function (done) {
 
-        const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1518991200000, 1535835599999] } }], "fields": [{ "uniqueName": "Order Date" }, { "uniqueName": "Country" }, { "uniqueName": "Discount" }] }, "page": 0 }
+        const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1518991200000, 1535835599999] } }], "fields": [{ "uniqueName": "Order Date" }, { "uniqueName": "Country" }, { "uniqueName": "Discount" }] }, "page": 0 }
 
         axios.post(url, requestBody).then(function (response) {
             expect(response.status).to.equal(200);
@@ -91,7 +91,7 @@ describe('Select request for drill-through view', function () {
 
     it('Limit : 100', function (done) {
 
-        const requestBody = { "type": "select", "index": "data", "query": { "limit": 100, "fields": [{ "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
+        const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "limit": 100, "fields": [{ "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
 
         axios.post(url, requestBody).then(function (response) {
             expect(response.status).to.equal(200);
@@ -114,7 +114,7 @@ describe('Select request for drill-through view', function () {
     describe('Include filter', function () {
         it('Empty response', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -135,7 +135,7 @@ describe('Select request for drill-through view', function () {
 
         it('Include filter - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -159,7 +159,7 @@ describe('Select request for drill-through view', function () {
 
         it('Include filter - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -175,7 +175,7 @@ describe('Select request for drill-through view', function () {
 
         it('Include filter - 3', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -191,7 +191,7 @@ describe('Select request for drill-through view', function () {
 
         it('Include filter - 4', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1564531200000 }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1564531200000 }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
 
 
             axios.post(url, requestBody).then(function (response) {
@@ -210,7 +210,7 @@ describe('Select request for drill-through view', function () {
     describe('Include + exclude filter', function () {
         it('Include + exclude filter - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Category" }, "exclude": [{ "member": "Components" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Category" }, "exclude": [{ "member": "Components" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -229,7 +229,7 @@ describe('Select request for drill-through view', function () {
 
         it('Include + exclude filter - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }, { "field": { "uniqueName": "Category" }, "exclude": [{ "member": "Bikes" }, { "member": "Components" }] }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Color" }, "exclude": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Category" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }, { "field": { "uniqueName": "Category" }, "exclude": [{ "member": "Bikes" }, { "member": "Components" }] }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }, { "field": { "uniqueName": "Color" }, "exclude": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Category" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -251,7 +251,7 @@ describe('Select request for drill-through view', function () {
     describe('String filters', function () {
         it('Equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Australia" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Australia" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -270,7 +270,7 @@ describe('Select request for drill-through view', function () {
 
         it('Not equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_equal": "Australia" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_equal": "Australia" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -294,7 +294,7 @@ describe('Select request for drill-through view', function () {
 
         it('Begin filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "U" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "U" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -314,7 +314,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Not begin filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_begin": "U" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_begin": "U" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -334,7 +334,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('End filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "end": "a" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "end": "a" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -354,7 +354,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Not end filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_end": "a" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_end": "a" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -374,7 +374,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Contain filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "contain": "e" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "contain": "e" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -394,7 +394,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Not contain filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_contain": "e" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_contain": "e" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -414,7 +414,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Greater filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -434,7 +434,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Greater equal filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater_equal": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater_equal": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -454,7 +454,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Less filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -474,7 +474,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Less equal filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less_equal": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less_equal": "France" } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -494,7 +494,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Between filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "between": ["France", "United Kingdom"] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "between": ["France", "United Kingdom"] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -514,7 +514,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Not between filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_between": ["France", "United Kingdom"] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_between": ["France", "United Kingdom"] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -539,7 +539,7 @@ describe('Select request for drill-through view', function () {
     describe('Date filters', function () {
         it('Equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1538265600000, 1538351999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1538265600000, 1538351999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -555,7 +555,7 @@ describe('Select request for drill-through view', function () {
 
         it('Not equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1538265600000, 1538351999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1538265600000, 1538351999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -579,7 +579,7 @@ describe('Select request for drill-through view', function () {
 
         it('After filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -599,7 +599,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('After equal filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after_equal": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after_equal": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -619,7 +619,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Before filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -639,7 +639,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Before equal filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before_equal": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before_equal": 1546387200000 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "red" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -659,7 +659,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Between filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1546387200000, 1546559999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1546387200000, 1546559999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -675,7 +675,7 @@ describe('Select request for drill-through view', function () {
         });
 
         it('Not between filter', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1546387200000, 1546559999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1546387200000, 1546559999999] } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -699,7 +699,7 @@ describe('Select request for drill-through view', function () {
     describe('Number filters', function () {
         it('Equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "equal": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "equal": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -720,7 +720,7 @@ describe('Select request for drill-through view', function () {
 
         it('Not equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_equal": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_equal": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -741,7 +741,7 @@ describe('Select request for drill-through view', function () {
 
         it('Greater filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }, { "field": { "uniqueName": "Discount" }, "query": { "greater": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }, { "field": { "uniqueName": "Discount" }, "query": { "greater": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }]);
@@ -760,7 +760,7 @@ describe('Select request for drill-through view', function () {
         });
         it('Greater equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }, { "field": { "uniqueName": "Discount" }, "query": { "greater_equal": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] }, { "field": { "uniqueName": "Discount" }, "query": { "greater_equal": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -780,7 +780,7 @@ describe('Select request for drill-through view', function () {
         });
         it('Less filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -800,7 +800,7 @@ describe('Select request for drill-through view', function () {
         });
         it('Less equal filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Discount" }, "query": { "less_equal": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "France" }] }, { "field": { "uniqueName": "Discount" }, "query": { "less_equal": 50 } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -820,7 +820,7 @@ describe('Select request for drill-through view', function () {
         });
         it('Between filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "between": [20, 60] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "between": [20, 60] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -835,7 +835,7 @@ describe('Select request for drill-through view', function () {
         });
         it('Not between filter', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_between": [20, 60] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_between": [20, 60] } }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "purple" }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Color" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -859,7 +859,7 @@ describe('Select request for drill-through view', function () {
     describe('Multiple filters', function () {
         it('Multiple filter - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }, { "field": { "uniqueName": "Business Type" }, "query": { "contain": "r" } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }, { "field": { "uniqueName": "Business Type" }, "query": { "contain": "r" } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -880,7 +880,7 @@ describe('Select request for drill-through view', function () {
 
         it('Multiple filter - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }, { "field": { "uniqueName": "Discount" }, "query": { "greater": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }, { "field": { "uniqueName": "Discount" }, "query": { "greater": 50 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Discount" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -901,7 +901,7 @@ describe('Select request for drill-through view', function () {
 
         it('Multiple filter - 3', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "u" } }, { "field": { "uniqueName": "Order Date" }, "query": { "after": 1557446400000 } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 80 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Discount" }, { "uniqueName": "Price" }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "u" } }, { "field": { "uniqueName": "Order Date" }, "query": { "after": 1557446400000 } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 80 } }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Discount" }, { "uniqueName": "Price" }] }, "page": 0 }
 
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
@@ -927,7 +927,7 @@ describe('Select request for drill-through view', function () {
         describe('Hierarchy filters', function () {
             it('Hierarchy filter - 1', function (done) {
 
-                const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "red", "filter": { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Value Added Reseller" }] } }] } }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "red", "filter": { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Value Added Reseller" }] } }] } }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }]);
@@ -947,7 +947,7 @@ describe('Select request for drill-through view', function () {
 
             it('Hierarchy filter - 2', function (done) {
 
-                const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] } }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "white" }] } }] }], "fields": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Price" }]);
@@ -967,7 +967,7 @@ describe('Select request for drill-through view', function () {
 
             it('Hierarchy filter with date', function (done) {
 
-                const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1523318400000 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1523318400000 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }]);
@@ -982,7 +982,7 @@ describe('Select request for drill-through view', function () {
 
             it('Hierarchy filter with number - 1', function (done) {
 
-                const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories", "filter": { "field": { "uniqueName": "Quantity" }, "include": [{ "member": 66 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Quantity" }, { "uniqueName": "Price" }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories", "filter": { "field": { "uniqueName": "Quantity" }, "include": [{ "member": 66 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Quantity" }, { "uniqueName": "Price" }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Quantity" }, { "uniqueName": "Price" }]);
@@ -997,7 +997,7 @@ describe('Select request for drill-through view', function () {
 
             it('Hierarchy filter with number - 2', function (done) {
 
-                const requestBody = { "type": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1523318400000 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue", "filter": { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1523318400000 }] } }] } }] }], "fields": [{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.fields).to.deep.include.members([{ "uniqueName": "Color" }, { "uniqueName": "Category" }, { "uniqueName": "Order Date" }, { "uniqueName": "Price" }]);

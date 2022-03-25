@@ -4,3 +4,4 @@
 /server-dotnetcore/[Bb]in/
 /server-dotnetcore/[Oo]bj/
 /server-dotnetcore/project.lock.json
+/tests/node_modules

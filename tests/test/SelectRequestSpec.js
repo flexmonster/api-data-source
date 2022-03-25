@@ -7,7 +7,7 @@ const url = config.url + "/select";
 describe('Select request', function () {
 
     it('Select request', function (done) {
-        const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
+        const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
 
         axios.post(url, requestBody).then(function (response) {
             expect(response.status).to.equal(200);
@@ -29,7 +29,7 @@ describe('Select request', function () {
     describe('Select request aggregations', function () {
         it('Aggregations - sum', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -44,7 +44,7 @@ describe('Select request', function () {
 
         it('Aggregations - average', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -59,7 +59,7 @@ describe('Select request', function () {
 
         it('Aggregations - average(with nulls)', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -74,7 +74,7 @@ describe('Select request', function () {
 
         it('Aggregations - count', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "count", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "count", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -89,7 +89,7 @@ describe('Select request', function () {
 
         it('Aggregations - distinctcount', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "distinctcount", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "distinctcount", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -104,7 +104,7 @@ describe('Select request', function () {
 
         it('Aggregations - min', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "min", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "min", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -118,7 +118,7 @@ describe('Select request', function () {
         });
         it('Aggregations - max', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "max", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "max", "field": { "uniqueName": "Discount" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(36);
@@ -132,7 +132,7 @@ describe('Select request', function () {
 
         it('Aggregations(with dates) - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "max", "field": { "uniqueName": "Order Date" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "max", "field": { "uniqueName": "Order Date" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(7);
@@ -146,7 +146,7 @@ describe('Select request', function () {
 
         it('Aggregations - 3', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] } }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(1714);
@@ -161,7 +161,7 @@ describe('Select request', function () {
     describe('Select request expand', function () {
         it('Expand(rows) - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 18757 } }, "keys": { "Color": "blue", "Country": "United States", "Category": "Bikes" } });
@@ -177,7 +177,7 @@ describe('Select request', function () {
 
         it('Expand(rows) - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Business Type" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany" }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Business Type" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany" }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 1046 } }, "keys": { "Color": "blue", "Country": "Germany", "Business Type": "Specialty Bike Shop", "Category": "Clothing" } });
@@ -192,7 +192,7 @@ describe('Select request', function () {
 
         it('Expand(rows) - 3', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Business Type" }, { "uniqueName": "Order Date" }, { "uniqueName": "Quantity" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany" }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Warehouse" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1515110400000 }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Country" }, { "uniqueName": "Business Type" }, { "uniqueName": "Order Date" }, { "uniqueName": "Quantity" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Germany" }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Warehouse" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1515110400000 }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 192 } }, "keys": { "Color": "blue", "Country": "Germany", "Business Type": "Warehouse", "Order Date": 1515110400000, "Category": "Components" } });
                 done();
@@ -204,7 +204,7 @@ describe('Select request', function () {
 
         it('Expand(columns)', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "United States" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1519516800000 }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Order Date" }, { "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "United States" }] }, { "field": { "uniqueName": "Order Date" }, "include": [{ "member": 1519516800000 }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 15310 } }, "keys": { "Color": "white", "Category": "Cars", "Country": "United States", "Order Date": 1519516800000, "Discount": 49 } });
@@ -217,7 +217,7 @@ describe('Select request', function () {
 
         it('Expand(columns+rows) - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }, { "func": "average", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Warehouse" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Business Type" }, { "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }, { "uniqueName": "Discount" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }, { "func": "average", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Warehouse" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars" }] }, { "field": { "uniqueName": "Country" }, "include": [{ "member": "Australia" }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(0);
@@ -230,7 +230,7 @@ describe('Select request', function () {
 
         it('Expand(columns+rows) - 2', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Business Type" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Bikes" }] }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }, { "uniqueName": "Business Type" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "average", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "include": [{ "member": "green" }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Bikes" }] }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "average": 2499.75 } }, "keys": { "Color": "green", "Business Type": "Specialty Bike Shop", "Category": "Bikes", "Country": "Germany" } });
@@ -248,7 +248,7 @@ describe('Select request', function () {
 
         describe('Number filters', function () {
             it('Filters(number) - equal ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "equal": 0 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "equal": 0 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(10);
@@ -269,7 +269,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - not equal ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_equal": 0 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_equal": 0 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(485);
@@ -290,7 +290,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - greater', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "greater": 90 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "greater": 90 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(55);
@@ -311,7 +311,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - greater equal ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "greater_equal": 90 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "greater_equal": 90 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(61);
@@ -332,7 +332,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - less ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "less": 10 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "less": 10 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(50);
@@ -353,7 +353,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - less equal ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "less_equal": 10 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "less_equal": 10 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(54);
@@ -374,7 +374,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - between ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "between": [5, 20] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "between": [5, 20] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(81);
@@ -395,7 +395,7 @@ describe('Select request', function () {
             });
 
             it('Filters(number) - not between ', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_between": [5, 20] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "query": { "not_between": [5, 20] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(408);
@@ -419,7 +419,7 @@ describe('Select request', function () {
         describe('Date filters', function () {
 
             it('Filters(date) - between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1535760000000, 1541116799999] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "between": [1535760000000, 1541116799999] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(107);
@@ -440,7 +440,7 @@ describe('Select request', function () {
             });
 
             it('Filters(date) - not between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1535760000000, 1541116799999] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "not_between": [1535760000000, 1541116799999] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(1422);
@@ -461,7 +461,7 @@ describe('Select request', function () {
             });
 
             it('Filters(date) - before', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before": 1535846400000 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before": 1535846400000 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(382);
@@ -482,7 +482,7 @@ describe('Select request', function () {
             });
 
             it('Filters(date) - before equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before_equal": 1535846400000 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "before_equal": 1535846400000 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(385);
@@ -503,7 +503,7 @@ describe('Select request', function () {
             });
 
             it('Filters(date) - after', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after": 1535846400000 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after": 1535846400000 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(1145);
@@ -524,7 +524,7 @@ describe('Select request', function () {
             });
 
             it('Filters(date) - after equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after_equal": 1535846400000 } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Order Date" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Order Date" }, "query": { "after_equal": 1535846400000 } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(1148);
@@ -548,7 +548,7 @@ describe('Select request', function () {
 
         describe('String filters', function () {
             it('Filters(string) - equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "equal": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(14);
@@ -569,7 +569,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - not equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_equal": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_equal": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(38);
@@ -590,7 +590,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - begin', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "U" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "begin": "U" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(20);
@@ -611,7 +611,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - not begin', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_begin": "U" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_begin": "U" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(32);
@@ -632,7 +632,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - end', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "end": "a" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "end": "a" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(20);
@@ -653,7 +653,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - not end', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_end": "a" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_end": "a" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(32);
@@ -674,7 +674,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - contain', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "contain": "u" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "contain": "u" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(26);
@@ -695,7 +695,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - not contain', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_contain": "u" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_contain": "u" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(26);
@@ -716,7 +716,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - less', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(12);
@@ -737,7 +737,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - less equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less_equal": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "less_equal": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(20);
@@ -758,7 +758,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - greater', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(32);
@@ -779,7 +779,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - greater equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater_equal": "Canada" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "greater_equal": "Canada" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(39);
@@ -800,7 +800,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "between": ["Canada", "Germany"] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "between": ["Canada", "Germany"] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(26);
@@ -821,7 +821,7 @@ describe('Select request', function () {
             });
 
             it('Filters(string) - not between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_between": ["Canada", "Germany"] } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }], "cols": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "query": { "not_between": ["Canada", "Germany"] } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(26);
@@ -845,7 +845,7 @@ describe('Select request', function () {
 
         it('Filters(string) - contains + begin', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(12);
@@ -860,7 +860,7 @@ describe('Select request', function () {
 
         it('Filters(string) + expand - 1', function (done) {
 
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } } }] }, { "field": { "uniqueName": "Country" }, "query": { "not_end": "y" } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } } }] }, { "field": { "uniqueName": "Country" }, "query": { "not_end": "y" } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 266541 } }, "keys": { "Color": "blue", "Category": "Cars", "Country": "United Kingdom" } });
@@ -873,7 +873,7 @@ describe('Select request', function () {
         });
 
         it('Filters(string) + expand - 2', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } } }] }, { "field": { "uniqueName": "Country" }, "query": { "not_end": "y" } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }, { "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Cars", "filter": { "field": { "uniqueName": "Category" }, "query": { "begin": "C" } } }] }, { "field": { "uniqueName": "Country" }, "query": { "not_end": "y" } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 266541 } }, "keys": { "Color": "blue", "Category": "Cars", "Country": "United Kingdom" } });
@@ -886,7 +886,7 @@ describe('Select request', function () {
         });
 
         it('Filters + expand', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Category" }], "cols": [{ "uniqueName": "Color" }, { "uniqueName": "Size" }, { "uniqueName": "Business Type" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }, { "func": "average", "field": { "uniqueName": "Quantity" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada", "filter": { "field": { "uniqueName": "Country" }, "query": { "between": ["Canada", "Germany"] } } }] }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow", "filter": { "field": { "uniqueName": "Color" }, "query": { "contain": "e" } } }] }, { "field": { "uniqueName": "Size" }, "include": [{ "member": "97 oz", "filter": { "field": { "uniqueName": "Size" }, "query": { "begin": "9" } } }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Value Added Reseller" }] }, { "field": { "uniqueName": "Order Date" }, "query": { "before": 1535846400000 } }, { "field": { "uniqueName": "Discount" }, "query": { "between": [5, 50] } }, { "field": { "uniqueName": "Quantity" }, "query": { "between": [126, 483] } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Category" }], "cols": [{ "uniqueName": "Color" }, { "uniqueName": "Size" }, { "uniqueName": "Business Type" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }, { "func": "average", "field": { "uniqueName": "Quantity" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada", "filter": { "field": { "uniqueName": "Country" }, "query": { "between": ["Canada", "Germany"] } } }] }, { "field": { "uniqueName": "Color" }, "include": [{ "member": "yellow", "filter": { "field": { "uniqueName": "Color" }, "query": { "contain": "e" } } }] }, { "field": { "uniqueName": "Size" }, "include": [{ "member": "97 oz", "filter": { "field": { "uniqueName": "Size" }, "query": { "begin": "9" } } }] }, { "field": { "uniqueName": "Business Type" }, "include": [{ "member": "Value Added Reseller" }] }, { "field": { "uniqueName": "Order Date" }, "query": { "before": 1535846400000 } }, { "field": { "uniqueName": "Discount" }, "query": { "between": [5, 50] } }, { "field": { "uniqueName": "Quantity" }, "query": { "between": [126, 483] } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 1241 }, "Quantity": { "average": 483 } }, "keys": { "Country": "Canada", "Category": "Accessories", "Color": "yellow", "Size": "97 oz", "Business Type": "Value Added Reseller" } });
@@ -898,7 +898,7 @@ describe('Select request', function () {
         });
 
         it('Filters(number) - two number filters and two string filters ', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Quantity" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Quantity" }, "query": { "between": [126, 483] } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Quantity" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Quantity" }, "query": { "between": [126, 483] } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(13);
@@ -919,7 +919,7 @@ describe('Select request', function () {
         });
 
         it('Filters(date + number)', function (done) {
-            const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Order Date" }, "query": { "between": [1535760000000, 1541116799999] } }] }, "page": 0 }
+            const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "contain": "l" } }, { "field": { "uniqueName": "Discount" }, "query": { "less": 50 } }, { "field": { "uniqueName": "Order Date" }, "query": { "between": [1535760000000, 1541116799999] } }] }, "page": 0 }
             axios.post(url, requestBody).then(function (response) {
                 expect(response.status).to.equal(200);
                 expect(response.data.aggs).to.have.lengthOf(4);
@@ -938,7 +938,7 @@ describe('Select request', function () {
     if (config.valueFilters) {
         describe('Value filters', function () {
             it('Filters(value) - top', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "top": 3 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "top": 3 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(27);
@@ -959,7 +959,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - bottom', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "bottom": 3 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "bottom": 3 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(25);
@@ -980,7 +980,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "equal": 2179775 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "equal": 2179775 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(14);
@@ -1001,7 +1001,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - not equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "not_equal": 2179775 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "not_equal": 2179775 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(38);
@@ -1022,7 +1022,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - greater', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "greater": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "greater": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(27);
@@ -1043,7 +1043,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - greater equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "greater_equal": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }], "cols": [{ "uniqueName": "Country" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "greater_equal": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(34);
@@ -1064,7 +1064,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - less', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "less": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "less": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(3);
@@ -1086,7 +1086,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - less equal', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "less_equal": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "less_equal": 1046834 }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(4);
@@ -1109,7 +1109,7 @@ describe('Select request', function () {
 
 
             it('Filters(value) - between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "between": [1046834, 1806444] }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "between": [1046834, 1806444] }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(4);
@@ -1131,7 +1131,7 @@ describe('Select request', function () {
             });
 
             it('Filters(value) - not between', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "not_between": [1046834, 1806444] }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Color" }, "query": { "not_between": [1046834, 1806444] }, "value": { "field": { "uniqueName": "Price" }, "func": "sum" } }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.have.lengthOf(4);
@@ -1158,7 +1158,7 @@ describe('Select request', function () {
     if (config.hierarchy) {
         describe('Hierarchy', function () {
             it('Hierarchy - 1', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] } }] }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] } }] }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 30008 } }, "keys": { "Country": "United States", "Color": "blue", "Business Type": "Warehouse" } });
@@ -1171,7 +1171,7 @@ describe('Select request', function () {
                     });
             });
             it('Hierarchy - 2', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Country" }, "query": { "begin": "u" } } }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }, { "member": "Bikes" }] }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Country" }, "query": { "begin": "u" } } }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }, { "member": "Bikes" }] }] }, "page": 0 }
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
                     expect(response.data.aggs).to.deep.include({"values":{"Price":{"sum":18757}},"keys":{"Country":"United States","Color":"blue"}});
@@ -1183,7 +1183,7 @@ describe('Select request', function () {
             });
 
             it('Number hierarchy', function (done) {
-                const requestBody = { "type": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }, { "uniqueName": "Country" }, { "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "include": [{ "member": 0, "filter": { "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] } }] }] }, "page": 0 }
+                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }, { "uniqueName": "Country" }, { "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "include": [{ "member": 0, "filter": { "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] } }] }] }, "page": 0 }
 
                 axios.post(url, requestBody).then(function (response) {
                     expect(response.status).to.equal(200);
