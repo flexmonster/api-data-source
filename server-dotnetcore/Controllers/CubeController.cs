@@ -89,7 +89,7 @@ namespace NetCoreServer.Controllers
                 Response.StatusCode = 400;
                 return new JsonResult("Incorrect request for this endpoint.");
             }
-            return new JsonResult(response, new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new ColumnTypeJsonConverter() } });
+            return new JsonResult(response, new JsonSerializerOptions { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new ColumnTypeJsonConverter() } });
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace NetCoreServer.Controllers
                   DataSlice data = new DataSlice(rawData);
                   SelectResponse response = new SelectResponse();
                   string[] responses = null;
-                  JsonSerializerOptions options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new SelectResponseJsonConverter() } };
+                  JsonSerializerOptions options = new JsonSerializerOptions { DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, Converters = { new SelectResponseJsonConverter() } };
                   if (query.Filter != null)
                   {
                       data.FilterData(query.Filter);
