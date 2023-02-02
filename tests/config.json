@@ -1,5 +1,5 @@
 {
-    "url": "http://localhost:3400/api/cube",
+    "url": "http://127.0.0.1:3400/api/cube",
     "emptyValue": "",
     "valueFilters": false,
     "hierarchy": false
