@@ -6,7 +6,7 @@ Website: [www.flexmonster.com](https://www.flexmonster.com?r=github)
 
 Flexmonster Pivot is a powerful JavaScript tool for interactive web reporting. It allows you to visualize and analyze data from JSON, CSV, SQL, NoSQL, Elasticsearch, and OLAP data sources quickly and conveniently. Flexmonster is designed to integrate seamlessly with any client-side framework and can be easily embedded into your application.
 
-This repository holds the source code for projects that demonstrate how to implement the [custom data source API](https://www.flexmonster.com/doc/introduction-to-custom-data-source-api?r=github).
+This repository holds the source code for sample servers that demonstrate how to implement the [custom data source API](https://www.flexmonster.com/doc/introduction-to-custom-data-source-api?r=github).
 
 The custom data source API is a communication protocol designed to retrieve aggregated data from a server to Flexmonster Pivot.
 The server is responsible for fetching, processing, and aggregating data, which is then passed to Flexmonster in a ready-to-show format.
