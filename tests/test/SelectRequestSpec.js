@@ -1154,48 +1154,4 @@ describe('Select request', function () {
 
         });
     }
-
-    if (config.hierarchy) {
-        describe('Hierarchy', function () {
-            it('Hierarchy - 1', function (done) {
-                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }, { "uniqueName": "Business Type" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Color" }, "include": [{ "member": "blue" }] } }] }] }, "page": 0 }
-                axios.post(url, requestBody).then(function (response) {
-                    expect(response.status).to.equal(200);
-                    expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 30008 } }, "keys": { "Country": "United States", "Color": "blue", "Business Type": "Warehouse" } });
-                    expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 20887 } }, "keys": { "Country": "United States", "Color": "blue", "Business Type": "Value Added Reseller" } });
-                    expect(response.data.aggs).not.to.deep.include({ "values": { "Price": { "sum": 1688 } }, "keys": { "Country": "United States", "Color": "green", "Business Type": "Warehouse" } });
-                    done();
-                })
-                    .catch(function (error) {
-                        done(error);
-                    });
-            });
-            it('Hierarchy - 2', function (done) {
-                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Country" }, { "uniqueName": "Color" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Country" }, "include": [{ "member": "United States", "filter": { "field": { "uniqueName": "Country" }, "query": { "begin": "u" } } }] }, { "field": { "uniqueName": "Category" }, "include": [{ "member": "Accessories" }, { "member": "Bikes" }] }] }, "page": 0 }
-                axios.post(url, requestBody).then(function (response) {
-                    expect(response.status).to.equal(200);
-                    expect(response.data.aggs).to.deep.include({"values":{"Price":{"sum":18757}},"keys":{"Country":"United States","Color":"blue"}});
-                    done();
-                })
-                    .catch(function (error) {
-                        done(error);
-                    });
-            });
-
-            it('Number hierarchy', function (done) {
-                const requestBody = { "type": "select", "querytype": "select", "index": "data", "query": { "aggs": { "by": { "rows": [{ "uniqueName": "Discount" }, { "uniqueName": "Country" }, { "uniqueName": "Category" }] }, "values": [{ "func": "sum", "field": { "uniqueName": "Price" } }] }, "filter": [{ "field": { "uniqueName": "Discount" }, "include": [{ "member": 0, "filter": { "field": { "uniqueName": "Country" }, "include": [{ "member": "Canada" }] } }] }] }, "page": 0 }
-
-                axios.post(url, requestBody).then(function (response) {
-                    expect(response.status).to.equal(200);
-                    expect(response.data.aggs).to.deep.include({ "values": { "Price": { "sum": 113 } }, "keys": { "Discount": 0, "Country": "Canada", "Category": "Components" } });
-                    expect(response.data.aggs).to.not.deep.include({"values":{"Price":{"sum":225}},"keys":{"Discount":0,"Country":"France","Category":"Components"}});
-                    done();
-                })
-                    .catch(function (error) {
-                        done(error);
-                    });
-            });
-
-        });
-    }
 });

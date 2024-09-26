@@ -4,7 +4,7 @@ var config = require('../config.json');
 
 const url = config.url + "/handshake";
 
-const requestBody = { "type": "handshake", "version": "2.8.5" }
+const requestBody = { "type": "handshake", "version": "2.8.22" }
 
 describe('Handshake request', function () {
     let promise;
