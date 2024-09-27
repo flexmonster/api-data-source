@@ -25,7 +25,7 @@ namespace NetCoreServer.Controllers
     [ApiController]
     public class CubeController : ControllerBase
     {
-        private const string API_VERSION = "2.8.5";
+        private const string API_VERSION = "2.9.0";
         private const int MEMBERS_PAGE_SIZE = 50000;
         private const int SELECT_PAGE_SIZE = 50000;
 

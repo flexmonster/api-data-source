@@ -7,7 +7,7 @@ const dataFolder = process.argv[3] || './data';
  * API endpoints
  */
 
-const API_VERSION = "2.8.5";
+const API_VERSION = "2.9.0";
 
 cube.post("/handshake", async (req, res) => {
     try {
