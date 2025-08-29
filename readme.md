@@ -40,17 +40,13 @@ git clone https://github.com/flexmonster/api-data-source.git && cd api-data-sour
     - To start the sample Node.js server:
 
     ```
-    cd server-nodejs
-    npm install
-    npm start
+    cd server-nodejs && npm install && npm start
     ```
 
     - To start the sample .NET Core server:
 
     ```
-    cd server-dotnetcore
-    dotnet restore
-    dotnet run
+    cd server-dotnetcore && dotnet restore && dotnet run
     ```
 
 3.  Open the `client/index.html` file in a browser to see Flexmonster with the data from the server.
@@ -59,9 +55,7 @@ git clone https://github.com/flexmonster/api-data-source.git && cd api-data-sour
 
 If needed, you can check a custom data source API server with our [test suite](https://github.com/flexmonster/api-data-source/tree/master/tests). Run the tests with the following commands: 
 ```
-cd tests
-npm install
-npm test
+cd tests && npm install && npm test
 ```
 
 Note that these tests will work only if one of the sample servers is running. To learn how your server can be tested, [see our documentation](https://www.flexmonster.com/doc/test-custom-data-source-api-server?r=github).
