@@ -63,7 +63,7 @@ Note that these tests will work only if one of the sample servers is running. To
 ## Related Flexmonster docs
 
 - [A quick overview of the sample Node.js server](https://www.flexmonster.com/doc/pivot-table-with-node-js-server?r=github) — learn more about a sample Node.js server.
-- [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/pivot-table-with-dot-net-core-server?r=github) — learn more about a sample Node.js server.
+- [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/pivot-table-with-dot-net-core-server?r=github) — learn more about a sample .NET Core server.
 - [Implementing the custom data source API server](https://www.flexmonster.com/doc/implement-custom-data-source-api?r=github) — see how to implement the custom data source API protocol on your server.
 - [Custom data source API documentation](https://www.flexmonster.com/api/all-requests?r=github) — check out details on API requests for fetching aggregated data.
 
