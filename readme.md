@@ -6,7 +6,7 @@ Website: [www.flexmonster.com](https://www.flexmonster.com?r=github)
 
 Flexmonster Pivot Table & Charts is a powerful and fully customizable JavaScript component for web reporting. It is packed with all core features for data analysis and can easily become a part of your data visualization project. The tool supports popular frameworks like React, Vue, Angular, Blazor, and [more](https://www.flexmonster.com/doc/available-tutorials-integration?r=github). Also, Flexmonster connects to [any data source](https://www.flexmonster.com/doc/supported-data-sources?r=github), including SQL and NoSQL databases, JSON and CSV files, OLAP cubes, and Elasticsearch.
 
-This repository holds the source code for sample servers that demonstrate how to implement the [custom data source API](https://www.flexmonster.com/doc/introduction-to-custom-data-source-api?r=github).
+This repository contains sample servers that demonstrate how to implement the [custom data source API](https://www.flexmonster.com/doc/introduction-to-custom-data-source-api?r=github).
 
 The custom data source API is our communication protocol that helps you build a custom data source based on your server. The server must be responsible for loading, processing, and aggregating data. After implementing the protocol on your server, you can load the data from the server into Flexmonster.
 
@@ -35,7 +35,7 @@ For the sample .NET Core server:
 git clone https://github.com/flexmonster/api-data-source.git && cd api-data-source
 ```
 
-2. Run the project in one of the following ways:
+2. Choose one of the servers to run:
     
     - To start the sample Node.js server:
 
@@ -63,8 +63,8 @@ Note that these tests will work only if one of the sample servers is running. To
 ## Related Flexmonster docs
 
 - [A quick overview of the sample Node.js server](https://www.flexmonster.com/doc/pivot-table-with-node-js-server?r=github) — learn more about a sample Node.js server.
-- [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/pivot-table-with-dot-net-core-server?r=github) — see details on a sample Node.js server.
-- [Implementing the custom data source API server](https://www.flexmonster.com/doc/implement-custom-data-source-api?r=github) — learn how to implement the custom data source API protocol on your server.
+- [A quick overview of the sample .NET Core server](https://www.flexmonster.com/doc/pivot-table-with-dot-net-core-server?r=github) — learn more about a sample Node.js server.
+- [Implementing the custom data source API server](https://www.flexmonster.com/doc/implement-custom-data-source-api?r=github) — see how to implement the custom data source API protocol on your server.
 - [Custom data source API documentation](https://www.flexmonster.com/api/all-requests?r=github) — check out details on API requests for fetching aggregated data.
 
 ## Support and feedback
